@@ -1,0 +1,1517 @@
+{
+ "version": 1,
+ "marca": "increasefit",
+ "base": "01-1_progreso_1106-1206",
+ "audio": "",
+ "video": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "frames": 1721,
+  "voz_s": 55.84,
+  "cola_s": 1.5
+ },
+ "serie_header": "PROGRESO REAL",
+ "cta": "PROGRESO",
+ "cta_con_entrega": false,
+ "plantilla": "progresion",
+ "logos": {
+  "increasefit": true,
+  "oscuro": true,
+  "isotipo": true
+ },
+ "tema": {
+  "id": 1,
+  "variante": 1,
+  "titulo": "Sobrecarga progresiva",
+  "tesis": "El músculo crece cuando le pides un poco más que la última vez, no cuando sudas más.",
+  "gancho": "Llevas 6 meses levantando los mismos 60 kilos.",
+  "metodo": "Registrar y subir una rep o 2,5 kg cuando toca.",
+  "movimiento": "sentadilla"
+ },
+ "fuente_en_pantalla": "",
+ "datos_citados": [],
+ "notas_direccion": "",
+ "climas": {
+  "gancho": "hierro",
+  "error": "hierro",
+  "por_que": "libreta",
+  "metodo": "hierro",
+  "resultado": "hierro",
+  "cta": "hierro"
+ },
+ "fuentes": [
+  {
+   "rol": "titulos",
+   "familia": "Open Sans",
+   "css": "fonts/css/open_sans__400-600-700-800.css",
+   "stack": "\"Open Sans\", sans-serif"
+  },
+  {
+   "rol": "mono",
+   "familia": "JetBrains Mono",
+   "css": "fonts/css/jetbrains_mono__500-700.css",
+   "stack": "\"JetBrains Mono\", monospace"
+  }
+ ],
+ "ficha_tecnica": {
+  "ejercicios": [
+   {
+    "movimiento": "sentadilla",
+    "nombre": "sentadilla con barra",
+    "rol": "principal"
+   }
+  ],
+  "musculos": [
+   "cuadriceps",
+   "gluteo"
+  ],
+  "prescripcion": {
+   "series": "3-4",
+   "reps": "6-10",
+   "rir": "1-2",
+   "descanso": "2-3 min",
+   "frecuencia": "2 veces por semana"
+  },
+  "cues": [
+   "anota cada serie",
+   "una rep más",
+   "al tope, +2,5 kg"
+  ],
+  "errores": [
+   "el mismo peso cada semana",
+   "medir el día por el cansancio"
+  ],
+  "progresion_ejemplo": [
+   {
+    "semana": 1,
+    "kg": 60,
+    "reps": 8
+   },
+   {
+    "semana": 2,
+    "kg": 60,
+    "reps": 10
+   },
+   {
+    "semana": 3,
+    "kg": 62.5,
+    "reps": 8
+   },
+   {
+    "semana": 4,
+    "kg": 62.5,
+    "reps": 9
+   }
+  ],
+  "vocabulario": [
+   "sobrecarga progresiva",
+   "libreta",
+   "repeticiones"
+  ]
+ },
+ "bloques": [
+  {
+   "id": "gancho",
+   "ini_f": 0,
+   "fin_f": 211,
+   "ini_s": 0.0,
+   "fin_s": 7.02,
+   "titular": [
+    "6 meses después",
+    "los mismos 60 kg"
+   ],
+   "texto": "Llevas seis meses levantando los mismos sesenta kilos. Y te preguntas por qué no creces.",
+   "palabras": [
+    0,
+    15
+   ],
+   "visual": {
+    "rep": "sentadilla",
+    "gesto": "",
+    "idea": "Rep hace sentadilla con la misma barra mientras un calendario pasa hojas detrás."
+   }
+  },
+  {
+   "id": "error",
+   "ini_f": 211,
+   "fin_f": 530,
+   "ini_s": 7.02,
+   "fin_s": 17.65,
+   "titular": [
+    "terminar destruido",
+    "no es progresar"
+   ],
+   "texto": "Cada sesión terminas destruido, sudando como si eso contara. Pero tu libreta dice lo mismo que en marzo: sesenta kilos, ocho repeticiones.",
+   "palabras": [
+    15,
+    37
+   ],
+   "visual": {
+    "rep": "sentado",
+    "gesto": "sudor",
+    "idea": "Rep agotado en el banco, sudando; al lado, una libreta con la misma línea copiada semana tras semana."
+   }
+  },
+  {
+   "id": "por_que",
+   "ini_f": 530,
+   "fin_f": 954,
+   "ini_s": 17.65,
+   "fin_s": 31.8,
+   "titular": [
+    "tu cuerpo se adapta",
+    "y luego se aburre"
+   ],
+   "texto": "El músculo se adapta a lo que le pides. Si le pides lo mismo, ya no tiene motivo para cambiar. El estímulo no es el cansancio: es hacer un poco más que la última vez.",
+   "palabras": [
+    37,
+    72
+   ],
+   "visual": {
+    "rep": "de_pie",
+    "gesto": "pregunta",
+    "idea": "Diagrama de tiza: estímulo, adaptación y, si el estímulo no cambia, una meseta."
+   }
+  },
+  {
+   "id": "metodo",
+   "ini_f": 954,
+   "fin_f": 1336,
+   "ini_s": 31.8,
+   "fin_s": 44.53,
+   "titular": [
+    "sobrecarga progresiva",
+    "sin drama"
+   ],
+   "texto": "Anota cada serie. La próxima sesión, intenta una repetición más con el mismo peso. Cuando llegues al tope del rango, sube dos kilos y medio y vuelve a empezar.",
+   "palabras": [
+    72,
+    101
+   ],
+   "pasos": [
+    "Anota cada serie",
+    "Una rep más",
+    "Llega al tope",
+    "Sube 2,5 kg"
+   ],
+   "pasos_f": [
+    954,
+    null,
+    1189,
+    1227
+   ],
+   "visual": {
+    "rep": "sentadilla",
+    "gesto": "",
+    "idea": "La libreta se rellena semana a semana mientras Rep entrena y la barra suma discos."
+   }
+  },
+  {
+   "id": "resultado",
+   "ini_f": 1336,
+   "fin_f": 1538,
+   "ini_s": 44.53,
+   "fin_s": 51.28,
+   "titular": [
+    "no es magia",
+    "son números"
+   ],
+   "texto": "Esto no es magia de lunes. Son números que suben en tu libreta, semana a semana.",
+   "palabras": [
+    101,
+    117
+   ],
+   "visual": {
+    "rep": "flex",
+    "gesto": "brillo",
+    "idea": "Una gráfica de kilos que sube y Rep sacando bíceps."
+   }
+  },
+  {
+   "id": "cta",
+   "ini_f": 1538,
+   "fin_f": 1721,
+   "ini_s": 51.28,
+   "fin_s": 57.37,
+   "titular": [
+    "empieza a anotar",
+    "PROGRESO"
+   ],
+   "texto": "Comenta PROGRESO si hoy empiezas a anotar tus series.",
+   "palabras": [
+    117,
+    126
+   ],
+   "visual": {
+    "rep": "manos_cadera",
+    "gesto": "",
+    "idea": "Tarjeta final con la palabra PROGRESO."
+   }
+  }
+ ],
+ "subtitulos": [
+  [
+   "Llevas",
+   0.15,
+   0.59
+  ],
+  [
+   "seis",
+   0.63,
+   0.98
+  ],
+  [
+   "meses",
+   1.02,
+   1.42
+  ],
+  [
+   "levantando",
+   1.46,
+   2.08
+  ],
+  [
+   "los",
+   2.12,
+   2.42
+  ],
+  [
+   "mismos",
+   2.46,
+   2.9
+  ],
+  [
+   "sesenta",
+   2.94,
+   3.43
+  ],
+  [
+   "kilos.",
+   3.47,
+   3.86
+  ],
+  [
+   "Y",
+   4.14,
+   4.36
+  ],
+  [
+   "te",
+   4.4,
+   4.66
+  ],
+  [
+   "preguntas",
+   4.7,
+   5.27
+  ],
+  [
+   "por",
+   5.31,
+   5.62
+  ],
+  [
+   "qué",
+   5.66,
+   5.96
+  ],
+  [
+   "no",
+   6.0,
+   6.26
+  ],
+  [
+   "creces.",
+   6.3,
+   6.74
+  ],
+  [
+   "Cada",
+   7.02,
+   7.37
+  ],
+  [
+   "sesión",
+   7.41,
+   7.85
+  ],
+  [
+   "terminas",
+   7.89,
+   8.42
+  ],
+  [
+   "destruido,",
+   8.46,
+   9.08
+  ],
+  [
+   "sudando",
+   9.2,
+   9.68
+  ],
+  [
+   "como",
+   9.72,
+   10.07
+  ],
+  [
+   "si",
+   10.12,
+   10.38
+  ],
+  [
+   "eso",
+   10.42,
+   10.72
+  ],
+  [
+   "contara.",
+   10.76,
+   11.25
+  ],
+  [
+   "Pero",
+   11.53,
+   11.88
+  ],
+  [
+   "tu",
+   11.92,
+   12.18
+  ],
+  [
+   "libreta",
+   12.22,
+   12.7
+  ],
+  [
+   "dice",
+   12.74,
+   13.09
+  ],
+  [
+   "lo",
+   13.13,
+   13.39
+  ],
+  [
+   "mismo",
+   13.43,
+   13.83
+  ],
+  [
+   "que",
+   13.87,
+   14.17
+  ],
+  [
+   "en",
+   14.21,
+   14.47
+  ],
+  [
+   "marzo:",
+   14.51,
+   14.91
+  ],
+  [
+   "sesenta",
+   15.19,
+   15.67
+  ],
+  [
+   "kilos,",
+   15.71,
+   16.15
+  ],
+  [
+   "ocho",
+   16.27,
+   16.62
+  ],
+  [
+   "repeticiones.",
+   16.66,
+   17.37
+  ],
+  [
+   "El",
+   17.65,
+   17.91
+  ],
+  [
+   "músculo",
+   17.95,
+   18.44
+  ],
+  [
+   "se",
+   18.48,
+   18.74
+  ],
+  [
+   "adapta",
+   18.78,
+   19.22
+  ],
+  [
+   "a",
+   19.26,
+   19.47
+  ],
+  [
+   "lo",
+   19.51,
+   19.77
+  ],
+  [
+   "que",
+   19.81,
+   20.12
+  ],
+  [
+   "le",
+   20.16,
+   20.42
+  ],
+  [
+   "pides.",
+   20.46,
+   20.85
+  ],
+  [
+   "Si",
+   21.13,
+   21.39
+  ],
+  [
+   "le",
+   21.43,
+   21.69
+  ],
+  [
+   "pides",
+   21.73,
+   22.13
+  ],
+  [
+   "lo",
+   22.17,
+   22.43
+  ],
+  [
+   "mismo,",
+   22.47,
+   22.91
+  ],
+  [
+   "ya",
+   23.03,
+   23.29
+  ],
+  [
+   "no",
+   23.33,
+   23.59
+  ],
+  [
+   "tiene",
+   23.63,
+   24.02
+  ],
+  [
+   "motivo",
+   24.06,
+   24.5
+  ],
+  [
+   "para",
+   24.54,
+   24.89
+  ],
+  [
+   "cambiar.",
+   24.93,
+   25.42
+  ],
+  [
+   "El",
+   25.7,
+   25.96
+  ],
+  [
+   "estímulo",
+   26.0,
+   26.53
+  ],
+  [
+   "no",
+   26.57,
+   26.83
+  ],
+  [
+   "es",
+   26.87,
+   27.13
+  ],
+  [
+   "el",
+   27.17,
+   27.43
+  ],
+  [
+   "cansancio:",
+   27.47,
+   28.04
+  ],
+  [
+   "es",
+   28.32,
+   28.58
+  ],
+  [
+   "hacer",
+   28.62,
+   29.02
+  ],
+  [
+   "un",
+   29.06,
+   29.32
+  ],
+  [
+   "poco",
+   29.36,
+   29.71
+  ],
+  [
+   "más",
+   29.75,
+   30.05
+  ],
+  [
+   "que",
+   30.09,
+   30.4
+  ],
+  [
+   "la",
+   30.44,
+   30.7
+  ],
+  [
+   "última",
+   30.74,
+   31.18
+  ],
+  [
+   "vez.",
+   31.22,
+   31.52
+  ],
+  [
+   "Anota",
+   31.8,
+   32.2
+  ],
+  [
+   "cada",
+   32.24,
+   32.59
+  ],
+  [
+   "serie.",
+   32.63,
+   33.02
+  ],
+  [
+   "La",
+   33.3,
+   33.56
+  ],
+  [
+   "próxima",
+   33.6,
+   34.09
+  ],
+  [
+   "sesión,",
+   34.13,
+   34.61
+  ],
+  [
+   "intenta",
+   34.73,
+   35.22
+  ],
+  [
+   "una",
+   35.26,
+   35.56
+  ],
+  [
+   "repetición",
+   35.6,
+   36.22
+  ],
+  [
+   "más",
+   36.26,
+   36.56
+  ],
+  [
+   "con",
+   36.6,
+   36.91
+  ],
+  [
+   "el",
+   36.95,
+   37.21
+  ],
+  [
+   "mismo",
+   37.25,
+   37.64
+  ],
+  [
+   "peso.",
+   37.68,
+   38.03
+  ],
+  [
+   "Cuando",
+   38.31,
+   38.75
+  ],
+  [
+   "llegues",
+   38.79,
+   39.28
+  ],
+  [
+   "al",
+   39.32,
+   39.58
+  ],
+  [
+   "tope",
+   39.62,
+   39.97
+  ],
+  [
+   "del",
+   40.01,
+   40.31
+  ],
+  [
+   "rango,",
+   40.35,
+   40.79
+  ],
+  [
+   "sube",
+   40.91,
+   41.26
+  ],
+  [
+   "dos",
+   41.3,
+   41.61
+  ],
+  [
+   "kilos",
+   41.65,
+   42.04
+  ],
+  [
+   "y",
+   42.08,
+   42.3
+  ],
+  [
+   "medio",
+   42.34,
+   42.73
+  ],
+  [
+   "y",
+   42.77,
+   42.99
+  ],
+  [
+   "vuelve",
+   43.03,
+   43.47
+  ],
+  [
+   "a",
+   43.51,
+   43.73
+  ],
+  [
+   "empezar.",
+   43.77,
+   44.25
+  ],
+  [
+   "Esto",
+   44.53,
+   44.88
+  ],
+  [
+   "no",
+   44.92,
+   45.18
+  ],
+  [
+   "es",
+   45.22,
+   45.48
+  ],
+  [
+   "magia",
+   45.52,
+   45.91
+  ],
+  [
+   "de",
+   45.95,
+   46.21
+  ],
+  [
+   "lunes.",
+   46.25,
+   46.65
+  ],
+  [
+   "Son",
+   46.93,
+   47.23
+  ],
+  [
+   "números",
+   47.27,
+   47.76
+  ],
+  [
+   "que",
+   47.8,
+   48.1
+  ],
+  [
+   "suben",
+   48.14,
+   48.54
+  ],
+  [
+   "en",
+   48.58,
+   48.84
+  ],
+  [
+   "tu",
+   48.88,
+   49.14
+  ],
+  [
+   "libreta,",
+   49.18,
+   49.71
+  ],
+  [
+   "semana",
+   49.83,
+   50.27
+  ],
+  [
+   "a",
+   50.31,
+   50.52
+  ],
+  [
+   "semana.",
+   50.56,
+   51.0
+  ],
+  [
+   "Comenta",
+   51.28,
+   51.77
+  ],
+  [
+   "PROGRESO",
+   51.81,
+   52.34
+  ],
+  [
+   "si",
+   52.38,
+   52.64
+  ],
+  [
+   "hoy",
+   52.68,
+   52.98
+  ],
+  [
+   "empiezas",
+   53.02,
+   53.55
+  ],
+  [
+   "a",
+   53.59,
+   53.81
+  ],
+  [
+   "anotar",
+   53.85,
+   54.29
+  ],
+  [
+   "tus",
+   54.33,
+   54.63
+  ],
+  [
+   "series.",
+   54.67,
+   55.11
+  ]
+ ],
+ "palabras": [
+  [
+   "Llevas",
+   0.15,
+   0.59
+  ],
+  [
+   "seis",
+   0.63,
+   0.98
+  ],
+  [
+   "meses",
+   1.02,
+   1.42
+  ],
+  [
+   "levantando",
+   1.46,
+   2.08
+  ],
+  [
+   "los",
+   2.12,
+   2.42
+  ],
+  [
+   "mismos",
+   2.46,
+   2.9
+  ],
+  [
+   "sesenta",
+   2.94,
+   3.43
+  ],
+  [
+   "kilos",
+   3.47,
+   3.86
+  ],
+  [
+   "Y",
+   4.14,
+   4.36
+  ],
+  [
+   "te",
+   4.4,
+   4.66
+  ],
+  [
+   "preguntas",
+   4.7,
+   5.27
+  ],
+  [
+   "por",
+   5.31,
+   5.62
+  ],
+  [
+   "qué",
+   5.66,
+   5.96
+  ],
+  [
+   "no",
+   6.0,
+   6.26
+  ],
+  [
+   "creces",
+   6.3,
+   6.74
+  ],
+  [
+   "Cada",
+   7.02,
+   7.37
+  ],
+  [
+   "sesión",
+   7.41,
+   7.85
+  ],
+  [
+   "terminas",
+   7.89,
+   8.42
+  ],
+  [
+   "destruido",
+   8.46,
+   9.08
+  ],
+  [
+   "sudando",
+   9.2,
+   9.68
+  ],
+  [
+   "como",
+   9.72,
+   10.07
+  ],
+  [
+   "si",
+   10.12,
+   10.38
+  ],
+  [
+   "eso",
+   10.42,
+   10.72
+  ],
+  [
+   "contara",
+   10.76,
+   11.25
+  ],
+  [
+   "Pero",
+   11.53,
+   11.88
+  ],
+  [
+   "tu",
+   11.92,
+   12.18
+  ],
+  [
+   "libreta",
+   12.22,
+   12.7
+  ],
+  [
+   "dice",
+   12.74,
+   13.09
+  ],
+  [
+   "lo",
+   13.13,
+   13.39
+  ],
+  [
+   "mismo",
+   13.43,
+   13.83
+  ],
+  [
+   "que",
+   13.87,
+   14.17
+  ],
+  [
+   "en",
+   14.21,
+   14.47
+  ],
+  [
+   "marzo",
+   14.51,
+   14.91
+  ],
+  [
+   "sesenta",
+   15.19,
+   15.67
+  ],
+  [
+   "kilos",
+   15.71,
+   16.15
+  ],
+  [
+   "ocho",
+   16.27,
+   16.62
+  ],
+  [
+   "repeticiones",
+   16.66,
+   17.37
+  ],
+  [
+   "El",
+   17.65,
+   17.91
+  ],
+  [
+   "músculo",
+   17.95,
+   18.44
+  ],
+  [
+   "se",
+   18.48,
+   18.74
+  ],
+  [
+   "adapta",
+   18.78,
+   19.22
+  ],
+  [
+   "a",
+   19.26,
+   19.47
+  ],
+  [
+   "lo",
+   19.51,
+   19.77
+  ],
+  [
+   "que",
+   19.81,
+   20.12
+  ],
+  [
+   "le",
+   20.16,
+   20.42
+  ],
+  [
+   "pides",
+   20.46,
+   20.85
+  ],
+  [
+   "Si",
+   21.13,
+   21.39
+  ],
+  [
+   "le",
+   21.43,
+   21.69
+  ],
+  [
+   "pides",
+   21.73,
+   22.13
+  ],
+  [
+   "lo",
+   22.17,
+   22.43
+  ],
+  [
+   "mismo",
+   22.47,
+   22.91
+  ],
+  [
+   "ya",
+   23.03,
+   23.29
+  ],
+  [
+   "no",
+   23.33,
+   23.59
+  ],
+  [
+   "tiene",
+   23.63,
+   24.02
+  ],
+  [
+   "motivo",
+   24.06,
+   24.5
+  ],
+  [
+   "para",
+   24.54,
+   24.89
+  ],
+  [
+   "cambiar",
+   24.93,
+   25.42
+  ],
+  [
+   "El",
+   25.7,
+   25.96
+  ],
+  [
+   "estímulo",
+   26.0,
+   26.53
+  ],
+  [
+   "no",
+   26.57,
+   26.83
+  ],
+  [
+   "es",
+   26.87,
+   27.13
+  ],
+  [
+   "el",
+   27.17,
+   27.43
+  ],
+  [
+   "cansancio",
+   27.47,
+   28.04
+  ],
+  [
+   "es",
+   28.32,
+   28.58
+  ],
+  [
+   "hacer",
+   28.62,
+   29.02
+  ],
+  [
+   "un",
+   29.06,
+   29.32
+  ],
+  [
+   "poco",
+   29.36,
+   29.71
+  ],
+  [
+   "más",
+   29.75,
+   30.05
+  ],
+  [
+   "que",
+   30.09,
+   30.4
+  ],
+  [
+   "la",
+   30.44,
+   30.7
+  ],
+  [
+   "última",
+   30.74,
+   31.18
+  ],
+  [
+   "vez",
+   31.22,
+   31.52
+  ],
+  [
+   "Anota",
+   31.8,
+   32.2
+  ],
+  [
+   "cada",
+   32.24,
+   32.59
+  ],
+  [
+   "serie",
+   32.63,
+   33.02
+  ],
+  [
+   "La",
+   33.3,
+   33.56
+  ],
+  [
+   "próxima",
+   33.6,
+   34.09
+  ],
+  [
+   "sesión",
+   34.13,
+   34.61
+  ],
+  [
+   "intenta",
+   34.73,
+   35.22
+  ],
+  [
+   "una",
+   35.26,
+   35.56
+  ],
+  [
+   "repetición",
+   35.6,
+   36.22
+  ],
+  [
+   "más",
+   36.26,
+   36.56
+  ],
+  [
+   "con",
+   36.6,
+   36.91
+  ],
+  [
+   "el",
+   36.95,
+   37.21
+  ],
+  [
+   "mismo",
+   37.25,
+   37.64
+  ],
+  [
+   "peso",
+   37.68,
+   38.03
+  ],
+  [
+   "Cuando",
+   38.31,
+   38.75
+  ],
+  [
+   "llegues",
+   38.79,
+   39.28
+  ],
+  [
+   "al",
+   39.32,
+   39.58
+  ],
+  [
+   "tope",
+   39.62,
+   39.97
+  ],
+  [
+   "del",
+   40.01,
+   40.31
+  ],
+  [
+   "rango",
+   40.35,
+   40.79
+  ],
+  [
+   "sube",
+   40.91,
+   41.26
+  ],
+  [
+   "dos",
+   41.3,
+   41.61
+  ],
+  [
+   "kilos",
+   41.65,
+   42.04
+  ],
+  [
+   "y",
+   42.08,
+   42.3
+  ],
+  [
+   "medio",
+   42.34,
+   42.73
+  ],
+  [
+   "y",
+   42.77,
+   42.99
+  ],
+  [
+   "vuelve",
+   43.03,
+   43.47
+  ],
+  [
+   "a",
+   43.51,
+   43.73
+  ],
+  [
+   "empezar",
+   43.77,
+   44.25
+  ],
+  [
+   "Esto",
+   44.53,
+   44.88
+  ],
+  [
+   "no",
+   44.92,
+   45.18
+  ],
+  [
+   "es",
+   45.22,
+   45.48
+  ],
+  [
+   "magia",
+   45.52,
+   45.91
+  ],
+  [
+   "de",
+   45.95,
+   46.21
+  ],
+  [
+   "lunes",
+   46.25,
+   46.65
+  ],
+  [
+   "Son",
+   46.93,
+   47.23
+  ],
+  [
+   "números",
+   47.27,
+   47.76
+  ],
+  [
+   "que",
+   47.8,
+   48.1
+  ],
+  [
+   "suben",
+   48.14,
+   48.54
+  ],
+  [
+   "en",
+   48.58,
+   48.84
+  ],
+  [
+   "tu",
+   48.88,
+   49.14
+  ],
+  [
+   "libreta",
+   49.18,
+   49.71
+  ],
+  [
+   "semana",
+   49.83,
+   50.27
+  ],
+  [
+   "a",
+   50.31,
+   50.52
+  ],
+  [
+   "semana",
+   50.56,
+   51.0
+  ],
+  [
+   "Comenta",
+   51.28,
+   51.77
+  ],
+  [
+   "PROGRESO",
+   51.81,
+   52.34
+  ],
+  [
+   "si",
+   52.38,
+   52.64
+  ],
+  [
+   "hoy",
+   52.68,
+   52.98
+  ],
+  [
+   "empiezas",
+   53.02,
+   53.55
+  ],
+  [
+   "a",
+   53.59,
+   53.81
+  ],
+  [
+   "anotar",
+   53.85,
+   54.29
+  ],
+  [
+   "tus",
+   54.33,
+   54.63
+  ],
+  [
+   "series",
+   54.67,
+   55.11
+  ]
+ ]
+}
