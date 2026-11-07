@@ -1,34 +1,30 @@
 # Climas de escena
 
-Un **clima** cambia el ambiente de color de un bloque concreto; el **marco IncreaseFit** no cambia nunca. Valores en `brand/paletas.json` → `climas`; asignación en `brief.climas`. Base: `hierro`. GANCHO y CTA van siempre en base.
+Un **clima** cambia el ambiente de color de un plano; el marco IncreaseFit no cambia nunca. Valores en `brand/paletas.json` → `climas`; cada plano trae el suyo en `plano.clima`, elegido por el guionista según lo que pasa (y con su motivo). Base: `hierro`. El gancho y el cierre van siempre en base, y el clima solo cambia al cambiar de bloque.
 
 ## Qué cambia con el clima
 | Rol | Dónde |
 |---|---|
 | `fondo_a` → `fondo_b`, `tinte` | fondo de pantalla |
 | `textura` | fondo, opacidad baja |
-| `superficie` | tarjetas, chips, libreta, discos, banco |
-| `estructura` | bordes, conectores, equipo, iconos no destacados |
-| `acento` | rellenos secundarios |
+| `superficie` | tarjetas (capítulo, dato, libreta, resumen), fondo del inserto |
+| `estructura` | bordes |
 | `texto`, `texto_suave` | textos dentro de la escena |
-| `cuerpo_rep`, `cuerpo_rep_lejano` | Rep |
 
 ## Qué NO cambia nunca
-Barra de progreso, header (salvo el color del texto en claros), cápsula de subtítulos, línea 2 del titular en cian, el foco cian, la cinta de Rep, alerta `#FF5A4E`, éxito `#3DD68C`, el bloque CTA y los logos.
+Header, cápsula de subtítulos, línea 2 del titular en cian, foco cian, alerta `#FF5A4E`, éxito `#3DD68C`, logos y los colores de la mascota.
 
-## Implementación (ya hecha en la plantilla)
-- `marco/clima.ts`: `climaEnFrame(frame)` funde todos los colores con `interpolateColors` durante `transicion_frames` (12) centrados en `ini_f`.
-- **Dentro de una escena** el frame es local: usa `useClimaBloque(b)` (no `useClima()`), o leerás el clima de otro bloque.
-- `coloresRep(c)` pasa el clima a Rep. Para SVG de `ui/` con colores fijos en otro clima: `python3 scripts/tenir_svg.py --clima <id> ui/... --out public/climas`.
+## Implementación (ya hecha)
+`marco/clima.ts`: `climaEnFrame(frame)` funde los colores con `interpolateColors` durante `transicion_frames` (12) centrados en el inicio del plano. Dentro de un plano usa `useClimaPlano(p)`.
 
 ## Climas claros (`libreta`)
-La pausa visual más fuerte; solo en POR_QUE. Header y línea 1 pasan a grafito; la línea 2 se vuelve **marcador** (rectángulo cian que crece con `scaleX`, texto grafito); Rep pasa a cuerpo oscuro; la cápsula de subtítulos sigue oscura.
+La pausa visual más fuerte. Header, texto y etiquetas pasan a grafito; la línea 2 del titular se vuelve marcador cian con texto grafito; la cápsula de subtítulos sigue oscura.
 
 ## Personalidad
 - **hierro**: el gym de siempre.
-- **esfuerzo** (ERROR): la serie que quema, el error que duele; rojos cálidos, grano.
-- **noche** (ERROR, METODO): el scroll de las 2 am, el gym vacío; índigo.
-- **pizarra** (POR_QUE, METODO): la explicación con tiza; verde pizarra, textura de tiza.
-- **libreta** (POR_QUE): el cuaderno de entreno, la ciencia; papel con cuadrícula.
-- **progreso** (RESULTADO): los kilos que suben; verde profundo.
-- **acero** (METODO, RESULTADO): orden y método; grises fríos.
+- **esfuerzo**: la serie que quema, el error que duele.
+- **noche**: el scroll de las 2 am, el gym vacío.
+- **pizarra**: la explicación con tiza.
+- **libreta**: el cuaderno de entreno, la ciencia.
+- **progreso**: los kilos que suben.
+- **acero**: orden y método.

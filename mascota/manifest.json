@@ -1,0 +1,1960 @@
+{
+ "version": 1,
+ "unidades": "px del PNG; anclas en coordenadas del propio sprite (origen arriba a la izquierda)",
+ "altura_personaje_px": 900,
+ "notas": [
+  "Escala común: un personaje de pie mide 900 px de la coronilla a la suela en todos los sprites salvo cara_* y mano_* (insertos a su tamaño).",
+  "Las fases de un ejercicio (f1, f2) tienen el mismo tamaño de lienzo y su ancla_fase en el mismo punto: se alternan sin mover nada.",
+  "anclas.pies = centro de las suelas; anclas.cabeza = cinta; anclas.manos = muñequeras visibles. Son automáticas y aproximadas; null o lista vacía = no detectado.",
+  "mira_a indica hacia dónde mira: para que mire al otro lado, espejar en horizontal (scaleX(-1))."
+ ],
+ "ejercicios": {
+  "dominada": {
+   "fases": [
+    "dominada_f1",
+    "dominada_f2"
+   ],
+   "errores": [
+    "error_dominada_balanceo"
+   ]
+  },
+  "sentadilla": {
+   "fases": [
+    "sentadilla_f1",
+    "sentadilla_f2"
+   ],
+   "errores": [
+    "error_sentadilla_media",
+    "error_rodillas_dentro"
+   ]
+  },
+  "peso_muerto": {
+   "fases": [
+    "peso_muerto_f1",
+    "peso_muerto_f2"
+   ],
+   "errores": [
+    "error_peso_muerto_redondo"
+   ]
+  },
+  "curl": {
+   "fases": [
+    "curl_f1",
+    "curl_f2"
+   ],
+   "errores": [
+    "error_curl_balanceo"
+   ]
+  },
+  "press_banca": {
+   "fases": [
+    "press_banca_f1",
+    "press_banca_f2"
+   ],
+   "errores": [
+    "error_banca_cadera_arriba"
+   ]
+  },
+  "press_militar": {
+   "fases": [
+    "press_militar_f1",
+    "press_militar_f2"
+   ],
+   "errores": []
+  },
+  "zancada": {
+   "fases": [
+    "zancada_f1",
+    "zancada_f2"
+   ],
+   "errores": []
+  },
+  "hip_thrust": {
+   "fases": [
+    "hip_thrust_f1",
+    "hip_thrust_f2"
+   ],
+   "errores": []
+  }
+ },
+ "sprites": [
+  {
+   "id": "gesto_de_pie",
+   "archivo": "sprites/gesto_de_pie.png",
+   "categoria": "gesto",
+   "descripcion": "De pie relajado, mano en la cadera, mirada al frente.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    371,
+    926
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     181,
+     913
+    ],
+    "cabeza": [
+     182,
+     67
+    ],
+    "manos": [
+     [
+      98,
+      406
+     ],
+     [
+      324,
+      463
+     ]
+    ]
+   },
+   "hoja": "hoja_01",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_brazos_cruzados",
+   "archivo": "sprites/gesto_brazos_cruzados.png",
+   "categoria": "gesto",
+   "descripcion": "Brazos cruzados, ceja levantada, media sonrisa.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "esceptico",
+   "tam": [
+    341,
+    922
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     178,
+     908
+    ],
+    "cabeza": [
+     146,
+     70
+    ],
+    "manos": [
+     [
+      174,
+      322
+     ]
+    ]
+   },
+   "hoja": "hoja_01",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_pensar",
+   "archivo": "sprites/gesto_pensar.png",
+   "categoria": "gesto",
+   "descripcion": "Mano en la barbilla, mirada hacia arriba.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "pensativo",
+   "tam": [
+    328,
+    923
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     179,
+     908
+    ],
+    "cabeza": [
+     106,
+     71
+    ],
+    "manos": [
+     [
+      194,
+      211
+     ]
+    ]
+   },
+   "hoja": "hoja_01",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_encoger_hombros",
+   "archivo": "sprites/gesto_encoger_hombros.png",
+   "categoria": "gesto",
+   "descripcion": "Hombros encogidos, palmas arriba: ¿y qué esperabas?",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "resignado",
+   "tam": [
+    524,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     288,
+     910
+    ],
+    "cabeza": [
+     220,
+     67
+    ],
+    "manos": [
+     [
+      117,
+      276
+     ]
+    ]
+   },
+   "hoja": "hoja_01",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_senalar_camara",
+   "archivo": "sprites/gesto_senalar_camara.png",
+   "categoria": "gesto",
+   "descripcion": "Señala al espectador con el índice en escorzo.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "confiado",
+   "tam": [
+    356,
+    923
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     193,
+     909
+    ],
+    "cabeza": [
+     169,
+     71
+    ],
+    "manos": [
+     [
+      302,
+      448
+     ]
+    ]
+   },
+   "hoja": "hoja_02",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_senalar_lado",
+   "archivo": "sprites/gesto_senalar_lado.png",
+   "categoria": "gesto",
+   "descripcion": "Señala con el brazo extendido hacia la derecha.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    487,
+    920
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     197,
+     906
+    ],
+    "cabeza": [
+     133,
+     70
+    ],
+    "manos": [
+     [
+      40,
+      452
+     ],
+     [
+      348,
+      181
+     ]
+    ]
+   },
+   "hoja": "hoja_02",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_pulgar_arriba",
+   "archivo": "sprites/gesto_pulgar_arriba.png",
+   "categoria": "gesto",
+   "descripcion": "Pulgar arriba, guiño y sonrisa amplia.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "alegre",
+   "tam": [
+    382,
+    927
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     220,
+     912
+    ],
+    "cabeza": [
+     169,
+     69
+    ],
+    "manos": [
+     [
+      314,
+      383
+     ]
+    ]
+   },
+   "hoja": "hoja_02",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_celebrar",
+   "archivo": "sprites/gesto_celebrar.png",
+   "categoria": "gesto",
+   "descripcion": "Doble bíceps de frente, sonrisa grande.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "alegre",
+   "tam": [
+    478,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     234,
+     910
+    ],
+    "cabeza": [
+     231,
+     65
+    ],
+    "manos": [
+     [
+      77,
+      124
+     ],
+     [
+      400,
+      127
+     ]
+    ]
+   },
+   "hoja": "hoja_02",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_sorpresa",
+   "archivo": "sprites/gesto_sorpresa.png",
+   "categoria": "gesto",
+   "descripcion": "Manos en las mejillas, boca abierta.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "sorpresa",
+   "tam": [
+    323,
+    922
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     172,
+     909
+    ],
+    "cabeza": [
+     147,
+     67
+    ],
+    "manos": [
+     [
+      141,
+      217
+     ],
+     [
+      217,
+      214
+     ]
+    ]
+   },
+   "hoja": "hoja_08",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_facepalm",
+   "archivo": "sprites/gesto_facepalm.png",
+   "categoria": "gesto",
+   "descripcion": "Mano en la frente, cabeza baja.",
+   "vista": "tres_cuartos",
+   "mira_a": "camara",
+   "emocion": "decepcion",
+   "tam": [
+    337,
+    898
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     167,
+     885
+    ],
+    "cabeza": [
+     160,
+     80
+    ],
+    "manos": [
+     [
+      258,
+      132
+     ],
+     [
+      78,
+      510
+     ]
+    ]
+   },
+   "hoja": "hoja_08",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_celular",
+   "archivo": "sprites/gesto_celular.png",
+   "categoria": "gesto",
+   "descripcion": "Encorvado mirando el celular con las dos manos.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "absorto",
+   "tam": [
+    313,
+    855
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     145,
+     843
+    ],
+    "cabeza": [
+     204,
+     86
+    ],
+    "manos": [
+     [
+      143,
+      273
+     ],
+     [
+      253,
+      279
+     ]
+    ]
+   },
+   "hoja": "hoja_08",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_dolor_hombro",
+   "archivo": "sprites/gesto_dolor_hombro.png",
+   "categoria": "gesto",
+   "descripcion": "Se sujeta el hombro con mueca de molestia (cómico).",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "molestia",
+   "tam": [
+    307,
+    923
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     167,
+     910
+    ],
+    "cabeza": [
+     140,
+     69
+    ],
+    "manos": [
+     [
+      263,
+      457
+     ],
+     [
+      202,
+      243
+     ]
+    ]
+   },
+   "hoja": "hoja_08",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_agotado_banco",
+   "archivo": "sprites/gesto_agotado_banco.png",
+   "categoria": "gesto",
+   "descripcion": "Sentado en un banco, codos en las rodillas, sudando.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "agotado",
+   "tam": [
+    586,
+    687
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     371,
+     673
+    ],
+    "cabeza": [
+     354,
+     88
+    ],
+    "manos": [
+     [
+      403,
+      353
+     ],
+     [
+      269,
+      103
+     ]
+    ]
+   },
+   "hoja": "hoja_09",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_espalda_biceps",
+   "archivo": "sprites/gesto_espalda_biceps.png",
+   "categoria": "gesto",
+   "descripcion": "De espaldas, doble bíceps: dorsales, trapecio y deltoides marcados.",
+   "vista": "espalda",
+   "emocion": "orgullo",
+   "tam": [
+    543,
+    924
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     269,
+     910
+    ],
+    "cabeza": [
+     288,
+     150
+    ],
+    "manos": [
+     [
+      95,
+      89
+     ],
+     [
+      448,
+      88
+     ]
+    ]
+   },
+   "hoja": "hoja_09",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_caminar",
+   "archivo": "sprites/gesto_caminar.png",
+   "categoria": "gesto",
+   "descripcion": "Caminando decidido a mitad de paso.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "decidido",
+   "tam": [
+    604,
+    926
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     350,
+     912
+    ],
+    "cabeza": [
+     300,
+     80
+    ],
+    "manos": [
+     [
+      134,
+      439
+     ],
+     [
+      469,
+      412
+     ]
+    ]
+   },
+   "hoja": "hoja_09",
+   "estado": "ok"
+  },
+  {
+   "id": "plano_explicando",
+   "archivo": "sprites/plano_explicando.png",
+   "categoria": "plano_medio",
+   "descripcion": "Plano medio explicando con la mano abierta.",
+   "vista": "tres_cuartos",
+   "mira_a": "camara",
+   "emocion": "confiado",
+   "tam": [
+    537,
+    557
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     234,
+     542
+    ],
+    "cabeza": [
+     212,
+     99
+    ],
+    "manos": [
+     [
+      405,
+      381
+     ],
+     [
+      121,
+      526
+     ]
+    ]
+   },
+   "hoja": "hoja_03",
+   "estado": "ok"
+  },
+  {
+   "id": "plano_esceptico",
+   "archivo": "sprites/plano_esceptico.png",
+   "categoria": "plano_medio",
+   "descripcion": "Plano medio, ceja levantada, manos en la cadera.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "esceptico",
+   "tam": [
+    461,
+    562
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     265,
+     546
+    ],
+    "cabeza": [
+     218,
+     98
+    ],
+    "manos": [
+     [
+      127,
+      526
+     ],
+     [
+      371,
+      517
+     ]
+    ]
+   },
+   "hoja": "hoja_03",
+   "estado": "ok"
+  },
+  {
+   "id": "vest_bata_brazos_cruzados",
+   "archivo": "sprites/vest_bata_brazos_cruzados.png",
+   "categoria": "vestuario",
+   "descripcion": "Con bata de laboratorio, brazos cruzados (modo ciencia).",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "serio",
+   "tam": [
+    368,
+    924
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     216,
+     906
+    ],
+    "cabeza": [
+     158,
+     64
+    ],
+    "manos": [
+     [
+      236,
+      258
+     ],
+     [
+      223,
+      300
+     ]
+    ]
+   },
+   "hoja": "hoja_03",
+   "estado": "ok"
+  },
+  {
+   "id": "vest_bata_senalar",
+   "archivo": "sprites/vest_bata_senalar.png",
+   "categoria": "vestuario",
+   "descripcion": "Con bata de laboratorio, señala a la derecha con un bolígrafo.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "alegre",
+   "tam": [
+    487,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     231,
+     908
+    ],
+    "cabeza": [
+     173,
+     64
+    ],
+    "manos": []
+   },
+   "hoja": "hoja_03",
+   "estado": "ok"
+  },
+  {
+   "id": "dominada_f1",
+   "archivo": "sprites/dominada_f1.png",
+   "categoria": "ejercicio",
+   "descripcion": "Colgado de la barra, brazos extendidos.",
+   "vista": "espalda",
+   "emocion": "neutral",
+   "tam": [
+    420,
+    900
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     199,
+     886
+    ],
+    "cabeza": [
+     220,
+     252
+    ],
+    "manos": []
+   },
+   "hoja": "hoja_04",
+   "estado": "ok",
+   "ejercicio": "dominada",
+   "fase": 1,
+   "ancla_fase": {
+    "tipo": "barra",
+    "punto": [
+     209,
+     14
+    ]
+   }
+  },
+  {
+   "id": "dominada_f2",
+   "archivo": "sprites/dominada_f2.png",
+   "categoria": "ejercicio",
+   "descripcion": "Arriba: barbilla a la altura de la barra, codos abajo.",
+   "vista": "espalda",
+   "emocion": "neutral",
+   "tam": [
+    420,
+    900
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     215,
+     792
+    ],
+    "cabeza": [
+     220,
+     131
+    ],
+    "manos": []
+   },
+   "hoja": "hoja_04",
+   "estado": "ok",
+   "ejercicio": "dominada",
+   "fase": 2,
+   "ancla_fase": {
+    "tipo": "barra",
+    "punto": [
+     209,
+     14
+    ]
+   }
+  },
+  {
+   "id": "sentadilla_f1",
+   "archivo": "sprites/sentadilla_f1.png",
+   "categoria": "ejercicio",
+   "descripcion": "De pie con la barra en la espalda alta.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    348,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     200,
+     909
+    ],
+    "cabeza": [
+     225,
+     73
+    ],
+    "manos": []
+   },
+   "hoja": "hoja_04",
+   "estado": "ok",
+   "ejercicio": "sentadilla",
+   "fase": 1,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     200,
+     909
+    ]
+   }
+  },
+  {
+   "id": "sentadilla_f2",
+   "archivo": "sprites/sentadilla_f2.png",
+   "categoria": "ejercicio",
+   "descripcion": "Abajo de la sentadilla, espalda neutra.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    348,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     200,
+     909
+    ],
+    "cabeza": [
+     255,
+     354
+    ],
+    "manos": []
+   },
+   "hoja": "hoja_04",
+   "estado": "ok",
+   "ejercicio": "sentadilla",
+   "fase": 2,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     200,
+     909
+    ]
+   }
+  },
+  {
+   "id": "peso_muerto_f1",
+   "archivo": "sprites/peso_muerto_f1.png",
+   "categoria": "ejercicio",
+   "descripcion": "Inicio: barra en el suelo junto a las espinillas.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    475,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     222,
+     911
+    ],
+    "cabeza": [
+     287,
+     343
+    ],
+    "manos": [
+     [
+      179,
+      739
+     ],
+     [
+      297,
+      732
+     ]
+    ]
+   },
+   "hoja": "hoja_05",
+   "estado": "ok",
+   "ejercicio": "peso_muerto",
+   "fase": 1,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     222,
+     911
+    ]
+   },
+   "nota": "Barra en tres cuartos (la sentadilla la muestra de canto)."
+  },
+  {
+   "id": "peso_muerto_f2",
+   "archivo": "sprites/peso_muerto_f2.png",
+   "categoria": "ejercicio",
+   "descripcion": "Bloqueo arriba con la barra en los muslos.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    475,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     222,
+     911
+    ],
+    "cabeza": [
+     195,
+     73
+    ],
+    "manos": [
+     [
+      182,
+      464
+     ]
+    ]
+   },
+   "hoja": "hoja_05",
+   "estado": "ok",
+   "ejercicio": "peso_muerto",
+   "fase": 2,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     222,
+     911
+    ]
+   }
+  },
+  {
+   "id": "curl_f1",
+   "archivo": "sprites/curl_f1.png",
+   "categoria": "ejercicio",
+   "descripcion": "Curl abajo: mancuernas con brazos extendidos.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    333,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     138,
+     911
+    ],
+    "cabeza": [
+     126,
+     75
+    ],
+    "manos": [
+     [
+      86,
+      468
+     ]
+    ]
+   },
+   "hoja": "hoja_05",
+   "estado": "ok",
+   "ejercicio": "curl",
+   "fase": 1,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     138,
+     911
+    ]
+   }
+  },
+  {
+   "id": "curl_f2",
+   "archivo": "sprites/curl_f2.png",
+   "categoria": "ejercicio",
+   "descripcion": "Curl arriba: codos quietos junto al cuerpo.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    333,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     138,
+     911
+    ],
+    "cabeza": [
+     122,
+     75
+    ],
+    "manos": [
+     [
+      137,
+      282
+     ]
+    ]
+   },
+   "hoja": "hoja_05",
+   "estado": "ok",
+   "ejercicio": "curl",
+   "fase": 2,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     138,
+     911
+    ]
+   }
+  },
+  {
+   "id": "press_banca_f1",
+   "archivo": "sprites/press_banca_f1.png",
+   "categoria": "ejercicio",
+   "descripcion": "Press de banca arriba, brazos extendidos.",
+   "vista": "perfil_tumbado",
+   "mira_a": "derecha",
+   "emocion": "neutral",
+   "tam": [
+    959,
+    747
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     164,
+     733
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      714,
+      167
+     ],
+     [
+      541,
+      163
+     ]
+    ]
+   },
+   "hoja": "hoja_06",
+   "estado": "ok",
+   "ejercicio": "press_banca",
+   "fase": 1,
+   "ancla_fase": {
+    "tipo": "banco_der",
+    "punto": [
+     871,
+     697
+    ]
+   },
+   "nota": "Ampliado x1,48 para igualar la escala: algo más suave que el resto."
+  },
+  {
+   "id": "press_banca_f2",
+   "archivo": "sprites/press_banca_f2.png",
+   "categoria": "ejercicio",
+   "descripcion": "Press de banca abajo, barra en el pecho.",
+   "vista": "perfil_tumbado",
+   "mira_a": "derecha",
+   "emocion": "neutral",
+   "tam": [
+    959,
+    747
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     172,
+     731
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      625,
+      388
+     ]
+    ]
+   },
+   "hoja": "hoja_06",
+   "estado": "ok",
+   "ejercicio": "press_banca",
+   "fase": 2,
+   "ancla_fase": {
+    "tipo": "banco_der",
+    "punto": [
+     871,
+     697
+    ]
+   },
+   "nota": "Ampliado x1,48; el disco tapa parte de la cara."
+  },
+  {
+   "id": "press_militar_f1",
+   "archivo": "sprites/press_militar_f1.png",
+   "categoria": "ejercicio",
+   "descripcion": "Press militar, barra en los hombros.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    491,
+    1067
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     236,
+     1051
+    ],
+    "cabeza": [
+     217,
+     215
+    ],
+    "manos": [
+     [
+      200,
+      391
+     ],
+     [
+      372,
+      389
+     ]
+    ]
+   },
+   "hoja": "hoja_10",
+   "estado": "ok",
+   "ejercicio": "press_militar",
+   "fase": 1,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     236,
+     1051
+    ]
+   }
+  },
+  {
+   "id": "press_militar_f2",
+   "archivo": "sprites/press_militar_f2.png",
+   "categoria": "ejercicio",
+   "descripcion": "Press militar, barra bloqueada arriba.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    491,
+    1067
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     236,
+     1051
+    ],
+    "cabeza": [
+     242,
+     203
+    ],
+    "manos": [
+     [
+      165,
+      131
+     ],
+     [
+      344,
+      140
+     ]
+    ]
+   },
+   "hoja": "hoja_10",
+   "estado": "ok",
+   "ejercicio": "press_militar",
+   "fase": 2,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     236,
+     1051
+    ]
+   }
+  },
+  {
+   "id": "zancada_f1",
+   "archivo": "sprites/zancada_f1.png",
+   "categoria": "ejercicio",
+   "descripcion": "De pie con mancuernas a los costados.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    607,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     372,
+     910
+    ],
+    "cabeza": [
+     378,
+     80
+    ],
+    "manos": [
+     [
+      352,
+      475
+     ]
+    ]
+   },
+   "hoja": "hoja_11",
+   "estado": "ok",
+   "ejercicio": "zancada",
+   "fase": 1,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     372,
+     910
+    ]
+   }
+  },
+  {
+   "id": "zancada_f2",
+   "archivo": "sprites/zancada_f2.png",
+   "categoria": "ejercicio",
+   "descripcion": "Zancada abajo, rodilla trasera cerca del suelo.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    607,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     372,
+     910
+    ],
+    "cabeza": [
+     292,
+     267
+    ],
+    "manos": [
+     [
+      268,
+      664
+     ]
+    ]
+   },
+   "hoja": "hoja_11",
+   "estado": "ok",
+   "ejercicio": "zancada",
+   "fase": 2,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     372,
+     910
+    ]
+   }
+  },
+  {
+   "id": "hip_thrust_f1",
+   "archivo": "sprites/hip_thrust_f1.png",
+   "categoria": "ejercicio",
+   "descripcion": "Hip thrust abajo, espalda alta en el banco.",
+   "vista": "perfil_tumbado",
+   "mira_a": "izquierda",
+   "emocion": "confiado",
+   "tam": [
+    823,
+    610
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     698,
+     597
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      320,
+      411
+     ]
+    ]
+   },
+   "hoja": "hoja_12",
+   "estado": "ok",
+   "ejercicio": "hip_thrust",
+   "fase": 1,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     698,
+     597
+    ]
+   }
+  },
+  {
+   "id": "hip_thrust_f2",
+   "archivo": "sprites/hip_thrust_f2.png",
+   "categoria": "ejercicio",
+   "descripcion": "Hip thrust arriba, cadera en línea.",
+   "vista": "perfil_tumbado",
+   "mira_a": "izquierda",
+   "emocion": "confiado",
+   "tam": [
+    823,
+    610
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     698,
+     597
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      340,
+      269
+     ]
+    ]
+   },
+   "hoja": "hoja_12",
+   "estado": "ok",
+   "ejercicio": "hip_thrust",
+   "fase": 2,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     698,
+     597
+    ]
+   }
+  },
+  {
+   "id": "error_sentadilla_media",
+   "archivo": "sprites/error_sentadilla_media.png",
+   "categoria": "error",
+   "descripcion": "ERROR: demasiado peso y un cuarto de recorrido.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "esfuerzo",
+   "tam": [
+    627,
+    771
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     276,
+     757
+    ],
+    "cabeza": [
+     351,
+     78
+    ],
+    "manos": [
+     [
+      237,
+      230
+     ]
+    ]
+   },
+   "hoja": "hoja_07",
+   "estado": "ok",
+   "ejercicio": "sentadilla",
+   "correcto": "sentadilla"
+  },
+  {
+   "id": "error_peso_muerto_redondo",
+   "archivo": "sprites/error_peso_muerto_redondo.png",
+   "categoria": "error",
+   "descripcion": "ERROR: espalda en C y tirón con los brazos.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "esfuerzo",
+   "tam": [
+    543,
+    701
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     227,
+     687
+    ],
+    "cabeza": [
+     403,
+     77
+    ],
+    "manos": [
+     [
+      276,
+      454
+     ],
+     [
+      361,
+      451
+     ]
+    ]
+   },
+   "hoja": "hoja_07",
+   "estado": "ok",
+   "ejercicio": "peso_muerto",
+   "correcto": "peso_muerto"
+  },
+  {
+   "id": "error_dominada_balanceo",
+   "archivo": "sprites/error_dominada_balanceo.png",
+   "categoria": "error",
+   "descripcion": "ERROR: patada y balanceo, media repetición.",
+   "vista": "lateral",
+   "mira_a": "derecha",
+   "emocion": "esfuerzo",
+   "tam": [
+    689,
+    846
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     572,
+     829
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      140,
+      117
+     ],
+     [
+      282,
+      116
+     ]
+    ]
+   },
+   "hoja": "hoja_07",
+   "estado": "ok",
+   "ejercicio": "dominada",
+   "correcto": "dominada"
+  },
+  {
+   "id": "error_curl_balanceo",
+   "archivo": "sprites/error_curl_balanceo.png",
+   "categoria": "error",
+   "descripcion": "ERROR: mancuernas grandes, torso atrás, codos adelante.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "esfuerzo",
+   "tam": [
+    397,
+    885
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     218,
+     870
+    ],
+    "cabeza": [
+     88,
+     83
+    ],
+    "manos": [
+     [
+      305,
+      259
+     ],
+     [
+      240,
+      284
+     ]
+    ]
+   },
+   "hoja": "hoja_11",
+   "estado": "ok",
+   "ejercicio": "curl",
+   "correcto": "curl"
+  },
+  {
+   "id": "error_rodillas_dentro",
+   "archivo": "sprites/error_rodillas_dentro.png",
+   "categoria": "error",
+   "descripcion": "ERROR: rodillas colapsando hacia dentro.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "molestia",
+   "tam": [
+    557,
+    650
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     281,
+     635
+    ],
+    "cabeza": [
+     280,
+     70
+    ],
+    "manos": [
+     [
+      147,
+      216
+     ],
+     [
+      421,
+      216
+     ]
+    ]
+   },
+   "hoja": "hoja_11",
+   "estado": "ok",
+   "ejercicio": "sentadilla",
+   "correcto": "sentadilla"
+  },
+  {
+   "id": "error_banca_cadera_arriba",
+   "archivo": "sprites/error_banca_cadera_arriba.png",
+   "categoria": "error",
+   "descripcion": "ERROR: cadera despegada y barra rebotando.",
+   "vista": "perfil_tumbado",
+   "mira_a": "derecha",
+   "emocion": "esfuerzo",
+   "tam": [
+    996,
+    618
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     168,
+     604
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      629,
+      229
+     ]
+    ]
+   },
+   "hoja": "hoja_06",
+   "estado": "ok",
+   "ejercicio": "press_banca",
+   "correcto": "press_banca",
+   "nota": "Ampliado x1,48."
+  },
+  {
+   "id": "cara_neutral",
+   "archivo": "sprites/cara_neutral.png",
+   "categoria": "cara",
+   "descripcion": "Busto: neutral.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "neutral",
+   "tam": [
+    433,
+    419
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     215,
+     405
+    ],
+    "cabeza": [
+     216,
+     108
+    ],
+    "manos": []
+   },
+   "hoja": "expresiones",
+   "estado": "ok"
+  },
+  {
+   "id": "cara_confiada",
+   "archivo": "sprites/cara_confiada.png",
+   "categoria": "cara",
+   "descripcion": "Busto: sonrisa de lado.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    434,
+    419
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     216,
+     404
+    ],
+    "cabeza": [
+     204,
+     109
+    ],
+    "manos": []
+   },
+   "hoja": "expresiones",
+   "estado": "ok"
+  },
+  {
+   "id": "cara_risa",
+   "archivo": "sprites/cara_risa.png",
+   "categoria": "cara",
+   "descripcion": "Busto: risa abierta.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "alegre",
+   "tam": [
+    434,
+    420
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     216,
+     406
+    ],
+    "cabeza": [
+     203,
+     109
+    ],
+    "manos": []
+   },
+   "hoja": "expresiones",
+   "estado": "ok"
+  },
+  {
+   "id": "cara_sorpresa",
+   "archivo": "sprites/cara_sorpresa.png",
+   "categoria": "cara",
+   "descripcion": "Busto: sorpresa.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "sorpresa",
+   "tam": [
+    428,
+    418
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     213,
+     404
+    ],
+    "cabeza": [
+     204,
+     108
+    ],
+    "manos": []
+   },
+   "hoja": "expresiones",
+   "estado": "ok"
+  },
+  {
+   "id": "cara_esceptico",
+   "archivo": "sprites/cara_esceptico.png",
+   "categoria": "cara",
+   "descripcion": "Busto: escéptico, humor seco.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "esceptico",
+   "tam": [
+    433,
+    425
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     215,
+     409
+    ],
+    "cabeza": [
+     212,
+     108
+    ],
+    "manos": []
+   },
+   "hoja": "expresiones",
+   "estado": "ok"
+  },
+  {
+   "id": "cara_esfuerzo",
+   "archivo": "sprites/cara_esfuerzo.png",
+   "categoria": "cara",
+   "descripcion": "Busto: dientes apretados, sudor.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "esfuerzo",
+   "tam": [
+    440,
+    420
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     219,
+     405
+    ],
+    "cabeza": [
+     217,
+     106
+    ],
+    "manos": []
+   },
+   "hoja": "expresiones",
+   "estado": "ok"
+  },
+  {
+   "id": "cara_agotado",
+   "archivo": "sprites/cara_agotado.png",
+   "categoria": "cara",
+   "descripcion": "Busto: agotado.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "agotado",
+   "tam": [
+    434,
+    422
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     216,
+     407
+    ],
+    "cabeza": [
+     208,
+     108
+    ],
+    "manos": []
+   },
+   "hoja": "expresiones",
+   "estado": "ok"
+  },
+  {
+   "id": "cara_pensativo",
+   "archivo": "sprites/cara_pensativo.png",
+   "categoria": "cara",
+   "descripcion": "Busto: pensativo.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "pensativo",
+   "tam": [
+    430,
+    420
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     215,
+     405
+    ],
+    "cabeza": [
+     201,
+     105
+    ],
+    "manos": []
+   },
+   "hoja": "expresiones",
+   "estado": "ok"
+  },
+  {
+   "id": "mano_agarre_barra",
+   "archivo": "sprites/mano_agarre_barra.png",
+   "categoria": "mano",
+   "descripcion": "Mano agarrando una barra (inserto).",
+   "tam": [
+    516,
+    393
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     129,
+     378
+    ],
+    "cabeza": null,
+    "manos": []
+   },
+   "hoja": "manos",
+   "estado": "ok"
+  },
+  {
+   "id": "mano_mancuerna",
+   "archivo": "sprites/mano_mancuerna.png",
+   "categoria": "mano",
+   "descripcion": "Mano con mancuerna (inserto).",
+   "tam": [
+    410,
+    465
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     54,
+     449
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      164,
+      308
+     ]
+    ]
+   },
+   "hoja": "manos",
+   "estado": "ok"
+  },
+  {
+   "id": "mano_senalar",
+   "archivo": "sprites/mano_senalar.png",
+   "categoria": "mano",
+   "descripcion": "Mano señalando (inserto).",
+   "mira_a": "derecha",
+   "tam": [
+    509,
+    336
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     75,
+     320
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      141,
+      182
+     ]
+    ]
+   },
+   "hoja": "manos",
+   "estado": "ok"
+  },
+  {
+   "id": "mano_pulgar",
+   "archivo": "sprites/mano_pulgar.png",
+   "categoria": "mano",
+   "descripcion": "Pulgar arriba (inserto).",
+   "tam": [
+    379,
+    490
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     66,
+     474
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      144,
+      323
+     ]
+    ]
+   },
+   "hoja": "manos",
+   "estado": "ok"
+  },
+  {
+   "id": "mano_puno",
+   "archivo": "sprites/mano_puno.png",
+   "categoria": "mano",
+   "descripcion": "Puño cerrado (inserto).",
+   "tam": [
+    359,
+    429
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     79,
+     412
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      136,
+      276
+     ]
+    ]
+   },
+   "hoja": "manos",
+   "estado": "ok"
+  },
+  {
+   "id": "mano_palma",
+   "archivo": "sprites/mano_palma.png",
+   "categoria": "mano",
+   "descripcion": "Palma abierta (inserto).",
+   "tam": [
+    408,
+    544
+   ],
+   "escala_normalizada": false,
+   "anclas": {
+    "pies": [
+     93,
+     528
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      162,
+      398
+     ]
+    ]
+   },
+   "hoja": "manos",
+   "estado": "ok"
+  }
+ ]
+}

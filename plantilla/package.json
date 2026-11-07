@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "studio": "remotion studio",
-    "render": "remotion render Video",
-    "hoja": "remotion still HojaRig out/hoja_rig.png"
+    "render": "remotion render Video"
   },
   "dependencies": {
     "@remotion/cli": "4.0.541",

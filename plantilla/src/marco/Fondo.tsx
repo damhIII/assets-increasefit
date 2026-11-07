@@ -2,13 +2,13 @@
 import React from "react";
 import { AbsoluteFill, Img, staticFile, useCurrentFrame } from "remotion";
 import { useClima } from "./clima";
-import { brief, climaDe } from "./datos";
+import { climaDe, planoEn } from "./datos";
 
 export const Fondo: React.FC = () => {
   const f = useCurrentFrame();
   const c = useClima();
   const bx = 540 + Math.sin(f / 70) * 160, by = 760 + Math.cos(f / 90) * 120;
-  const textura = (climaDe(brief.bloques.find((b) => f >= b.ini_f && f < b.fin_f)?.id ?? "cta").textura) || "textures/noise_grain.svg";
+  const textura = climaDe(planoEn(f).clima).textura || "textures/noise_grain.svg";
   return (
     <AbsoluteFill style={{ background: `linear-gradient(170deg, ${c.fondo_a} 0%, ${c.fondo_b} 100%)` }}>
       <AbsoluteFill style={{ background: `radial-gradient(circle at ${bx}px ${by}px, ${c.tinte}AA 0%, ${c.tinte}00 55%)` }} />

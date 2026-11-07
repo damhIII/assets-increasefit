@@ -1,0 +1,1758 @@
+{
+ "gesto_de_pie": {
+  "hoja": "hoja_01",
+  "bbox_hoja": [
+   68,
+   9,
+   399,
+   877
+  ],
+  "escala": 1.0441,
+  "anclas": {
+   "pies": [
+    181,
+    913
+   ],
+   "cabeza": [
+    182,
+    67
+   ],
+   "manos": [
+    [
+     98,
+     406
+    ],
+    [
+     324,
+     463
+    ]
+   ]
+  },
+  "tam": [
+   371,
+   926
+  ]
+ },
+ "gesto_brazos_cruzados": {
+  "hoja": "hoja_01",
+  "bbox_hoja": [
+   511,
+   14,
+   815,
+   873
+  ],
+  "escala": 1.0441,
+  "anclas": {
+   "pies": [
+    178,
+    908
+   ],
+   "cabeza": [
+    146,
+    70
+   ],
+   "manos": [
+    [
+     174,
+     322
+    ]
+   ]
+  },
+  "tam": [
+   341,
+   922
+  ]
+ },
+ "gesto_pensar": {
+  "hoja": "hoja_01",
+  "bbox_hoja": [
+   933,
+   14,
+   1223,
+   874
+  ],
+  "escala": 1.0441,
+  "anclas": {
+   "pies": [
+    179,
+    908
+   ],
+   "cabeza": [
+    106,
+    71
+   ],
+   "manos": [
+    [
+     194,
+     211
+    ]
+   ]
+  },
+  "tam": [
+   328,
+   923
+  ]
+ },
+ "gesto_encoger_hombros": {
+  "hoja": "hoja_01",
+  "bbox_hoja": [
+   1270,
+   10,
+   1749,
+   874
+  ],
+  "escala": 1.0441,
+  "anclas": {
+   "pies": [
+    288,
+    910
+   ],
+   "cabeza": [
+    220,
+    67
+   ],
+   "manos": [
+    [
+     117,
+     276
+    ]
+   ]
+  },
+  "tam": [
+   524,
+   925
+  ]
+ },
+ "gesto_senalar_camara": {
+  "hoja": "hoja_02",
+  "bbox_hoja": [
+   50,
+   18,
+   365,
+   871
+  ],
+  "escala": 1.0551,
+  "anclas": {
+   "pies": [
+    193,
+    909
+   ],
+   "cabeza": [
+    169,
+    71
+   ],
+   "manos": [
+    [
+     302,
+     448
+    ]
+   ]
+  },
+  "tam": [
+   356,
+   923
+  ]
+ },
+ "gesto_senalar_lado": {
+  "hoja": "hoja_02",
+  "bbox_hoja": [
+   447,
+   22,
+   885,
+   870
+  ],
+  "escala": 1.0551,
+  "anclas": {
+   "pies": [
+    197,
+    906
+   ],
+   "cabeza": [
+    133,
+    70
+   ],
+   "manos": [
+    [
+     40,
+     452
+    ],
+    [
+     348,
+     181
+    ]
+   ]
+  },
+  "tam": [
+   487,
+   920
+  ]
+ },
+ "gesto_pulgar_arriba": {
+  "hoja": "hoja_02",
+  "bbox_hoja": [
+   909,
+   14,
+   1248,
+   870
+  ],
+  "escala": 1.0551,
+  "anclas": {
+   "pies": [
+    220,
+    912
+   ],
+   "cabeza": [
+    169,
+    69
+   ],
+   "manos": [
+    [
+     314,
+     383
+    ]
+   ]
+  },
+  "tam": [
+   382,
+   927
+  ]
+ },
+ "gesto_celebrar": {
+  "hoja": "hoja_02",
+  "bbox_hoja": [
+   1319,
+   16,
+   1748,
+   869
+  ],
+  "escala": 1.0551,
+  "anclas": {
+   "pies": [
+    234,
+    910
+   ],
+   "cabeza": [
+    231,
+    65
+   ],
+   "manos": [
+    [
+     77,
+     124
+    ],
+    [
+     400,
+     127
+    ]
+   ]
+  },
+  "tam": [
+   478,
+   925
+  ]
+ },
+ "plano_explicando": {
+  "hoja": "hoja_03",
+  "bbox_hoja": [
+   17,
+   171,
+   501,
+   673
+  ],
+  "escala": 1.0588,
+  "anclas": {
+   "pies": [
+    234,
+    542
+   ],
+   "cabeza": [
+    212,
+    99
+   ],
+   "manos": [
+    [
+     405,
+     381
+    ],
+    [
+     121,
+     526
+    ]
+   ]
+  },
+  "tam": [
+   537,
+   557
+  ]
+ },
+ "plano_esceptico": {
+  "hoja": "hoja_03",
+  "bbox_hoja": [
+   475,
+   161,
+   888,
+   669
+  ],
+  "escala": 1.0588,
+  "anclas": {
+   "pies": [
+    265,
+    546
+   ],
+   "cabeza": [
+    218,
+    98
+   ],
+   "manos": [
+    [
+     127,
+     526
+    ],
+    [
+     371,
+     517
+    ]
+   ]
+  },
+  "tam": [
+   461,
+   562
+  ]
+ },
+ "vest_bata_brazos_cruzados": {
+  "hoja": "hoja_03",
+  "bbox_hoja": [
+   926,
+   14,
+   1250,
+   864
+  ],
+  "escala": 1.0588,
+  "anclas": {
+   "pies": [
+    216,
+    906
+   ],
+   "cabeza": [
+    158,
+    64
+   ],
+   "manos": [
+    [
+     236,
+     258
+    ],
+    [
+     223,
+     300
+    ]
+   ]
+  },
+  "tam": [
+   368,
+   924
+  ]
+ },
+ "vest_bata_senalar": {
+  "hoja": "hoja_03",
+  "bbox_hoja": [
+   1320,
+   12,
+   1757,
+   862
+  ],
+  "escala": 1.0588,
+  "anclas": {
+   "pies": [
+    231,
+    908
+   ],
+   "cabeza": [
+    173,
+    64
+   ],
+   "manos": []
+  },
+  "tam": [
+   487,
+   925
+  ]
+ },
+ "dominada_f1": {
+  "hoja": "hoja_04",
+  "bbox_hoja": [
+   56,
+   90,
+   400,
+   856
+  ],
+  "escala": 1.1421,
+  "fase_de": "dominada",
+  "ancla_fase": {
+   "tipo": "barra",
+   "punto": [
+    209,
+    14
+   ]
+  },
+  "anclas": {
+   "pies": [
+    199,
+    886
+   ],
+   "cabeza": [
+    220,
+    252
+   ],
+   "manos": []
+  },
+  "tam": [
+   420,
+   900
+  ]
+ },
+ "dominada_f2": {
+  "hoja": "hoja_04",
+  "bbox_hoja": [
+   476,
+   26,
+   802,
+   710
+  ],
+  "escala": 1.1421,
+  "fase_de": "dominada",
+  "ancla_fase": {
+   "tipo": "barra",
+   "punto": [
+    209,
+    14
+   ]
+  },
+  "anclas": {
+   "pies": [
+    215,
+    792
+   ],
+   "cabeza": [
+    220,
+    131
+   ],
+   "manos": []
+  },
+  "tam": [
+   420,
+   900
+  ]
+ },
+ "sentadilla_f1": {
+  "hoja": "hoja_04",
+  "bbox_hoja": [
+   937,
+   62,
+   1194,
+   850
+  ],
+  "escala": 1.1421,
+  "fase_de": "sentadilla",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    200,
+    909
+   ]
+  },
+  "anclas": {
+   "pies": [
+    200,
+    909
+   ],
+   "cabeza": [
+    225,
+    73
+   ],
+   "manos": []
+  },
+  "tam": [
+   348,
+   925
+  ]
+ },
+ "sentadilla_f2": {
+  "hoja": "hoja_04",
+  "bbox_hoja": [
+   1404,
+   302,
+   1660,
+   850
+  ],
+  "escala": 1.1421,
+  "fase_de": "sentadilla",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    200,
+    909
+   ]
+  },
+  "anclas": {
+   "pies": [
+    200,
+    909
+   ],
+   "cabeza": [
+    255,
+    354
+   ],
+   "manos": []
+  },
+  "tam": [
+   348,
+   925
+  ]
+ },
+ "peso_muerto_f1": {
+  "hoja": "hoja_05",
+  "bbox_hoja": [
+   25,
+   265,
+   422,
+   872
+  ],
+  "escala": 1.0465,
+  "fase_de": "peso_muerto",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    222,
+    911
+   ]
+  },
+  "anclas": {
+   "pies": [
+    222,
+    911
+   ],
+   "cabeza": [
+    287,
+    343
+   ],
+   "manos": [
+    [
+     179,
+     739
+    ],
+    [
+     297,
+     732
+    ]
+   ]
+  },
+  "tam": [
+   475,
+   925
+  ]
+ },
+ "peso_muerto_f2": {
+  "hoja": "hoja_05",
+  "bbox_hoja": [
+   482,
+   13,
+   908,
+   873
+  ],
+  "escala": 1.0465,
+  "fase_de": "peso_muerto",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    222,
+    911
+   ]
+  },
+  "anclas": {
+   "pies": [
+    222,
+    911
+   ],
+   "cabeza": [
+    195,
+    73
+   ],
+   "manos": [
+    [
+     182,
+     464
+    ]
+   ]
+  },
+  "tam": [
+   475,
+   925
+  ]
+ },
+ "curl_f1": {
+  "hoja": "hoja_05",
+  "bbox_hoja": [
+   1009,
+   13,
+   1281,
+   873
+  ],
+  "escala": 1.0465,
+  "fase_de": "curl",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    138,
+    911
+   ]
+  },
+  "anclas": {
+   "pies": [
+    138,
+    911
+   ],
+   "cabeza": [
+    126,
+    75
+   ],
+   "manos": [
+    [
+     86,
+     468
+    ]
+   ]
+  },
+  "tam": [
+   333,
+   925
+  ]
+ },
+ "curl_f2": {
+  "hoja": "hoja_05",
+  "bbox_hoja": [
+   1453,
+   13,
+   1746,
+   873
+  ],
+  "escala": 1.0465,
+  "fase_de": "curl",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    138,
+    911
+   ]
+  },
+  "anclas": {
+   "pies": [
+    138,
+    911
+   ],
+   "cabeza": [
+    122,
+    75
+   ],
+   "manos": [
+    [
+     137,
+     282
+    ]
+   ]
+  },
+  "tam": [
+   333,
+   925
+  ]
+ },
+ "press_banca_f1": {
+  "hoja": "hoja_06",
+  "bbox_hoja": [
+   29,
+   8,
+   646,
+   496
+  ],
+  "escala": 1.481,
+  "fase_de": "press_banca",
+  "ancla_fase": {
+   "tipo": "banco_der",
+   "punto": [
+    871,
+    697
+   ]
+  },
+  "anclas": {
+   "pies": [
+    164,
+    733
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     714,
+     167
+    ],
+    [
+     541,
+     163
+    ]
+   ]
+  },
+  "tam": [
+   959,
+   747
+  ]
+ },
+ "press_banca_f2": {
+  "hoja": "hoja_06",
+  "bbox_hoja": [
+   809,
+   147,
+   1438,
+   496
+  ],
+  "escala": 1.481,
+  "fase_de": "press_banca",
+  "ancla_fase": {
+   "tipo": "banco_der",
+   "punto": [
+    871,
+    697
+   ]
+  },
+  "anclas": {
+   "pies": [
+    172,
+    731
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     625,
+     388
+    ]
+   ]
+  },
+  "tam": [
+   959,
+   747
+  ]
+ },
+ "error_banca_cadera_arriba": {
+  "hoja": "hoja_06",
+  "bbox_hoja": [
+   36,
+   594,
+   692,
+   995
+  ],
+  "escala": 1.481,
+  "anclas": {
+   "pies": [
+    168,
+    604
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     629,
+     229
+    ]
+   ]
+  },
+  "tam": [
+   996,
+   618
+  ]
+ },
+ "error_sentadilla_media": {
+  "hoja": "hoja_07",
+  "bbox_hoja": [
+   11,
+   130,
+   580,
+   834
+  ],
+  "escala": 1.0588,
+  "anclas": {
+   "pies": [
+    276,
+    757
+   ],
+   "cabeza": [
+    351,
+    78
+   ],
+   "manos": [
+    [
+     237,
+     230
+    ]
+   ]
+  },
+  "tam": [
+   627,
+   771
+  ]
+ },
+ "error_peso_muerto_redondo": {
+  "hoja": "hoja_07",
+  "bbox_hoja": [
+   611,
+   197,
+   1100,
+   837
+  ],
+  "escala": 1.0588,
+  "anclas": {
+   "pies": [
+    227,
+    687
+   ],
+   "cabeza": [
+    403,
+    77
+   ],
+   "manos": [
+    [
+     276,
+     454
+    ],
+    [
+     361,
+     451
+    ]
+   ]
+  },
+  "tam": [
+   543,
+   701
+  ]
+ },
+ "error_dominada_balanceo": {
+  "hoja": "hoja_07",
+  "bbox_hoja": [
+   1218,
+   46,
+   1763,
+   717
+  ],
+  "escala": 1.2176,
+  "anclas": {
+   "pies": [
+    572,
+    829
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     140,
+     117
+    ],
+    [
+     282,
+     116
+    ]
+   ]
+  },
+  "tam": [
+   689,
+   846
+  ]
+ },
+ "gesto_sorpresa": {
+  "hoja": "hoja_08",
+  "bbox_hoja": [
+   26,
+   18,
+   354,
+   998
+  ],
+  "escala": 0.9184,
+  "anclas": {
+   "pies": [
+    172,
+    909
+   ],
+   "cabeza": [
+    147,
+    67
+   ],
+   "manos": [
+    [
+     141,
+     217
+    ],
+    [
+     217,
+     214
+    ]
+   ]
+  },
+  "tam": [
+   323,
+   922
+  ]
+ },
+ "gesto_facepalm": {
+  "hoja": "hoja_08",
+  "bbox_hoja": [
+   412,
+   44,
+   755,
+   998
+  ],
+  "escala": 0.9184,
+  "anclas": {
+   "pies": [
+    167,
+    885
+   ],
+   "cabeza": [
+    160,
+    80
+   ],
+   "manos": [
+    [
+     258,
+     132
+    ],
+    [
+     78,
+     510
+    ]
+   ]
+  },
+  "tam": [
+   337,
+   898
+  ]
+ },
+ "gesto_celular": {
+  "hoja": "hoja_08",
+  "bbox_hoja": [
+   811,
+   92,
+   1128,
+   999
+  ],
+  "escala": 0.9184,
+  "anclas": {
+   "pies": [
+    145,
+    843
+   ],
+   "cabeza": [
+    204,
+    86
+   ],
+   "manos": [
+    [
+     143,
+     273
+    ],
+    [
+     253,
+     279
+    ]
+   ]
+  },
+  "tam": [
+   313,
+   855
+  ]
+ },
+ "gesto_dolor_hombro": {
+  "hoja": "hoja_08",
+  "bbox_hoja": [
+   1206,
+   17,
+   1516,
+   998
+  ],
+  "escala": 0.9184,
+  "anclas": {
+   "pies": [
+    167,
+    910
+   ],
+   "cabeza": [
+    140,
+    69
+   ],
+   "manos": [
+    [
+     263,
+     457
+    ],
+    [
+     202,
+     243
+    ]
+   ]
+  },
+  "tam": [
+   307,
+   923
+  ]
+ },
+ "gesto_agotado_banco": {
+  "hoja": "hoja_09",
+  "bbox_hoja": [
+   38,
+   242,
+   574,
+   873
+  ],
+  "escala": 1.049,
+  "anclas": {
+   "pies": [
+    371,
+    673
+   ],
+   "cabeza": [
+    354,
+    88
+   ],
+   "manos": [
+    [
+     403,
+     353
+    ],
+    [
+     269,
+     103
+    ]
+   ]
+  },
+  "tam": [
+   586,
+   687
+  ]
+ },
+ "gesto_espalda_biceps": {
+  "hoja": "hoja_09",
+  "bbox_hoja": [
+   653,
+   13,
+   1148,
+   870
+  ],
+  "escala": 1.049,
+  "anclas": {
+   "pies": [
+    269,
+    910
+   ],
+   "cabeza": [
+    288,
+    150
+   ],
+   "manos": [
+    [
+     95,
+     89
+    ],
+    [
+     448,
+     88
+    ]
+   ]
+  },
+  "tam": [
+   543,
+   924
+  ]
+ },
+ "gesto_caminar": {
+  "hoja": "hoja_09",
+  "bbox_hoja": [
+   1199,
+   16,
+   1751,
+   875
+  ],
+  "escala": 1.049,
+  "anclas": {
+   "pies": [
+    350,
+    912
+   ],
+   "cabeza": [
+    300,
+    80
+   ],
+   "manos": [
+    [
+     134,
+     439
+    ],
+    [
+     469,
+     412
+    ]
+   ]
+  },
+  "tam": [
+   604,
+   926
+  ]
+ },
+ "press_militar_f1": {
+  "hoja": "hoja_10",
+  "bbox_hoja": [
+   934,
+   128,
+   1300,
+   866
+  ],
+  "escala": 1.2195,
+  "fase_de": "press_militar",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    236,
+    1051
+   ]
+  },
+  "anclas": {
+   "pies": [
+    236,
+    1051
+   ],
+   "cabeza": [
+    217,
+    215
+   ],
+   "manos": [
+    [
+     200,
+     391
+    ],
+    [
+     372,
+     389
+    ]
+   ]
+  },
+  "tam": [
+   491,
+   1067
+  ]
+ },
+ "press_militar_f2": {
+  "hoja": "hoja_10",
+  "bbox_hoja": [
+   1362,
+   13,
+   1734,
+   866
+  ],
+  "escala": 1.2195,
+  "fase_de": "press_militar",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    236,
+    1051
+   ]
+  },
+  "anclas": {
+   "pies": [
+    236,
+    1051
+   ],
+   "cabeza": [
+    242,
+    203
+   ],
+   "manos": [
+    [
+     165,
+     131
+    ],
+    [
+     344,
+     140
+    ]
+   ]
+  },
+  "tam": [
+   491,
+   1067
+  ]
+ },
+ "zancada_f1": {
+  "hoja": "hoja_11",
+  "bbox_hoja": [
+   62,
+   45,
+   282,
+   868
+  ],
+  "escala": 1.0936,
+  "fase_de": "zancada",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    372,
+    910
+   ]
+  },
+  "anclas": {
+   "pies": [
+    372,
+    910
+   ],
+   "cabeza": [
+    378,
+    80
+   ],
+   "manos": [
+    [
+     352,
+     475
+    ]
+   ]
+  },
+  "tam": [
+   607,
+   925
+  ]
+ },
+ "zancada_f2": {
+  "hoja": "hoja_11",
+  "bbox_hoja": [
+   360,
+   208,
+   893,
+   862
+  ],
+  "escala": 1.0936,
+  "fase_de": "zancada",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    372,
+    910
+   ]
+  },
+  "anclas": {
+   "pies": [
+    372,
+    910
+   ],
+   "cabeza": [
+    292,
+    267
+   ],
+   "manos": [
+    [
+     268,
+     664
+    ]
+   ]
+  },
+  "tam": [
+   607,
+   925
+  ]
+ },
+ "error_curl_balanceo": {
+  "hoja": "hoja_11",
+  "bbox_hoja": [
+   890,
+   82,
+   1230,
+   868
+  ],
+  "escala": 1.0936,
+  "anclas": {
+   "pies": [
+    218,
+    870
+   ],
+   "cabeza": [
+    88,
+    83
+   ],
+   "manos": [
+    [
+     305,
+     259
+    ],
+    [
+     240,
+     284
+    ]
+   ]
+  },
+  "tam": [
+   397,
+   885
+  ]
+ },
+ "error_rodillas_dentro": {
+  "hoja": "hoja_11",
+  "bbox_hoja": [
+   1276,
+   296,
+   1774,
+   866
+  ],
+  "escala": 1.0936,
+  "anclas": {
+   "pies": [
+    281,
+    635
+   ],
+   "cabeza": [
+    280,
+    70
+   ],
+   "manos": [
+    [
+     147,
+     216
+    ],
+    [
+     421,
+     216
+    ]
+   ]
+  },
+  "tam": [
+   557,
+   650
+  ]
+ },
+ "hip_thrust_f1": {
+  "hoja": "hoja_12",
+  "bbox_hoja": [
+   59,
+   79,
+   949,
+   727
+  ],
+  "escala": 0.9,
+  "fase_de": "hip_thrust",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    698,
+    597
+   ]
+  },
+  "anclas": {
+   "pies": [
+    698,
+    597
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     320,
+     411
+    ]
+   ]
+  },
+  "tam": [
+   823,
+   610
+  ]
+ },
+ "hip_thrust_f2": {
+  "hoja": "hoja_12",
+  "bbox_hoja": [
+   1063,
+   73,
+   1942,
+   727
+  ],
+  "escala": 0.9,
+  "fase_de": "hip_thrust",
+  "ancla_fase": {
+   "tipo": "pies",
+   "punto": [
+    698,
+    597
+   ]
+  },
+  "anclas": {
+   "pies": [
+    698,
+    597
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     340,
+     269
+    ]
+   ]
+  },
+  "tam": [
+   823,
+   610
+  ]
+ },
+ "cara_neutral": {
+  "hoja": "expresiones",
+  "bbox_hoja": [
+   32,
+   17,
+   441,
+   412
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    215,
+    405
+   ],
+   "cabeza": [
+    216,
+    108
+   ],
+   "manos": []
+  },
+  "tam": [
+   433,
+   419
+  ]
+ },
+ "cara_confiada": {
+  "hoja": "expresiones",
+  "bbox_hoja": [
+   474,
+   17,
+   884,
+   412
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    216,
+    404
+   ],
+   "cabeza": [
+    204,
+    109
+   ],
+   "manos": []
+  },
+  "tam": [
+   434,
+   419
+  ]
+ },
+ "cara_risa": {
+  "hoja": "expresiones",
+  "bbox_hoja": [
+   916,
+   16,
+   1326,
+   412
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    216,
+    406
+   ],
+   "cabeza": [
+    203,
+    109
+   ],
+   "manos": []
+  },
+  "tam": [
+   434,
+   420
+  ]
+ },
+ "cara_sorpresa": {
+  "hoja": "expresiones",
+  "bbox_hoja": [
+   1354,
+   18,
+   1758,
+   412
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    213,
+    404
+   ],
+   "cabeza": [
+    204,
+    108
+   ],
+   "manos": []
+  },
+  "tam": [
+   428,
+   418
+  ]
+ },
+ "cara_esceptico": {
+  "hoja": "expresiones",
+  "bbox_hoja": [
+   31,
+   460,
+   440,
+   861
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    215,
+    409
+   ],
+   "cabeza": [
+    212,
+    108
+   ],
+   "manos": []
+  },
+  "tam": [
+   433,
+   425
+  ]
+ },
+ "cara_esfuerzo": {
+  "hoja": "expresiones",
+  "bbox_hoja": [
+   463,
+   464,
+   879,
+   860
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    219,
+    405
+   ],
+   "cabeza": [
+    217,
+    106
+   ],
+   "manos": []
+  },
+  "tam": [
+   440,
+   420
+  ]
+ },
+ "cara_agotado": {
+  "hoja": "expresiones",
+  "bbox_hoja": [
+   916,
+   463,
+   1326,
+   861
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    216,
+    407
+   ],
+   "cabeza": [
+    208,
+    108
+   ],
+   "manos": []
+  },
+  "tam": [
+   434,
+   422
+  ]
+ },
+ "cara_pensativo": {
+  "hoja": "expresiones",
+  "bbox_hoja": [
+   1356,
+   464,
+   1762,
+   860
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    215,
+    405
+   ],
+   "cabeza": [
+    201,
+    105
+   ],
+   "manos": []
+  },
+  "tam": [
+   430,
+   420
+  ]
+ },
+ "mano_agarre_barra": {
+  "hoja": "manos",
+  "bbox_hoja": [
+   34,
+   105,
+   526,
+   474
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    129,
+    378
+   ],
+   "cabeza": null,
+   "manos": []
+  },
+  "tam": [
+   516,
+   393
+  ]
+ },
+ "mano_mancuerna": {
+  "hoja": "manos",
+  "bbox_hoja": [
+   516,
+   18,
+   902,
+   459
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    54,
+    449
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     164,
+     308
+    ]
+   ]
+  },
+  "tam": [
+   410,
+   465
+  ]
+ },
+ "mano_senalar": {
+  "hoja": "manos",
+  "bbox_hoja": [
+   1009,
+   131,
+   1494,
+   443
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    75,
+    320
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     141,
+     182
+    ]
+   ]
+  },
+  "tam": [
+   509,
+   336
+  ]
+ },
+ "mano_pulgar": {
+  "hoja": "manos",
+  "bbox_hoja": [
+   56,
+   519,
+   411,
+   985
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    66,
+    474
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     144,
+     323
+    ]
+   ]
+  },
+  "tam": [
+   379,
+   490
+  ]
+ },
+ "mano_puno": {
+  "hoja": "manos",
+  "bbox_hoja": [
+   559,
+   578,
+   894,
+   983
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    79,
+    412
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     136,
+     276
+    ]
+   ]
+  },
+  "tam": [
+   359,
+   429
+  ]
+ },
+ "mano_palma": {
+  "hoja": "manos",
+  "bbox_hoja": [
+   1067,
+   467,
+   1451,
+   987
+  ],
+  "escala": 1.0,
+  "anclas": {
+   "pies": [
+    93,
+    528
+   ],
+   "cabeza": null,
+   "manos": [
+    [
+     162,
+     398
+    ]
+   ]
+  },
+  "tam": [
+   408,
+   544
+  ]
+ }
+}

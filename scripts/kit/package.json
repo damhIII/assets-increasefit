@@ -1,0 +1,1 @@
+{ "name": "increasefit-kit", "private": true, "description": "Genera los SVG de kit/ (roughjs, semilla fija)", "dependencies": { "roughjs": "^4.6.6" } }

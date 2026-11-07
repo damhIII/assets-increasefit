@@ -1,0 +1,391 @@
+{
+ "version": 1,
+ "notas": [
+  "SFX: WAV mono 44,1 kHz con pico a -1,5 dBFS. volumen_sugerido es el valor de <Audio volume> en Remotion con la voz sonando.",
+  "Música: bucles WAV estéreo sin costura (normalizados a -16 LUFS). Debajo de la voz usar volumen_bajo_voz (ducking) y subir a volumen_sin_voz en la cola final.",
+  "Coloca cada SFX en el frame de la palabra que lo motiva (brief.subtitulos). No más de un SFX cada ~1 s: si todo suena, nada destaca.",
+  "Licencias: los de Kenney son CC0 (licencias/Kenney-CC0.md); el resto son obra propia. Ninguno exige atribución."
+ ],
+ "sfx": [
+  {
+   "id": "whoosh_corto",
+   "archivo": "sfx/whoosh_corto.wav",
+   "categoria": "transicion",
+   "duracion_s": 0.32,
+   "uso": "Entrada rápida de un texto, tarjeta o sprite; cambio de plano.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "whoosh_largo",
+   "archivo": "sfx/whoosh_largo.wav",
+   "categoria": "transicion",
+   "duracion_s": 0.7,
+   "uso": "Cortinilla (trazo de pincel), cambio de bloque.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "pop",
+   "archivo": "sfx/pop.wav",
+   "categoria": "aparicion",
+   "duracion_s": 0.09,
+   "uso": "Aparece una etiqueta, chip, burbuja o paso.",
+   "volumen_sugerido": 0.6,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "clic",
+   "archivo": "sfx/clic.wav",
+   "categoria": "aparicion",
+   "duracion_s": 0.09,
+   "uso": "Se enciende una tarjeta o casilla; ticks de una lista.",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "interruptor",
+   "archivo": "sfx/interruptor.wav",
+   "categoria": "aparicion",
+   "duracion_s": 0.33,
+   "uso": "Cambio de estado (ASÍ NO → ASÍ SÍ, mito → realidad).",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "ding",
+   "archivo": "sfx/ding.wav",
+   "categoria": "acierto",
+   "duracion_s": 1.4,
+   "uso": "Respuesta correcta, check verde, paso cumplido.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "brillo",
+   "archivo": "sfx/brillo.wav",
+   "categoria": "acierto",
+   "duracion_s": 1.0,
+   "uso": "Destello de logro, récord, celebrar.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "subir_nivel",
+   "archivo": "sfx/subir_nivel.wav",
+   "categoria": "acierto",
+   "duracion_s": 0.35,
+   "uso": "Sube la carga / sube de nivel en la progresión.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "jingle_acierto_pizzicato",
+   "archivo": "sfx/jingle_acierto_pizzicato.wav",
+   "categoria": "acierto",
+   "duracion_s": 0.95,
+   "uso": "Remate positivo con humor.",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "jingle_acierto_sax",
+   "archivo": "sfx/jingle_acierto_sax.wav",
+   "categoria": "acierto",
+   "duracion_s": 0.83,
+   "uso": "Remate positivo (sax).",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "jingle_logro_8bit",
+   "archivo": "sfx/jingle_logro_8bit.wav",
+   "categoria": "acierto",
+   "duracion_s": 0.82,
+   "uso": "Logro estilo videojuego.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "jingle_logro_steel",
+   "archivo": "sfx/jingle_logro_steel.wav",
+   "categoria": "acierto",
+   "duracion_s": 1.39,
+   "uso": "Logro alegre (steel drum).",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "error_zumbador",
+   "archivo": "sfx/error_zumbador.wav",
+   "categoria": "error",
+   "duracion_s": 0.5,
+   "uso": "Error, \"así no\", la cruz roja.",
+   "volumen_sugerido": 0.45,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "caida_fracaso",
+   "archivo": "sfx/caida_fracaso.wav",
+   "categoria": "error",
+   "duracion_s": 1.86,
+   "uso": "Fracaso cómico (wah wah wah).",
+   "volumen_sugerido": 0.55,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "bajon_digital",
+   "archivo": "sfx/bajon_digital.wav",
+   "categoria": "error",
+   "duracion_s": 0.65,
+   "uso": "Bajón: la barra no sube, el plan falla.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "jingle_fracaso_sax",
+   "archivo": "sfx/jingle_fracaso_sax.wav",
+   "categoria": "error",
+   "duracion_s": 0.85,
+   "uso": "Remate negativo con humor (sax).",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "jingle_fracaso_pizzicato",
+   "archivo": "sfx/jingle_fracaso_pizzicato.wav",
+   "categoria": "error",
+   "duracion_s": 0.99,
+   "uso": "Remate negativo (pizzicato).",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "jingle_fracaso_8bit",
+   "archivo": "sfx/jingle_fracaso_8bit.wav",
+   "categoria": "error",
+   "duracion_s": 0.8,
+   "uso": "Game over estilo videojuego.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "rasgado_vinilo",
+   "archivo": "sfx/rasgado_vinilo.wav",
+   "categoria": "humor",
+   "duracion_s": 0.5,
+   "uso": "Parón en seco: \"espera…\", congelado antes del replay.",
+   "volumen_sugerido": 0.55,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "tachon_rotulador",
+   "archivo": "sfx/tachon_rotulador.wav",
+   "categoria": "humor",
+   "duracion_s": 0.5,
+   "uso": "Se tacha una caja de texto o un mito.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "remate_golpe",
+   "archivo": "sfx/remate_golpe.wav",
+   "categoria": "enfasis",
+   "duracion_s": 0.74,
+   "uso": "Golpe de remate en la palabra clave (punch-in).",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "remate_golpe_2",
+   "archivo": "sfx/remate_golpe_2.wav",
+   "categoria": "enfasis",
+   "duracion_s": 0.62,
+   "uso": "Variante del golpe de remate.",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "golpe_sordo",
+   "archivo": "sfx/golpe_sordo.wav",
+   "categoria": "enfasis",
+   "duracion_s": 0.45,
+   "uso": "Impacto grave: caída de algo, sello que cae, punch-in fuerte.",
+   "volumen_sugerido": 0.7,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "subida_tension",
+   "archivo": "sfx/subida_tension.wav",
+   "categoria": "enfasis",
+   "duracion_s": 1.5,
+   "uso": "Tensión que sube antes de revelar el dato.",
+   "volumen_sugerido": 0.45,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "subida_digital",
+   "archivo": "sfx/subida_digital.wav",
+   "categoria": "enfasis",
+   "duracion_s": 0.39,
+   "uso": "Subida corta, aparición de un número grande.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "tic_tac",
+   "archivo": "sfx/tic_tac.wav",
+   "categoria": "ambiente",
+   "duracion_s": 1.0,
+   "uso": "Reloj del descanso (1 s, en bucle).",
+   "volumen_sugerido": 0.4,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "notificacion",
+   "archivo": "sfx/notificacion.wav",
+   "categoria": "ambiente",
+   "duracion_s": 1.11,
+   "uso": "Notificación del celular (el scroll entre series).",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "golpe_metal",
+   "archivo": "sfx/golpe_metal.wav",
+   "categoria": "gym",
+   "duracion_s": 1.39,
+   "uso": "Disco o barra que golpea (clang).",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "golpe_metal_2",
+   "archivo": "sfx/golpe_metal_2.wav",
+   "categoria": "gym",
+   "duracion_s": 0.91,
+   "uso": "Variante de golpe metálico.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "metal_enganche",
+   "archivo": "sfx/metal_enganche.wav",
+   "categoria": "gym",
+   "duracion_s": 0.26,
+   "uso": "Seguro de la barra, cierre metálico.",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "cinturon",
+   "archivo": "sfx/cinturon.wav",
+   "categoria": "gym",
+   "duracion_s": 0.26,
+   "uso": "Cinturón o correa que se ajusta.",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "crujido",
+   "archivo": "sfx/crujido.wav",
+   "categoria": "gym",
+   "duracion_s": 0.6,
+   "uso": "Banco o articulación que cruje (cómico).",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "caida_suave",
+   "archivo": "sfx/caida_suave.wav",
+   "categoria": "gym",
+   "duracion_s": 0.42,
+   "uso": "Algo blando cae al suelo (toalla, mochila).",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "paso_1",
+   "archivo": "sfx/paso_1.wav",
+   "categoria": "gym",
+   "duracion_s": 0.25,
+   "uso": "Paso (caminar).",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "paso_2",
+   "archivo": "sfx/paso_2.wav",
+   "categoria": "gym",
+   "duracion_s": 0.26,
+   "uso": "Paso (alternar con paso_1).",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "ropa_movimiento",
+   "archivo": "sfx/ropa_movimiento.wav",
+   "categoria": "gym",
+   "duracion_s": 0.38,
+   "uso": "Movimiento rápido de ropa o brazo.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "pasar_pagina",
+   "archivo": "sfx/pasar_pagina.wav",
+   "categoria": "gym",
+   "duracion_s": 0.7,
+   "uso": "Libreta: pasar página.",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "dejar_libreta",
+   "archivo": "sfx/dejar_libreta.wav",
+   "categoria": "gym",
+   "duracion_s": 0.28,
+   "uso": "Libreta que se deja sobre el banco.",
+   "volumen_sugerido": 0.6,
+   "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  }
+ ],
+ "musica": [
+  {
+   "id": "pulso_120",
+   "archivo": "musica/pulso_120.wav",
+   "uso": "Enérgico, 120 BPM (método, resultado, ritmo alto).",
+   "bpm": 120,
+   "duracion_s": 16.0,
+   "bucle": true,
+   "compases": 8,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "groove_92",
+   "archivo": "musica/groove_92.wav",
+   "uso": "Lo-fi relajado, 92 BPM (explicación, por qué).",
+   "bpm": 92,
+   "duracion_s": 20.87,
+   "bucle": true,
+   "compases": 8,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "tension_100",
+   "archivo": "musica/tension_100.wav",
+   "uso": "Suspense mínimo, 100 BPM (gancho, error).",
+   "bpm": 100,
+   "duracion_s": 19.2,
+   "bucle": true,
+   "compases": 8,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  }
+ ]
+}

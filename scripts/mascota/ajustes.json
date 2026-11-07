@@ -1,0 +1,51 @@
+{
+ "pph": {
+  "hoja_01": 862,
+  "hoja_02": 853,
+  "hoja_03": 850,
+  "hoja_04": 788,
+  "hoja_05": 860,
+  "hoja_06": 790,
+  "hoja_07": 850,
+  "hoja_08": 980,
+  "hoja_09": 858,
+  "hoja_10": 738,
+  "hoja_11": 823,
+  "hoja_12": 1000,
+  "expresiones": null,
+  "manos": null
+ },
+ "factor_figura": {
+  "press_banca_f1": 1.3,
+  "press_banca_f2": 1.3,
+  "error_banca_cadera_arriba": 1.3,
+  "error_dominada_balanceo": 1.15
+ },
+ "fases": {
+  "dominada": "barra",
+  "sentadilla": "pies",
+  "peso_muerto": "pies",
+  "curl": "pies",
+  "press_militar": "pies",
+  "zancada": "pies",
+  "press_banca": "banco_der",
+  "hip_thrust": "pies"
+ },
+ "tumbados": [
+  "press_banca_f1",
+  "press_banca_f2",
+  "error_banca_cadera_arriba",
+  "hip_thrust_f1",
+  "hip_thrust_f2",
+  "mano_agarre_barra",
+  "mano_mancuerna",
+  "mano_senalar",
+  "mano_pulgar",
+  "mano_puno",
+  "mano_palma"
+ ],
+ "descartar": [
+  "remo_f1",
+  "remo_f2"
+ ]
+}

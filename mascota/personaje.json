@@ -1,0 +1,25 @@
+{
+ "nombre": "por definir",
+ "concepto": "A · Atleta de tinta (cómic semi-realista)",
+ "descripcion": "atleta masculino musculoso pero creíble (no culturista exagerado), proporciones de 7 cabezas, estilo cómic semi-realista con sombreado suave en dos tonos. Piel estilizada en color hielo pálido (no un tono de piel humano realista) con contorno grueso de tinta grafito hecho con trazo de pincel seco. Cara expresiva: ojos grandes con pupila marcada, cejas muy expresivas, boca capaz de sonrisa de lado. Cinta cian en la frente con dos colas cortas que caen atrás, muñequeras cian, pantalón corto grafito con una franja cian lateral, torso desnudo con músculos bien definidos pero limpios, zapatillas grafito.",
+ "paleta_medida": {
+  "piel_hielo": "#D4DFE3",
+  "cian_cinta": "#02A4D1",
+  "tinta_contorno": "#1B262B"
+ },
+ "referencias": {
+  "concepto": "referencias/concepto_elegido.png",
+  "modelo": "referencias/hoja_modelo.png",
+  "expresiones": "referencias/hoja_expresiones.png",
+  "manos": "referencias/hoja_manos.png"
+ },
+ "generar_mas": {
+  "como": "Hoja de 3-4 poses con fondo transparente, adjuntando las tres hojas de referencia; luego scripts/mascota/procesar.py la corta y normaliza.",
+  "prompt_base": "Hoja de sprites para animación 2D del personaje de las imágenes adjuntas. Mismo personaje exacto en todas las figuras: proporciones, colores, cinta, ropa, rostro y estilo de línea de pincel.\n\nDescripción: {descripcion}\n\nReglas:\n- Fondo totalmente transparente. Sin suelo, sombras proyectadas, escenario, marcos ni líneas divisorias.\n- Figuras separadas por mucho espacio vacío: ninguna parte de una figura toca ni se superpone con otra.\n- Todas las figuras al mismo tamaño de personaje, completas dentro de la imagen, nada cortado.\n- Contorno limpio y cerrado, sin halos ni bordes blancos. Sombreado de cómic suave en dos tonos, luz desde arriba a la izquierda.\n- Manos con cinco dedos; el equipo pasa por dentro de la mano con un agarre creíble.\n- Equipo en gris acero neutro, sin marcas.\n- Sin texto, letras, números ni logos.\n\nDistribución: {distribucion}"
+ },
+ "reglas": [
+  "Personaje original de IncreaseFit: no imitar personajes ni estilos de otras cuentas.",
+  "El humor sale de lo que le pasa al personaje; nunca se ridiculizan cuerpos.",
+  "Los sprites de categoría 'error' solo se usan para enseñar lo que no se debe hacer."
+ ]
+}

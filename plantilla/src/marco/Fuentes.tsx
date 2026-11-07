@@ -12,7 +12,7 @@ export const useFuentes = () => {
         const st = document.createElement("style");
         st.textContent = css;
         document.head.appendChild(st);
-        await Promise.all([400, 700, 800].map((w) => document.fonts.load(`${w} 40px "${f.familia}"`)));
+        await Promise.all((f.pesos ?? [400, 700]).map((w) => document.fonts.load(`${w} 40px "${f.familia}"`)));
       }),
     ).then(() => continueRender(h)).catch((e) => { console.error("fuentes", e); continueRender(h); });
   }, [h]);

@@ -1,0 +1,322 @@
+{
+ "version": 1,
+ "notas": [
+  "SVG dibujados a mano (roughjs con semilla fija: se regeneran idénticos con scripts/kit/).",
+  "tintable=true: son blancos puros; colorearlos con máscara CSS (mask-image + background-color), igual que los iconos. Si no, usar con <Img>.",
+  "Las flechas apuntan en una dirección: espejar con scaleX(-1) / scaleY(-1). 'punta' y 'origen' están en px del SVG.",
+  "Para 'dibujar' un trazo en pantalla: stroke-dasharray = longitud del path y animar stroke-dashoffset de esa longitud a 0.",
+  "Texto manuscrito de etiquetas: fuente Kalam (fonts/css/kalam__400-700.css)."
+ ],
+ "piezas": [
+  {
+   "id": "flecha_curva_abajo",
+   "archivo": "flechas/flecha_curva_abajo.svg",
+   "categoria": "flechas",
+   "tam": [
+    420,
+    300
+   ],
+   "uso": "De una etiqueta (arriba a la izquierda) hacia el punto señalado (abajo a la derecha).",
+   "tintable": true,
+   "punta": [
+    370,
+    255
+   ],
+   "origen": [
+    30,
+    40
+   ]
+  },
+  {
+   "id": "flecha_curva_arriba",
+   "archivo": "flechas/flecha_curva_arriba.svg",
+   "categoria": "flechas",
+   "tam": [
+    420,
+    300
+   ],
+   "uso": "De una etiqueta (abajo a la izquierda) hacia arriba a la derecha.",
+   "tintable": true,
+   "punta": [
+    370,
+    45
+   ],
+   "origen": [
+    30,
+    260
+   ]
+  },
+  {
+   "id": "flecha_recta",
+   "archivo": "flechas/flecha_recta.svg",
+   "categoria": "flechas",
+   "tam": [
+    520,
+    120
+   ],
+   "uso": "Señalar en horizontal (un dato, una tarjeta).",
+   "tintable": true,
+   "punta": [
+    480,
+    60
+   ],
+   "origen": [
+    25,
+    70
+   ]
+  },
+  {
+   "id": "flecha_s",
+   "archivo": "flechas/flecha_s.svg",
+   "categoria": "flechas",
+   "tam": [
+    520,
+    260
+   ],
+   "uso": "Flecha nerviosa en S: transición entre dos cosas o 'de esto a esto'.",
+   "tintable": true,
+   "punta": [
+    480,
+    70
+   ],
+   "origen": [
+    25,
+    200
+   ]
+  },
+  {
+   "id": "flecha_corta",
+   "archivo": "flechas/flecha_corta.svg",
+   "categoria": "flechas",
+   "tam": [
+    220,
+    160
+   ],
+   "uso": "Flecha corta para etiquetas pegadas al personaje.",
+   "tintable": true,
+   "punta": [
+    180,
+    40
+   ],
+   "origen": [
+    25,
+    125
+   ]
+  },
+  {
+   "id": "circulo_marcador",
+   "archivo": "marcas/circulo_marcador.svg",
+   "categoria": "marcas",
+   "tam": [
+    640,
+    420
+   ],
+   "uso": "Rodear un detalle (articulación, dato). Con stroke-dasharray + dashoffset se 'dibuja' en pantalla.",
+   "tintable": true
+  },
+  {
+   "id": "tachado",
+   "archivo": "marcas/tachado.svg",
+   "categoria": "marcas",
+   "tam": [
+    640,
+    90
+   ],
+   "uso": "Tachar un texto (la caja de 'Wide Grip'): se estira al ancho del texto.",
+   "tintable": true,
+   "color_sugerido": "#FF5A4E"
+  },
+  {
+   "id": "subrayado",
+   "archivo": "marcas/subrayado.svg",
+   "categoria": "marcas",
+   "tam": [
+    640,
+    80
+   ],
+   "uso": "Subrayar la palabra clave.",
+   "tintable": true,
+   "color_sugerido": "#1FB7DE"
+  },
+  {
+   "id": "check",
+   "archivo": "marcas/check.svg",
+   "categoria": "marcas",
+   "tam": [
+    260,
+    220
+   ],
+   "uso": "Bien hecho / paso cumplido.",
+   "tintable": true,
+   "color_sugerido": "#3DD68C"
+  },
+  {
+   "id": "cruz",
+   "archivo": "marcas/cruz.svg",
+   "categoria": "marcas",
+   "tam": [
+    240,
+    240
+   ],
+   "uso": "Así no / error.",
+   "tintable": true,
+   "color_sugerido": "#FF5A4E"
+  },
+  {
+   "id": "caja_etiqueta",
+   "archivo": "marcas/caja_etiqueta.svg",
+   "categoria": "marcas",
+   "tam": [
+    620,
+    170
+   ],
+   "uso": "Caja blanca de etiqueta (texto en Kalam o Open Sans encima). Estirar con preserveAspectRatio='none'.",
+   "tintable": false
+  },
+  {
+   "id": "casilla",
+   "archivo": "marcas/casilla.svg",
+   "categoria": "marcas",
+   "tam": [
+    140,
+    140
+   ],
+   "uso": "Checklist: casilla vacía.",
+   "tintable": false
+  },
+  {
+   "id": "casilla_marcada",
+   "archivo": "marcas/casilla_marcada.svg",
+   "categoria": "marcas",
+   "tam": [
+    160,
+    150
+   ],
+   "uso": "Checklist: casilla marcada (check cian).",
+   "tintable": false
+  },
+  {
+   "id": "burbuja_dialogo",
+   "archivo": "burbujas/burbuja_dialogo.svg",
+   "categoria": "burbujas",
+   "tam": [
+    640,
+    420
+   ],
+   "uso": "Diálogo con cola abajo a la izquierda (espejar para el otro lado). Zona de texto ≈ x 70–560, y 70–270.",
+   "tintable": false
+  },
+  {
+   "id": "burbuja_pensamiento",
+   "archivo": "burbujas/burbuja_pensamiento.svg",
+   "categoria": "burbujas",
+   "tam": [
+    660,
+    450
+   ],
+   "uso": "Pensamiento: dentro va un sprite pequeño o un texto (como la mascota imaginando la dominada). Centro ≈ (330, 180).",
+   "tintable": false
+  },
+  {
+   "id": "inserto_circular",
+   "archivo": "burbujas/inserto_circular.svg",
+   "categoria": "burbujas",
+   "tam": [
+    520,
+    520
+   ],
+   "uso": "Marco del inserto circular (una cara_* reaccionando). Recortar el contenido con un círculo de radio 230 centrado en (260, 260).",
+   "tintable": false
+  },
+  {
+   "id": "lineas_velocidad",
+   "archivo": "efectos/lineas_velocidad.svg",
+   "categoria": "efectos",
+   "tam": [
+    620,
+    520
+   ],
+   "uso": "Detrás del personaje que se mueve (a la derecha). Espejar para el otro lado.",
+   "tintable": true
+  },
+  {
+   "id": "lineas_enfoque",
+   "archivo": "efectos/lineas_enfoque.svg",
+   "categoria": "efectos",
+   "tam": [
+    1080,
+    1920
+   ],
+   "uso": "Líneas de enfoque de manga a pantalla completa para un momento dramático (centro libre).",
+   "tintable": true,
+   "opacidad_sugerida": 0.35
+  },
+  {
+   "id": "marcas_impacto",
+   "archivo": "efectos/marcas_impacto.svg",
+   "categoria": "efectos",
+   "tam": [
+    200,
+    200
+   ],
+   "uso": "Tres rayitas junto a la cabeza: sorpresa, dolor, '¡!'.",
+   "tintable": true
+  },
+  {
+   "id": "lineas_temblor",
+   "archivo": "efectos/lineas_temblor.svg",
+   "categoria": "efectos",
+   "tam": [
+    180,
+    260
+   ],
+   "uso": "Temblor o vibración al lado de un brazo/barra que no aguanta. Espejar para el otro lado.",
+   "tintable": true
+  },
+  {
+   "id": "destello",
+   "archivo": "efectos/destello.svg",
+   "categoria": "efectos",
+   "tam": [
+    240,
+    240
+   ],
+   "uso": "Brillo de logro (celebrar, récord).",
+   "tintable": true,
+   "color_sugerido": "#D4F1F9"
+  },
+  {
+   "id": "gotas_sudor",
+   "archivo": "efectos/gotas_sudor.svg",
+   "categoria": "efectos",
+   "tam": [
+    200,
+    200
+   ],
+   "uso": "Sudor de esfuerzo o nervios, junto a la cabeza.",
+   "tintable": false
+  },
+  {
+   "id": "marco_rec",
+   "archivo": "marcos/marco_rec.svg",
+   "categoria": "marcos",
+   "tam": [
+    1080,
+    1920
+   ],
+   "uso": "Visor de cámara del celular ('alguien te está grabando la técnica'). Hacer parpadear el punto rojo.",
+   "tintable": false
+  },
+  {
+   "id": "trazo_pincel",
+   "archivo": "transiciones/trazo_pincel.svg",
+   "categoria": "transiciones",
+   "tam": [
+    2400,
+    560
+   ],
+   "uso": "Cortinilla con la estética de la flecha del logo: cruza la pantalla de izquierda a derecha (escala 2-3x y rotación -8°) y tapa el cambio de escena.",
+   "tintable": false
+  }
+ ]
+}
