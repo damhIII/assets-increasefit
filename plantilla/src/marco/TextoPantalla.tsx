@@ -1,10 +1,10 @@
-// Texto en pantalla de cada plano (Y≈300–520). Complementa a la voz, no la repite.
+// Texto en pantalla de cada escena (Y≈300–520). Complementa a la voz, no la repite.
 //   titular: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 cian (eco del logo). Sin "/": una línea 800.
 //   nota:    a mano (Kalam), ligeramente girada, como una anotación.
 //   capitulo y ninguno: no se dibuja aquí (capitulo es una tarjeta de la escena).
 import React from "react";
 import { interpolate, interpolateColors, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { brief, FUENTE, IF } from "./datos";
+import { datos, FUENTE, IF } from "./datos";
 import { useClima } from "./clima";
 
 const ajustar = (txt: string, base: number, factor: number) => Math.min(base, Math.floor(920 / Math.max(1, txt.length * factor)));
@@ -13,16 +13,17 @@ export const TextoPantalla: React.FC = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const c = useClima();
-  const i = brief.planos.findIndex((x) => f >= x.ini_f && f < x.fin_f);
+  const es = datos.escenas;
+  const i = es.findIndex((x) => f >= x.ini_f && f < x.fin_f);
   if (i < 0) return null;
-  const p = brief.planos[i];
+  const p = es[i];
   const { texto, estilo } = p.pantalla;
   if (!texto || estilo === "capitulo" || estilo === "ninguno") return null;
-  // si el plano anterior tenía el mismo texto, no se repite la entrada
+  // si la escena anterior tenía el mismo texto, no se repite la entrada
   let k0 = i;
-  while (k0 > 0 && brief.planos[k0 - 1].pantalla.texto === texto && brief.planos[k0 - 1].pantalla.estilo === estilo) k0--;
-  const inicio = brief.planos[k0].ini_f;
-  const sig = brief.planos[i + 1];
+  while (k0 > 0 && es[k0 - 1].pantalla.texto === texto && es[k0 - 1].pantalla.estilo === estilo) k0--;
+  const inicio = es[k0].ini_f;
+  const sig = es[i + 1];
   const sale = !(sig && sig.pantalla.texto === texto && sig.pantalla.estilo === estilo);
   const local = f - inicio;
   const salida = sale ? interpolate(f, [p.fin_f - 5, p.fin_f], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 0;

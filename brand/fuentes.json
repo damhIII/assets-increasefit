@@ -1,0 +1,8 @@
+{
+  "_nota": "Fuentes de la marca. preparar_video.py las copia al proyecto y la plantilla las carga antes del primer frame.",
+  "fuentes": [
+    {"rol": "titulos", "familia": "Open Sans", "css": "fonts/css/open_sans__400-600-700-800.css", "stack": "\"Open Sans\", sans-serif", "pesos": [400, 700, 800]},
+    {"rol": "mono", "familia": "JetBrains Mono", "css": "fonts/css/jetbrains_mono__500-700.css", "stack": "\"JetBrains Mono\", monospace", "pesos": [500, 700]},
+    {"rol": "mano", "familia": "Kalam", "css": "fonts/css/kalam__400-700.css", "stack": "\"Kalam\", cursive", "pesos": [400, 700]}
+  ]
+}

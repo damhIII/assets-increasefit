@@ -1,6 +1,6 @@
 # Marca IncreaseFit
 
-Cuenta de contenido de gimnasio y fuerza para gente que ya entrena. Tono: **humor seco + ciencia explicada fácil**. Estética: deportiva, limpia y con peso; ilustración de cómic con anotaciones a mano, como la pizarra de un entrenador. Animación con rebote y golpe, sin efectos baratos ni estética de "motivación de póster".
+Cuenta de contenido de gimnasio y fuerza para gente que ya entrena. Tono: **humor seco + ciencia explicada fácil** (voz y ADN completos en `editorial/marca.md` y `editorial/adn.md`). Estética: deportiva, limpia y con peso; ilustración de cómic con anotaciones a mano, como la pizarra de un entrenador. Animación con rebote y golpe, sin efectos baratos ni estética de "motivación de póster".
 
 | Rol | Color |
 |---|---|
@@ -17,8 +17,8 @@ Cuenta de contenido de gimnasio y fuerza para gente que ya entrena. Tono: **humo
 - **La flecha** del isotipo es el motivo gráfico: el trazo de pincel de las cortinillas (`kit/transiciones/trazo_pincel.svg`) es su eco.
 
 ## Contenido y honestidad
-- Las cifras de entreno de la ficha son **ejemplo ilustrativo**: rotúlalas así.
-- Los datos citados se muestran con su fuente corta (JetBrains Mono, pequeña, legible).
+- Las cifras de entreno de ejemplo (kilos, repeticiones, progresión) son **ejemplo ilustrativo**: rotúlalas así.
+- Los datos de estudios se muestran con su fuente corta verificada (`editorial/datos_verificados.json`), en JetBrains Mono, pequeña y legible.
 - Sin CTA: el video no pide comentarios, likes ni follows; cierra con un remate y la tarjeta resumen para guardar.
 - Nada de antes/después corporales, básculas como meta, comida "prohibida" ni cuerpos ridiculizados. El blanco del humor es el error, no la persona.
 

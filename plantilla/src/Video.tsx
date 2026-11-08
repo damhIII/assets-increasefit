@@ -1,7 +1,7 @@
-// Composición: Fondo → un plano por <Sequence> (EXACTAMENTE ini_f–fin_f) → cortinillas → tarjeta resumen → marco IncreaseFit → sonido.
+// Composición: Fondo → una escena por <Sequence> (EXACTAMENTE ini_f–fin_f) → cortinillas → tarjeta resumen → marco IncreaseFit → sonido.
 import React from "react";
 import { AbsoluteFill, interpolate, Sequence, useCurrentFrame } from "remotion";
-import { brief } from "./marco/datos";
+import { datos } from "./marco/datos";
 import { useFuentes } from "./marco/Fuentes";
 import { useClima } from "./marco/clima";
 import { Fondo } from "./marco/Fondo";
@@ -9,33 +9,33 @@ import { BarraProgreso } from "./marco/BarraProgreso";
 import { Header } from "./marco/Header";
 import { TextoPantalla } from "./marco/TextoPantalla";
 import { Subtitulos } from "./marco/Subtitulos";
-import { Sonido, cambiosDeBloque } from "./marco/Sonido";
-import { EscenaPlano } from "./escenas/Plano";
+import { Sonido } from "./marco/Sonido";
+import { EscenaVideo } from "./escenas/Escena";
 import { CortinillaPincel, TarjetaResumen } from "./componentes/kit";
 
 const Resumen: React.FC = () => {
   const c = useClima();
-  const t = brief.tarjeta_resumen!;
+  const t = datos.tarjeta_resumen!;
   return <TarjetaResumen titulo={t.titulo} lineas={t.lineas} c={c} />;
 };
 
 export const Video: React.FC = () => {
   useFuentes();
   const f = useCurrentFrame();
-  const tr = brief.tarjeta_resumen;
+  const tr = datos.tarjeta_resumen;
   const conResumen = tr && f >= tr.ini_f;
   return (
     <AbsoluteFill style={{ background: "#0A0E12" }}>
       <Fondo />
       <AbsoluteFill style={{ opacity: tr ? interpolate(f, [tr.ini_f, tr.ini_f + 10], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 1 }}>
-        {brief.planos.map((p, i) => (
-          <Sequence key={p.id} from={p.ini_f} durationInFrames={p.fin_f - p.ini_f} name={`${p.id} · ${p.bloque}`}>
-            <EscenaPlano p={p} anterior={brief.planos[i - 1]} />
+        {datos.escenas.map((e, i) => (
+          <Sequence key={e.id} from={e.ini_f} durationInFrames={e.fin_f - e.ini_f} name={e.id}>
+            <EscenaVideo e={e} anterior={datos.escenas[i - 1]} />
           </Sequence>
         ))}
       </AbsoluteFill>
-      {cambiosDeBloque().map((F) => (
-        <Sequence key={`c${F}`} from={F - 8} durationInFrames={16} name="cortinilla">
+      {datos.cortinillas.map((F) => (
+        <Sequence key={`c${F}`} from={Math.max(0, F - 8)} durationInFrames={16} name="cortinilla">
           <CortinillaPincel />
         </Sequence>
       ))}
@@ -47,7 +47,7 @@ export const Video: React.FC = () => {
       <Header />
       {conResumen ? null : <TextoPantalla />}
       <Subtitulos />
-      {brief.opciones?.barra_progreso ? <BarraProgreso /> : null}
+      {datos.opciones?.barra_progreso ? <BarraProgreso /> : null}
       <Sonido />
     </AbsoluteFill>
   );

@@ -3,7 +3,7 @@
  "notas": [
   "SFX: WAV mono 44,1 kHz con pico a -1,5 dBFS. volumen_sugerido es el valor de <Audio volume> en Remotion con la voz sonando.",
   "Música: bucles WAV estéreo sin costura (normalizados a -16 LUFS). Debajo de la voz usar volumen_bajo_voz (ducking) y subir a volumen_sin_voz en la cola final.",
-  "Coloca cada SFX en el frame de la palabra que lo motiva (brief.subtitulos). No más de un SFX cada ~1 s: si todo suena, nada destaca.",
+  "Coloca cada SFX en la palabra que lo motiva (sfx[].en en la escaleta). No más de un SFX cada ~1 s: si todo suena, nada destaca.",
   "Licencias: los de Kenney son CC0 (licencias/Kenney-CC0.md); el resto son obra propia. Ninguno exige atribución."
  ],
  "sfx": [

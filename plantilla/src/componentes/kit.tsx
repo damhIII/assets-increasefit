@@ -1,7 +1,7 @@
-// Piezas del kit gráfico (kit/*.svg) animadas. Todas reciben `desde` en frames LOCALES del plano.
+// Piezas del kit gráfico (kit/*.svg) animadas. Todas reciben `desde` en frames LOCALES de la escena.
 import React from "react";
 import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import { brief, FUENTE, IF } from "../marco/datos";
+import { datos, FUENTE, IF, type Semana } from "../marco/datos";
 import type { C } from "../marco/clima";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -208,10 +208,10 @@ export const Capitulo: React.FC<{ texto: string; c: C }> = ({ texto, c }) => {
   );
 };
 
-/** Libreta de entreno (progresión ILUSTRATIVA de la ficha). */
-export const Libreta: React.FC<{ c: C; titulo: string; frames: number[]; x?: number; y?: number; ancho?: number }> = ({ c, titulo, frames, x = 60, y = 600, ancho = 540 }) => {
+/** Libreta de entreno (progresión ILUSTRATIVA: escaleta.progresion). */
+export const Libreta: React.FC<{ c: C; titulo: string; frames: number[]; filas?: Semana[]; x?: number; y?: number; ancho?: number }> = ({ c, titulo, frames, filas: propias, x = 60, y = 600, ancho = 540 }) => {
   const f = useCurrentFrame();
-  const filas = brief.ficha_tecnica.progresion_ejemplo.slice(0, 4);
+  const filas = (propias ?? datos.progresion).slice(0, 4);
   const e = useEntrada(frames[0] - 8);
   const kg = (n: number) => String(n).replace(".", ",");
   return (
@@ -235,9 +235,9 @@ export const Libreta: React.FC<{ c: C; titulo: string; frames: number[]; x?: num
 };
 
 /** Gráfica de la progresión que se dibuja (fuerza estimada, sube aunque el kg se repita). */
-export const Grafica: React.FC<{ c: C; desde: number; x?: number; y?: number; ancho?: number; alto?: number }> = ({ c, desde, x = 60, y = 620, ancho = 560, alto = 380 }) => {
+export const Grafica: React.FC<{ c: C; desde: number; filas?: Semana[]; x?: number; y?: number; ancho?: number; alto?: number }> = ({ c, desde, filas: propias, x = 60, y = 620, ancho = 560, alto = 380 }) => {
   const f = useCurrentFrame();
-  const filas = brief.ficha_tecnica.progresion_ejemplo;
+  const filas = propias ?? datos.progresion;
   const valores = filas.map((r) => r.kg * (1 + r.reps / 30));
   const min = Math.min(...valores), max = Math.max(...valores);
   const px = (i: number) => 40 + (i / Math.max(1, valores.length - 1)) * (ancho - 80);
@@ -282,7 +282,7 @@ export const TarjetaResumen: React.FC<{ titulo: string; lineas: string[]; c: C }
             );
           })}
         </div>
-        {brief.logos.increasefit ? <Img src={staticFile(c.claridad > 0.5 && brief.logos.oscuro ? "logo_increasefit_oscuro.png" : "logo_increasefit.png")} style={{ marginTop: 18, height: 66 }} /> : null}
+        {datos.logos.increasefit ? <Img src={staticFile(c.claridad > 0.5 && datos.logos.oscuro ? "logo_increasefit_oscuro.png" : "logo_increasefit.png")} style={{ marginTop: 18, height: 66 }} /> : null}
       </div>
       <Img src={staticFile("mascota/sprites/gesto_pulgar_arriba.png")} style={{ position: "absolute", right: 50, top: 1345 - 520, height: 520, transformOrigin: "50% 100%",
         transform: `scale(${m})`, filter: "drop-shadow(0 14px 18px rgba(0,0,0,0.4))" }} />

@@ -2,7 +2,7 @@
 // colocar() decide escala y posición según el encuadre; puntoEnPantalla() convierte un ancla del sprite a px de pantalla.
 import React from "react";
 import { Img, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import { ALTURA_PERSONAJE, EJERCICIOS, SPRITES, type SpriteInfo, type Visual } from "../marco/datos";
+import { ALTURA_PERSONAJE, EJERCICIOS, SPRITES, type MascotaEscena, type SpriteInfo } from "../marco/datos";
 
 export const SUELO = 1340;
 const K0 = 800 / ALTURA_PERSONAJE;                     // personaje de pie = 800 px en encuadre general
@@ -19,7 +19,7 @@ export function fasesDe(sprite: string): SpriteInfo[] {
 
 export type Colocacion = { x: number; y: number; k: number; w: number; h: number; espejo: boolean; info: SpriteInfo };
 
-export function colocar(info: SpriteInfo, encuadre: Visual["encuadre"], posicion: Visual["posicion"], espejo = false, escalaExtra = 1, cxForzado?: number): Colocacion {
+export function colocar(info: SpriteInfo, encuadre: MascotaEscena["encuadre"], posicion: MascotaEscena["posicion"], espejo = false, escalaExtra = 1, cxForzado?: number): Colocacion {
   const [w, h] = info.tam;
   const cx = cxForzado ?? CX[posicion] ?? 540;
   let k = K0 * escalaExtra;
@@ -66,10 +66,10 @@ export function ancla(c: Colocacion, donde: string | undefined): [number, number
 }
 
 type Props = {
-  sprite: string; anim: Visual["anim"]; colocacion: Colocacion; continua?: boolean; desde?: number; filtro?: string;
+  sprite: string; anim: MascotaEscena["anim"]; colocacion: Colocacion; continua?: boolean; desde?: number; filtro?: string;
 };
 
-/** Dibuja el sprite con su animación. El frame es local al plano (dentro de su <Sequence>). */
+/** Dibuja el sprite con su animación. El frame es local a la escena (dentro de su <Sequence>). */
 export const Mascota: React.FC<Props> = ({ sprite, anim, colocacion: c, continua = false, desde = 0, filtro }) => {
   const f = useCurrentFrame() - desde;
   const { fps } = useVideoConfig();

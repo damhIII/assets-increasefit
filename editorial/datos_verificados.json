@@ -1,0 +1,95 @@
+{
+  "_nota": "Biblioteca de datos verificados. El notebook se la pasa a GPT (solo puede citar cifras de aquí) y Claude la usa para poner la fuente en pantalla. Claude añade aquí los datos nuevos que verifica contra el abstract original (con url, cita literal y fecha).",
+  "datos": {
+    "wolf": {
+      "dato": "En un metaanálisis de 2023, el recorrido completo salió ligeramente mejor que el parcial en casi todos los resultados; las parciales en la parte de estiramiento podrían igualarlo en hipertrofia, pero esa evidencia aún es incierta.",
+      "fuente": "Wolf et al., 2023 (Int J Strength Cond)",
+      "corta": "Wolf et al. 2023",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    },
+    "robinson": {
+      "dato": "En 55 estudios, la hipertrofia mejoró al terminar las series más cerca del fallo; la fuerza mejoró de forma parecida en un rango amplio de repeticiones en reserva.",
+      "fuente": "Robinson et al., 2024 (Sports Medicine)",
+      "corta": "Robinson et al. 2024",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    },
+    "volumen": {
+      "dato": "Metaanálisis de 15 estudios: con 10 o más series semanales por músculo la ganancia media fue del 9,8 %, frente al 5,4 % con menos de 5.",
+      "fuente": "Schoenfeld, Ogborn y Krieger, 2017 (J Sports Sci)",
+      "corta": "Schoenfeld et al. 2017",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    },
+    "descanso": {
+      "dato": "En 21 hombres entrenados durante 8 semanas, descansar 3 minutos entre series dio más fuerza (sentadilla y banca) y más grosor del muslo que descansar 1 minuto.",
+      "fuente": "Schoenfeld et al., 2016 (J Strength Cond Res)",
+      "corta": "Schoenfeld et al. 2016",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    },
+    "frecuencia": {
+      "dato": "Un metaanálisis de 2016 encontró que entrenar cada músculo al menos 2 veces por semana dio más hipertrofia que hacerlo 1 vez.",
+      "fuente": "Schoenfeld, Ogborn y Krieger, 2016 (Sports Medicine)",
+      "corta": "Schoenfeld et al. 2016",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    },
+    "proteina": {
+      "dato": "En 49 estudios con 1.863 personas, por encima de unos 1,6 g de proteína por kilo y día no hubo más ganancia de masa magra; el momento del día en que se tomaba no cambió el efecto.",
+      "fuente": "Morton et al., 2018 (Br J Sports Med)",
+      "corta": "Morton et al. 2018",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    },
+    "creatina": {
+      "dato": "La Sociedad Internacional de Nutrición Deportiva considera la creatina monohidrato el suplemento más eficaz para el rendimiento de alta intensidad y la masa magra, y segura en personas sanas en estudios de hasta 5 años.",
+      "fuente": "Kreider et al., 2017 (posición de la ISSN)",
+      "corta": "ISSN 2017",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    },
+    "cardio": {
+      "dato": "En 43 estudios, sumar cardio al entreno de fuerza no frenó la hipertrofia ni la fuerza máxima; la fuerza explosiva sí se resintió, sobre todo en la misma sesión.",
+      "fuente": "Schumann et al., 2022 (Sports Medicine)",
+      "corta": "Schumann et al. 2022",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    },
+    "abdomen": {
+      "dato": "6 semanas de abdominales (7 ejercicios, 5 días por semana) no redujeron la grasa abdominal frente a un grupo control.",
+      "fuente": "Vispute et al., 2011 (J Strength Cond Res)",
+      "corta": "Vispute et al. 2011",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    },
+    "carga": {
+      "dato": "En 21 estudios con series al fallo, cargas ligeras y pesadas dieron una hipertrofia parecida; la fuerza máxima mejoró más con cargas pesadas.",
+      "fuente": "Schoenfeld et al., 2017 (J Strength Cond Res)",
+      "corta": "Schoenfeld et al. 2017",
+      "url": null,
+      "cita_literal": null,
+      "verificado": null,
+      "anadido_por": "biblioteca inicial"
+    }
+  }
+}

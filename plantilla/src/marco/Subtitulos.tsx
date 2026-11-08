@@ -1,11 +1,10 @@
-// Subtítulos grandes (siempre estilo IncreaseFit): 1-3 palabras a la vez desde brief.subtitulos.
-// Las palabras de plano.enfasis salen más grandes y se quedan en cian.
+// Subtítulos grandes (siempre estilo IncreaseFit): 1-3 palabras a la vez desde datos.subtitulos (ortografía del guion).
+// Las palabras marcadas como énfasis en la escaleta salen más grandes y se quedan en cian.
 import React, { useMemo } from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { brief, FUENTE, IF, planoEn } from "./datos";
+import { datos, FUENTE, IF } from "./datos";
 
-type Palabra = [string, number, number];
-const norm = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+type Palabra = [string, number, number, number];
 
 function agrupar(subs: Palabra[]): Palabra[][] {
   const grupos: Palabra[][] = [];
@@ -25,21 +24,20 @@ export const Subtitulos: React.FC = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = f / fps;
-  const grupos = useMemo(() => agrupar(brief.subtitulos), []);
+  const grupos = useMemo(() => agrupar(datos.subtitulos), []);
   const i = grupos.findIndex((g, k) => t >= g[0][1] - 0.05 && (k === grupos.length - 1 || t < grupos[k + 1][0][1] - 0.05));
   if (i < 0) return null;
   const g = grupos[i];
   if (t > g[g.length - 1][2] + 0.8) return null;
-  const enfasis = new Set(planoEn(Math.round(g[0][1] * fps)).enfasis.map(norm));
   const entrada = spring({ fps, frame: f - Math.round(g[0][1] * fps), config: { damping: 15, stiffness: 220 } });
   return (
     <div style={{ position: "absolute", top: 1390, left: 0, width: 1080, display: "flex", justifyContent: "center" }}>
       <div style={{ background: IF.capsula, backdropFilter: "blur(16px)", borderRadius: 28, padding: "14px 30px", display: "flex", gap: 28, alignItems: "center",
         transform: `scale(${0.9 + 0.1 * entrada})`, opacity: entrada, maxWidth: 980, flexWrap: "wrap", justifyContent: "center" }}>
-        {g.map(([w, a, b], k) => {
+        {g.map(([w, a, b, enf], k) => {
           const actual = t >= a && t < b + 0.06;
           const pasada = t >= b + 0.06;
-          const fuerte = enfasis.has(norm(w));
+          const fuerte = enf === 1;
           const pop = actual ? spring({ fps, frame: f - Math.round(a * fps), config: { damping: 9, stiffness: 260 } }) : 0;
           const escala = actual ? 1 + (fuerte ? 0.26 : 0.14) * pop : fuerte ? 1.1 : 1;
           return (

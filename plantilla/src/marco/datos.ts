@@ -1,61 +1,58 @@
-// Datos del video. preparar_video.py deja en src/: brief.json, paletas.json, mascota.json (manifest de la mascota) y sonido.json.
-import briefJson from "../brief.json";
+// Datos del video. preparar_video.py deja en src/: video.json (escaleta ya sincronizada a frames), paletas.json,
+// mascota.json (manifest de la mascota) y sonido.json. No copies números a mano: todo sale de aquí.
+import videoJson from "../video.json";
 import paletasJson from "../paletas.json";
 import mascotaJson from "../mascota.json";
 import sonidoJson from "../sonido.json";
 
-export type Overlay = {
+export type Anotacion = {
   tipo: "etiqueta" | "tachado" | "circulo" | "check" | "cruz" | "burbuja_pensamiento" | "burbuja_dialogo" | "dato" | "lista"
       | "rec" | "lineas_velocidad" | "impacto" | "sudor" | "destello" | "enfoque" | "libreta" | "grafica";
-  texto?: string;            // etiqueta, tachado, burbuja_dialogo, dato (la cifra grande)
+  texto?: string;            // etiqueta, tachado, burbuja_dialogo, dato (la cifra grande), libreta (título)
   detalle?: string;          // dato: texto bajo la cifra
+  fuente?: string;           // dato: fuente corta verificada
+  ilustrativo?: boolean;     // dato: ejemplo, no estudio
   apunta?: "cabeza" | "manos" | "pies" | "centro";
-  sprite?: string;           // burbuja_pensamiento: sprite dentro de la nube
+  sprite?: string;           // burbuja_pensamiento
   items?: string[];          // lista
-  palabra_f?: number;        // frame (global) en que aparece; si falta, al empezar el plano + 6
+  en_f: number;              // frame GLOBAL en que aparece
 };
-export type Visual = {
+export type MascotaEscena = {
   sprite: string;            // id de mascota/manifest.json o "ejercicio:<nombre>" (alterna sus fases)
   anim: "pop" | "ejercicio" | "temblor" | "entrar" | "estatico";
   encuadre: "general" | "medio" | "primer_plano";
   posicion: "centro" | "izq" | "der";
-  espejo?: boolean;
-  sprite_b?: string | null;  // pantalla dividida: izquierda = sprite (ASÍ NO), derecha = sprite_b (ASÍ SÍ)
-  inserto?: string | null;   // cara_* en un círculo arriba a la derecha
+  espejo: boolean;
 };
-export type Plano = {
-  id: string; bloque: string;
-  ini_f: number; fin_f: number; ini_s: number; fin_s: number;
-  voz: string; palabras?: [number, number] | null;
-  pantalla: { texto: string; estilo: "titular" | "capitulo" | "nota" | "ninguno" };
-  enfasis: string[];
+export type Escena = {
+  id: string;
+  ini_f: number; fin_f: number;               // globales, contiguos
   clima: string;
-  visual: Visual;
-  overlays: Overlay[];
+  transicion: "corte" | "pincel";             // pincel = cortinilla + whoosh al entrar
+  pantalla: { texto: string; estilo: "titular" | "capitulo" | "nota" | "ninguno" };
+  enfasis_f: number[];                        // frames globales de las palabras de énfasis (punch-in en la primera)
+  mascota: MascotaEscena | null;
+  dividida: { no: string; si: string } | null;
+  inserto: { cara: string; en_f: number } | null;
+  anotaciones: Anotacion[];
+  componente: string | null;                  // escena a medida (src/escenas/custom/<componente>.tsx)
+  solo_componente: boolean;                   // true = solo el componente, sin la composición por defecto
 };
 export type Sfx = { id: string; frame: number; volumen: number };
-export type Brief = {
-  version: number; marca: string; base: string; audio: string;
+export type Semana = { semana: number; kg: number; reps: number };
+export type DatosVideo = {
+  version: number; base: string; audio: string;
   video: { width: number; height: number; fps: number; frames: number; voz_s: number; cola_s: number };
-  serie_header: string; formato: string; musica: string | null;
-  tema: { id: number; titulo: string; tesis: string };
-  aprendizaje: string;
-  gancho: { texto: string; tipo: string; alternativas: string[] };
-  fuente_en_pantalla: string; datos_citados: { dato: string; fuente: string; corta: string; url?: string }[];
-  notas_direccion: string;
+  serie_header: string; musica: string | null;
+  opciones: { barra_progreso: boolean };
   logos: { increasefit: boolean; oscuro: boolean; isotipo: boolean };
   fuentes: { rol: string; familia: string; css: string | null; stack: string; pesos: number[] }[];
-  ficha_tecnica: {
-    ejercicios: { sprite: string; nombre: string; rol: string }[];
-    prescripcion: Record<string, string>; cues: string[]; errores: string[];
-    progresion_ejemplo: { semana: number; kg: number; reps: number }[]; vocabulario: string[];
-  };
-  opciones: { barra_progreso: boolean };
-  planos: Plano[];
+  escenas: Escena[];
+  cortinillas: number[];
   tarjeta_resumen: { titulo: string; lineas: string[]; ini_f: number } | null;
   sfx: Sfx[];
-  subtitulos: [string, number, number][];
-  palabras: [string, number, number][];
+  subtitulos: [string, number, number, number][];   // palabra del guion, ini_s, fin_s, énfasis (0/1)
+  progresion: Semana[];
 };
 export type Clima = {
   nombre: string; tipo: "oscuro" | "claro";
@@ -68,7 +65,7 @@ export type SpriteInfo = {
   ejercicio?: string; fase?: number;
 };
 
-export const brief = briefJson as unknown as Brief;
+export const datos = videoJson as unknown as DatosVideo;
 export const PALETAS = paletasJson as unknown as { climas: Record<string, Clima>; reglas_rotacion: { clima_base: string; transicion_frames: number } };
 export const CLIMA_BASE = PALETAS.reglas_rotacion.clima_base;
 const MASCOTA = mascotaJson as unknown as { altura_personaje_px: number; ejercicios: Record<string, { fases: string[]; errores: string[] }>; sprites: SpriteInfo[] };
@@ -82,20 +79,17 @@ export const IF = {
   cian: "#1FB7DE", hielo: "#D4F1F9", grafito: "#171E26", grafito2: "#0A0E12", negro: "#000000", blanco: "#FFFFFF",
   alerta: "#FF5A4E", exito: "#3DD68C", subFutura: "#5E7180", capsula: "rgba(10,14,18,0.72)",
 };
-const stack = (rol: string, def: string) => brief.fuentes.find((f) => f.rol === rol)?.stack ?? def;
+const stack = (rol: string, def: string) => datos.fuentes.find((f) => f.rol === rol)?.stack ?? def;
 export const FUENTE = {
   titulos: stack("titulos", '"Open Sans", sans-serif'),
   mono: stack("mono", '"JetBrains Mono", monospace'),
   mano: stack("mano", '"Kalam", cursive'),
 };
 
-export const planoEn = (frame: number) => brief.planos.find((p) => frame >= p.ini_f && frame < p.fin_f) ?? brief.planos[brief.planos.length - 1];
+export const escenaEn = (frame: number) => datos.escenas.find((e) => frame >= e.ini_f && frame < e.fin_f) ?? datos.escenas[datos.escenas.length - 1];
 export const climaDe = (id: string | undefined) => PALETAS.climas[id ?? CLIMA_BASE] ?? PALETAS.climas[CLIMA_BASE];
-/** Primer frame (global) en que la voz dice una palabra del plano que empieza por `clave`; null si no aparece. */
-export const frameDePalabra = (p: Plano, clave: string): number | null => {
-  const norm = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
-  const k = norm(clave).slice(0, 5);
-  if (!k) return null;
-  const w = brief.subtitulos.find(([txt, a]) => a * brief.video.fps >= p.ini_f - 1 && a * brief.video.fps < p.fin_f && norm(txt).startsWith(k));
-  return w ? Math.round(w[1] * brief.video.fps) : null;
+/** Frame GLOBAL en que la voz empieza la palabra número `i` del guion (los [n] de scripts/alinear.py). */
+export const frameDePalabra = (i: number): number => {
+  const w = datos.subtitulos[Math.max(0, Math.min(datos.subtitulos.length - 1, i))];
+  return Math.round(w[1] * datos.video.fps);
 };

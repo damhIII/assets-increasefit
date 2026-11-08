@@ -1,0 +1,210 @@
+{
+  "_nota": "Temas de inspiración para el guion: no son un menú cerrado. 'datos' apunta a ids de datos_verificados.json.",
+  "temas": [
+    {
+      "id": 1,
+      "titulo": "Sobrecarga progresiva",
+      "tesis": "El músculo crece cuando le pides un poco más que la última vez, no cuando sudas más.",
+      "ideas": [
+        "Llevas 6 meses levantando los mismos 60 kilos",
+        "Tu libreta vale más que tu pre-entreno",
+        "Terminar destruido no es progresar"
+      ]
+    },
+    {
+      "id": 2,
+      "titulo": "Rango de movimiento",
+      "tesis": "Media repetición suele ser medio resultado; la parte de abajo es la que más cuenta.",
+      "ideas": [
+        "Tu sentadilla de 140 kilos es un cuarto de sentadilla",
+        "Las medias repeticiones de arriba no suman"
+      ],
+      "datos": [
+        "wolf"
+      ]
+    },
+    {
+      "id": 3,
+      "titulo": "Cerca del fallo",
+      "tesis": "La serie que cuenta es la que termina cerca de no poder más, no la que se siente heroica.",
+      "ideas": [
+        "Esa serie 'durísima' tenía cinco repeticiones más",
+        "No hace falta llegar al fallo en cada serie"
+      ],
+      "datos": [
+        "robinson"
+      ]
+    },
+    {
+      "id": 4,
+      "titulo": "Volumen",
+      "tesis": "Más series ayudan hasta cierto punto; las series de relleno solo suman cansancio.",
+      "ideas": [
+        "25 series de pecho no te hacen el doble de grande",
+        "Dos series bien hechas le ganan a cinco de relleno"
+      ],
+      "datos": [
+        "volumen"
+      ]
+    },
+    {
+      "id": 5,
+      "titulo": "Descanso entre series",
+      "tesis": "Descansar poco no te hace más duro: te deja levantar menos en la siguiente serie.",
+      "ideas": [
+        "Descansar 60 segundos no te hace más hardcore",
+        "Tu descanso de 7 minutos es scroll, no recuperación"
+      ],
+      "datos": [
+        "descanso"
+      ]
+    },
+    {
+      "id": 6,
+      "titulo": "Frecuencia",
+      "tesis": "Repartir el volumen en la semana suele rendir más que castigar un músculo una vez.",
+      "ideas": [
+        "Día de pecho: una vez por semana y a esperar siete días"
+      ],
+      "datos": [
+        "frecuencia"
+      ]
+    },
+    {
+      "id": 7,
+      "titulo": "Peso muerto sin ego",
+      "tesis": "La espalda neutra no es estética: es lo que deja que las piernas y la cadera hagan el trabajo.",
+      "ideas": [
+        "Si tu espalda parece un signo de interrogación, baja el peso",
+        "La barra no se levanta con los brazos"
+      ]
+    },
+    {
+      "id": 8,
+      "titulo": "Curl con ego",
+      "tesis": "Si el cuerpo entero ayuda, el bíceps solo mira.",
+      "ideas": [
+        "Si te balanceas, tu bíceps está de espectador",
+        "Subir la mancuerna es la mitad del ejercicio"
+      ]
+    },
+    {
+      "id": 9,
+      "titulo": "Dominadas de verdad",
+      "tesis": "Una repetición completa vale más que tres con patada.",
+      "ideas": [
+        "Diez dominadas con patada son cuatro dominadas",
+        "¿No te sale ni una? Empieza por bajar"
+      ]
+    },
+    {
+      "id": 10,
+      "titulo": "Press de banca",
+      "tesis": "El pecho crece con control, no con rebote.",
+      "ideas": [
+        "Tu banca rebota en el pecho porque tu ego no frena",
+        "El banco no es un sofá"
+      ]
+    },
+    {
+      "id": 11,
+      "titulo": "Proteína",
+      "tesis": "Lo que cuenta es el total del día; pasado cierto punto, más no es mejor.",
+      "ideas": [
+        "Tres batidos al día no te hacen el triple de grande",
+        "La proteína no tiene horario de oficina"
+      ],
+      "datos": [
+        "proteina"
+      ]
+    },
+    {
+      "id": 12,
+      "titulo": "Creatina",
+      "tesis": "Es de los pocos suplementos con evidencia sólida, y no es magia.",
+      "ideas": [
+        "La creatina no es un esteroide con buen marketing"
+      ],
+      "datos": [
+        "creatina"
+      ]
+    },
+    {
+      "id": 13,
+      "titulo": "Cardio y fuerza",
+      "tesis": "El cardio no se come tus músculos; mal organizado, te puede quitar potencia.",
+      "ideas": [
+        "El cardio no se come tus músculos"
+      ],
+      "datos": [
+        "cardio"
+      ]
+    },
+    {
+      "id": 14,
+      "titulo": "La grasa localizada",
+      "tesis": "Entrenar un músculo no quema la grasa de encima: la grasa se pierde en todo el cuerpo.",
+      "ideas": [
+        "Mil abdominales no queman la grasa de la barriga"
+      ],
+      "datos": [
+        "abdomen"
+      ]
+    },
+    {
+      "id": 15,
+      "titulo": "Pesado o ligero",
+      "tesis": "Para crecer sirve un rango amplio de cargas si llegas cerca del fallo; para la fuerza máxima, hay que tocar pesado.",
+      "ideas": [
+        "Pesado para crecer, ligero para definir. Falso.",
+        "No existen las repeticiones para 'tonificar'"
+      ],
+      "datos": [
+        "carga"
+      ]
+    },
+    {
+      "id": 16,
+      "titulo": "Lo aburrido funciona",
+      "tesis": "El programa que repites durante meses le gana al programa nuevo de cada lunes.",
+      "ideas": [
+        "El ejercicio secreto que te falta es la sentadilla",
+        "Cambiar de rutina cada semana es empezar de cero"
+      ]
+    },
+    {
+      "id": 17,
+      "titulo": "Calentar de verdad",
+      "tesis": "Calentar es ensayar el ejercicio con poco peso, no sudar en la elíptica.",
+      "ideas": [
+        "Cinco minutos de elíptica no son calentar para una sentadilla pesada"
+      ]
+    },
+    {
+      "id": 18,
+      "titulo": "Dormir también es entrenar",
+      "tesis": "El gimnasio da la señal; el músculo se construye recuperando.",
+      "ideas": [
+        "Entrenas una hora y duermes cinco. Adivina cuál pesa más."
+      ]
+    },
+    {
+      "id": 19,
+      "titulo": "Estancado",
+      "tesis": "Muchas veces no es la genética: es fatiga acumulada o un plan que no progresa.",
+      "ideas": [
+        "Tres semanas sin subir nada. No es tu genética."
+      ]
+    },
+    {
+      "id": 20,
+      "titulo": "Mitos del gimnasio",
+      "tesis": "Creencias que se repiten en todos los gimnasios y que no aguantan una pregunta.",
+      "ideas": [
+        "Si no tienes agujetas, no entrenaste bien",
+        "Si dejas de entrenar, el músculo se vuelve grasa",
+        "Las máquinas no sirven, solo peso libre"
+      ]
+    }
+  ]
+}

@@ -1,20 +1,20 @@
-// useClima(): colores del clima en el frame actual, fundidos en cada frontera entre planos de distinto clima.
+// useClima(): colores del clima en el frame actual, fundidos en cada frontera entre escenas de distinto clima.
 import { interpolateColors, useCurrentFrame } from "remotion";
-import { brief, PALETAS, climaDe, type Clima } from "./datos";
+import { datos, PALETAS, climaDe, type Clima } from "./datos";
 
 const CLAVES: (keyof Clima)[] = ["fondo_a", "fondo_b", "tinte", "superficie", "estructura", "acento", "texto", "texto_suave"];
 export type C = Clima & { claridad: number };
 
 export function climaEnFrame(frame: number): C {
   const T = PALETAS.reglas_rotacion.transicion_frames;
-  const ps = brief.planos;
-  let i = ps.findIndex((p) => frame >= p.ini_f && frame < p.fin_f);
-  if (i < 0) i = ps.length - 1;
-  const actual = climaDe(ps[i].clima);
+  const es = datos.escenas;
+  let i = es.findIndex((e) => frame >= e.ini_f && frame < e.fin_f);
+  if (i < 0) i = es.length - 1;
+  const actual = climaDe(es[i].clima);
   let mezcla: { a: Clima; b: Clima; k: number } | null = null;
-  const sig = ps[i + 1];
+  const sig = es[i + 1];
   if (sig && frame >= sig.ini_f - T / 2) mezcla = { a: actual, b: climaDe(sig.clima), k: (frame - (sig.ini_f - T / 2)) / T };
-  else if (i > 0 && frame < ps[i].ini_f + T / 2) mezcla = { a: climaDe(ps[i - 1].clima), b: actual, k: (frame - (ps[i].ini_f - T / 2)) / T };
+  else if (i > 0 && frame < es[i].ini_f + T / 2) mezcla = { a: climaDe(es[i - 1].clima), b: actual, k: (frame - (es[i].ini_f - T / 2)) / T };
   if (!mezcla || mezcla.a === mezcla.b) return { ...actual, claridad: actual.tipo === "claro" ? 1 : 0 };
   const k = Math.min(1, Math.max(0, mezcla.k));
   const out = { ...(k < 0.5 ? mezcla.a : mezcla.b) } as C;
@@ -24,5 +24,5 @@ export function climaEnFrame(frame: number): C {
 }
 
 export const useClima = () => climaEnFrame(useCurrentFrame());
-/** Dentro de una <Sequence> el frame es local: pasa el ini_f del plano. */
-export const useClimaPlano = (p: { ini_f: number }) => climaEnFrame(useCurrentFrame() + p.ini_f);
+/** Dentro de una <Sequence> el frame es local: pasa la escena (su ini_f). */
+export const useClimaEscena = (e: { ini_f: number }) => climaEnFrame(useCurrentFrame() + e.ini_f);
