@@ -34,7 +34,7 @@ Por cada estudio o estadística que diga la voz:
 - La mascota vive lo que dice la voz: comete el error (`error_*`) cuando se habla del error, hace el ejercicio bien cuando se explica cómo, reacciona con gestos y caras.
 - El texto en pantalla complementa o remata lo que se oye; no lo repite (≤5 palabras, como mucho 1 palabra en común con la voz de ese momento).
 - Énfasis: 1–2 palabras por escena que de verdad pegan.
-- Climas: empieza y termina en `hierro`; 1–3 climas más según lo que pasa.
+- Climas: empieza y termina en `negro`; 1–2 climas más según lo que pasa (`azul` solo para una frase clave sin mascota, `papel` para la pausa clara).
 - Efectos de sonido en la palabra que los motiva, no en todas las escenas: el silencio también remata.
 - Tarjeta resumen: lo que hay que hacer, para guardar (título ≤6 palabras + 2–4 líneas ≤7 palabras).
 - Si la composición por defecto no da para un gag o una idea, escribe una **escena a medida** (paso 6).

@@ -134,9 +134,9 @@
     640,
     80
    ],
-   "uso": "Subrayar la palabra clave.",
+   "uso": "Subrayar la palabra clave (con el foco del clima: azul luz sobre negro, azul sobre blanco).",
    "tintable": true,
-   "color_sugerido": "#1FB7DE"
+   "color_sugerido": "#6A8CFF"
   },
   {
    "id": "check",
@@ -192,7 +192,7 @@
     160,
     150
    ],
-   "uso": "Checklist: casilla marcada (check cian).",
+   "uso": "Checklist: casilla marcada (check azul).",
    "tintable": false
   },
   {
@@ -283,7 +283,7 @@
    ],
    "uso": "Brillo de logro (celebrar, récord).",
    "tintable": true,
-   "color_sugerido": "#D4F1F9"
+   "color_sugerido": "#DCE5FF"
   },
   {
    "id": "gotas_sudor",

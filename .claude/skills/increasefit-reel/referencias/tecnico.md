@@ -19,11 +19,11 @@ import { interpolate, useCurrentFrame } from "remotion";
 import { IF, frameDePalabra, type Escena } from "../../marco/datos";
 import type { C } from "../../marco/clima";
 
-const FlechaSube: React.FC<{ e: Escena; c: C }> = ({ e }) => {
+const FlechaSube: React.FC<{ e: Escena; c: C }> = ({ e, c }) => {
   const f = useCurrentFrame();                              // local a la escena
   const golpe = frameDePalabra(31) - e.ini_f;                // la palabra [31] en frame local
   const y = interpolate(f, [golpe, golpe + 12], [1300, 1000], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  return <div style={{ position: "absolute", left: 640, top: y, width: 80, height: 80, background: IF.cian }} />;
+  return <div style={{ position: "absolute", left: 640, top: y, width: 80, height: 80, background: c.foco }} />   // el acento siempre del clima, nunca un azul a mano;
 };
 export default FlechaSube;
 ```

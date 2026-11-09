@@ -10,7 +10,7 @@ Entrenador con humor seco, directo y un poco provocador, que desmonta mitos y er
 - Español latinoamericano neutro, moderno, en segunda persona.
 
 ## Protagonista visual
-La mascota de IncreaseFit: un atleta ilustrado estilo cómic (piel hielo, cinta y muñequeras cian, short grafito), muy expresivo. Comete los errores, los sufre y luego los hace bien: el humor sale de lo que le pasa.
+La mascota de IncreaseFit: un atleta ilustrado estilo cómic (piel hielo, cinta y muñequeras azules, short grafito), muy expresivo. Comete los errores, los sufre y luego los hace bien: el humor sale de lo que le pasa.
 
 ## Identidad visual
-Grafito de base, cian IncreaseFit (#1FB7DE) como acento escaso, anotaciones a mano (flechas, círculos, tachados) como en la pizarra de un entrenador.
+La paleta del feed de Instagram: negro neutro de base, azul IncreaseFit (#2353F1) como acento escaso y fondo de las ideas clave, blanco para las pausas claras; anotaciones a mano (flechas, círculos, tachados) como en la pizarra de un entrenador.

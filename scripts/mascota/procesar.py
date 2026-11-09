@@ -3,7 +3,7 @@
 - Recorta cada figura con su máscara (sin restos de las vecinas), limpia el alfa y deja un margen.
 - Normaliza la escala: 1 personaje de pie = ALTURA_STD px (factor por hoja y, si hace falta, por figura).
 - Alinea las fases (f1, f2) de cada ejercicio en un lienzo común: mismo tamaño y el ancla (pies o barra) en el mismo punto.
-- Calcula anclajes: pies (suela), cabeza (cinta cian), manos (muñequeras cian), y los guarda en coordenadas del sprite.
+- Calcula anclajes: pies (suela), cabeza (cinta azul), manos (muñequeras azules), y los guarda en coordenadas del sprite.
 """
 import json, os, sys
 import numpy as np
@@ -100,18 +100,18 @@ def ancla_banco_der(img):
     return [x_der, int(np.nonzero(cols.any(1))[0].max())]
 
 
-def anclas_cian(img, erguido=True):
-    """Cinta (cabeza) y muñequeras (manos) a partir de las manchas cian.
-    - Muñequera: mancha cian rodeada sobre todo de piel (mano y antebrazo).
+def anclas_cinta(img, erguido=True):
+    """Cinta (cabeza) y muñequeras (manos) a partir de las manchas azules (la cinta era cian hasta noviembre de 2026).
+    - Muñequera: mancha azul rodeada sobre todo de piel (mano y antebrazo).
     - Franja del short: rodeada de tela oscura -> se descarta.
     - Cinta: en sprites erguidos, la mancha más grande del 35 % superior que no sea muñequera."""
     a = np.array(img)
     hue, sat, val = _hsv(a)
     opaco = a[:, :, 3] > 128
-    cian = opaco & (hue > 182) & (hue < 206) & (sat > 0.45) & (val > 0.45)
-    cian = ndimage.binary_opening(cian, iterations=1)
-    piel = opaco & (val > 0.65) & (sat < 0.25) & ~cian
-    lab, n = ndimage.label(cian)
+    azul = opaco & (hue > 214) & (hue < 238) & (sat > 0.45) & (val > 0.45)   # cinta y muñequeras azul IncreaseFit (#2353F1)
+    azul = ndimage.binary_opening(azul, iterations=1)
+    piel = opaco & (val > 0.65) & (sat < 0.25) & ~azul
+    lab, n = ndimage.label(azul)
     if n == 0:
         return None, []
     ys = np.nonzero(opaco.any(1))[0]
@@ -177,7 +177,7 @@ def main(cfg_path, ajustes_path, salida):
             s["img"] = recortar_alfa(s["img"])
         img = s["img"]
         s["img"].save(f"{salida}/sprites/{n}.png", optimize=True)
-        cab, manos = anclas_cian(img, erguido=n not in aj.get("tumbados", []))
+        cab, manos = anclas_cinta(img, erguido=n not in aj.get("tumbados", []))
         s["anclas"] = {"pies": ancla_pies(img), "cabeza": cab, "manos": manos}
         s["tam"] = list(img.size)
         del s["img"]

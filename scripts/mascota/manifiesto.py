@@ -123,7 +123,7 @@ json.dump(manifest, open(f"{base}/manifest.json", "w"), ensure_ascii=False, inde
 
 # --- Paleta medida en los sprites (mediana por zona)
 def tonos():
-    piel, cian, tinta = [], [], []
+    piel, azul, tinta = [], [], []
     for s in ["gesto_de_pie", "gesto_brazos_cruzados", "gesto_celebrar"]:
         a = np.array(Image.open(f"{base}/sprites/{s}.png").convert("RGBA")).astype(int)
         op = a[:, :, 3] > 200
@@ -131,10 +131,10 @@ def tonos():
         mx, mn = a[:, :, :3].max(2), a[:, :, :3].min(2)
         sat = (mx - mn) / np.maximum(mx, 1)
         piel.append(a[op & (mx > 190) & (sat < 0.15) & (b >= r)][:, :3])
-        cian.append(a[op & (b > 150) & (r < 90) & (sat > 0.6)][:, :3])
+        azul.append(a[op & (b > 150) & (r < 90) & (sat > 0.6)][:, :3])
         tinta.append(a[op & (mx < 50)][:, :3])
     hexa = lambda arr: "#%02X%02X%02X" % tuple(int(v) for v in np.median(np.concatenate(arr), 0))
-    return {"piel_hielo": hexa(piel), "cian_cinta": hexa(cian), "tinta_contorno": hexa(tinta)}
+    return {"piel_hielo": hexa(piel), "azul_cinta": hexa(azul), "tinta_contorno": hexa(tinta)}
 
 personaje = {
     "nombre": "por definir",
@@ -142,8 +142,8 @@ personaje = {
     "descripcion": ("atleta masculino musculoso pero creíble (no culturista exagerado), proporciones de 7 cabezas, estilo cómic "
                     "semi-realista con sombreado suave en dos tonos. Piel estilizada en color hielo pálido (no un tono de piel humano "
                     "realista) con contorno grueso de tinta grafito hecho con trazo de pincel seco. Cara expresiva: ojos grandes con "
-                    "pupila marcada, cejas muy expresivas, boca capaz de sonrisa de lado. Cinta cian en la frente con dos colas cortas "
-                    "que caen atrás, muñequeras cian, pantalón corto grafito con una franja cian lateral, torso desnudo con músculos "
+                    "pupila marcada, cejas muy expresivas, boca capaz de sonrisa de lado. Cinta azul eléctrico (#2353F1) en la frente con dos colas cortas "
+                    "que caen atrás, muñequeras azules, pantalón corto grafito con una franja azul lateral, torso desnudo con músculos "
                     "bien definidos pero limpios, zapatillas grafito."),
     "paleta_medida": tonos(),
     "referencias": {"concepto": "referencias/concepto_elegido.png", "modelo": "referencias/hoja_modelo.png",

@@ -1,5 +1,6 @@
 // Subtítulos grandes (siempre estilo IncreaseFit): 1-3 palabras a la vez desde datos.subtitulos (ortografía del guion).
-// Las palabras marcadas como énfasis en la escaleta salen más grandes y se quedan en cian.
+// Las palabras marcadas como énfasis en la escaleta salen más grandes y se quedan en azul.
+// La cápsula es siempre oscura, así que el azul va en su versión clara (IF.azulLuz): el #2353F1 no se lee sobre negro.
 import React, { useMemo } from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { datos, FUENTE, IF } from "./datos";
@@ -42,8 +43,8 @@ export const Subtitulos: React.FC = () => {
           const escala = actual ? 1 + (fuerte ? 0.26 : 0.14) * pop : fuerte ? 1.1 : 1;
           return (
             <span key={k} style={{ fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: 64, textTransform: "uppercase", lineHeight: 1.1,
-              color: actual || (fuerte && pasada) ? IF.cian : pasada ? IF.blanco : IF.subFutura, display: "inline-block", margin: `0 ${Math.round(Math.max(0, escala - 1) * w.length * 20)}px`,
-              transform: `scale(${escala}) rotate(${fuerte && actual ? -2 : 0}deg)`, textShadow: actual ? `0 0 24px ${IF.cian}99` : "none" }}>{w}</span>
+              color: actual || (fuerte && pasada) ? IF.azulLuz : pasada ? IF.blanco : IF.subFutura, display: "inline-block", margin: `0 ${Math.round(Math.max(0, escala - 1) * w.length * 20)}px`,
+              transform: `scale(${escala}) rotate(${fuerte && actual ? -2 : 0}deg)`, textShadow: actual ? `0 0 24px ${IF.azul}CC` : "none" }}>{w}</span>
           );
         })}
       </div>

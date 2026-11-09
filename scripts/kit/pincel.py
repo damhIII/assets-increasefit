@@ -1,4 +1,4 @@
-"""Trazo de pincel seco (como la flecha del logo) para cortinillas: degradado hielo -> cian, bordes irregulares y vetas."""
+"""Trazo de pincel seco (como la flecha del logo) para cortinillas: degradado hielo -> azul, bordes irregulares y vetas."""
 import json, math, random, sys
 
 out = sys.argv[1]
@@ -37,7 +37,7 @@ for k in range(42):
 
 svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">
 <defs>
-<linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D4F1F9"/><stop offset="0.55" stop-color="#5CCAE8"/><stop offset="1" stop-color="#1FB7DE"/></linearGradient>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#DCE5FF"/><stop offset="0.55" stop-color="#6A8CFF"/><stop offset="1" stop-color="#2353F1"/></linearGradient>
 <mask id="m"><rect width="{W}" height="{H}" fill="white"/>{"".join(vetas)}</mask>
 </defs>
 <path d="{d}" fill="url(#g)" mask="url(#m)"/>

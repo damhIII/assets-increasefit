@@ -2,10 +2,12 @@
 """Tiñe SVGs de ui/ (que traen los colores IncreaseFit fijos) con los colores de un clima.
 
 Uso:
-  python3 scripts/tenir_svg.py --clima pizarra ui/tarjeta_serie.svg ui/anillo_descanso.svg --out <proyecto>/public/climas
-  → <proyecto>/public/climas/pizarra/ui/tarjeta_serie.svg ...
+  python3 scripts/tenir_svg.py --clima papel ui/tarjeta_serie.svg ui/anillo_descanso.svg --out <proyecto>/public/climas
+  → <proyecto>/public/climas/papel/ui/tarjeta_serie.svg ...
 
-El cian IncreaseFit (#1FB7DE), el rojo de alerta, el verde de éxito y el blanco NO se tocan: son constantes de marca.
+Los SVG de ui/ vienen con los colores del clima base (negro); en él se usan tal cual.
+El azul luz (#6A8CFF) es el comodín del foco: pasa a azul sobre blanco (papel) y a blanco sobre azul (azul).
+El rojo de alerta, el verde de éxito y el blanco NO se tocan: son constantes de marca.
 """
 import argparse, json, re
 from pathlib import Path
@@ -13,13 +15,15 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 
 # color IncreaseFit en el SVG original → rol del clima que lo sustituye
+# (valores del clima base "negro": si cambias "negro" en paletas.json, cambia también estas claves y los SVG de ui/)
 MAPA = {
-    "#8FA6B5": "estructura",   # bordes, líneas, VS
-    "#2A6F87": "acento",
-    "#232D38": "superficie",   # tarjetas, anillos
-    "#171E26": "fondo_a",
-    "#0A0E12": "fondo_b",
-    "#A3B4C0": "texto_suave",
+    "#6A8CFF": "foco",         # el acento IncreaseFit: VS, anillo, tarjeta activa
+    "#A8A8A8": "estructura",   # bordes, líneas
+    "#4C74FF": "acento",
+    "#222222": "superficie",   # tarjetas, anillos
+    "#161616": "fondo_a",
+    "#050505": "fondo_b",
+    "#A6A6A6": "texto_suave",
 }
 
 

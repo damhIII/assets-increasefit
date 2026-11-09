@@ -1,7 +1,7 @@
 // Composición: Fondo → una escena por <Sequence> (EXACTAMENTE ini_f–fin_f) → cortinillas → tarjeta resumen → marco IncreaseFit → sonido.
 import React from "react";
 import { AbsoluteFill, interpolate, Sequence, useCurrentFrame } from "remotion";
-import { datos } from "./marco/datos";
+import { datos, IF } from "./marco/datos";
 import { useFuentes } from "./marco/Fuentes";
 import { useClima } from "./marco/clima";
 import { Fondo } from "./marco/Fondo";
@@ -25,7 +25,7 @@ export const Video: React.FC = () => {
   const tr = datos.tarjeta_resumen;
   const conResumen = tr && f >= tr.ini_f;
   return (
-    <AbsoluteFill style={{ background: "#0A0E12" }}>
+    <AbsoluteFill style={{ background: IF.grafito2 }}>
       <Fondo />
       <AbsoluteFill style={{ opacity: tr ? interpolate(f, [tr.ini_f, tr.ini_f + 10], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 1 }}>
         {datos.escenas.map((e, i) => (

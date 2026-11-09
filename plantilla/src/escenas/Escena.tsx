@@ -76,7 +76,7 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
     switch (o.tipo) {
       case "etiqueta": return <Etiqueta key={i} texto={o.texto ?? ""} a={ancla(col, o.apunta ?? "centro")} desde={t} c={c} />;
       case "tachado": return <CajaTachada key={i} texto={o.texto ?? ""} x={libre === "izq" ? 60 : 540} y={Math.max(580, cabeza[1] - 40)} desde={t} />;
-      case "circulo": return <Circulo key={i} a={ancla(col, o.apunta ?? "centro")} desde={t} />;
+      case "circulo": return <Circulo key={i} a={ancla(col, o.apunta ?? "centro")} desde={t} color={c.foco} />;
       case "check": case "cruz": return <Marca key={i} tipo={o.tipo} x={Math.min(990, col.x + col.w * col.k - 30)} y={Math.max(620, cabeza[1] - 60)} desde={t} />;
       case "burbuja_pensamiento": return <BurbujaPensamiento key={i} sprite={o.sprite ?? "gesto_celebrar"} x={libre === "izq" ? Math.max(40, cabeza[0] - 520) : Math.min(580, cabeza[0] + 60)} y={Math.max(560, cabeza[1] - 330)} desde={t} />;
       case "burbuja_dialogo": return <BurbujaDialogo key={i} texto={o.texto ?? ""} espejo={libre === "izq"} x={libre === "izq" ? Math.max(30, cabeza[0] - 520) : Math.min(570, cabeza[0] + 40)} y={Math.max(560, cabeza[1] - 330)} desde={t} />;

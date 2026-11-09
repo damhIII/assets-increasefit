@@ -1,4 +1,5 @@
 // Capa 1: degradado del clima + brillo de tinte que deriva + textura en movimiento lento + viñeta.
+// El clima azul lleva la viñeta muy suave: las tarjetas azules del feed son planas.
 import React from "react";
 import { AbsoluteFill, Img, staticFile, useCurrentFrame } from "remotion";
 import { useClima } from "./clima";
@@ -15,7 +16,7 @@ export const Fondo: React.FC = () => {
       <AbsoluteFill style={{ opacity: c.claridad > 0.5 ? 0.9 : 0.1, transform: `translateY(${(f * 0.3) % 40}px)` }}>
         <Img src={staticFile(textura)} style={{ width: 1080, height: 1960, objectFit: "cover" }} />
       </AbsoluteFill>
-      <AbsoluteFill style={{ opacity: 0.85 - c.claridad * 0.6 }}>
+      <AbsoluteFill style={{ opacity: 0.85 - c.claridad * 0.6 - c.azulidad * 0.6 }}>
         <Img src={staticFile("textures/vignette.svg")} style={{ width: 1080, height: 1920 }} />
       </AbsoluteFill>
     </AbsoluteFill>

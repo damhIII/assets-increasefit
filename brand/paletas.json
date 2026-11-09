@@ -1,111 +1,82 @@
 {
   "_nota": "Fuente de verdad: Drive (IncreaseFit/assets/brand/paletas.json), se sincroniza al repo. Valida con: python3 scripts/validar_paletas.py",
   "constantes_increasefit": {
-    "cian": "#1FB7DE",
-    "hielo": "#D4F1F9",
-    "grafito": "#171E26",
-    "negro": "#000000",
+    "azul": "#2353F1",
+    "azul_luz": "#6A8CFF",
+    "azul_hondo": "#1D45CF",
+    "hielo": "#DCE5FF",
+    "grafito": "#141414",
+    "negro": "#050505",
     "alerta": "#FF5A4E",
     "exito": "#3DD68C",
     "texto": "#FFFFFF",
-    "regla": "Barra de progreso, header, cápsula de subtítulos, línea 2 del titular, foco de la escena y bloque CTA son SIEMPRE IncreaseFit, sea cual sea el clima."
+    "regla": "Barra de progreso, header, cápsula de subtítulos, línea 2 del titular, foco de la escena y bloque CTA son SIEMPRE IncreaseFit. El color del foco lo da cada clima en `foco`: azul luz sobre negro, azul sobre blanco y blanco sobre azul. El azul #2353F1 nunca va como texto sobre negro (contraste 3,4:1): ahí se usa azul luz."
   },
   "climas": {
-    "hierro": {
-      "nombre": "Hierro (base IncreaseFit)",
+    "negro": {
+      "nombre": "Negro (base IncreaseFit: el gym de noche, como el feed)",
       "tipo": "oscuro",
-      "fondo_a": "#171E26",
-      "fondo_b": "#0A0E12",
-      "tinte": "#0F4C61",
-      "superficie": "#232D38",
-      "estructura": "#8FA6B5",
-      "acento": "#2A6F87",
+      "fondo_a": "#161616",
+      "fondo_b": "#050505",
+      "tinte": "#151A2A",
+      "superficie": "#222222",
+      "estructura": "#A8A8A8",
+      "acento": "#4C74FF",
+      "foco": "#6A8CFF",
       "texto": "#FFFFFF",
-      "texto_suave": "#A3B4C0",
-      "cuerpo_rep": "#E9F7FB",
-      "cuerpo_rep_lejano": "#7D93A3",
+      "texto_suave": "#A6A6A6",
+      "cuerpo_rep": "#F2F4F8",
+      "cuerpo_rep_lejano": "#8A8A8A",
       "textura": "textures/suelo_goma.svg",
-      "bloques": ["gancho", "error", "por_que", "metodo", "resultado", "cta"]
+      "bloques": [
+        "gancho",
+        "error",
+        "por_que",
+        "metodo",
+        "resultado",
+        "cta"
+      ]
     },
-    "esfuerzo": {
-      "nombre": "Esfuerzo (el error que quema, la serie que duele)",
-      "tipo": "oscuro",
-      "fondo_a": "#1F100C",
-      "fondo_b": "#0D0604",
-      "tinte": "#7A2614",
-      "superficie": "#2E1A15",
-      "estructura": "#F0A58A",
-      "acento": "#D9532F",
+    "azul": {
+      "nombre": "Azul (la tarjeta azul del feed: la idea clave, solo texto)",
+      "tipo": "color",
+      "fondo_a": "#2353F1",
+      "fondo_b": "#1D45CF",
+      "tinte": "#4C74FF",
+      "superficie": "#1A3CB8",
+      "estructura": "#DCE5FF",
+      "acento": "#FFFFFF",
+      "foco": "#FFFFFF",
       "texto": "#FFFFFF",
-      "texto_suave": "#D1AB9E",
-      "cuerpo_rep": "#FFF1EB",
-      "cuerpo_rep_lejano": "#A98273",
+      "texto_suave": "#DCE5FF",
+      "cuerpo_rep": "#FFFFFF",
+      "cuerpo_rep_lejano": "#B9C9FF",
       "textura": "textures/noise_grain.svg",
-      "bloques": ["error"]
+      "bloques": [
+        "gancho",
+        "por_que",
+        "resultado"
+      ]
     },
-    "noche": {
-      "nombre": "Noche (scroll a las 2 am, el gym vacío)",
-      "tipo": "oscuro",
-      "fondo_a": "#14112A",
-      "fondo_b": "#08071A",
-      "tinte": "#3D2FA0",
-      "superficie": "#221E42",
-      "estructura": "#B3ACF7",
-      "acento": "#7C6CF0",
-      "texto": "#FFFFFF",
-      "texto_suave": "#ADA8D6",
-      "cuerpo_rep": "#F1EFFF",
-      "cuerpo_rep_lejano": "#8A84B8",
-      "textura": "textures/noise_grain.svg",
-      "bloques": ["error", "metodo"]
-    },
-    "pizarra": {
-      "nombre": "Pizarra (la explicación con tiza)",
-      "tipo": "oscuro",
-      "fondo_a": "#14221C",
-      "fondo_b": "#08120D",
-      "tinte": "#245C46",
-      "superficie": "#1E3329",
-      "estructura": "#CFE6D8",
-      "acento": "#4FAE86",
-      "texto": "#FFFFFF",
-      "texto_suave": "#A9C6B6",
-      "cuerpo_rep": "#F2FBF6",
-      "cuerpo_rep_lejano": "#86A797",
-      "textura": "textures/tiza.svg",
-      "bloques": ["por_que", "metodo"]
-    },
-    "libreta": {
-      "nombre": "Libreta (pausa clara: el cuaderno de entreno, la ciencia)",
+    "papel": {
+      "nombre": "Papel (la tarjeta blanca del feed: pausa clara, la ciencia)",
       "tipo": "claro",
-      "fondo_a": "#F4F2EC",
-      "fondo_b": "#E6E2D8",
-      "tinte": "#D8D2C3",
-      "superficie": "#FFFFFF",
-      "estructura": "#2E3943",
-      "acento": "#C2492E",
-      "texto": "#11171D",
-      "texto_suave": "#525E68",
-      "cuerpo_rep": "#1C252E",
-      "cuerpo_rep_lejano": "#6E7882",
+      "fondo_a": "#FFFFFF",
+      "fondo_b": "#F1F3F6",
+      "tinte": "#E3EAFB",
+      "superficie": "#F4F6FA",
+      "estructura": "#2B2B2B",
+      "acento": "#3A3F47",
+      "foco": "#2353F1",
+      "texto": "#111111",
+      "texto_suave": "#555B66",
+      "cuerpo_rep": "#1A1A1A",
+      "cuerpo_rep_lejano": "#70757E",
       "textura": "textures/cuadricula.svg",
-      "bloques": ["por_que"]
-    },
-    "progreso": {
-      "nombre": "Progreso (los kilos que suben)",
-      "tipo": "oscuro",
-      "fondo_a": "#0B1C13",
-      "fondo_b": "#03100A",
-      "tinte": "#1D5C3B",
-      "superficie": "#14291F",
-      "estructura": "#93E9B5",
-      "acento": "#2F9E64",
-      "texto": "#FFFFFF",
-      "texto_suave": "#9FC7B0",
-      "cuerpo_rep": "#EEFCF4",
-      "cuerpo_rep_lejano": "#80A792",
-      "textura": "textures/suelo_goma.svg",
-      "bloques": ["resultado"]
+      "bloques": [
+        "por_que",
+        "metodo"
+      ]
     },
     "acero": {
       "nombre": "Acero (orden, método, frío)",
@@ -121,14 +92,25 @@
       "cuerpo_rep": "#F4F6F8",
       "cuerpo_rep_lejano": "#868C94",
       "textura": "textures/noise_grain.svg",
-      "bloques": ["metodo", "resultado"]
+      "bloques": [
+        "metodo",
+        "resultado"
+      ],
+      "foco": "#6A8CFF"
     }
   },
   "reglas_rotacion": {
-    "clima_base": "hierro",
-    "fijos_base": ["gancho", "cta"],
+    "clima_base": "negro",
+    "fijos_base": [
+      "gancho",
+      "cta"
+    ],
     "max_climas_distintos_de_base": 2,
-    "bloques_con_clima": [1, 2, 2],
+    "bloques_con_clima": [
+      1,
+      2,
+      2
+    ],
     "transicion_frames": 12,
     "evitar_repetir_ultimas": 3
   }

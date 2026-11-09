@@ -55,8 +55,9 @@ export type DatosVideo = {
   progresion: Semana[];
 };
 export type Clima = {
-  nombre: string; tipo: "oscuro" | "claro";
+  nombre: string; tipo: "oscuro" | "claro" | "color";   // color = clima azul (la tarjeta azul del feed)
   fondo_a: string; fondo_b: string; tinte: string; superficie: string; estructura: string; acento: string;
+  foco: string;              // acento IncreaseFit en este clima: azul luz sobre negro, azul sobre blanco, blanco sobre azul
   texto: string; texto_suave: string; textura: string;
 };
 export type SpriteInfo = {
@@ -74,10 +75,13 @@ export const EJERCICIOS = MASCOTA.ejercicios;
 export const ALTURA_PERSONAJE = MASCOTA.altura_personaje_px;
 export const SONIDO = sonidoJson as unknown as { sfx: { id: string; archivo: string; volumen_sugerido: number }[]; musica: { id: string; archivo: string; volumen_bajo_voz: number; volumen_sin_voz: number }[] };
 
-// Constantes de marca: NO cambian con el clima
+// Constantes de marca: NO cambian con el clima. Paleta del feed de Instagram.
+// azul (#2353F1) es para RELLENOS y para texto sobre blanco; sobre negro no se lee como texto (3,4:1): ahí va azulLuz.
+// El acento de cada escena es el `foco` del clima (useClima().foco), no una constante.
 export const IF = {
-  cian: "#1FB7DE", hielo: "#D4F1F9", grafito: "#171E26", grafito2: "#0A0E12", negro: "#000000", blanco: "#FFFFFF",
-  alerta: "#FF5A4E", exito: "#3DD68C", subFutura: "#5E7180", capsula: "rgba(10,14,18,0.72)",
+  azul: "#2353F1", azulLuz: "#6A8CFF", azulHondo: "#1D45CF", hielo: "#DCE5FF",
+  grafito: "#141414", grafito2: "#050505", tinta: "#111111", negro: "#000000", blanco: "#FFFFFF",
+  alerta: "#FF5A4E", exito: "#3DD68C", subFutura: "#6B6B6B", capsula: "rgba(8,8,8,0.72)",
 };
 const stack = (rol: string, def: string) => datos.fuentes.find((f) => f.rol === rol)?.stack ?? def;
 export const FUENTE = {

@@ -15,7 +15,7 @@ Rol: director y motion designer de explainers de fitness. Ritmo de Reel, cortes 
 - Nada vital por encima de Y=200 ni por debajo de Y=1580 (la interfaz de Instagram tapa esas franjas). Deja libre también la franja derecha a partir de X≈960 en Y>1300 (botones).
 
 ## Texto en pantalla (`pantalla.estilo`)
-- `titular`: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 cian (eco del logo). Sin "/" va una línea en 800.
+- `titular`: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 en el foco del clima (eco del "FIT" del logo). Sin "/" va una línea en 800.
 - `nota`: a mano en Kalam, ligeramente girada.
 - `capitulo`: "RÓTULO: frase" → tarjeta a pantalla completa con el rótulo grande translúcido; esa escena no muestra a la mascota.
 - `ninguno`. El texto complementa a la voz, no la repite. Si dos escenas seguidas llevan el mismo texto y estilo, se queda sin volver a entrar.
@@ -29,7 +29,7 @@ Lo usa la composición por defecto y lo puedes usar en tus escenas a medida: `Et
 - Una escena de más de ~4 s necesita algo que se mueva dentro (anotaciones escalonadas, un inserto, un ejercicio en bucle).
 
 ## Subtítulos
-1-3 palabras a la vez desde `datos.subtitulos` (ortografía del guion); Open Sans 800, 64 px, mayúsculas. Palabra actual cian con pop; las de `enfasis` más grandes y se quedan en cian. Cápsula oscura con blur: no la quites.
+1-3 palabras a la vez desde `datos.subtitulos` (ortografía del guion); Open Sans 800, 64 px, mayúsculas. Palabra actual en azul luz con pop; las de `enfasis` más grandes y se quedan en azul luz. Cápsula oscura con blur: no la quites.
 
 ## Cierre
 No hay CTA. La última escena es el remate; al acabar la voz entra la tarjeta resumen (título + 2-4 líneas con check, logo) con la mascota haciendo el pulgar, y se queda la cola para poder pausar y guardar.

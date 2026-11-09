@@ -1,5 +1,5 @@
 // Texto en pantalla de cada escena (Y≈300–520). Complementa a la voz, no la repite.
-//   titular: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 cian (eco del logo). Sin "/": una línea 800.
+//   titular: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 en el foco del clima (eco del "FIT" del logo). Sin "/": una línea 800.
 //   nota:    a mano (Kalam), ligeramente girada, como una anotación.
 //   capitulo y ninguno: no se dibuja aquí (capitulo es una tarjeta de la escena).
 import React from "react";
@@ -32,13 +32,13 @@ export const TextoPantalla: React.FC = () => {
     return { transform: `translateY(${(1 - e) * 60 - salida * 80}px)`, opacity: Math.min(e, 1 - salida) };
   };
   const claro = c.claridad > 0.5;
-  const blanco = interpolateColors(c.claridad, [0, 1], [IF.blanco, "#11171D"]);
+  const blanco = interpolateColors(c.claridad, [0, 1], [IF.blanco, IF.tinta]);
 
   if (estilo === "nota") {
     const s = ajustar(texto, 84, 0.5);
     return (
       <div style={{ position: "absolute", top: 330, left: 80, width: 920, textAlign: "center", ...entra(0) }}>
-        <span style={{ display: "inline-block", fontFamily: FUENTE.mano, fontWeight: 700, fontSize: s, color: claro ? "#11171D" : IF.hielo, transform: "rotate(-3deg)", lineHeight: 1.1 }}>{texto}</span>
+        <span style={{ display: "inline-block", fontFamily: FUENTE.mano, fontWeight: 700, fontSize: s, color: claro ? IF.tinta : IF.hielo, transform: "rotate(-3deg)", lineHeight: 1.1 }}>{texto}</span>
       </div>
     );
   }
@@ -49,8 +49,8 @@ export const TextoPantalla: React.FC = () => {
     <div style={{ position: "absolute", top: 300, left: 80, width: 920, fontFamily: FUENTE.titulos, lineHeight: 1.02 }}>
       {l1 ? <div style={{ fontWeight: 400, fontSize: s1, color: blanco, letterSpacing: "-0.01em", ...entra(0) }}>{l1}</div> : null}
       <div style={{ position: "relative", display: "inline-block", marginTop: 6, ...entra(l1 ? 1 : 0) }}>
-        {claro ? <div style={{ position: "absolute", left: -10, right: -10, top: "12%", bottom: "6%", background: IF.cian, transformOrigin: "left center", transform: `scaleX(${marcador})` }} /> : null}
-        <span style={{ position: "relative", fontWeight: 800, fontSize: s2, color: claro ? "#11171D" : l1 ? IF.cian : IF.blanco, letterSpacing: "-0.015em" }}>{l2}</span>
+        {claro ? <div style={{ position: "absolute", left: -10, right: -10, top: "12%", bottom: "6%", background: c.foco, transformOrigin: "left center", transform: `scaleX(${marcador})` }} /> : null}
+        <span style={{ position: "relative", fontWeight: 800, fontSize: s2, color: claro ? IF.blanco : l1 ? c.foco : IF.blanco, letterSpacing: "-0.015em" }}>{l2}</span>
       </div>
     </div>
   );

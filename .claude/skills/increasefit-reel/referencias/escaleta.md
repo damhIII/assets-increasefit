@@ -18,9 +18,9 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
       "desde": 0,                       // índice de palabra donde empieza; la primera escena SIEMPRE 0; estrictamente creciente
       "desfase_f": -3,                  // opcional: adelanta (−) o retrasa (+) el corte unos frames respecto a esa palabra
       "transicion": "corte",            // corte (seco) | pincel (cortinilla de pincel + whoosh al entrar)
-      "clima": "hierro",                // brand/paletas.json → climas (por defecto hierro)
+      "clima": "negro",                 // brand/paletas.json → climas: negro (base), azul, papel, acero
       "pantalla": { "texto": "6 meses / mismos kilos", "estilo": "titular" },   // titular | nota | capitulo | ninguno
-      "enfasis": [6],                   // índices de palabra: subtítulo grande en cian + punch-in de cámara en la primera
+      "enfasis": [6],                   // índices de palabra: subtítulo grande en azul + punch-in de cámara en la primera
       "mascota": { "sprite": "ejercicio:sentadilla", "anim": "pop", "encuadre": "general", "posicion": "centro", "espejo": false },
       "dividida": null,                 // { "no": "<sprite así no>", "si": "<sprite así sí>" } → pantalla dividida (sustituye a mascota)
       "inserto": { "cara": "cara_esceptico", "en": 13 },     // cara_* en un círculo (reacción)
@@ -47,7 +47,7 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 |---|---|---|
 | etiqueta | texto (≤3 palabras), apunta | a mano con flecha hasta cabeza / manos / pies / centro |
 | tachado | texto (≤4 palabras) | caja blanca que se tacha en rojo |
-| circulo | apunta | rotulador cian alrededor de la zona |
+| circulo | apunta | rotulador en el foco del clima alrededor de la zona |
 | check / cruz | – | marca verde / roja junto a la cabeza |
 | burbuja_pensamiento | sprite | nube con un sprite dentro |
 | burbuja_dialogo | texto (≤6 palabras) | lo que dice la mascota (no repite la voz) |

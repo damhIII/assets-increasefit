@@ -1,6 +1,6 @@
 # La mascota
 
-Atleta ilustrado estilo cómic (piel hielo, contorno de tinta con trazo de pincel, cinta y muñequeras cian, short grafito), muy expresivo. Es el protagonista de todos los videos: comete los errores, los sufre y luego los hace bien. Catálogo completo en `mascota/manifest.json` y vista previa en `mascota/contactos.jpg`.
+Atleta ilustrado estilo cómic (piel hielo, contorno de tinta con trazo de pincel, cinta y muñequeras azules, short grafito), muy expresivo. Es el protagonista de todos los videos: comete los errores, los sufre y luego los hace bien. Catálogo completo en `mascota/manifest.json` y vista previa en `mascota/contactos.jpg`.
 
 ## Sprites (PNG con fondo transparente, `public/mascota/sprites/<id>.png`)
 | Categoría | Ids | Uso |

@@ -9,5 +9,5 @@ Contenido editorial, mascota, kit gráfico, sonido y plantilla Remotion de los R
 - **plantilla/**: proyecto Remotion · **scripts/**: alinear, sincronizar, validar, preparar y regenerar assets.
 - **icons/**: Lucide con `stroke=currentColor`: colorear con máscara CSS (`mask-image`), no con `<Img>`.
 - **ui/**: sellos MITO/REALIDAD, VS, anillo de descanso, tarjeta de serie (teñir con `scripts/tenir_svg.py` en otros climas).
-- **textures/**: grano, suelo de goma, tiza, cuadrícula, viñeta, brillo cian (opacidad baja).
+- **textures/**: grano, suelo de goma, tiza, cuadrícula, viñeta, brillo azul `glow_azul.svg` (opacidad baja).
 - **fonts/**: `fonts/css/*.css` con los woff2 incrustados en base64 · **brand/**: `paletas.json` (climas) y `fuentes.json`.

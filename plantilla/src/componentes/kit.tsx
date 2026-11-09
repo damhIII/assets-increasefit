@@ -38,7 +38,7 @@ export const Etiqueta: React.FC<{ texto: string; a: [number, number]; desde: num
   const p = interpolate(f, [desde + 4, desde + 16], [0, 1], clamp);
   const ang = Math.atan2(a[1] - ctrl[1], a[0] - ctrl[0]);
   const punta = [a[0] - 34 * Math.cos(ang - 0.5), a[1] - 34 * Math.sin(ang - 0.5), a[0] - 34 * Math.cos(ang + 0.5), a[1] - 34 * Math.sin(ang + 0.5)];
-  const color = c.claridad > 0.5 ? "#11171D" : IF.blanco;
+  const color = c.claridad > 0.5 ? IF.tinta : IF.blanco;
   return (
     <>
       <svg width={1080} height={1920} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
@@ -70,7 +70,7 @@ export const CajaTachada: React.FC<{ texto: string; x: number; y: number; desde:
 };
 
 /** Círculo de rotulador que se dibuja alrededor de un punto. */
-export const Circulo: React.FC<{ a: [number, number]; desde: number; r?: number; color?: string }> = ({ a, desde, r = 130, color = IF.cian }) => {
+export const Circulo: React.FC<{ a: [number, number]; desde: number; r?: number; color?: string }> = ({ a, desde, r = 130, color = IF.azulLuz }) => {
   const f = useCurrentFrame();
   const p = interpolate(f, [desde, desde + 10], [0, 1], clamp);
   const w = r * 2.3, h = r * 1.5;
@@ -144,7 +144,7 @@ export const Dato: React.FC<{ texto: string; detalle?: string; fuente?: string; 
   const tam = Math.min(190, Math.floor(ancho / Math.max(1, texto.length * 0.62)));
   return (
     <div style={{ position: "absolute", left: x, top: y, width: ancho, transform: `translateY(${(1 - e) * 60}px)`, opacity: Math.min(1, e) }}>
-      <div style={{ fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: tam, color: IF.cian, lineHeight: 1, letterSpacing: "-0.03em" }}>{mostrado}</div>
+      <div style={{ fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: tam, color: c.foco, lineHeight: 1, letterSpacing: "-0.03em" }}>{mostrado}</div>
       {detalle ? <div style={{ marginTop: 14, fontFamily: FUENTE.titulos, fontWeight: 700, fontSize: 40, color: c.texto, lineHeight: 1.2 }}>{detalle}</div> : null}
       {fuente ? <div style={{ marginTop: 16, fontFamily: FUENTE.mono, fontSize: 24, color: c.texto_suave, letterSpacing: "0.04em" }}>{fuente}</div> : null}
     </div>
@@ -175,7 +175,7 @@ export const Lista: React.FC<{ items: string[]; frames: number[]; c: C; x?: numb
 export const Efecto: React.FC<{ tipo: "lineas_velocidad" | "impacto" | "sudor" | "destello" | "enfoque" | "rec"; a: [number, number]; desde: number; c: C }> = ({ tipo, a, desde, c }) => {
   const f = useCurrentFrame();
   const e = useEntrada(desde, { damping: 9, stiffness: 220 });
-  const col = c.claridad > 0.5 ? "#11171D" : IF.blanco;
+  const col = c.claridad > 0.5 ? IF.tinta : IF.blanco;
   if (tipo === "enfoque") return <div style={{ position: "absolute", inset: 0, opacity: 0.3 * Math.min(1, e), transform: `scale(${1.05 + 0.02 * Math.sin(f / 3)})` }}><Tinta src="kit/efectos/lineas_enfoque.svg" color={col} w={1080} h={1920} /></div>;
   if (tipo === "rec") {
     return (
@@ -203,7 +203,7 @@ export const Capitulo: React.FC<{ texto: string; c: C }> = ({ texto, c }) => {
         color: c.texto, opacity: 0.13, letterSpacing: "0.02em", textTransform: "uppercase", transform: `translateX(${-f * 0.8}px)` }}>{rotulo}</div>
       <div style={{ position: "absolute", left: 60, right: 60, top: 300, textAlign: "center", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: Math.min(80, Math.floor(1500 / Math.max(10, frase.length || rotulo.length))),
         color: c.texto, lineHeight: 1.08 }}>{frase || rotulo}</div>
-      <div style={{ position: "absolute", left: 60, right: 60, top: 620, display: "flex", justifyContent: "center", fontFamily: FUENTE.mono, fontWeight: 700, fontSize: 30, color: IF.cian, letterSpacing: "0.3em", textTransform: "uppercase" }}>{frase ? rotulo : ""}</div>
+      <div style={{ position: "absolute", left: 60, right: 60, top: 620, display: "flex", justifyContent: "center", fontFamily: FUENTE.mono, fontWeight: 700, fontSize: 30, color: c.foco, letterSpacing: "0.3em", textTransform: "uppercase" }}>{frase ? rotulo : ""}</div>
     </div>
   );
 };
@@ -217,7 +217,7 @@ export const Libreta: React.FC<{ c: C; titulo: string; frames: number[]; filas?:
   return (
     <div style={{ position: "absolute", left: x, top: y, width: ancho, borderRadius: 22, background: c.superficie, border: `2px solid ${c.estructura}44`, padding: "22px 26px", boxSizing: "border-box",
       transform: `translateY(${(1 - e) * 60}px)`, opacity: Math.min(1, e), fontFamily: FUENTE.mono }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 12, color: c.texto_suave, fontSize: 24, letterSpacing: "0.12em", marginBottom: 14 }}><Icono nombre="notebook-pen" color={IF.cian} size={30} />{titulo.toUpperCase()}</div>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, color: c.texto_suave, fontSize: 24, letterSpacing: "0.12em", marginBottom: 14 }}><Icono nombre="notebook-pen" color={c.foco} size={30} />{titulo.toUpperCase()}</div>
       {filas.map((r, i) => {
         const vis = f >= (frames[i] ?? 0);
         const mismo = i > 0 && r.kg === filas[i - 1].kg && r.reps === filas[i - 1].reps;
@@ -249,10 +249,10 @@ export const Grafica: React.FC<{ c: C; desde: number; filas?: Semana[]; x?: numb
     <div style={{ position: "absolute", left: x, top: y, width: ancho, height: alto, borderRadius: 22, background: c.superficie, border: `2px solid ${c.estructura}44` }}>
       <div style={{ position: "absolute", left: 26, top: 18, fontFamily: FUENTE.mono, fontSize: 20, letterSpacing: "0.12em", color: c.texto_suave }}>EJEMPLO ILUSTRATIVO</div>
       <svg width={ancho} height={alto} style={{ position: "absolute", inset: 0 }}>
-        <path d={d} fill="none" stroke={IF.cian} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={largo} strokeDashoffset={largo * (1 - prog)} />
+        <path d={d} fill="none" stroke={c.foco} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={largo} strokeDashoffset={largo * (1 - prog)} />
         {valores.map((v, i) => (prog >= i / Math.max(1, valores.length - 1) - 0.01 ? (
           <g key={i}>
-            <circle cx={px(i)} cy={py(v)} r={12} fill={i === valores.length - 1 ? IF.cian : c.superficie} stroke={IF.cian} strokeWidth={5} />
+            <circle cx={px(i)} cy={py(v)} r={12} fill={i === valores.length - 1 ? c.foco : c.superficie} stroke={c.foco} strokeWidth={5} />
             <text x={px(i)} y={py(v) - 26} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={24} fill={c.texto}>{`${String(filas[i].kg).replace(".", ",")}×${filas[i].reps}`}</text>
           </g>) : null))}
       </svg>
@@ -267,9 +267,9 @@ export const TarjetaResumen: React.FC<{ titulo: string; lineas: string[]; c: C }
   const m = useEntrada(10, { damping: 10, stiffness: 190 });
   return (
     <>
-      <div style={{ position: "absolute", left: 60, top: 330, width: 960, borderRadius: 40, background: c.superficie, border: `3px solid ${IF.cian}66`, boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
+      <div style={{ position: "absolute", left: 60, top: 330, width: 960, borderRadius: 40, background: c.superficie, border: `3px solid ${c.foco}66`, boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
         padding: "52px 60px 44px", boxSizing: "border-box", transform: `translateY(${(1 - e) * 200}px) scale(${0.9 + 0.1 * e})`, opacity: Math.min(1, e) }}>
-        <div style={{ fontFamily: FUENTE.mono, fontSize: 26, letterSpacing: "0.3em", color: IF.cian }}>GUÁRDALO</div>
+        <div style={{ fontFamily: FUENTE.mono, fontSize: 26, letterSpacing: "0.3em", color: c.foco }}>GUÁRDALO</div>
         <div style={{ marginTop: 16, fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: Math.min(80, Math.floor(1600 / Math.max(10, titulo.length))), color: c.texto, lineHeight: 1.05 }}>{titulo}</div>
         <div style={{ marginTop: 34 }}>
           {lineas.slice(0, 5).map((l, i) => {

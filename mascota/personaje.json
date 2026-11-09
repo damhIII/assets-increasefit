@@ -1,10 +1,10 @@
 {
  "nombre": "por definir",
  "concepto": "A · Atleta de tinta (cómic semi-realista)",
- "descripcion": "atleta masculino musculoso pero creíble (no culturista exagerado), proporciones de 7 cabezas, estilo cómic semi-realista con sombreado suave en dos tonos. Piel estilizada en color hielo pálido (no un tono de piel humano realista) con contorno grueso de tinta grafito hecho con trazo de pincel seco. Cara expresiva: ojos grandes con pupila marcada, cejas muy expresivas, boca capaz de sonrisa de lado. Cinta cian en la frente con dos colas cortas que caen atrás, muñequeras cian, pantalón corto grafito con una franja cian lateral, torso desnudo con músculos bien definidos pero limpios, zapatillas grafito.",
+ "descripcion": "atleta masculino musculoso pero creíble (no culturista exagerado), proporciones de 7 cabezas, estilo cómic semi-realista con sombreado suave en dos tonos. Piel estilizada en color hielo pálido (no un tono de piel humano realista) con contorno grueso de tinta grafito hecho con trazo de pincel seco. Cara expresiva: ojos grandes con pupila marcada, cejas muy expresivas, boca capaz de sonrisa de lado. Cinta azul eléctrico (#2353F1) en la frente con dos colas cortas que caen atrás, muñequeras azules, pantalón corto grafito con una franja azul lateral, torso desnudo con músculos bien definidos pero limpios, zapatillas grafito.",
  "paleta_medida": {
   "piel_hielo": "#D4DFE3",
-  "cian_cinta": "#02A4D1",
+  "azul_cinta": "#2252F0",
   "tinta_contorno": "#1B262B"
  },
  "referencias": {

@@ -6,7 +6,7 @@ const rough = require("roughjs");
 const g = rough.generator();
 
 const OUT = process.argv[2];
-const TINTA = "#171E26", BLANCO = "#FFFFFF", HIELO = "#D4F1F9", CIAN = "#1FB7DE", ALERTA = "#FF5A4E";
+const TINTA = "#141414", BLANCO = "#FFFFFF", HIELO = "#DCE5FF", AZUL = "#2353F1", AZUL_LUZ = "#6A8CFF", ALERTA = "#FF5A4E";
 const manifest = [];
 
 function svg(w, h, body) {
@@ -51,7 +51,7 @@ flecha("flecha_corta", 220, 160, [[25, 125], [110, 120], [180, 40]], "Flecha cor
   guardar("marcas", "tachado", 640, 90, trazos(g.curve([[20, 55], [220, 40], [430, 52], [620, 32]], { ...o, seed: 23, strokeWidth: 12 })),
     { uso: "Tachar un texto (la caja de 'Wide Grip'): se estira al ancho del texto.", tintable: true, color_sugerido: ALERTA });
   guardar("marcas", "subrayado", 640, 80, trazos(g.curve([[20, 40], [180, 58], [360, 30], [620, 48]], { ...o, seed: 24, strokeWidth: 11 })),
-    { uso: "Subrayar la palabra clave.", tintable: true, color_sugerido: CIAN });
+    { uso: "Subrayar la palabra clave (con el foco del clima: azul luz sobre negro, azul sobre blanco).", tintable: true, color_sugerido: AZUL_LUZ });
   guardar("marcas", "check", 260, 220, trazos(g.linearPath([[30, 120], [100, 190], [235, 30]], { ...o, seed: 25, strokeWidth: 16 })),
     { uso: "Bien hecho / paso cumplido.", tintable: true, color_sugerido: "#3DD68C" });
   guardar("marcas", "cruz", 240, 240, trazos(g.line(35, 35, 205, 205, { ...o, seed: 26, strokeWidth: 16 })) + trazos(g.line(205, 35, 35, 205, { ...o, seed: 27, strokeWidth: 16 })),
@@ -61,7 +61,7 @@ flecha("flecha_corta", 220, 160, [[25, 125], [110, 120], [180, 40]], "Flecha cor
     { uso: "Caja blanca de etiqueta (texto en Kalam o Open Sans encima). Estirar con preserveAspectRatio='none'.", tintable: false });
   guardar("marcas", "casilla", 140, 140, trazos(g.rectangle(18, 18, 104, 104, { ...caja, seed: 29 })), { uso: "Checklist: casilla vacía.", tintable: false });
   guardar("marcas", "casilla_marcada", 160, 150, trazos(g.rectangle(18, 28, 104, 104, { ...caja, seed: 29 })) +
-    trazos(g.linearPath([[38, 80], [70, 115], [145, 14]], { stroke: CIAN, strokeWidth: 14, roughness: 1.2, seed: 30 })), { uso: "Checklist: casilla marcada (check cian).", tintable: false });
+    trazos(g.linearPath([[38, 80], [70, 115], [145, 14]], { stroke: AZUL, strokeWidth: 14, roughness: 1.2, seed: 30 })), { uso: "Checklist: casilla marcada (check azul).", tintable: false });
 }
 
 // --- Burbujas e insertos (relleno blanco, tinta grafito)
