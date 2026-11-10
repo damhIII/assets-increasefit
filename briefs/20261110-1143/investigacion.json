@@ -1,0 +1,238 @@
+{
+ "version": 1,
+ "base": "20261110-1143",
+ "tema": "Entrenar también puede mejorar cómo piensas y te percibes",
+ "aprendizaje": "El ejercicio puede favorecer algunas funciones cognitivas y la valoración de tu capacidad física, pero eso no equivale a mejorar toda tu autoestima ni a pensar mejor en todo.",
+ "hallazgos": [
+  {
+   "id": "baumgartner_2025",
+   "tipo": "eca",
+   "dato": "En 121 adultos de 18–50 años, una sesión de fuerza produjo respuestas más rápidas en tareas de control inhibitorio (d = 0.37) y memoria de trabajo (d = 0.46) frente al descanso. Son tamaños del efecto, no porcentajes de mejora.",
+   "muestra": "121 adultos sanos: 62 en fuerza y 59 en descanso; practicaban ejercicio recreativo, pero no eran necesariamente levantadores intermedios.",
+   "duracion": "Una sesión de aproximadamente 42 minutos; evaluación cognitiva antes y después.",
+   "intervencion": "Fuerza: seis ejercicios, dos series de 10 repeticiones al 65%–75% de 1RM; descansos de 60–120 segundos entre series y 120–180 segundos entre ejercicios. Control: permanecer sentado viendo un vídeo del mismo protocolo durante 42 minutos.",
+   "resultado": "Frente al descanso, mayor velocidad de respuesta posterior en control inhibitorio (d = 0.37) y memoria de trabajo (d = 0.46).",
+   "fuerza": "moderada",
+   "matiz": "No midió autoestima ni productividad cotidiana, ni estableció cuánto duraban los beneficios. El mecanismo sigue abierto: la mediación cardiovascular fue exploratoria, no una demostración causal.",
+   "fuente": "Baumgartner et al., 2025 (Psychophysiology). ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12575885/?utm_source=openai))",
+   "corta": "Baumgartner et al. 2025",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12575885/",
+   "doi": "10.1111/psyp.70171",
+   "cita_literal": "including faster processing speed during inhibitory control (d = 0.37) and working memory (d = 0.46)",
+   "url_consultada": true
+  },
+  {
+   "id": "wilke_2019",
+   "tipo": "metaanalisis",
+   "dato": "Un metaanálisis de 12 ensayos encontró una mejora cognitiva inmediata tras una sesión de fuerza frente a no hacer ejercicio: SMD: 0.56, 95% CI 0.22–0.90, p = 0.004. No detectó superioridad frente al ejercicio aeróbico.",
+   "muestra": "12 ensayos en adultos sanos; el abstract no proporciona el total de participantes.",
+   "duracion": "Una sesión por intervención; se analizaron efectos inmediatos.",
+   "intervencion": "Sesiones de fuerza comparadas con condiciones sin ejercicio o con ejercicio aeróbico; protocolos variables.",
+   "resultado": "Cognición global frente a no ejercicio: SMD: 0.56, 95% CI 0.22–0.90, p = 0.004.",
+   "fuerza": "moderada",
+   "matiz": "Los ensayos tenían calidad metodológica limitada. Hubo mejoras en control inhibitorio y flexibilidad cognitiva, pero no mejoras estadísticamente significativas en atención o memoria de trabajo; el ensayo de 2025 no elimina esa incertidumbre.",
+   "fuente": "Wilke et al., 2019 (Sports Medicine). ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/30838520/?utm_source=openai))",
+   "corta": "Wilke et al. 2019",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/30838520/",
+   "doi": "10.1007/s40279-019-01085-x",
+   "cita_literal": "Compared to NEX, RE had a positive effect on global cognition (SMD: 0.56, 95% CI 0.22-0.90, p = 0.004)",
+   "url_consultada": true
+  },
+  {
+   "id": "yang_2024",
+   "tipo": "metaanalisis",
+   "dato": "En 40 estudios con 4955 universitarios, las intervenciones de actividad física mejoraron la valoración física personal (SMD = 0.44, P < .00001). También mejoró la fuerza que los participantes percibían tener (SMD = 0.53, P < .00001).",
+   "muestra": "4955 universitarios; 40 estudios: 17 ensayos aleatorizados y 23 estudios no aleatorizados.",
+   "duracion": "Variable entre estudios.",
+   "intervencion": "Intervenciones de actividad física de distintos tipos, frecuencias y duraciones frente a sus respectivos controles; no exclusivamente entrenamiento de fuerza.",
+   "resultado": "Valoración física personal: SMD = 0.44, P < .00001; fuerza física percibida: SMD = 0.53, P < .00001.",
+   "fuerza": "moderada",
+   "matiz": "La valoración de tu capacidad y condición física no es lo mismo que la autoestima global. La mayoría de los estudios no eran aleatorizados y no se estableció un efecto específico en personas con experiencia intermedia en fuerza.",
+   "fuente": "Yang et al., 2024 (Journal of Physical Activity and Health). ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/39187247/?utm_source=openai))",
+   "corta": "Yang et al. 2024",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39187247/",
+   "doi": "10.1123/jpah.2024-0055",
+   "cita_literal": "Overall, physical activity interventions had small to moderate significant effect on physical self-worth (standardized mean difference [SMD] = 0.44, P < .00001)",
+   "url_consultada": true
+  }
+ ],
+ "correcciones_al_seed": [
+  "El seed no incluye cifras ni estudios que corregir. Sí requiere precisión: «claridad mental» es una expresión cotidiana; los estudios seleccionados midieron tareas cognitivas concretas, no una mejora general de todos los procesos mentales.",
+  "Para autoestima, la evidencia seleccionada en universitarios respalda mejor la autopercepción física que una mejora de la autoestima global. No conviene presentar ambos conceptos como equivalentes."
+ ],
+ "consejo_practico": "Como aplicación prudente, prueba a situar una sesión habitual de fuerza antes de una tarea que requiera concentración y observa cómo respondes; no lo conviertas en una garantía de productividad ni añadas volumen para perseguir ese efecto. El ensayo encontró beneficios con una sesión estructurada, no con un protocolo diseñado para acabar exhausto. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12575885/?utm_source=openai))",
+ "trampas_comunes": [
+  "Convertir d = 0.37 en «37 % más de claridad mental»: un tamaño del efecto no es un porcentaje. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/41168935/?utm_source=openai))",
+  "Prometer mejoras en todas las capacidades mentales: los resultados varían según la función evaluada. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/30838520/?utm_source=openai))",
+  "Afirmar que las pesas son superiores al cardio para despejarse: el metaanálisis no detectó esa superioridad. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/30838520/?utm_source=openai))",
+  "Confundir sentirse físicamente más capaz con tener garantizada una mayor autoestima global. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/39187247/?utm_source=openai))",
+  "Explicarlo todo con una hormona o una descarga de endorfinas: estos estudios no demostraron ese mecanismo. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12575885/?utm_source=openai))"
+ ],
+ "consultadas": [
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/36480075/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/30838520/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42508500/",
+   "titulo": ""
+  },
+  {
+   "url": "https://bjsm.bmj.com/content/bjsports/early/2025/03/06/bjsports-2024-108589.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/37533754/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42168782/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42623933/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/40376491/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34489659/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9732176/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39326271/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12575885/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/23491140/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/s44271-024-00124-2.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://sportsmedicine-open.springeropen.com/counter/pdf/10.1186/s40798-022-00527-7.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://bjsm.bmj.com/content/60/4/267",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/26322787/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39187247/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11603721/",
+   "titulo": ""
+  },
+  {
+   "url": "https://journals.sagepub.com/doi/10.3233/ATDE230936",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/40556927/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12117297/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41174613/?format=pubmed",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39953472",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39639264",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/21699109/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13215849/",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/content/pdf/10.1007/s00520-024-08874-9.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://journals.humankinetics.com/downloadpdf/journals/jpah/11/s1/article-pS126.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0291045&type=printable",
+   "titulo": ""
+  },
+  {
+   "url": "https://bmcpublichealth.biomedcentral.com/counter/pdf/10.1186/s12889-024-20861-7.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://ijbnpa.biomedcentral.com/counter/pdf/10.1186/s12966-024-01676-6",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/pdf/10.1080/09638288.2021.1955306",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/help/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.ncbi.nlm.nih.gov/entrez/query/static/clinicaltable.html",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/about/new-in-pmc/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/tools/pmcaws",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/tools/pmcaws/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nlm.nih.gov/databases/download/pubmed_medline.html",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.ncbi.nlm.nih.gov/entrez/query/static/faq.html",
+   "titulo": ""
+  }
+ ],
+ "busquedas": 5,
+ "modelo": "gpt-6.1-sol",
+ "seed": "Beneficios mentales del ejercicio: autoestima y claridad mental",
+ "fecha": "2026-11-10T11:42-04:00",
+ "_nota": "Hallazgos de la búsqueda web del guionista. NO están verificados: Claude los comprueba en la fuente antes de ponerlos en pantalla."
+}
