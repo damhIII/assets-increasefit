@@ -5,13 +5,12 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 ```jsonc
 {
   "version": 4,
-  "serie_header": "PROGRESO REAL",      // 2-4 palabras junto al isotipo, arriba
   "musica": "groove_92",                // id de sonido/manifest.json: pulso_120 (enérgico) · groove_92 (explicar) · tension_100 (suspense) · null = sin música
-  "cola_s": 3.0,                        // segundos tras la última palabra (la tarjeta resumen se queda para leerla)
+  "cola_s": 4.0,                        // segundos tras la última palabra (la tarjeta final se queda para leerla y guardarla)
   "opciones": { "barra_progreso": false },
   "subtitulos": {                       // cómo se pintan los subtítulos (ya salen SIN signos de puntuación, 1-3 palabras)
     "tonos": { "alerta": [41, 42], "exito": [88] },        // índices de palabra: rojo = el error o la trampa, verde = lo correcto (pocas)
-    "iconos": [ { "en": 12, "icono": "brain" } ]           // insignia con icono que salta sobre esa palabra al decirla (3-6 por video)
+    "iconos": [ { "en": 12, "icono": "brain" } ]           // insignia con icono que salta bajo esa palabra al decirla (3-6 por video)
   },
   "progresion": [                       // opcional: semanas ILUSTRATIVAS para las anotaciones libreta y grafica
     { "semana": 1, "kg": 60, "reps": 8 }, { "semana": 2, "kg": 60, "reps": 10 }
@@ -34,14 +33,23 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
       "solo_componente": false          // true = solo el componente, sin la composición por defecto
     }
   ],
-  "tarjeta_resumen": { "titulo": "Gánale a tu libreta", "lineas": ["Anota peso y reps", "+1 rep o +2,5 kg"] }   // título ≤5 palabras, 2-3 líneas ≤6; "desde" opcional
+  "tarjeta_resumen": {                  // la conclusión de ESTE Reel; parte de briefs/<BASE>/tarjeta.json (la propone el notebook). "desde" opcional
+    "tema": "Creatina y ánimo",         // ≤3 palabras: el tema concreto (chip junto a GUÁRDALO)
+    "pregunta": "¿La creatina mejora el ánimo?",   // ≤8: la pregunta del gancho, resumida y reconocible
+    "veredicto": "Ayuda, pero no es tratamiento",  // ≤7: la respuesta corta, la misma que da el guion
+    "tono": "matiz",                    // si (verde) | no (rojo) | matiz (foco)
+    "pasos": ["5 g de monohidrato al día", "Súmala a tu tratamiento", "Ignora las versiones mejoradas"],   // 2-3, ≤6 palabras, verbo en imperativo
+    "fuente": ""                        // opcional: `corta` de datos_verificados.json si el veredicto sale de un estudio
+  }
 }
 ```
 
 ## Reglas de lectura
 - Cada escena dura desde su `desde` hasta el `desde` de la siguiente; la última hasta el final (la cola incluida, con la tarjeta encima).
+- No hay `serie_header`: el header es solo el isotipo (si una escaleta vieja lo trae, se ignora).
+- `tarjeta_resumen`: si la escaleta no la trae, se usa `briefs/<BASE>/tarjeta.json` tal cual. Las escaletas viejas con `titulo` + `lineas` siguen valiendo (se dibujan como veredicto + pasos, sin pregunta).
 - `en` (anotaciones, inserto, sfx) es el índice de la palabra en que aparece o suena. Sin `en`: al empezar la escena (+6 frames, escalonado). Los whoosh se adelantan 5 frames solos.
-- `subtitulos`: el texto sale del guion sin signos de puntuación (`¿En serio?` → EN SERIO), agrupado en 1-3 palabras; cambia de grupo en cada fin de frase, coma o pausa de la voz. La palabra que suena se enciende sobre una píldora (azul, o el color de su tono); las de `enfasis` de cualquier escena son más grandes y se quedan en azul; las de `tonos` se quedan en rojo o verde. Un icono de `iconos` sale en una insignia redonda sobre su palabra.
+- `subtitulos`: el texto sale del guion sin signos de puntuación (`¿En serio?` → EN SERIO), agrupado en 1-3 palabras; cambia de grupo en cada fin de frase, coma o pausa de la voz. La palabra que suena se enciende sobre una píldora (azul, o el color de su tono); las de `enfasis` de cualquier escena son más grandes y se quedan en azul; las de `tonos` se quedan en rojo o verde. Un icono de `iconos` sale en una insignia redonda que cuelga bajo su palabra (los subtítulos van arriba, bajo el isotipo).
 - `mascota.sprite`: id de `mascota/manifest.json` o `"ejercicio:<nombre>"` (alterna sus fases; `anim` pasa a `ejercicio`). Sin `mascota` ni `dividida`, la escena no tiene personaje (útil con `capitulo` o con un componente).
 - Con una anotación de columna (`dato`, `ficha`, `lista`, `libreta`, `grafica`), la mascota se coloca sola a la derecha en encuadre general.
 - `pantalla.estilo = "capitulo"` es una tarjeta a pantalla completa (`"RÓTULO: frase"`) y oculta la mascota de esa escena.
@@ -77,6 +85,6 @@ Ids, anclas dentro del guion y crecientes, sprites/caras/climas/sfx/música/icon
 | tachado · ítem de lista | ≤ 3 palabras |
 | burbuja_dialogo · detalle del dato | ≤ 4 · ≤ 5 palabras |
 | piezas con texto por escena | ≤ 2 (aviso con 2) |
-| tarjeta resumen | título ≤ 5, 2-3 líneas ≤ 6 |
+| tarjeta final | tema ≤ 3 · pregunta ≤ 8 · veredicto ≤ 7 · 2-3 pasos ≤ 6 · fuente verificada (si la hay) |
 
-Avisa (sin bloquear) de las cifras en pantalla para que confirmes su origen, de demasiadas escenas con texto, de demasiados tonos o iconos en los subtítulos y de escenas demasiado cortas o largas. Las escaletas versión 3 siguen siendo válidas.
+Avisa (sin bloquear) si la pregunta de la tarjeta no retoma ninguna palabra del gancho, si falta el tono o el tema, de las cifras en pantalla para que confirmes su origen, de demasiadas escenas con texto, de demasiados tonos o iconos en los subtítulos y de escenas demasiado cortas o largas. Las escaletas versión 3 siguen siendo válidas.

@@ -3,6 +3,8 @@
 // Karaoke: la palabra que suena se enciende sobre una píldora de color con pop; las de énfasis son más grandes y se quedan
 // en color; los tonos (alerta = el error, éxito = lo correcto) y los iconos los pinta la escaleta (bloque "subtitulos").
 // La cápsula es siempre oscura: sobre ella el azul de texto es IF.azulLuz y el #2353F1 solo va de relleno (píldora, insignia).
+// Posición: ARRIBA, justo bajo el isotipo (Y≈292–395). Las insignias de icono cuelgan DEBAJO de la cápsula (hasta Y≈500),
+// así no chocan con el logo; la escena empieza en Y≈540.
 import React, { useMemo } from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { datos, FUENTE, IF, type Palabra } from "./datos";
@@ -17,6 +19,7 @@ export const soloPalabra = (w: string) =>
 const MAX_PALABRAS = 3, MAX_LETRAS = 16, PAUSA_S = 0.45, ANTES_S = 0.1;
 // Cápsula más opaca que IF.capsula para que también se lea sobre los climas claros; las palabras que vienen, en blanco tenue.
 const CAPSULA = "rgba(10,10,10,0.88)", FUTURA = "rgba(255,255,255,0.4)";
+export const SUBS_TOP = 292;
 
 function agrupar(subs: Palabra[]): W[][] {
   const ws: W[] = [];
@@ -66,9 +69,9 @@ const PalabraSub: React.FC<{ p: W; siguiente: number; t: number; f: number; fps:
       <span style={{ position: "relative", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: 64, lineHeight: 1.1, textTransform: "uppercase", color,
         letterSpacing: "-0.01em", textShadow: !actual && dicha && marcada ? `0 0 22px ${textoMarcado(p.tono)}66` : "none" }}>{p.w}</span>
       {p.icono ? (
-        <span style={{ position: "absolute", left: "50%", top: -86, width: 92, height: 92, marginLeft: -46, borderRadius: 46, background: relleno(p.tono),
+        <span style={{ position: "absolute", left: "50%", top: "calc(100% + 18px)", width: 92, height: 92, marginLeft: -46, borderRadius: 46, background: relleno(p.tono),
           border: `5px solid ${IF.grafito2}`, display: "flex", alignItems: "center", justifyContent: "center", boxSizing: "border-box",
-          transform: `scale(${insignia}) rotate(${(1 - insignia) * -25}deg)`, boxShadow: "0 10px 24px rgba(0,0,0,0.45)" }}>
+          transform: `scale(${insignia}) rotate(${(1 - insignia) * -25}deg)`, transformOrigin: "50% 0%", boxShadow: "0 10px 24px rgba(0,0,0,0.45)" }}>
           <Icono nombre={p.icono} color={textoSobre(p.tono)} size={50} />
         </span>
       ) : null}
@@ -76,7 +79,7 @@ const PalabraSub: React.FC<{ p: W; siguiente: number; t: number; f: number; fps:
   );
 };
 
-export const Subtitulos: React.FC = () => {
+export const Subtitulos: React.FC<{ top?: number }> = ({ top = SUBS_TOP }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = f / fps;
@@ -88,10 +91,10 @@ export const Subtitulos: React.FC = () => {
   const entrada = spring({ fps, frame: f - Math.round((g[0].a - ANTES_S) * fps), config: { damping: 14, stiffness: 260 } });
   const sigGrupo = grupos[i + 1]?.[0].a ?? Infinity;
   return (
-    <div style={{ position: "absolute", top: 1385, left: 0, width: 1080, display: "flex", justifyContent: "center" }}>
+    <div style={{ position: "absolute", top, left: 0, width: 1080, display: "flex", justifyContent: "center" }}>
       <div style={{ background: CAPSULA, backdropFilter: "blur(16px)", borderRadius: 30, padding: "12px 18px", display: "flex", gap: 6, alignItems: "center",
         maxWidth: 940, flexWrap: "wrap", justifyContent: "center", opacity: Math.min(1, 0.5 + entrada),
-        transform: `translateY(${(1 - entrada) * 26}px) scale(${0.9 + 0.1 * entrada})` }}>
+        transform: `translateY(${(1 - entrada) * -20}px) scale(${0.9 + 0.1 * entrada})`, transformOrigin: "50% 0%" }}>
         {g.map((p, k) => <PalabraSub key={k} p={p} siguiente={g[k + 1]?.a ?? sigGrupo} t={t} f={f} fps={fps} />)}
       </div>
     </div>

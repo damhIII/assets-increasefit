@@ -8,6 +8,7 @@ Entrada: briefs/<BASE>/escaleta.json + subtitulos.json (scripts/alinear.py).
 Salida: el dict que la plantilla lee como src/video.json (ver .claude/skills/increasefit-reel/referencias/escaleta.md).
 Las anclas son índices de palabra (los [n] que imprime alinear.py). Escenas contiguas: cada una acaba donde empieza la siguiente.
 Subtítulos: se limpian de signos de puntuación (solo palabras); el fin de frase o coma queda como bandera `corte` para agruparlos.
+Tarjeta final: la de la escaleta (`tarjeta_resumen`); si no trae, la que propuso el notebook en briefs/<BASE>/tarjeta.json.
 """
 import json, math, re, sys
 from pathlib import Path
@@ -17,6 +18,28 @@ FPS, WIDTH, HEIGHT = 30, 1080, 1920
 
 
 TONOS = ("alerta", "exito")
+COLA_S = 4.0                       # segundos tras la última palabra: la tarjeta final se queda para leerla y guardarla
+TONOS_TARJETA = ("si", "no", "matiz")
+
+
+def tarjeta_de(esc, dir_base):
+    """Tarjeta final normalizada {tema, pregunta, veredicto, tono, pasos, fuente, desde?} o None.
+    Prioridad: escaleta.tarjeta_resumen > briefs/<BASE>/tarjeta.json (la propone el notebook a partir del guion).
+    Acepta el formato antiguo (titulo + lineas) → veredicto + pasos."""
+    tr = esc.get("tarjeta_resumen")
+    if tr is None:
+        f = Path(dir_base) / "tarjeta.json"
+        if f.exists():
+            tr = json.loads(f.read_text(encoding="utf-8"))
+    if not tr:
+        return None
+    pasos = tr.get("pasos") or tr.get("lineas") or []
+    tono = str(tr.get("tono") or "").lower()
+    return {"tema": str(tr.get("tema") or "").strip(), "pregunta": str(tr.get("pregunta") or "").strip(),
+            "veredicto": str(tr.get("veredicto") or tr.get("titulo") or "").strip(),
+            "tono": tono if tono in TONOS_TARJETA else "", "pasos": [str(x).strip() for x in pasos if str(x).strip()],
+            "fuente": str(tr.get("fuente") or "").strip(), "desde": tr.get("desde"),
+            "_antigua": "titulo" in tr and "veredicto" not in tr}
 
 
 def palabra_subtitulo(w):
@@ -58,7 +81,7 @@ def sincronizar(dir_base):
     P = sub["palabras"]
     n = len(P)
     voz_s = float(sub["duracion_s"])
-    cola_s = float(esc.get("cola_s", 3.0))
+    cola_s = float(esc.get("cola_s", COLA_S))
     total = math.ceil((voz_s + cola_s) * FPS)
 
     def frame(i, desfase=0):
@@ -113,10 +136,10 @@ def sincronizar(dir_base):
             s["frame"] = escenas[s["_escena"]]["ini_f"] + 4
         s["frame"] = max(0, min(total - 1, s["frame"]))
         del s["_escena"]
-    tr = esc.get("tarjeta_resumen")
+    tr = tarjeta_de(esc, dir_base)
     if tr:
         ini = frame(tr["desde"]) if tr.get("desde") is not None else min(total - 45, round(P[-1]["fin"] * FPS) + 4)
-        tr = {"titulo": tr["titulo"], "lineas": tr["lineas"], "ini_f": ini}
+        tr = {k: tr[k] for k in ("tema", "pregunta", "veredicto", "tono", "pasos", "fuente")} | {"ini_f": ini}
     st = esc.get("subtitulos") or {}
     tono = {}
     for t in TONOS:
@@ -127,7 +150,7 @@ def sincronizar(dir_base):
     return {
         "version": 4, "base": sub["base"], "audio": "locucion.wav",
         "video": {"width": WIDTH, "height": HEIGHT, "fps": FPS, "frames": total, "voz_s": round(voz_s, 2), "cola_s": cola_s},
-        "serie_header": str(esc.get("serie_header", "")).upper(), "musica": esc.get("musica"),
+        "musica": esc.get("musica"),
         "opciones": {"barra_progreso": bool((esc.get("opciones") or {}).get("barra_progreso", False))},
         "logos": logos, "fuentes": cat["fuentes"],
         "escenas": escenas, "cortinillas": cortinillas, "tarjeta_resumen": tr, "sfx": sorted(sfx, key=lambda s: s["frame"]),

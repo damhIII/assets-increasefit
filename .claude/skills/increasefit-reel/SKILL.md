@@ -1,16 +1,16 @@
 ---
 name: increasefit-reel
-description: Dirige, construye y renderiza con Remotion un Reel vertical de IncreaseFit (gimnasio y fuerza, con la mascota ilustrada) a partir de un guion de texto y su locución (briefs/<BASE>/guion.txt, locucion.wav, palabras.json y, si la hubo, investigacion.json) que deja el notebook de Colab. Úsala cuando pidan crear, dirigir, renderizar o corregir un video o reel de IncreaseFit, o cuando haya una carpeta nueva en briefs/.
+description: Dirige, construye y renderiza con Remotion un Reel vertical de IncreaseFit (gimnasio y fuerza, con la mascota ilustrada) a partir de un guion de texto y su locución (briefs/<BASE>/guion.txt, locucion.wav, palabras.json, tarjeta.json y, si la hubo, investigacion.json) que deja el notebook de Colab. Úsala cuando pidan crear, dirigir, renderizar o corregir un video o reel de IncreaseFit, o cuando haya una carpeta nueva en briefs/.
 ---
 
 # Reel IncreaseFit: dirección, montaje y render
 
-El notebook te da **el guion** (texto plano, sin ninguna indicación), **la locución**, **el tiempo de cada palabra** y, normalmente, **la investigación** con la que GPT escribió el guion (estudios con su URL). Todo lo demás es tuyo: qué se ve y cuándo se corta, qué hace la mascota, los iconos y marcas, cómo se pintan los subtítulos, los climas, la música, los efectos y la tarjeta final. No hay formatos ni estructuras predefinidas: diseña el video que mejor cuente **este** guion, dentro de la marca.
+El notebook te da **el guion** (texto plano, sin ninguna indicación), **la locución**, **el tiempo de cada palabra** y, normalmente, **la investigación** con la que GPT escribió el guion (estudios con su URL) y **la propuesta de tarjeta final** (`tarjeta.json`). Todo lo demás es tuyo: qué se ve y cuándo se corta, qué hace la mascota, los iconos y marcas, cómo se pintan los subtítulos, los climas, la música, los efectos y la tarjeta final. No hay formatos ni estructuras predefinidas: diseña el video que mejor cuente **este** guion, dentro de la marca.
 
 **Imagen primero, texto mínimo.** La voz ya dice las palabras y los subtítulos ya las escriben: tu trabajo es **reforzar con imágenes** lo que dice el guion (mascota, iconos, marcas del kit, fichas con cifras) y **pintar los subtítulos** para que se lean con ritmo. El texto en pantalla es la excepción, no la norma: la mayoría de las escenas van con `pantalla: ninguno` y el validador corta si te pasas del presupuesto.
 
 ## 1. Localiza el material
-- `briefs/<BASE>/` con `guion.txt`, `locucion.wav`, `palabras.json` e `investigacion.json` (opcional: los hallazgos de la búsqueda web del guionista). "El último" = la carpeta `AAAAMMDD-HHMM` más reciente.
+- `briefs/<BASE>/` con `guion.txt`, `locucion.wav`, `palabras.json`, `tarjeta.json` (la tarjeta final que propuso el guionista a partir del guion) e `investigacion.json` (opcional: los hallazgos de la búsqueda web del guionista). "El último" = la carpeta `AAAAMMDD-HHMM` más reciente.
 - Si te adjuntan los archivos en el chat, crea `briefs/<BASE>/` con ellos (BASE = la que diga el prompt).
 
 ## 2. Lee la locución
@@ -43,10 +43,16 @@ Por cada estudio o estadística que diga la voz:
   - una advertencia o "esto no" → `icono` con `tachado`, `cruz`, `tachado` del kit o la mascota en `error_*`;
   - sorpresa, duda o ironía → `inserto` con una `cara_*`, gestos.
 - **Presupuesto de texto** (lo comprueba el validador): como mucho 20 palabras en pantalla en todo el video, sin contar subtítulos ni tarjeta resumen; ≤4 palabras por texto en pantalla, ≤2 por etiqueta y por fila de ficha, y como mucho 2 piezas con texto por escena (lo normal es 0 o 1). El texto en pantalla solo para: la cifra de un estudio con su fuente, el concepto clave una vez (el gancho o el giro) y la tarjeta final. Nunca repite lo que dice la voz.
-- **Pinta los subtítulos** (bloque `subtitulos` de la escaleta): ya salen sin signos de puntuación y en grupos de 1-3 palabras; tú decides `enfasis` (1–2 palabras por escena que de verdad pegan: más grandes y en azul), `tonos` (`alerta` en rojo para el error o la trampa, `exito` en verde para lo correcto; pocas) e `iconos` (una insignia que salta sobre la palabra al decirla: 3–6 en todo el video, en sustantivos concretos que no tengan ya un icono en la escena).
+- **Pinta los subtítulos** (bloque `subtitulos` de la escaleta): ya salen sin signos de puntuación y en grupos de 1-3 palabras; tú decides `enfasis` (1–2 palabras por escena que de verdad pegan: más grandes y en azul), `tonos` (`alerta` en rojo para el error o la trampa, `exito` en verde para lo correcto; pocas) e `iconos` (una insignia que salta bajo la palabra al decirla: 3–6 en todo el video, en sustantivos concretos que no tengan ya un icono en la escena).
 - Climas: empieza y termina en `negro`; 1–2 climas más según lo que pasa (`azul` solo para una frase clave sin mascota, `papel` para la pausa clara).
 - Efectos de sonido en la palabra que los motiva, no en todas las escenas: el silencio también remata.
-- Tarjeta resumen: el consejo práctico del guion, para guardar (título ≤5 palabras + 2–3 líneas ≤6 palabras).
+- **Tarjeta final** (lo que la gente guarda): es la conclusión de **este** Reel, no un resumen suelto. Parte de `tarjeta.json` y cópiala a `tarjeta_resumen` en la escaleta, retocándola si hace falta, con este hilo:
+  - `pregunta`: la del gancho, resumida (≤8 palabras) y reconocible: quien vuelve a la tarjeta en una semana tiene que recordar de qué Reel es.
+  - `veredicto`: la respuesta que da el guion a esa pregunta (≤7), con su matiz, y su `tono` (`si` | `no` | `matiz`).
+  - `pasos`: 2-3 acciones (≤6 palabras, verbo en imperativo) sacadas del consejo práctico y del matiz que dice la voz. Nada que la voz no haya dicho.
+  - `tema` (chip, ≤3) y, si el veredicto sale de un estudio verificado, `fuente` (su `corta`).
+  - Cifras solo las que dice la voz y estén verificadas. Si una cifra de `tarjeta.json` no se sostiene, quítala.
+- **Nada junto al logo ni fijo durante todo el video**: el header es solo el isotipo. No pongas títulos de serie, rótulos que se queden de escena en escena ni carteles permanentes (tampoco en escenas a medida).
 - Si la composición por defecto no da para un gag o una idea, escribe una **escena a medida** (paso 6).
 
 ## 6. Escenas a medida
@@ -57,7 +63,9 @@ Por cada estudio o estadística que diga la voz:
 2. `cd videos/<BASE> && npm install` (la primera vez) → `npm run tipos` → `npm run stills` (un fotograma por escena + `out/stills/hoja.jpg`).
 3. **Mira la hoja** y abre los PNG que te hagan dudar. Comprueba:
    - La mascota cuenta lo mismo que la voz y no se corta ni flota.
-   - Nada vital fuera de Y 200–1580 ni en la franja de botones de Instagram (X>960, Y>1300); nada pisa el texto en pantalla ni los subtítulos (ni las insignias de icono que asoman encima de la cápsula).
+   - Nada vital fuera de Y 200–1580 ni en la franja de botones de Instagram (X>960, Y>1300); nada pisa los subtítulos de arriba (ni las insignias de icono que cuelgan debajo de la cápsula, hasta Y≈505) ni el texto en pantalla de abajo.
+   - Arriba solo están el isotipo y los subtítulos: ningún título fijo junto al logo.
+   - La tarjeta final (still `resumen`): la pregunta se reconoce como la del gancho, el veredicto la contesta y los pasos se pueden hacer hoy.
    - Poco texto: si un fotograma se lee como una diapositiva, sobra texto. Los subtítulos, sin signos de puntuación y con su color.
    - Los iconos se entienden sin leer nada y no tapan a la mascota.
    - Las anotaciones apuntan donde deben y se leen.
@@ -71,7 +79,7 @@ Por cada estudio o estadística que diga la voz:
 - Si tienes permiso de escritura en el repo, sube `briefs/<BASE>/escaleta.json`, `custom/`, `subtitulos.json`, los iconos nuevos de `icons/` y, si cambió, `editorial/datos_verificados.json`. `videos/` no se sube.
 
 ## Reglas fijas
-- El marco IncreaseFit (header, texto en pantalla, subtítulos, tarjeta resumen, logo) es fijo; dentro de las escenas, libertad.
+- El marco IncreaseFit es fijo: isotipo solo arriba, subtítulos bajo el isotipo, texto en pantalla abajo y tarjeta final. Dentro de las escenas, libertad (sin títulos persistentes).
 - La mascota es la única figura humana: nunca personas reales, fotos ni personajes de otras cuentas o marcas.
-- Sin CTA: el video no pide comentarios, likes, follows ni compartir.
-- La voz no se toca: ni recortes ni cambios de velocidad.
+- Sin CTA en la voz ni en las escenas: el video no pide comentarios, likes, follows ni compartir. La única invitación es el GUÁRDALO de la tarjeta final.
+- La voz no se toca: ni recortes ni cambios de velocidad (el ritmo se ajusta en el notebook, antes de sacar los tiempos).

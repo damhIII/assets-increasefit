@@ -311,33 +311,76 @@ export const Grafica: React.FC<{ c: C; desde: number; filas?: Semana[]; x?: numb
   );
 };
 
-/** Tarjeta resumen final, pensada para pausar y guardar (alto automático) + la mascota con el pulgar. Frame local 0 = aparición. */
-export const TarjetaResumen: React.FC<{ titulo: string; lineas: string[]; c: C }> = ({ titulo, lineas, c }) => {
+/** Tarjeta final para guardar. Cuenta la conclusión del Reel en orden: el TEMA (chip) → la PREGUNTA del gancho →
+ *  el VEREDICTO (la respuesta corta, coloreada por `tono`) → CÓMO APLICARLO (2-3 pasos numerados) → la fuente.
+ *  Debajo, la mascota con el pulgar y el logo. Acepta el formato antiguo (titulo + lineas) para escaletas viejas. */
+export const TarjetaResumen: React.FC<{
+  c: C; tema?: string; pregunta?: string; veredicto?: string; tono?: "si" | "no" | "matiz" | ""; pasos?: string[]; fuente?: string;
+  titulo?: string; lineas?: string[];
+}> = ({ c, tema, pregunta, veredicto, tono, pasos, fuente, titulo, lineas }) => {
   const f = useCurrentFrame();
-  const e = useEntrada(0, { damping: 14, stiffness: 150 });
-  const m = useEntrada(10, { damping: 10, stiffness: 190 });
+  const ent = (k: number, cfg = { damping: 13, stiffness: 170 }) => spring({ fps: 30, frame: f - k, config: cfg });
+  const claro = c.claridad > 0.5;
+  const v = (veredicto || titulo || "").trim();
+  const ps = (pasos && pasos.length ? pasos : lineas || []).slice(0, 3);
+  const colorV = tono === "si" ? (claro ? "#138A55" : IF.exito) : tono === "no" ? (claro ? "#C93A30" : IF.alerta) : c.foco;
+  const tamV = v.length <= 22 ? 82 : v.length <= 44 ? 70 : 60;
+  const tamP = (pregunta || "").length <= 34 ? 46 : 40;
+  const e = ent(0, { damping: 14, stiffness: 150 });
+  const sube = (k: number, dx = 0, dy = 40) => {
+    const x = ent(k);
+    return { transform: `translate(${(1 - x) * dx}px, ${(1 - x) * dy}px)`, opacity: Math.min(1, x) };
+  };
+  const linea = ent(16, { damping: 18, stiffness: 120 });
+  const m = ent(14, { damping: 10, stiffness: 190 });
   return (
-    <>
-      <div style={{ position: "absolute", left: 60, top: 330, width: 960, borderRadius: 40, background: c.superficie, border: `3px solid ${c.foco}66`, boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
-        padding: "52px 60px 44px", boxSizing: "border-box", transform: `translateY(${(1 - e) * 200}px) scale(${0.9 + 0.1 * e})`, opacity: Math.min(1, e) }}>
-        <div style={{ fontFamily: FUENTE.mono, fontSize: 26, letterSpacing: "0.3em", color: c.foco }}>GUÁRDALO</div>
-        <div style={{ marginTop: 16, fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: Math.min(80, Math.floor(1600 / Math.max(10, titulo.length))), color: c.texto, lineHeight: 1.05 }}>{titulo}</div>
-        <div style={{ marginTop: 34 }}>
-          {lineas.slice(0, 5).map((l, i) => {
-            const ei = spring({ fps: 30, frame: f - 8 - i * 5, config: { damping: 12, stiffness: 180 } });
-            return (
-              <div key={i} style={{ display: "flex", gap: 24, alignItems: "flex-start", marginBottom: 26, transform: `translateX(${(1 - ei) * -60}px)`, opacity: Math.min(1, ei) }}>
-                <Tinta src="kit/marcas/check.svg" color={IF.exito} w={58} h={49} style={{ marginTop: 6, flexShrink: 0 }} />
-                <div style={{ fontFamily: FUENTE.titulos, fontWeight: 700, fontSize: 52, color: c.texto, lineHeight: 1.12 }}>{l}</div>
-              </div>
-            );
-          })}
+    <div style={{ position: "absolute", left: 60, top: 290, width: 960, display: "flex", flexDirection: "column", gap: 22 }}>
+      <div style={{ borderRadius: 40, background: c.superficie, border: `3px solid ${c.foco}66`, boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
+        padding: "42px 54px 40px", boxSizing: "border-box", transform: `translateY(${(1 - e) * 200}px) scale(${0.9 + 0.1 * e})`, opacity: Math.min(1, e) }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
+          <div style={{ fontFamily: FUENTE.mono, fontWeight: 700, fontSize: 24, letterSpacing: "0.3em", color: c.foco }}>GUÁRDALO</div>
+          {tema ? (
+            <div style={{ fontFamily: FUENTE.mono, fontWeight: 700, fontSize: 22, letterSpacing: "0.12em", textTransform: "uppercase", color: c.texto,
+              border: `2px solid ${c.foco}88`, borderRadius: 999, padding: "6px 18px", ...sube(4, 30, 0) }}>{tema}</div>
+          ) : null}
         </div>
-        {datos.logos.increasefit ? <Img src={staticFile(c.claridad > 0.5 && datos.logos.oscuro ? "logo_increasefit_oscuro.png" : "logo_increasefit.png")} style={{ marginTop: 18, height: 66 }} /> : null}
+        {pregunta ? (
+          <div style={{ marginTop: 26, fontFamily: FUENTE.titulos, fontWeight: 600, fontSize: tamP, color: c.texto_suave, lineHeight: 1.15, ...sube(6) }}>{pregunta}</div>
+        ) : null}
+        <div style={{ marginTop: pregunta ? 10 : 22, fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: tamV, color: pregunta ? colorV : c.texto,
+          lineHeight: 1.04, letterSpacing: "-0.01em", ...sube(10, 0, 50) }}>{v}</div>
+        {ps.length ? (
+          <>
+            <div style={{ marginTop: 30, height: 3, background: `${c.estructura}44`, transformOrigin: "left center", transform: `scaleX(${linea})` }} />
+            <div style={{ marginTop: 24, fontFamily: FUENTE.mono, fontWeight: 700, fontSize: 22, letterSpacing: "0.25em", color: c.texto_suave, ...sube(18, 0, 20) }}>CÓMO APLICARLO</div>
+            <div style={{ marginTop: 18 }}>
+              {ps.map((l, i) => {
+                const k = 22 + i * 6;
+                const pop = ent(k, { damping: 9, stiffness: 220 });
+                return (
+                  <div key={i} style={{ display: "flex", gap: 22, alignItems: "flex-start", marginBottom: i < ps.length - 1 ? 20 : 0, ...sube(k, -60, 0) }}>
+                    <div style={{ flexShrink: 0, width: 54, height: 54, marginTop: 2, borderRadius: 27, background: c.foco, color: c.fondo_a, display: "flex",
+                      alignItems: "center", justifyContent: "center", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: 30, transform: `scale(${pop})` }}>{i + 1}</div>
+                    <div style={{ fontFamily: FUENTE.titulos, fontWeight: 700, fontSize: 46, color: c.texto, lineHeight: 1.12 }}>{l}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        ) : null}
+        {fuente ? (
+          <div style={{ marginTop: 24, fontFamily: FUENTE.mono, fontSize: 22, color: c.texto_suave, letterSpacing: "0.04em", ...sube(24 + ps.length * 6, 0, 10) }}>Fuente: {fuente}</div>
+        ) : null}
       </div>
-      <Img src={staticFile("mascota/sprites/gesto_pulgar_arriba.png")} style={{ position: "absolute", right: 50, top: 1345 - 520, height: 520, transformOrigin: "50% 100%",
-        transform: `scale(${m})`, filter: "drop-shadow(0 14px 18px rgba(0,0,0,0.4))" }} />
-    </>
+      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 30 }}>
+        <Img src={staticFile("mascota/sprites/gesto_pulgar_arriba.png")} style={{ height: 300, transformOrigin: "50% 100%", transform: `scale(${m})`,
+          filter: "drop-shadow(0 14px 18px rgba(0,0,0,0.4))" }} />
+        {datos.logos.increasefit ? (
+          <Img src={staticFile(claro && datos.logos.oscuro ? "logo_increasefit_oscuro.png" : "logo_increasefit.png")}
+            style={{ height: 70, marginBottom: 40, ...sube(26, 40, 0) }} />
+        ) : null}
+      </div>
+    </div>
   );
 };
 

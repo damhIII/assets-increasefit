@@ -44,19 +44,22 @@ export type Escena = {
   componente: string | null;                  // escena a medida (src/escenas/custom/<componente>.tsx)
   solo_componente: boolean;                   // true = solo el componente, sin la composición por defecto
 };
+// Tarjeta final: tema (chip) → pregunta del gancho → veredicto (color según tono) → pasos para aplicarlo → fuente.
+// sincronizar.py convierte el formato antiguo (titulo + lineas) a veredicto + pasos.
+export type TarjetaDatos = { tema: string; pregunta: string; veredicto: string; tono: "si" | "no" | "matiz" | ""; pasos: string[]; fuente: string; ini_f: number };
 export type Palabra = [string, number, number, number, number, "" | "alerta" | "exito", string];
 export type Sfx = { id: string; frame: number; volumen: number };
 export type Semana = { semana: number; kg: number; reps: number };
 export type DatosVideo = {
   version: number; base: string; audio: string;
   video: { width: number; height: number; fps: number; frames: number; voz_s: number; cola_s: number };
-  serie_header: string; musica: string | null;
+  musica: string | null;
   opciones: { barra_progreso: boolean };
   logos: { increasefit: boolean; oscuro: boolean; isotipo: boolean };
   fuentes: { rol: string; familia: string; css: string | null; stack: string; pesos: number[] }[];
   escenas: Escena[];
   cortinillas: number[];
-  tarjeta_resumen: { titulo: string; lineas: string[]; ini_f: number } | null;
+  tarjeta_resumen: TarjetaDatos | null;
   sfx: Sfx[];
   // palabra SIN puntuación (puede ser "" si era solo un signo), ini_s, fin_s, énfasis 0/1, corte 0/1 (fin de frase o coma),
   // tono ("" | "alerta" | "exito") e icono ("" | id de icons/) que la escaleta pinta en el subtítulo

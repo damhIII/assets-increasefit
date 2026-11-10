@@ -33,9 +33,11 @@ Cómo usarla:
 - Escrito para el oído: frases que se dicen de un tirón y respiran, ritmo variado, alguna muy corta que remata.
 - Conversacional y directo, de tú, español latinoamericano neutro. Nada de tono de anuncio ni de artículo.
 - Concreto: una escena reconocible del gym o un número claro vale más que una abstracción.
+- Se dice con calma: frases que se entienden a la primera sin correr. Mejor una idea menos que obligar a la voz a acelerar.
+- **El guion contesta su propia pregunta.** Antes del consejo práctico tiene que quedar dicha, con todas las letras, la respuesta corta al gancho (sí, no o depende, y de qué), con palabras parecidas a las del gancho para que se note que es la misma pregunta. Esa respuesta y el consejo práctico son lo que se resume en la tarjeta final que la gente guarda, así que el consejo debe ser concreto y aplicable hoy.
 
 # REGLAS QUE NO SE NEGOCIAN
-1. Entre 100 y 150 palabras (unos 40-55 segundos dichos con ritmo de Reel).
+1. Entre 95 y 135 palabras (unos 45-55 segundos dichos con un ritmo tranquilo, sin correr).
 2. Números siempre escritos con palabras ("cien personas", "uno coma seis gramos", "ciento diez por ciento"), nunca con dígitos ni símbolos. Como mucho seis cifras distintas en todo el texto (repetir "ocho semanas" cuenta una vez): solo las que cuentan el estudio (muestra, grupos, duración, dosis, resultado).
 3. Estudios y estadísticas: SOLO los de DATOS VERIFICADOS o los hallazgos de la INVESTIGACIÓN, con su acotación. Nómbralos de forma natural ("un ensayo con cien personas", "un metaanálisis de dos mil veinticuatro"), sin leer autores, revistas ni enlaces. Si nada encaja, no cites estudios: explica el mecanismo.
 4. Sin CTA de redes: nada de pedir comentarios, likes, follows, guardar ni compartir. El consejo práctico del estilo es algo para aplicar en el gym o al comprar, no una petición.

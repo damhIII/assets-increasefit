@@ -30,7 +30,10 @@ LIMITES = {"pantalla": 4, "capitulo": 5, "etiqueta": 2, "tachado": 3, "burbuja_d
            "lista": 3, "ficha": 2, "libreta": 2}
 PRESUPUESTO_TEXTO = 20          # …y palabras en pantalla en TODO el video
 TEXTO_POR_ESCENA = 2            # piezas con texto por escena (lo normal es 0 o 1)
-TARJETA_TITULO, TARJETA_LINEA, TARJETA_LINEAS = 5, 6, (2, 3)
+# Tarjeta final: palabras máximas por campo y número de pasos
+TARJETA = {"tema": 3, "pregunta": 8, "veredicto": 7, "paso": 6}
+TARJETA_PASOS = (2, 3)
+TARJETA_TITULO_ANTIGUO = 5      # formato antiguo (titulo + lineas)
 CTA = ("comenta", "dale like", "like", "sigueme", "suscribete", "guardalo y", "comparte", "link en", "en la bio")
 
 
@@ -83,9 +86,9 @@ def validar(dir_base):
         err.append(f"escaleta versión {esc.get('version')}: se espera 4")
     if esc.get("musica") and esc["musica"] not in musica:
         err.append(f"música desconocida {esc['musica']} (opciones: {', '.join(sorted(musica))})")
-    if not str(esc.get("serie_header", "")).strip():
-        avisos.append("sin serie_header: el header solo mostrará el isotipo")
-    cola = esc.get("cola_s", 3.0)
+    if str(esc.get("serie_header", "")).strip():
+        avisos.append("serie_header ya no se usa (el header es solo el isotipo, sin texto al lado): se ignora, bórralo de la escaleta")
+    cola = esc.get("cola_s", S.COLA_S)
     if not isinstance(cola, (int, float)) or not 0 <= cola <= 8:
         err.append(f"cola_s {cola!r}: entre 0 y 8 s")
 
@@ -243,20 +246,47 @@ def validar(dir_base):
     con_texto = sum(1 for e in escenas if (e.get("pantalla") or {}).get("texto") and (e.get("pantalla") or {}).get("estilo", "ninguno") != "ninguno")
     if escenas and con_texto > max(2, len(escenas) // 3):
         avisos.append(f"{con_texto} de {len(escenas)} escenas con texto en pantalla: la mayoría debería ir con 'ninguno'")
-    tr = esc.get("tarjeta_resumen")
+    tr = S.tarjeta_de(esc, d)
     if tr:
-        if not tr.get("titulo") or not TARJETA_LINEAS[0] <= len(tr.get("lineas") or []) <= TARJETA_LINEAS[1]:
-            err.append(f"tarjeta_resumen: título y {TARJETA_LINEAS[0]}-{TARJETA_LINEAS[1]} líneas")
-        if len(palabras(tr.get("titulo", ""))) > TARJETA_TITULO:
-            err.append(f"tarjeta_resumen: título de más de {TARJETA_TITULO} palabras")
-        for x in tr.get("lineas") or []:
-            if len(palabras(x)) > TARJETA_LINEA:
-                err.append(f"tarjeta_resumen: «{x}» tiene más de {TARJETA_LINEA} palabras")
-        textos += [("tarjeta", tr.get("titulo", ""))] + [("tarjeta", x) for x in tr.get("lineas") or []]
+        if esc.get("tarjeta_resumen") is None:
+            avisos.append("tarjeta_resumen tomada de tarjeta.json (la propuso el notebook): revísala y cópiala a la escaleta si la retocas")
+        if not tr["veredicto"]:
+            err.append("tarjeta_resumen: falta el veredicto (la respuesta corta a la pregunta del gancho)")
+        if not TARJETA_PASOS[0] <= len(tr["pasos"]) <= TARJETA_PASOS[1]:
+            err.append(f"tarjeta_resumen: {TARJETA_PASOS[0]}-{TARJETA_PASOS[1]} pasos para aplicarlo (hay {len(tr['pasos'])})")
+        if tr["_antigua"]:
+            avisos.append("tarjeta_resumen en formato antiguo (titulo + lineas): usa tema, pregunta, veredicto, tono y pasos (referencias/escaleta.md)")
+            if len(palabras(tr["veredicto"])) > TARJETA_TITULO_ANTIGUO:
+                err.append(f"tarjeta_resumen: título de más de {TARJETA_TITULO_ANTIGUO} palabras")
+        else:
+            if not tr["pregunta"]:
+                err.append("tarjeta_resumen: falta la pregunta (la del gancho, resumida): es lo que conecta la tarjeta con el Reel")
+            elif not tr["pregunta"].endswith("?"):
+                avisos.append(f"tarjeta_resumen: la pregunta «{tr['pregunta']}» debería ir entre signos de pregunta")
+            if not tr["tono"]:
+                avisos.append("tarjeta_resumen: sin tono (si | no | matiz): el veredicto irá en el color de foco")
+            if not tr["tema"]:
+                avisos.append("tarjeta_resumen: sin tema (1-3 palabras): el chip ayuda a reconocer el Reel al volver a la tarjeta")
+            for campo in ("tema", "pregunta", "veredicto"):
+                if len(palabras(tr[campo])) > TARJETA[campo]:
+                    err.append(f"tarjeta_resumen.{campo}: «{tr[campo]}» tiene más de {TARJETA[campo]} palabras")
+            # ¿La tarjeta retoma el gancho? (alguna palabra con contenido de pregunta/tema aparece en las 2 primeras frases)
+            gancho = " ".join(re.split(r"(?<=[.!?…])\s+", (d / "guion.txt").read_text(encoding="utf-8").strip())[:2])
+            raiz = lambda t: {w[:5] for w in re.findall(r"[a-z0-9ñ]+", sin_tildes(t)) if len(w) >= 5}
+            if tr["pregunta"] and not raiz(tr["pregunta"] + " " + tr["tema"]) & raiz(gancho):
+                avisos.append(f"tarjeta_resumen: la pregunta «{tr['pregunta']}» no retoma ninguna palabra del gancho: ¿se reconoce que es la conclusión de ESTE Reel?")
+        for x in tr["pasos"]:
+            if len(palabras(x)) > TARJETA["paso"]:
+                err.append(f"tarjeta_resumen: el paso «{x}» tiene más de {TARJETA['paso']} palabras")
+        if tr["fuente"] and tr["fuente"] not in fuentes_ok:
+            err.append(f"tarjeta_resumen: la fuente «{tr['fuente']}» no está en editorial/datos_verificados.json: verifícala y añádela, o quítala")
+        textos += [("tarjeta", tr[k]) for k in ("tema", "pregunta", "veredicto") if tr[k]] + [("tarjeta", x) for x in tr["pasos"]]
         if tr.get("desde") is not None:
             idx_ok(tr["desde"], "tarjeta_resumen.desde")
+        if isinstance(cola, (int, float)) and cola < 3.5 and tr.get("desde") is None:
+            avisos.append(f"cola_s {cola}: con la tarjeta nueva deja al menos 3.5-4 s para leerla")
     else:
-        avisos.append("sin tarjeta_resumen")
+        avisos.append("sin tarjeta_resumen (ni en la escaleta ni en tarjeta.json)")
     cifras = []
     for donde, t in textos:
         tt = f" {sin_tildes(t)} "

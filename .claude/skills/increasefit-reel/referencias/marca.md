@@ -21,13 +21,13 @@ La paleta es la del feed de Instagram: tres looks y nada más. **Negro** neutro 
 
 - **Tipografía**: Open Sans como el logo (línea 1 en 400, como "INCREASE"; línea 2 en 800 en el foco del clima, como el "FIT" azul). Números del gym y fuentes de datos en JetBrains Mono. Anotaciones a mano (etiquetas, notas, bocadillos) en Kalam.
 - **Azul escaso**: línea 2 del titular, palabra actual del subtítulo, foco de cada escena, cinta de la mascota. Si todo es azul, nada lo es.
-- **Logos**: `isotipo.png` (la flecha) en el header; `logo_increasefit.png` en la tarjeta resumen (`logo_increasefit_oscuro.png` en climas claros).
+- **Logos**: `isotipo.png` (la flecha) solo, arriba y sin texto al lado; `logo_increasefit.png` bajo la tarjeta final (`logo_increasefit_oscuro.png` en climas claros).
 - **La flecha** del isotipo es el motivo gráfico: el trazo de pincel de las cortinillas (`kit/transiciones/trazo_pincel.svg`) es su eco.
 
 ## Contenido y honestidad
 - Las cifras de entreno de ejemplo (kilos, repeticiones, progresión) son **ejemplo ilustrativo**: rotúlalas así.
 - Los datos de estudios se muestran con su fuente corta verificada (`editorial/datos_verificados.json`), en JetBrains Mono, pequeña y legible.
-- Sin CTA: el video no pide comentarios, likes ni follows; cierra con un remate y la tarjeta resumen para guardar.
+- Sin CTA: el video no pide comentarios, likes ni follows; cierra con un remate y la tarjeta final para guardar (pregunta del gancho → veredicto → cómo aplicarlo).
 - Nada de antes/después corporales, básculas como meta, comida "prohibida" ni cuerpos ridiculizados. El blanco del humor es el error, no la persona.
 
 ## Prohibido
