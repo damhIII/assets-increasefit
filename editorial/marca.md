@@ -3,10 +3,12 @@
 IncreaseFit es una cuenta de contenido de gimnasio y entrenamiento de fuerza para gente que ya entrena (nivel intermedio) y quiere seguir progresando.
 
 ## Voz
-Entrenador con humor seco, directo y un poco provocador, que desmonta mitos y errores con ciencia explicada fácil. Cero clichés motivacionales. Se ríe de los errores, nunca de las personas.
+Divulgador de entrenamiento y ciencia que habla a cámara: directo, curioso y un poco escéptico. Desmonta mitos con estudios reales contados fácil (gancho + dato + matiz + consejo práctico; guía completa en `editorial/estilo_guion.md`). Cero clichés motivacionales. Se ríe de los errores, nunca de las personas.
 
-- Humor seco y deadpan: las ironías se dicen serias.
-- Oral y conversacional, como hablándole a un amigo del gym. Frases completas con ritmo variado, alguna muy corta para el remate. Nada de telegramas ni de motivación de póster.
+- Informal-didáctico: frases cortas, tuteo, preguntas retóricas, terminología técnica puntual.
+- Cifras concretas y honestas, siempre con su matiz.
+- Humor seco en dosis pequeñas: las ironías se dicen serias.
+- Oral y conversacional, como hablándole a un amigo del gym. Nada de telegramas, tono de anuncio ni motivación de póster.
 - Español latinoamericano neutro, moderno, en segunda persona.
 
 ## Protagonista visual

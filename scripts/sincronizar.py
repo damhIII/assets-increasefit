@@ -7,12 +7,30 @@ Uso (normalmente lo llama preparar_video.py):
 Entrada: briefs/<BASE>/escaleta.json + subtitulos.json (scripts/alinear.py).
 Salida: el dict que la plantilla lee como src/video.json (ver .claude/skills/increasefit-reel/referencias/escaleta.md).
 Las anclas son índices de palabra (los [n] que imprime alinear.py). Escenas contiguas: cada una acaba donde empieza la siguiente.
+Subtítulos: se limpian de signos de puntuación (solo palabras); el fin de frase o coma queda como bandera `corte` para agruparlos.
 """
-import json, math, sys
+import json, math, re, sys
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 FPS, WIDTH, HEIGHT = 30, 1080, 1920
+
+
+TONOS = ("alerta", "exito")
+
+
+def palabra_subtitulo(w):
+    """Palabra del guion → palabra para el subtítulo: sin signos de puntuación ni comillas (¿En → En, serio? → serio).
+    Conserva tildes, ñ, guiones internos y la coma/punto decimal entre dígitos. Puede quedar vacía (p. ej. un "—" suelto)."""
+    w = re.sub(r"(?<=\d)[.,](?=\d)", "\x00", str(w))
+    w = re.sub(r"[^\w%\-\x00]", "", w).replace("_", "")
+    w = re.sub(r"-{2,}", "-", w).strip("-").replace("\x00", ",")
+    return w if re.search(r"\d", w) else w.replace("%", "")
+
+
+def corta_aqui(w):
+    """1 si la palabra cierra frase o lleva coma/pausa escrita: el subtítulo cambia de grupo después de ella."""
+    return 1 if re.search(r"[.,;:?!…—]['\"»”)]*$", str(w)) else 0
 
 
 def _leer(p):
@@ -60,6 +78,9 @@ def sincronizar(dir_base):
         for j, o in enumerate(e.get("anotaciones") or []):
             o = dict(o)
             o["en_f"] = frame(o.pop("en")) if o.get("en") is not None else None
+            if o.get("filas"):                                  # ficha: cada fila con su propio momento
+                o["filas"] = [{"icono": r.get("icono", ""), "texto": str(r.get("texto", "")),
+                               "en_f": frame(r["en"]) if r.get("en") is not None else None} for r in o["filas"]]
             anot.append(o)
         ins = e.get("inserto")
         if ins:
@@ -82,6 +103,9 @@ def sincronizar(dir_base):
         for j, o in enumerate(e["anotaciones"]):
             if o["en_f"] is None:
                 o["en_f"] = min(e["fin_f"] - 1, e["ini_f"] + 6 + j * 8)
+            for r_i, r in enumerate(o.get("filas") or []):
+                if r["en_f"] is None:
+                    r["en_f"] = min(e["fin_f"] - 1, o["en_f"] + r_i * 12)
         if e["inserto"] and e["inserto"]["en_f"] is None:
             e["inserto"]["en_f"] = e["ini_f"] + 4
     for s in sfx:
@@ -93,15 +117,23 @@ def sincronizar(dir_base):
     if tr:
         ini = frame(tr["desde"]) if tr.get("desde") is not None else min(total - 45, round(P[-1]["fin"] * FPS) + 4)
         tr = {"titulo": tr["titulo"], "lineas": tr["lineas"], "ini_f": ini}
+    st = esc.get("subtitulos") or {}
+    tono = {}
+    for t in TONOS:
+        for i in (st.get("tonos") or {}).get(t) or []:
+            tono[int(i)] = t
+    icono = {int(x["en"]): x["icono"] for x in st.get("iconos") or [] if x.get("en") is not None and x.get("icono")}
     logos = {k: (RAIZ / v).exists() for k, v in (("increasefit", "logo_increasefit.png"), ("oscuro", "logo_increasefit_oscuro.png"), ("isotipo", "isotipo.png"))}
     return {
-        "version": 3, "base": sub["base"], "audio": "locucion.wav",
+        "version": 4, "base": sub["base"], "audio": "locucion.wav",
         "video": {"width": WIDTH, "height": HEIGHT, "fps": FPS, "frames": total, "voz_s": round(voz_s, 2), "cola_s": cola_s},
         "serie_header": str(esc.get("serie_header", "")).upper(), "musica": esc.get("musica"),
         "opciones": {"barra_progreso": bool((esc.get("opciones") or {}).get("barra_progreso", False))},
         "logos": logos, "fuentes": cat["fuentes"],
         "escenas": escenas, "cortinillas": cortinillas, "tarjeta_resumen": tr, "sfx": sorted(sfx, key=lambda s: s["frame"]),
-        "subtitulos": [[p["w"], p["ini"], p["fin"], 1 if p["i"] in enfasis else 0] for p in P],
+        # [palabra sin puntuación, ini_s, fin_s, énfasis 0/1, corte 0/1, tono "" | alerta | exito, icono "" | id de icons/]
+        "subtitulos": [[palabra_subtitulo(p["w"]), p["ini"], p["fin"], 1 if p["i"] in enfasis else 0, corta_aqui(p["w"]),
+                        tono.get(p["i"], ""), icono.get(p["i"], "")] for p in P],
         "progresion": esc.get("progresion") or [],
     }
 

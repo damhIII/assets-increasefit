@@ -151,6 +151,57 @@ export const Dato: React.FC<{ texto: string; detalle?: string; fuente?: string; 
   );
 };
 
+/** Color de un tono: el foco del clima por defecto; alerta (el error) y éxito (lo correcto) no cambian con el clima. */
+export const colorTono = (tono: "foco" | "alerta" | "exito" | undefined, c: C) => (tono === "alerta" ? IF.alerta : tono === "exito" ? IF.exito : c.foco);
+
+/** Icono grande en una insignia que salta (overshoot) y flota: la imagen que sustituye a una palabra en pantalla.
+ *  `tachado` dibuja una barra roja encima ("esto no"). x, y = centro. */
+export const IconoPop: React.FC<{ nombre: string; x: number; y: number; desde: number; c: C; tono?: "foco" | "alerta" | "exito"; tachado?: boolean; size?: number }> = ({ nombre, x, y, desde, c, tono, tachado, size = 220 }) => {
+  const f = useCurrentFrame();
+  const e = useEntrada(desde, { damping: 8, stiffness: 200 });
+  const col = colorTono(tono, c);
+  const flota = Math.sin((f - desde) / 14) * 6;
+  const barra = interpolate(f, [desde + 10, desde + 18], [0, 1], clamp);
+  const L = size * 0.95;
+  return (
+    <div style={{ position: "absolute", left: x - size / 2, top: y - size / 2 + flota, width: size, height: size, transform: `scale(${e}) rotate(${(1 - e) * -30}deg)`, opacity: Math.min(1, e * 2) }}>
+      <div style={{ position: "absolute", inset: 0, borderRadius: "50%", background: c.superficie, border: `6px solid ${col}`, boxShadow: `0 18px 40px rgba(0,0,0,0.35), 0 0 40px ${col}33` }} />
+      <Icono nombre={nombre} color={col} size={size * 0.52} style={{ position: "absolute", left: size * 0.24, top: size * 0.24 }} />
+      {tachado ? (
+        <svg width={size} height={size} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+          <path d={`M${size * 0.17},${size * 0.83} L${size * 0.83},${size * 0.17}`} stroke={IF.alerta} strokeWidth={size * 0.075} strokeLinecap="round"
+            strokeDasharray={`${L} ${L}`} strokeDashoffset={L * (1 - barra)} />
+        </svg>
+      ) : null}
+    </div>
+  );
+};
+
+/** Ficha de un estudio contada con iconos: cada fila = icono + cifra corta ("100", "8 sem", "5 g"), que entra en su frame local.
+ *  Abajo, la fuente verificada (JetBrains Mono) o EJEMPLO ILUSTRATIVO. Va en la columna izquierda (la mascota pasa a la derecha). */
+export const FichaEstudio: React.FC<{ filas: { icono: string; texto: string }[]; frames: number[]; fuente?: string; c: C; x?: number; y?: number; ancho?: number }> = ({ filas, frames, fuente, c, x = 60, y = 600, ancho = 560 }) => {
+  const f = useCurrentFrame();
+  const e = useEntrada(Math.max(0, (frames[0] ?? 0) - 4));
+  return (
+    <div style={{ position: "absolute", left: x, top: y, width: ancho, borderRadius: 34, background: c.superficie, border: `3px solid ${c.estructura}44`, padding: "26px 34px",
+      boxSizing: "border-box", transform: `translateY(${(1 - e) * 70}px)`, opacity: Math.min(1, e), boxShadow: "0 24px 60px rgba(0,0,0,0.3)" }}>
+      {filas.slice(0, 4).map((r, i) => {
+        const ei = spring({ fps: 30, frame: f - (frames[i] ?? 0), config: { damping: 10, stiffness: 220 } });
+        return (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 28, padding: "16px 0", borderTop: i ? `2px dashed ${c.estructura}33` : "none",
+            transform: `translateX(${(1 - ei) * -70}px) scale(${0.85 + 0.15 * ei})`, transformOrigin: "left center", opacity: Math.min(1, ei * 1.5) }}>
+            <div style={{ width: 104, height: 104, borderRadius: 26, background: `${c.foco}22`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <Icono nombre={r.icono} color={c.foco} size={64} />
+            </div>
+            <div style={{ fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: Math.min(84, Math.floor(700 / Math.max(3, r.texto.length))), color: c.texto, lineHeight: 1, letterSpacing: "-0.02em" }}>{r.texto}</div>
+          </div>
+        );
+      })}
+      {fuente ? <div style={{ marginTop: 14, fontFamily: FUENTE.mono, fontSize: 24, color: c.texto_suave, letterSpacing: "0.04em" }}>{fuente}</div> : null}
+    </div>
+  );
+};
+
 /** Checklist: cada ítem aparece y se marca a su tiempo (frames locales). */
 export const Lista: React.FC<{ items: string[]; frames: number[]; c: C; x?: number; y?: number; ancho?: number }> = ({ items, frames, c, x = 60, y = 600, ancho = 560 }) => {
   const f = useCurrentFrame();

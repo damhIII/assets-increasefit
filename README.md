@@ -1,8 +1,8 @@
 # assets-increasefit
 
-Contenido editorial, mascota, kit gráfico, sonido y plantilla Remotion de los Reels de IncreaseFit. El notebook de Colab deja en `briefs/<BASE>/` el guion (texto), la locución y el tiempo de cada palabra; Claude diseña las escenas y construye el video con la skill `.claude/skills/increasefit-reel/`. Instrucciones generales: `CLAUDE.md`.
+Contenido editorial, mascota, kit gráfico, sonido y plantilla Remotion de los Reels de IncreaseFit. El notebook de Colab deja en `briefs/<BASE>/` la investigación (búsqueda web), el guion (texto), la locución y el tiempo de cada palabra; Claude diseña las escenas y construye el video con la skill `.claude/skills/increasefit-reel/`. Instrucciones generales: `CLAUDE.md`.
 
-- **editorial/**: marca y voz, ADN, temas, datos verificados, prompt del guionista y perfil de locución.
+- **editorial/**: marca y voz, ADN, estilo del guion, temas, datos verificados, prompts del investigador y del guionista.
 - **mascota/**: sprites PNG del personaje (`manifest.json`, `personaje.json`, `contactos.jpg`).
 - **kit/**: anotaciones dibujadas a mano y cortinilla de pincel (`manifest.json`, `contactos.png`).
 - **sonido/**: efectos y música en bucle (`manifest.json`, licencias).

@@ -7,7 +7,7 @@ import sonidoJson from "../sonido.json";
 
 export type Anotacion = {
   tipo: "etiqueta" | "tachado" | "circulo" | "check" | "cruz" | "burbuja_pensamiento" | "burbuja_dialogo" | "dato" | "lista"
-      | "rec" | "lineas_velocidad" | "impacto" | "sudor" | "destello" | "enfoque" | "libreta" | "grafica";
+      | "rec" | "lineas_velocidad" | "impacto" | "sudor" | "destello" | "enfoque" | "libreta" | "grafica" | "icono" | "ficha";
   texto?: string;            // etiqueta, tachado, burbuja_dialogo, dato (la cifra grande), libreta (título)
   detalle?: string;          // dato: texto bajo la cifra
   fuente?: string;           // dato: fuente corta verificada
@@ -15,8 +15,14 @@ export type Anotacion = {
   apunta?: "cabeza" | "manos" | "pies" | "centro";
   sprite?: string;           // burbuja_pensamiento
   items?: string[];          // lista
+  icono?: string;            // icono: id de icons/ (Lucide)
+  tono?: Tono;               // icono: color (foco del clima por defecto)
+  tachado?: boolean;         // icono: se tacha en rojo ("esto no")
+  filas?: FilaFicha[];       // ficha: icono + cifra corta por fila
   en_f: number;              // frame GLOBAL en que aparece
 };
+export type Tono = "foco" | "alerta" | "exito";
+export type FilaFicha = { icono: string; texto: string; en_f: number };
 export type MascotaEscena = {
   sprite: string;            // id de mascota/manifest.json o "ejercicio:<nombre>" (alterna sus fases)
   anim: "pop" | "ejercicio" | "temblor" | "entrar" | "estatico";
@@ -38,6 +44,7 @@ export type Escena = {
   componente: string | null;                  // escena a medida (src/escenas/custom/<componente>.tsx)
   solo_componente: boolean;                   // true = solo el componente, sin la composición por defecto
 };
+export type Palabra = [string, number, number, number, number, "" | "alerta" | "exito", string];
 export type Sfx = { id: string; frame: number; volumen: number };
 export type Semana = { semana: number; kg: number; reps: number };
 export type DatosVideo = {
@@ -51,7 +58,9 @@ export type DatosVideo = {
   cortinillas: number[];
   tarjeta_resumen: { titulo: string; lineas: string[]; ini_f: number } | null;
   sfx: Sfx[];
-  subtitulos: [string, number, number, number][];   // palabra del guion, ini_s, fin_s, énfasis (0/1)
+  // palabra SIN puntuación (puede ser "" si era solo un signo), ini_s, fin_s, énfasis 0/1, corte 0/1 (fin de frase o coma),
+  // tono ("" | "alerta" | "exito") e icono ("" | id de icons/) que la escaleta pinta en el subtítulo
+  subtitulos: Palabra[];
   progresion: Semana[];
 };
 export type Clima = {

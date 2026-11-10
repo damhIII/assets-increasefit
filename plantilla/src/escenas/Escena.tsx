@@ -6,7 +6,7 @@ import { AbsoluteFill, spring, useCurrentFrame, useVideoConfig } from "remotion"
 import { datos, FUENTE, IF, type Anotacion, type Escena } from "../marco/datos";
 import { useClimaEscena, type C } from "../marco/clima";
 import { ancla, colocar, fasesDe, Mascota } from "../personaje/Sprite";
-import { BurbujaDialogo, BurbujaPensamiento, CajaTachada, Capitulo, Circulo, Dato, Efecto, Etiqueta, Grafica, Inserto, Libreta, Lista, Marca } from "../componentes/kit";
+import { BurbujaDialogo, BurbujaPensamiento, CajaTachada, Capitulo, Circulo, Dato, Efecto, Etiqueta, FichaEstudio, Grafica, IconoPop, Inserto, Libreta, Lista, Marca } from "../componentes/kit";
 import { CUSTOM } from "./custom";
 
 /** Cámara viva: flota y hace punch-in en un frame local. */
@@ -22,7 +22,7 @@ export const Camara: React.FC<{ children: React.ReactNode; punch: number | null;
   );
 };
 
-const COLUMNA = new Set(["dato", "lista", "libreta", "grafica"]);
+const COLUMNA = new Set(["dato", "lista", "libreta", "grafica", "ficha"]);
 
 const Custom: React.FC<{ e: Escena; c: C }> = ({ e, c }) => {
   const Comp = e.componente ? CUSTOM[e.componente] : undefined;
@@ -40,7 +40,7 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
     return <AbsoluteFill><Capitulo texto={e.pantalla.texto} c={c} /><Custom e={e} c={c} /></AbsoluteFill>;
   }
 
-  // Pantalla dividida: ASÍ NO | ASÍ SÍ
+  // Pantalla dividida: ASÍ NO | ASÍ SÍ (de las anotaciones solo dibuja los iconos, en el centro)
   if (e.dividida) {
     const { no, si } = e.dividida;
     const izq = colocar(fasesDe(no)[0], "general", "izq", false, 0.68, 280);
@@ -55,6 +55,9 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
         <Mascota sprite={si} anim={si.startsWith("ejercicio:") ? "ejercicio" : "pop"} colocacion={der} desde={6} />
         <Marca tipo="cruz" x={470} y={680} desde={10} size={110} />
         <Marca tipo="check" x={995} y={680} desde={16} size={110} />
+        {e.anotaciones.filter((o) => o.tipo === "icono").map((o, k) => (
+          <IconoPop key={`i${k}`} nombre={o.icono ?? "lightbulb"} x={540} y={760 + k * 200} desde={Math.max(0, o.en_f - e.ini_f)} c={c} tono={o.tono} tachado={!!o.tachado} size={170} />
+        ))}
         <Custom e={e} c={c} />
       </Camara>
     );
@@ -69,6 +72,17 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
   const centroX = col.x + (col.w * col.k) / 2;
   const libre = !v ? "der" : centroX > 540 ? "izq" : "der";
   const dur = e.fin_f - e.ini_f;
+  // Iconos: junto a la zona a la que apuntan o apilados en el lado libre; sin mascota, en fila centrada.
+  const iconos = e.anotaciones.filter((o) => o.tipo === "icono");
+  const posIcono = (o: Anotacion): [number, number] => {
+    const k = iconos.indexOf(o), n = iconos.length;
+    if (!v) return [540 + (k - (n - 1) / 2) * Math.min(300, 900 / Math.max(1, n)), 900];
+    if (o.apunta) {
+      const a = ancla(col, o.apunta);
+      return [Math.min(900, Math.max(180, a[0] + (libre === "izq" ? -250 : 250))), Math.min(1180, Math.max(680, a[1] - 60 + k * 40))];
+    }
+    return [libre === "izq" ? 260 : 820, Math.min(1180, 720 + k * 250)];
+  };
 
   const detras = e.anotaciones.map((o, i) => (o.tipo === "lineas_velocidad" || o.tipo === "enfoque" ? <Efecto key={`d${i}`} tipo={o.tipo} a={ancla(col, "centro")} desde={local(o)} c={c} /> : null));
   const delante = e.anotaciones.map((o, i) => {
@@ -90,6 +104,14 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
         return <Libreta key={i} c={c} titulo={o.texto ?? "entreno"} frames={filas.map((_, k) => t + Math.round(((dur - t - 10) * k) / filas.length))} />;
       }
       case "grafica": return <Grafica key={i} c={c} desde={t} />;
+      case "icono": {
+        const [x, y] = posIcono(o);
+        return <IconoPop key={i} nombre={o.icono ?? "lightbulb"} x={x} y={y} desde={t} c={c} tono={o.tono} tachado={!!o.tachado} size={v ? 210 : 260} />;
+      }
+      case "ficha": {
+        const filas = o.filas ?? [];
+        return <FichaEstudio key={i} filas={filas} frames={filas.map((r) => Math.max(0, r.en_f - e.ini_f))} fuente={o.fuente ?? (o.ilustrativo ? "EJEMPLO ILUSTRATIVO" : undefined)} c={c} />;
+      }
       case "rec": case "impacto": case "sudor": case "destello": return <Efecto key={i} tipo={o.tipo} a={cabeza} desde={t} c={c} />;
       default: return null;
     }
