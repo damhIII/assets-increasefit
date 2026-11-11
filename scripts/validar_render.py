@@ -22,7 +22,9 @@ ENCUADRES = {"general", "medio", "primer_plano"}
 POSICIONES = {"centro", "izq", "der"}
 APUNTA = {"cabeza", "manos", "pies", "centro"}
 ANOTACIONES = {"etiqueta", "tachado", "circulo", "check", "cruz", "burbuja_pensamiento", "burbuja_dialogo", "dato", "lista",
-               "rec", "lineas_velocidad", "impacto", "sudor", "destello", "enfoque", "libreta", "grafica", "icono", "ficha"}
+               "rec", "lineas_velocidad", "impacto", "sudor", "destello", "enfoque", "libreta", "grafica", "icono", "ficha",
+               "musculos", "lottie"}
+VISTAS = {"frente", "espalda"}
 TRANSICIONES = {"corte", "pincel"}
 TONOS = {"foco", "alerta", "exito"}
 # Texto en pantalla (sin contar subtítulos, fuentes, ASÍ NO/ASÍ SÍ ni la tarjeta resumen): palabras máximas por pieza…
@@ -58,6 +60,9 @@ def validar(dir_base):
     fuentes_ok = {x["corta"] for x in dv.values()} | {x["fuente"] for x in dv.values()}
     n = len(sub["palabras"])
     iconos = {f.stem for f in (S.RAIZ / "icons").glob("*.svg")}
+    musculos = set((cat["musculos"].get("musculos") or {}).keys())
+    lotties = {l["id"] for l in cat["lottie"].get("animaciones") or []}
+    fondos = {x["id"] for x in cat["fondos"].get("fondos") or []}
     texto_total = []                          # (dónde, palabras) del texto en pantalla, para el presupuesto
 
     def palabras(t):
@@ -116,6 +121,8 @@ def validar(dir_base):
             anterior = desde
         if e.get("clima") and e["clima"] not in climas:
             err.append(f"{eid}: clima desconocido {e['clima']} (opciones: {', '.join(climas)})")
+        if e.get("fondo") and e["fondo"] not in fondos:
+            err.append(f"{eid}: fondo desconocido {e['fondo']} (fondos/manifest.json: {', '.join(sorted(fondos)) or 'ninguno'})")
         if e.get("transicion", "corte") not in TRANSICIONES:
             err.append(f"{eid}: transición {e.get('transicion')} (corte | pincel)")
         pant = e.get("pantalla") or {}
@@ -178,6 +185,26 @@ def validar(dir_base):
                 icono_ok(o.get("icono"), donde)
                 if o.get("tono") and o["tono"] not in TONOS:
                     err.append(f"{donde}: tono {o['tono']} ({' | '.join(sorted(TONOS))})")
+            if t == "musculos":
+                if not musculos:
+                    err.append(f"{donde}: no hay mapa muscular en el repo (anatomia/musculos.json)")
+                if o.get("vista", "frente") not in VISTAS:
+                    err.append(f"{donde}: vista {o.get('vista')} (frente | espalda)")
+                res = o.get("resaltar") or []
+                if not 1 <= len(res) <= 4:
+                    err.append(f"{donde}: resaltar de 1 a 4 músculos")
+                for m_id in res:
+                    if musculos and m_id not in musculos:
+                        err.append(f"{donde}: músculo «{m_id}» desconocido ({', '.join(sorted(musculos))})")
+                if o.get("tono") and o["tono"] not in TONOS:
+                    err.append(f"{donde}: tono {o['tono']} ({' | '.join(sorted(TONOS))})")
+            if t == "lottie":
+                if o.get("lottie") not in lotties:
+                    err.append(f"{donde}: lottie «{o.get('lottie')}» no está en lottie/manifest.json ({', '.join(sorted(lotties)) or 'ninguna'})")
+                if o.get("tono") and o["tono"] not in TONOS | {"texto"}:
+                    err.append(f"{donde}: tono {o['tono']} (foco | alerta | exito | texto; solo en las lottie mono)")
+                if o.get("escala") is not None and not (isinstance(o["escala"], (int, float)) and 0.3 <= o["escala"] <= 2.5):
+                    err.append(f"{donde}: escala entre 0.3 y 2.5")
             if t == "ficha":
                 filas = o.get("filas") or []
                 if not 2 <= len(filas) <= 4:

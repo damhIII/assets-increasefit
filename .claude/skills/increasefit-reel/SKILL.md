@@ -18,7 +18,7 @@ El notebook te da **el guion** (texto plano, sin ninguna indicación), **la locu
 
 ## 3. Lee la marca y mira el material
 - Siempre: `editorial/marca.md`, `editorial/adn.md` y, en `referencias/`, `marca.md`, `mascota.md`, `layout.md`, `escaleta.md`.
-- **Abre las imágenes** `mascota/contactos.jpg` (todas las poses) y `kit/contactos.png` (anotaciones): diseña con lo que existe.
+- **Abre las imágenes** `mascota/contactos.jpg` (todas las poses), `kit/contactos.png` (anotaciones), `icons/contactos.png` (iconos) y `fondos/contactos.png` (patrones de fondo), y lee `lottie/manifest.json` (animaciones): diseña con lo que existe.
 - Cuando toque: `climas.md`, `sonido.md`, `tecnico.md`.
 
 ## 4. Verifica las cifras del guion
@@ -39,6 +39,8 @@ Por cada estudio o estadística que diga la voz:
   - sustantivos concretos (creatina, cerebro, semanas, placebo) → `icono` (Lucide: `python3 scripts/iconos.py --buscar <palabra>` y luego `python3 scripts/iconos.py <nombre>` si falta);
   - el método de un estudio (muestra, duración, dosis) → `ficha` (icono + cifra corta por fila, cada fila en su palabra);
   - el resultado → `dato` (la cifra grande con su fuente);
+  - qué músculo trabaja o duele → `musculos` (mapa muscular con ese músculo encendido);
+  - un logro, una explosión de energía, el paso del tiempo → `lottie` (confeti, fuego, destellos, reloj de arena) como remate puntual;
   - comparaciones y grupos → `dividida`, dos sprites o check/cruz;
   - una advertencia o "esto no" → `icono` con `tachado`, `cruz`, `tachado` del kit o la mascota en `error_*`;
   - sorpresa, duda o ironía → `inserto` con una `cara_*`, gestos.

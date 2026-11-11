@@ -1,0 +1,64 @@
+{
+ "notas": [
+  "Patrones SVG en BLANCO (#FFFFFF) sobre transparente: la plantilla los pinta con máscara en el color de texto del clima y a baja opacidad.",
+  "No añadas colores: el color lo pone el clima (brand/paletas.json).",
+  "En la escaleta: \"fondo\": \"<id>\" en la escena. Vista previa: fondos/contactos.png.",
+  "Los patrones de iconos usan Lucide (ISC) y Tabler (MIT)."
+ ],
+ "fondos": [
+  {
+   "id": "patron_gym",
+   "archivo": "fondos/patron_gym.svg",
+   "tipo": "iconos",
+   "uso": "Gimnasio: pesas, kettlebell, barra, cinta. Escenas de entreno y técnica."
+  },
+  {
+   "id": "patron_sueno",
+   "archivo": "fondos/patron_sueno.svg",
+   "tipo": "iconos",
+   "uso": "Sueño y descanso: lunas, camas, zzz, despertador."
+  },
+  {
+   "id": "patron_nutricion",
+   "archivo": "fondos/patron_nutricion.svg",
+   "tipo": "iconos",
+   "uso": "Nutrición: huevos, manzana, pollo, leche, ensalada, café."
+  },
+  {
+   "id": "patron_ciencia",
+   "archivo": "fondos/patron_ciencia.svg",
+   "tipo": "iconos",
+   "uso": "Ciencia y estudios: matraz, microscopio, ADN, cerebro, gráfica."
+  },
+  {
+   "id": "patron_cardio",
+   "archivo": "fondos/patron_cardio.svg",
+   "tipo": "iconos",
+   "uso": "Cardio y corazón: pulso, zapatillas, bici, cronómetro."
+  },
+  {
+   "id": "diagonales",
+   "archivo": "fondos/diagonales.svg",
+   "tipo": "geometrico",
+   "uso": "Rayas diagonales finas: tensión, advertencia suave, método."
+  },
+  {
+   "id": "puntos",
+   "archivo": "fondos/puntos.svg",
+   "tipo": "geometrico",
+   "uso": "Trama de puntos que crecen hacia abajo (semitono de cómic): datos, explicación."
+  },
+  {
+   "id": "pulso",
+   "archivo": "fondos/pulso.svg",
+   "tipo": "geometrico",
+   "uso": "Líneas de electrocardiograma: cardio, salud, intensidad."
+  },
+  {
+   "id": "discos",
+   "archivo": "fondos/discos.svg",
+   "tipo": "geometrico",
+   "uso": "Círculos concéntricos como discos de pesas en los bordes: fuerza, cargas."
+  }
+ ]
+}

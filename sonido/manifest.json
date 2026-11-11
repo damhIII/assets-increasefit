@@ -4,7 +4,8 @@
   "SFX: WAV mono 44,1 kHz con pico a -1,5 dBFS. volumen_sugerido es el valor de <Audio volume> en Remotion con la voz sonando.",
   "Música: bucles WAV estéreo sin costura (normalizados a -16 LUFS). Debajo de la voz usar volumen_bajo_voz (ducking) y subir a volumen_sin_voz en la cola final.",
   "Coloca cada SFX en la palabra que lo motiva (sfx[].en en la escaleta). No más de un SFX cada ~1 s: si todo suena, nada destaca.",
-  "Licencias: los de Kenney son CC0 (licencias/Kenney-CC0.md); el resto son obra propia. Ninguno exige atribución."
+  "Licencias: los de Kenney son CC0 (licencias/Kenney-CC0.md); el resto son obra propia. Ninguno exige atribución.",
+  "Pistas mx_* (Mixkit) y efectos de Kenney/Mixkit descargados con Descargar_assets_IncreaseFit: licencias en sonido/licencias/."
  ],
  "sfx": [
   {
@@ -348,6 +349,156 @@
    "uso": "Libreta que se deja sobre el banco.",
    "volumen_sugerido": 0.6,
    "fuente": "Kenney · paquete de donación 2014 (CC0 1.0)"
+  },
+  {
+   "id": "mx_whoosh_1",
+   "archivo": "sfx/mx_whoosh_1.wav",
+   "categoria": "transicion",
+   "duracion_s": 2.24,
+   "uso": "Whoosh de Mixkit: entrada rápida, cambio de plano.",
+   "volumen_sugerido": 0.45,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/whoosh/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/1489/1489-preview.mp3"
+  },
+  {
+   "id": "mx_whoosh_2",
+   "archivo": "sfx/mx_whoosh_2.wav",
+   "categoria": "transicion",
+   "duracion_s": 1.33,
+   "uso": "Whoosh de Mixkit: entrada rápida, cambio de plano.",
+   "volumen_sugerido": 0.45,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/whoosh/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/1492/1492-preview.mp3"
+  },
+  {
+   "id": "mx_whoosh_3",
+   "archivo": "sfx/mx_whoosh_3.wav",
+   "categoria": "transicion",
+   "duracion_s": 0.99,
+   "uso": "Whoosh de Mixkit: entrada rápida, cambio de plano.",
+   "volumen_sugerido": 0.45,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/whoosh/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/1491/1491-preview.mp3"
+  },
+  {
+   "id": "mx_golpe_1",
+   "archivo": "sfx/mx_golpe_1.wav",
+   "categoria": "enfasis",
+   "duracion_s": 3.0,
+   "uso": "Golpe de Mixkit: impacto, remate.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/hit/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/788/788-preview.mp3"
+  },
+  {
+   "id": "mx_golpe_2",
+   "archivo": "sfx/mx_golpe_2.wav",
+   "categoria": "enfasis",
+   "duracion_s": 3.0,
+   "uso": "Golpe de Mixkit: impacto, remate.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/hit/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/677/677-preview.mp3"
+  },
+  {
+   "id": "mx_golpe_3",
+   "archivo": "sfx/mx_golpe_3.wav",
+   "categoria": "enfasis",
+   "duracion_s": 2.92,
+   "uso": "Golpe de Mixkit: impacto, remate.",
+   "volumen_sugerido": 0.5,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/hit/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/2198/2198-preview.mp3"
+  },
+  {
+   "id": "mx_logro_1",
+   "archivo": "sfx/mx_logro_1.wav",
+   "categoria": "acierto",
+   "duracion_s": 1.47,
+   "uso": "Sonido de logro de Mixkit: acierto, recompensa.",
+   "volumen_sugerido": 0.45,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/win/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3"
+  },
+  {
+   "id": "mx_logro_2",
+   "archivo": "sfx/mx_logro_2.wav",
+   "categoria": "acierto",
+   "duracion_s": 2.4,
+   "uso": "Sonido de logro de Mixkit: acierto, recompensa.",
+   "volumen_sugerido": 0.45,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/win/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/600/600-preview.mp3"
+  },
+  {
+   "id": "mx_logro_3",
+   "archivo": "sfx/mx_logro_3.wav",
+   "categoria": "acierto",
+   "duracion_s": 1.87,
+   "uso": "Sonido de logro de Mixkit: acierto, recompensa.",
+   "volumen_sugerido": 0.45,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/win/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/269/269-preview.mp3"
+  },
+  {
+   "id": "mx_publico_1",
+   "archivo": "sfx/mx_publico_1.wav",
+   "categoria": "ambiente",
+   "duracion_s": 4.02,
+   "uso": "Público que aplaude o anima (Mixkit): celebración.",
+   "volumen_sugerido": 0.35,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/crowd/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/424/424-preview.mp3"
+  },
+  {
+   "id": "mx_publico_2",
+   "archivo": "sfx/mx_publico_2.wav",
+   "categoria": "ambiente",
+   "duracion_s": 5.0,
+   "uso": "Público que aplaude o anima (Mixkit): celebración.",
+   "volumen_sugerido": 0.35,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/crowd/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/478/478-preview.mp3"
+  },
+  {
+   "id": "mx_publico_3",
+   "archivo": "sfx/mx_publico_3.wav",
+   "categoria": "ambiente",
+   "duracion_s": 5.0,
+   "uso": "Público que aplaude o anima (Mixkit): celebración.",
+   "volumen_sugerido": 0.35,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/crowd/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/444/444-preview.mp3"
+  },
+  {
+   "id": "mx_deporte_1",
+   "archivo": "sfx/mx_deporte_1.wav",
+   "categoria": "gym",
+   "duracion_s": 1.24,
+   "uso": "Efecto deportivo de Mixkit (silbato, golpe de balón…).",
+   "volumen_sugerido": 0.45,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/sport/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/2047/2047-preview.mp3"
+  },
+  {
+   "id": "mx_deporte_2",
+   "archivo": "sfx/mx_deporte_2.wav",
+   "categoria": "gym",
+   "duracion_s": 3.0,
+   "uso": "Efecto deportivo de Mixkit (silbato, golpe de balón…).",
+   "volumen_sugerido": 0.45,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/sport/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/1232/1232-preview.mp3"
+  },
+  {
+   "id": "mx_deporte_3",
+   "archivo": "sfx/mx_deporte_3.wav",
+   "categoria": "gym",
+   "duracion_s": 3.0,
+   "uso": "Efecto deportivo de Mixkit (silbato, golpe de balón…).",
+   "volumen_sugerido": 0.45,
+   "fuente": "Mixkit · Sound Effects Free License (sin atribución) · https://mixkit.co/free-sound-effects/sport/",
+   "url_origen": "https://assets.mixkit.co/active_storage/sfx/362/362-preview.mp3"
   }
  ],
  "musica": [
@@ -386,6 +537,102 @@
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
    "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+  },
+  {
+   "id": "mx_623",
+   "archivo": "musica/mx_623.mp3",
+   "uso": "Pista enérgica para entrenar: «623». No es bucle: recortada a 75 s con fundido.",
+   "bpm": 123,
+   "duracion_s": 75.0,
+   "bucle": false,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/tag/workout/",
+   "url_origen": "https://assets.mixkit.co/music/623/623.mp3"
+  },
+  {
+   "id": "mx_471",
+   "archivo": "musica/mx_471.mp3",
+   "uso": "Pista enérgica para entrenar: «471». No es bucle: recortada a 75 s con fundido.",
+   "bpm": 123,
+   "duracion_s": 75.0,
+   "bucle": false,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/tag/workout/",
+   "url_origen": "https://assets.mixkit.co/music/471/471.mp3"
+  },
+  {
+   "id": "mx_1001",
+   "archivo": "musica/mx_1001.mp3",
+   "uso": "Pista enérgica para entrenar: «1001». No es bucle: recortada a 75 s con fundido.",
+   "bpm": 86,
+   "duracion_s": 75.0,
+   "bucle": false,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/tag/workout/",
+   "url_origen": "https://assets.mixkit.co/music/1001/1001.mp3"
+  },
+  {
+   "id": "mx_1183",
+   "archivo": "musica/mx_1183.mp3",
+   "uso": "Pista enérgica para entrenar: «1183». No es bucle: recortada a 75 s con fundido.",
+   "bpm": 129,
+   "duracion_s": 75.0,
+   "bucle": false,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/tag/workout/",
+   "url_origen": "https://assets.mixkit.co/music/1183/1183.mp3"
+  },
+  {
+   "id": "mx_738",
+   "archivo": "musica/mx_738.mp3",
+   "uso": "Pista hip hop con groove: «738». No es bucle: recortada a 75 s con fundido.",
+   "bpm": 199,
+   "duracion_s": 75.0,
+   "bucle": false,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/hip-hop/",
+   "url_origen": "https://assets.mixkit.co/music/738/738.mp3"
+  },
+  {
+   "id": "mx_400",
+   "archivo": "musica/mx_400.mp3",
+   "uso": "Pista hip hop con groove: «400». No es bucle: recortada a 75 s con fundido.",
+   "bpm": 144,
+   "duracion_s": 75.0,
+   "bucle": false,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/hip-hop/",
+   "url_origen": "https://assets.mixkit.co/music/400/400.mp3"
+  },
+  {
+   "id": "mx_282",
+   "archivo": "musica/mx_282.mp3",
+   "uso": "Pista hip hop con groove: «282». No es bucle: recortada a 75 s con fundido.",
+   "bpm": 152,
+   "duracion_s": 75.0,
+   "bucle": false,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/hip-hop/",
+   "url_origen": "https://assets.mixkit.co/music/282/282.mp3"
+  },
+  {
+   "id": "mx_281",
+   "archivo": "musica/mx_281.mp3",
+   "uso": "Pista hip hop con groove: «281». No es bucle: recortada a 75 s con fundido.",
+   "bpm": 108,
+   "duracion_s": 75.0,
+   "bucle": false,
+   "volumen_bajo_voz": 0.12,
+   "volumen_sin_voz": 0.35,
+   "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/hip-hop/",
+   "url_origen": "https://assets.mixkit.co/music/281/281.mp3"
   }
  ]
 }

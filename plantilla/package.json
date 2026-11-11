@@ -12,6 +12,7 @@
   "dependencies": {
     "@remotion/bundler": "4.0.541",
     "@remotion/cli": "4.0.541",
+    "@remotion/lottie": "4.0.541",
     "@remotion/renderer": "4.0.541",
     "react": "19.1.0",
     "react-dom": "19.1.0",

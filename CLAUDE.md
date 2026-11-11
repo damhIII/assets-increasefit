@@ -12,7 +12,8 @@ Todo lo demás lo haces tú con la skill **increasefit-reel** (`.claude/skills/i
 - `plantilla/` proyecto Remotion: marco (`src/marco/`), mascota (`src/personaje/`), kit animado (`src/componentes/kit.tsx`), composición por escena (`src/escenas/Escena.tsx`) y escenas a medida (`src/escenas/custom/`, generado).
 - `scripts/` `alinear.py` (guion ↔ voz), `sincronizar.py` (escaleta → frames, subtítulos sin puntuación), `validar_render.py` (incluye el presupuesto de texto), `preparar_video.py`, `iconos.py` (añade iconos de Lucide), `validar_paletas.py`, `tenir_svg.py`, y los regeneradores de mascota, kit y sonido.
 - `mascota/` sprites PNG (catálogo `mascota/manifest.json`, ficha `mascota/personaje.json`, hoja `mascota/contactos.jpg`). `scripts/mascota/` corta y normaliza hojas nuevas.
-- `kit/` anotaciones dibujadas a mano (SVG) y la cortinilla de pincel. `sonido/` efectos y música en bucle. `icons/` Lucide (`currentColor`, siempre con máscara CSS). `textures/`, `ui/` SVG de apoyo.
+- `kit/` anotaciones dibujadas a mano (SVG) y la cortinilla de pincel. `sonido/` efectos y música (bucles propios y pistas descargadas). `icons/` Lucide, Tabler (`tb-`) y Healthicons (`hi-`) (siempre con máscara CSS; vista previa `icons/contactos.png`). `textures/`, `ui/` SVG de apoyo.
+- `anatomia/musculos.json` mapa muscular (frente y espalda) · `lottie/` animaciones Lottie en colores de marca (`manifest.json`) · `fondos/` patrones de fondo por escena (`manifest.json`, `contactos.png`). Licencias de terceros junto a cada carpeta.
 - `brand/paletas.json` climas de escena · `brand/fuentes.json` fuentes · `fonts/css/` `@font-face` con woff2 en base64 · logos PNG en la raíz.
 - `briefs/<BASE>/` guion, locución y tiempos (los sube el notebook) + tu escaleta y escenas a medida. `videos/` proyectos de render locales (no se suben).
 

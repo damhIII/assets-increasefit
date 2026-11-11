@@ -28,6 +28,7 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
       "dividida": null,                 // { "no": "<sprite así no>", "si": "<sprite así sí>" } → pantalla dividida (sustituye a mascota)
       "inserto": { "cara": "cara_esceptico", "en": 13 },     // cara_* en un círculo (reacción)
       "anotaciones": [ { "tipo": "icono", "icono": "brain", "en": 3 }, { "tipo": "etiqueta", "texto": "otra vez", "apunta": "manos", "en": 6 } ],
+      "fondo": null,                    // opcional: patrón de fondos/manifest.json (patron_gym, patron_sueno, diagonales…) en el color del clima
       "sfx": [ { "id": "golpe_metal", "en": 6 } ],          // "volumen" opcional (por defecto el sugerido del catálogo)
       "componente": null,               // nombre de briefs/<BASE>/custom/<nombre>.tsx (se dibuja encima)
       "solo_componente": false          // true = solo el componente, sin la composición por defecto
@@ -52,6 +53,7 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 - `subtitulos`: el texto sale del guion sin signos de puntuación (`¿En serio?` → EN SERIO), agrupado en 1-3 palabras; cambia de grupo en cada fin de frase, coma o pausa de la voz. La palabra que suena se enciende sobre una píldora (azul, o el color de su tono); las de `enfasis` de cualquier escena son más grandes y se quedan en azul; las de `tonos` se quedan en rojo o verde. Un icono de `iconos` sale en una insignia redonda que cuelga bajo su palabra (los subtítulos van arriba).
 - `mascota.sprite`: id de `mascota/manifest.json` o `"ejercicio:<nombre>"` (alterna sus fases; `anim` pasa a `ejercicio`). Sin `mascota` ni `dividida`, la escena no tiene personaje (útil con `capitulo` o con un componente).
 - Con una anotación de columna (`dato`, `ficha`, `lista`, `libreta`, `grafica`), la mascota se coloca sola a la derecha en encuadre general.
+- `fondo` (por escena, opcional): un patrón suave de `fondos/` encima del degradado del clima, siempre en el color de texto del clima y a baja opacidad (abre `fondos/contactos.png`). Úsalo para situar el tema (gimnasio, sueño, nutrición, ciencia, cardio) en 1-3 escenas, no en todas.
 - `pantalla.estilo = "capitulo"` es una tarjeta a pantalla completa (`"RÓTULO: frase"`) y oculta la mascota de esa escena.
 - Si dos escenas seguidas tienen el mismo sprite, encuadre y posición, la segunda no repite la entrada (continuidad).
 
@@ -73,9 +75,11 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 | rec | – | marco de cámara del celular grabando |
 | lineas_velocidad, enfoque | – | detrás de la mascota |
 | impacto, sudor, destello | – | junto a la cabeza |
+| musculos | vista (`frente` \| `espalda`), resaltar (1-4 ids), tono? | mapa muscular (anatomia/musculos.json) con esos músculos encendidos escalonados y latiendo. Ids: `pecho`, `hombros`, `biceps`, `triceps`, `antebrazos`, `abdomen`, `oblicuos`, `trapecio`, `espalda_alta`, `lumbar`, `gluteos`, `cuadriceps`, `isquios`, `aductores`, `gemelos`, `tibial`, `cuello` (frente: pecho, abdomen, oblicuos, biceps, cuadriceps, tibial; espalda: espalda_alta, lumbar, gluteos, isquios). Columna (mascota a la derecha); sin mascota, grande y centrado. **La forma de decir qué músculo trabaja** |
+| lottie | lottie (id), apunta?, escala? (0.3-2.5), tono? | animación de `lottie/manifest.json` en la palabra: efectos (confeti, fuego, destellos, latido, reloj de arena…) en color de marca, o iconos animados `ua_*` (mono: se tiñen con `tono`: foco \| alerta \| exito \| texto). Con `apunta` va junto a esa zona de la mascota; si no, en el lado libre (o centrada sin mascota). Un remate, no decoración: 0-2 por video |
 
 ## Lo que comprueba el validador (`scripts/validar_render.py`)
-Ids, anclas dentro del guion y crecientes, sprites/caras/climas/sfx/música/iconos existentes, componentes que existen, `dato` y `ficha` con fuente verificada o ilustrativo, `progresion` si hay libreta o gráfica, nada que suene a CTA, escenas de al menos 8 frames y el **presupuesto de texto**:
+Ids, anclas dentro del guion y crecientes, sprites/caras/climas/sfx/música/iconos/fondos/lottie/músculos existentes, componentes que existen, `dato` y `ficha` con fuente verificada o ilustrativo, `progresion` si hay libreta o gráfica, nada que suene a CTA, escenas de al menos 8 frames y el **presupuesto de texto**:
 
 | límite | valor |
 |---|---|

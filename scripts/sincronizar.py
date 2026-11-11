@@ -61,8 +61,11 @@ def _leer(p):
 
 
 def catalogos():
+    opcional = lambda p, vacio: _leer(RAIZ / p) if (RAIZ / p).is_file() else vacio
     return {"paletas": _leer(RAIZ / "brand/paletas.json"), "mascota": _leer(RAIZ / "mascota/manifest.json"),
-            "sonido": _leer(RAIZ / "sonido/manifest.json"), "fuentes": _leer(RAIZ / "brand/fuentes.json")["fuentes"]}
+            "sonido": _leer(RAIZ / "sonido/manifest.json"), "fuentes": _leer(RAIZ / "brand/fuentes.json")["fuentes"],
+            "musculos": opcional("anatomia/musculos.json", {}), "lottie": opcional("lottie/manifest.json", {"animaciones": []}),
+            "fondos": opcional("fondos/manifest.json", {"fondos": []})}
 
 
 def cargar(dir_base):
@@ -120,6 +123,7 @@ def sincronizar(dir_base):
                         "pantalla": {"texto": (e.get("pantalla") or {}).get("texto", ""), "estilo": (e.get("pantalla") or {}).get("estilo", "ninguno")},
                         "enfasis_f": sorted(frame(i) for i in (e.get("enfasis") or [])),
                         "mascota": m, "dividida": e.get("dividida"), "inserto": ins, "anotaciones": anot,
+                        "fondo": e.get("fondo") or None,
                         "componente": e.get("componente"), "solo_componente": bool(e.get("solo_componente", False))})
     for k, e in enumerate(escenas):
         e["fin_f"] = escenas[k + 1]["ini_f"] if k + 1 < len(escenas) else total

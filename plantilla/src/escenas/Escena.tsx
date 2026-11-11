@@ -7,6 +7,7 @@ import { datos, FUENTE, IF, type Anotacion, type Escena } from "../marco/datos";
 import { useClimaEscena, type C } from "../marco/clima";
 import { ancla, colocar, fasesDe, Mascota } from "../personaje/Sprite";
 import { BurbujaDialogo, BurbujaPensamiento, CajaTachada, Capitulo, Circulo, Dato, Efecto, Etiqueta, FichaEstudio, Grafica, IconoPop, Inserto, Libreta, Lista, Marca } from "../componentes/kit";
+import { LottieAnim, MapaMuscular } from "../componentes/extra";
 import { CUSTOM } from "./custom";
 
 /** Cámara viva: flota y hace punch-in en un frame local. */
@@ -22,7 +23,7 @@ export const Camara: React.FC<{ children: React.ReactNode; punch: number | null;
   );
 };
 
-const COLUMNA = new Set(["dato", "lista", "libreta", "grafica", "ficha"]);
+const COLUMNA = new Set(["dato", "lista", "libreta", "grafica", "ficha", "musculos"]);
 
 const Custom: React.FC<{ e: Escena; c: C }> = ({ e, c }) => {
   const Comp = e.componente ? CUSTOM[e.componente] : undefined;
@@ -113,6 +114,14 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
         return <FichaEstudio key={i} filas={filas} frames={filas.map((r) => Math.max(0, r.en_f - e.ini_f))} fuente={o.fuente ?? (o.ilustrativo ? "EJEMPLO ILUSTRATIVO" : undefined)} c={c} />;
       }
       case "rec": case "impacto": case "sudor": case "destello": return <Efecto key={i} tipo={o.tipo} a={cabeza} desde={t} c={c} />;
+      case "musculos": return v
+        ? <MapaMuscular key={i} vista={o.vista} resaltar={o.resaltar ?? []} tono={o.tono} desde={t} c={c} x={70} y={570} alto={740} />
+        : <MapaMuscular key={i} vista={o.vista} resaltar={o.resaltar ?? []} tono={o.tono} desde={t} c={c} x={540 - 216} y={540} alto={864} />;
+      case "lottie": {
+        const size = Math.round(420 * (o.escala ?? 1));
+        const [lx, ly] = o.apunta ? ancla(col, o.apunta) : v ? [libre === "izq" ? 270 : 810, 820] : [540, 930];
+        return <LottieAnim key={i} id={o.lottie ?? ""} x={lx} y={ly} size={size} desde={t} c={c} tono={o.tono as "foco" | "alerta" | "exito" | "texto" | undefined} />;
+      }
       default: return null;
     }
   });

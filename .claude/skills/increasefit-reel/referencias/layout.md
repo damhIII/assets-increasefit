@@ -3,7 +3,7 @@
 Rol: director y motion designer de explainers de fitness. Ritmo de Reel, cortes secos, rebote y golpe, humor visual. Libertad creativa dentro de estas reglas.
 
 ## Capas (de atrás hacia delante), ya hechas en `src/Video.tsx`
-1. **Fondo** (`marco/Fondo.tsx`): degradado y textura del clima de la escena, brillo de tinte que deriva, viñeta.
+1. **Fondo** (`marco/Fondo.tsx`): degradado y textura del clima de la escena, brillo de tinte que deriva, patrón opcional de la escena (`escena.fondo`, de `fondos/`), viñeta.
 2. **Escenas**: una `<Sequence>` por escena con EXACTAMENTE `ini_f`–`fin_f` → `escenas/Escena.tsx` (mascota + anotaciones + inserto) + tu componente a medida si lo hay. Cámara viva con punch-in en la primera palabra de `enfasis`.
 3. **Cortinilla** de pincel (`kit/transiciones/trazo_pincel.svg`) en las escenas con `transicion: "pincel"`.
 4. **Tarjeta resumen** desde su `ini_f` (la escena se funde debajo).
@@ -22,7 +22,7 @@ Rol: director y motion designer de explainers de fitness. Ritmo de Reel, cortes 
 - `ninguno`: **el valor normal**. La voz y los subtítulos ya dicen las palabras; usa texto en pantalla solo para el concepto clave (una o dos veces por video) y nunca para repetir la voz. Si dos escenas seguidas llevan el mismo texto y estilo, se queda sin volver a entrar.
 
 ## Kit (`componentes/kit.tsx`)
-Lo usa la composición por defecto y lo puedes usar en tus escenas a medida: `IconoPop` (icono en insignia que salta, con `tono` y `tachado`), `FichaEstudio` (filas icono + cifra), `colorTono`, `Etiqueta`, `CajaTachada`, `Circulo`, `Marca` (check/cruz), `BurbujaPensamiento`, `BurbujaDialogo`, `Inserto`, `Dato`, `Lista`, `Efecto` (lineas_velocidad, enfoque, impacto, sudor, destello, rec), `Capitulo`, `Libreta`, `Grafica`, `TarjetaResumen`, `CortinillaPincel`, `Tinta` (SVG blanco teñido), `Icono` (Lucide). La mascota: `Mascota`, `colocar`, `ancla`, `fasesDe` en `personaje/Sprite.tsx`. Más piezas SVG en `kit/` (`kit/manifest.json`, `kit/contactos.png`), `ui/`, `icons/` y `textures/`. ¿Falta un icono? Cualquier icono de Lucide: `python3 scripts/iconos.py --buscar <palabra>` y `python3 scripts/iconos.py <nombre>`.
+Lo usa la composición por defecto y lo puedes usar en tus escenas a medida: `IconoPop` (icono en insignia que salta, con `tono` y `tachado`), `FichaEstudio` (filas icono + cifra), `colorTono`, `Etiqueta`, `CajaTachada`, `Circulo`, `Marca` (check/cruz), `BurbujaPensamiento`, `BurbujaDialogo`, `Inserto`, `Dato`, `Lista`, `Efecto` (lineas_velocidad, enfoque, impacto, sudor, destello, rec), `Capitulo`, `Libreta`, `Grafica`, `TarjetaResumen`, `CortinillaPincel`, `Tinta` (SVG blanco teñido), `Icono` (Lucide). En `componentes/extra.tsx`: `MapaMuscular` (vista, resaltar, tono) y `LottieAnim` (id de `lottie/manifest.json`, x, y, size, tono para las mono). La mascota: `Mascota`, `colocar`, `ancla`, `fasesDe` en `personaje/Sprite.tsx`. Más piezas SVG en `kit/` (`kit/manifest.json`, `kit/contactos.png`), `ui/`, `icons/` y `textures/`. ¿Falta un icono? Busca en Lucide, Tabler (`tb-`, gimnasio y deporte) y Healthicons (`hi-`, cuerpo y salud): `python3 scripts/iconos.py --buscar <palabra en inglés>` y `python3 scripts/iconos.py <nombre>`. Vista previa de los que ya hay: `icons/contactos.png`.
 
 ## Dinamismo
 - Nada aparece solo con opacidad: entra desde abajo, desde un lado o desde escala pequeña con overshoot (`useEntrada`).

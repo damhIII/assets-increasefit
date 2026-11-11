@@ -4,10 +4,13 @@ import videoJson from "../video.json";
 import paletasJson from "../paletas.json";
 import mascotaJson from "../mascota.json";
 import sonidoJson from "../sonido.json";
+import musculosJson from "../musculos.json";
+import lottieJson from "../lottie.json";
 
 export type Anotacion = {
   tipo: "etiqueta" | "tachado" | "circulo" | "check" | "cruz" | "burbuja_pensamiento" | "burbuja_dialogo" | "dato" | "lista"
-      | "rec" | "lineas_velocidad" | "impacto" | "sudor" | "destello" | "enfoque" | "libreta" | "grafica" | "icono" | "ficha";
+      | "rec" | "lineas_velocidad" | "impacto" | "sudor" | "destello" | "enfoque" | "libreta" | "grafica" | "icono" | "ficha"
+      | "musculos" | "lottie";
   texto?: string;            // etiqueta, tachado, burbuja_dialogo, dato (la cifra grande), libreta (título)
   detalle?: string;          // dato: texto bajo la cifra
   fuente?: string;           // dato: fuente corta verificada
@@ -19,6 +22,10 @@ export type Anotacion = {
   tono?: Tono;               // icono: color (foco del clima por defecto)
   tachado?: boolean;         // icono: se tacha en rojo ("esto no")
   filas?: FilaFicha[];       // ficha: icono + cifra corta por fila
+  vista?: "frente" | "espalda";   // musculos: qué cara del cuerpo
+  resaltar?: string[];       // musculos: músculos encendidos (ids en español de anatomia/musculos.json)
+  lottie?: string;           // lottie: id de lottie/manifest.json
+  escala?: number;           // lottie: tamaño relativo (1 = normal)
   en_f: number;              // frame GLOBAL en que aparece
 };
 export type Tono = "foco" | "alerta" | "exito";
@@ -41,6 +48,7 @@ export type Escena = {
   dividida: { no: string; si: string } | null;
   inserto: { cara: string; en_f: number } | null;
   anotaciones: Anotacion[];
+  fondo: string | null;                       // patrón de fondos/ (encima del degradado del clima, en su color) o null
   componente: string | null;                  // escena a medida (src/escenas/custom/<componente>.tsx)
   solo_componente: boolean;                   // true = solo el componente, sin la composición por defecto
 };
@@ -85,6 +93,13 @@ const MASCOTA = mascotaJson as unknown as { altura_personaje_px: number; ejercic
 export const SPRITES: Record<string, SpriteInfo> = Object.fromEntries(MASCOTA.sprites.map((s) => [s.id, s]));
 export const EJERCICIOS = MASCOTA.ejercicios;
 export const ALTURA_PERSONAJE = MASCOTA.altura_personaje_px;
+// Mapa muscular (anatomia/musculos.json, de react-native-body-highlighter, MIT): trazados SVG por músculo y vista.
+export type ParteCuerpo = { id: string; musculo: boolean; d: string[] };
+export type VistaCuerpo = { viewBox: string; contorno: string; partes: ParteCuerpo[] };
+export const MUSCULOS = musculosJson as unknown as { vistas?: { frente: VistaCuerpo; espalda: VistaCuerpo }; musculos?: Record<string, string> };
+// Animaciones Lottie (lottie/manifest.json): mono = un solo color, se tiñe con el tono que pidas.
+export type LottieInfo = { id: string; archivo: string; uso: string; mono: boolean; bucle: boolean; duracion_s: number };
+export const LOTTIES: Record<string, LottieInfo> = Object.fromEntries(((lottieJson as unknown as { animaciones?: LottieInfo[] }).animaciones ?? []).map((l) => [l.id, l]));
 export const SONIDO = sonidoJson as unknown as { sfx: { id: string; archivo: string; volumen_sugerido: number }[]; musica: { id: string; archivo: string; volumen_bajo_voz: number; volumen_sin_voz: number }[] };
 
 // Constantes de marca: NO cambian con el clima. Paleta del feed de Instagram.

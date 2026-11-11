@@ -1,0 +1,280 @@
+{
+ "notas": [
+  "Animaciones Lottie recoloreadas a la paleta de marca al descargarlas (no edites los colores a mano).",
+  "mono: true → un solo color; la plantilla la tiñe con el `tono` de la anotación (foco | alerta | exito | texto).",
+  "En la escaleta: {\"tipo\": \"lottie\", \"lottie\": \"<id>\", \"apunta\"?, \"escala\"?, \"tono\"?, \"en\": n}. En escenas a medida: <LottieAnim> de componentes/extra.tsx.",
+  "Licencias en lottie/LICENCIAS.md."
+ ],
+ "animaciones": [
+  {
+   "id": "ua_corazon",
+   "archivo": "ua_corazon.json",
+   "uso": "Corazón que late/se rellena: salud, gusto por algo.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 0.33,
+   "fuente": "react-useanimations · heart",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_check",
+   "archivo": "ua_check.json",
+   "uso": "Check que se dibuja: lo correcto, hecho.",
+   "mono": true,
+   "bucle": true,
+   "duracion_s": 1.5,
+   "fuente": "react-useanimations · checkmark",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_alerta",
+   "archivo": "ua_alerta.json",
+   "uso": "Triángulo de alerta: cuidado, error.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.0,
+   "fuente": "react-useanimations · alertTriangle",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_carga",
+   "archivo": "ua_carga.json",
+   "uso": "Spinner: esperar, recuperación en curso.",
+   "mono": true,
+   "bucle": true,
+   "duracion_s": 5.0,
+   "fuente": "react-useanimations · loading",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_sube",
+   "archivo": "ua_sube.json",
+   "uso": "Flecha de tendencia que sube: progreso.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.33,
+   "fuente": "react-useanimations · trendingUp",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_baja",
+   "archivo": "ua_baja.json",
+   "uso": "Tendencia que baja: pérdida, estancamiento.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.33,
+   "fuente": "react-useanimations · trendingDown",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_rayo",
+   "archivo": "ua_rayo.json",
+   "uso": "Rayo: energía, potencia, cafeína.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.13,
+   "fuente": "react-useanimations · zap",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_actividad",
+   "archivo": "ua_actividad.json",
+   "uso": "Línea de pulso: actividad, cardio.",
+   "mono": true,
+   "bucle": true,
+   "duracion_s": 1.33,
+   "fuente": "react-useanimations · activity",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_bateria",
+   "archivo": "ua_bateria.json",
+   "uso": "Batería cargando: recuperar energía, descanso.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.2,
+   "fuente": "react-useanimations · batteryCharging",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_reloj",
+   "archivo": "ua_reloj.json",
+   "uso": "Reloj: tiempo, descanso entre series.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.33,
+   "fuente": "react-useanimations · clock",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_calendario",
+   "archivo": "ua_calendario.json",
+   "uso": "Calendario: semanas, constancia.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 0.27,
+   "fuente": "react-useanimations · calendar",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_pulgar",
+   "archivo": "ua_pulgar.json",
+   "uso": "Pulgar arriba: aprobado.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 0.73,
+   "fuente": "react-useanimations · thumbUp",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_estrella",
+   "archivo": "ua_estrella.json",
+   "uso": "Estrella: lo destacado.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 0.33,
+   "fuente": "react-useanimations · star",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_medalla",
+   "archivo": "ua_medalla.json",
+   "uso": "Medalla: logro.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.33,
+   "fuente": "react-useanimations · award",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_repetir",
+   "archivo": "ua_repetir.json",
+   "uso": "Flechas en círculo: repetir, volver a empezar.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 2.0,
+   "fuente": "react-useanimations · refresh",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_infinito",
+   "archivo": "ua_infinito.json",
+   "uso": "Infinito: constancia a largo plazo.",
+   "mono": true,
+   "bucle": true,
+   "duracion_s": 4.0,
+   "fuente": "react-useanimations · infinity",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_luna",
+   "archivo": "ua_luna.json",
+   "uso": "Luna: dormir, noche.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.33,
+   "fuente": "react-useanimations · moon",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_gota",
+   "archivo": "ua_gota.json",
+   "uso": "Gota: agua, hidratación, sudor.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.2,
+   "fuente": "react-useanimations · droplet",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "ua_diana",
+   "archivo": "ua_diana.json",
+   "uso": "Diana: objetivo, precisión.",
+   "mono": true,
+   "bucle": false,
+   "duracion_s": 1.2,
+   "fuente": "react-useanimations · target",
+   "licencia": "MIT (useAnimations)"
+  },
+  {
+   "id": "confeti",
+   "archivo": "confeti.json",
+   "uso": "Explosión de confeti: un logro, el veredicto que sale bien. No es bucle.",
+   "mono": false,
+   "bucle": false,
+   "duracion_s": 3.73,
+   "fuente": "https://lottiefiles.com/free-animation/confetti-on-transparent-background-ajhx1TPBa7",
+   "licencia": "Lottie Simple License (LottieFiles)"
+  },
+  {
+   "id": "fuego",
+   "archivo": "fuego.json",
+   "uso": "Llama en bucle: intensidad, quemar, racha.",
+   "mono": false,
+   "bucle": true,
+   "duracion_s": 1.08,
+   "fuente": "https://lottiefiles.com/free-animation/fire-NG4n3YU51z",
+   "licencia": "Lottie Simple License (LottieFiles)"
+  },
+  {
+   "id": "latido",
+   "archivo": "latido.json",
+   "uso": "Electrocardiograma/latido en bucle: corazón, cardio, pulsaciones.",
+   "mono": false,
+   "bucle": true,
+   "duracion_s": 5.0,
+   "fuente": "https://lottiefiles.com/free-animation/heartbeat-ecg-Zy99KTspDg",
+   "licencia": "Lottie Simple License (LottieFiles)"
+  },
+  {
+   "id": "destellos",
+   "archivo": "destellos.json",
+   "uso": "Destellos/estrellas: algo que brilla, el truco bueno.",
+   "mono": false,
+   "bucle": true,
+   "duracion_s": 5.0,
+   "fuente": "https://lottiefiles.com/free-animation/sparkle-stars-Z4URVaAq6R",
+   "licencia": "Lottie Simple License (LottieFiles)"
+  },
+  {
+   "id": "reloj_arena",
+   "archivo": "reloj_arena.json",
+   "uso": "Reloj de arena: tiempo, paciencia, semanas que pasan.",
+   "mono": false,
+   "bucle": true,
+   "duracion_s": 1.0,
+   "fuente": "https://lottiefiles.com/free-animation/time-hourglass-H3UkbK6hVS",
+   "licencia": "Lottie Simple License (LottieFiles)"
+  },
+  {
+   "id": "explosion",
+   "archivo": "explosion.json",
+   "uso": "Estallido de cómic: golpe, impacto, ¡boom! del remate. No es bucle.",
+   "mono": false,
+   "bucle": false,
+   "duracion_s": 0.67,
+   "fuente": "https://lottiefiles.com/free-animation/cartoon-explosion-sYPNbqTOdd",
+   "licencia": "Lottie Simple License (LottieFiles)"
+  },
+  {
+   "id": "fuegos_artificiales",
+   "archivo": "fuegos_artificiales.json",
+   "uso": "Fuegos artificiales: celebración grande.",
+   "mono": false,
+   "bucle": false,
+   "duracion_s": 2.0,
+   "fuente": "https://lottiefiles.com/free-animation/firework-OpdPTgQ7oR",
+   "licencia": "Lottie Simple License (LottieFiles)"
+  },
+  {
+   "id": "dormir",
+   "archivo": "dormir.json",
+   "uso": "Zzz de sueño: dormir, descanso.",
+   "mono": false,
+   "bucle": true,
+   "duracion_s": 2.0,
+   "fuente": "https://lottiefiles.com/free-animation/sleep-psDR7Z6H0g",
+   "licencia": "Lottie Simple License (LottieFiles)"
+  }
+ ]
+}
