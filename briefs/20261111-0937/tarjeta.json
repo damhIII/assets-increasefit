@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "base": "20261111-0937",
+ "tema": "Creatina y progreso",
+ "pregunta": "¿La creatina ayuda a progresar con pesas?",
+ "veredicto": "Sí, pero no es músculo instantáneo",
+ "tono": "si",
+ "pasos": [
+  "Elige monohidrato si eres adulto sano",
+  "Toma 3–5 g diarios, sin carga",
+  "Registra kilos y repeticiones"
+ ],
+ "fuente": "Ashtary-Larky et al. 2025",
+ "_nota": "Propuesta a partir del guion. Claude la revisa (cifras y fuente) y la pasa a escaleta.tarjeta_resumen."
+}

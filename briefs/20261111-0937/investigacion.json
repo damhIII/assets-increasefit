@@ -1,0 +1,216 @@
+{
+ "version": 1,
+ "base": "20261111-0937",
+ "tema": "Creatina: más rendimiento, sin prometer músculo instantáneo",
+ "aprendizaje": "La creatina monohidrato puede ayudarte a sostener más trabajo de fuerza al aumentar las reservas musculares de fosfocreatina, que contribuyen a regenerar ATP durante esfuerzos intensos. ([link.springer.com](https://link.springer.com/article/10.1186/s12970-017-0173-z))",
+ "hallazgos": [
+  {
+   "id": "salem_2025",
+   "tipo": "eca",
+   "dato": "Un ensayo reciente encontró más repeticiones en press de banca y sentadilla al 60-80% del 1RM con creatina frente a placebo: p ≤ 0.041, d = 0.72-1.6. Se analizaron diez hombres entrenados; es una señal preliminar, no una mejora garantizada. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/41579075/?utm_source=openai))",
+   "muestra": "11 participantes reclutados; 10 hombres analizados, de 21.3 ± 1.9 años.",
+   "duracion": "Tres días de suplementación por condición; siete días de lavado entre condiciones.",
+   "intervencion": "Diseño aleatorizado, doble ciego y cruzado: creatina monohidrato, 0.3 g·kg⁻¹·d⁻¹, frente a placebo. Primera dosis dos horas antes del test; dosis posteriores repartidas en tres tomas diarias. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/41579075/?utm_source=openai))",
+   "resultado": "Más repeticiones al 60-80% del 1RM frente a placebo; d = 0.72-1.6. El abstract no proporciona una diferencia absoluta en repeticiones.",
+   "fuerza": "baja",
+   "matiz": "Muestra muy pequeña, seguimiento corto y lavado de siete días: posible arrastre, pues las reservas musculares pueden tardar 4–6 semanas en volver al nivel basal. No midió hipertrofia. Figura en el volumen de 2025, pero se publicó online el 24 de enero de 2026. ([link.springer.com](https://link.springer.com/article/10.1186/s12970-017-0173-z))",
+   "fuente": "Salem et al., 2025; publicación online en 2026 (Journal of the International Society of Sports Nutrition)",
+   "corta": "Salem et al. 2025",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41579075/",
+   "doi": "10.1080/15502783.2026.2617283",
+   "cita_literal": "increased repetitions completed at 60-80% 1RM in BP and BS (p ≤ 0.041, d = 0.72-1.6)",
+   "url_consultada": true
+  },
+  {
+   "id": "ashtary_larky_2025",
+   "tipo": "metaanalisis",
+   "dato": "Un metaanálisis de 61 ensayos encontró 1.39 kg adicionales de masa libre de grasa con creatina y entrenamiento de fuerza frente al control: IC del 95% 1.07–1.70; p < 0.001. No encontró efectos significativos sobre la masa grasa. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12777911/))",
+   "muestra": "1.457 participantes entrenados y no entrenados: 750 en intervención y 697 en control.",
+   "duracion": "Intervenciones de cuatro a 364 días, según el texto completo.",
+   "intervencion": "Creatina más entrenamiento de fuerza frente a control con entrenamiento; dosis y protocolos de carga o mantenimiento variables. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12777911/))",
+   "resultado": "Diferencia media ponderada de masa libre de grasa: 1.39 kg; IC del 95% 1.07–1.70.",
+   "fuerza": "alta",
+   "matiz": "Masa libre de grasa no equivale a músculo contráctil: también incluye agua. No se demostró que los entrenados respondieran mejor que los principiantes; la diferencia entre subgrupos no fue significativa. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12777911/))",
+   "fuente": "Ashtary-Larky et al., 2025 (Journal of the International Society of Sports Nutrition)",
+   "corta": "Ashtary-Larky et al. 2025",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12777911/",
+   "doi": "10.1080/15502783.2025.2586523",
+   "cita_literal": "Trained individuals exhibited greater, though non-significant, gains in FFM (1.82 vs. 1.23 kg) compared with untrained participants, despite similar increases in total body mass.",
+   "url_consultada": true
+  }
+ ],
+ "correcciones_al_seed": [],
+ "consejo_practico": "Si eres un adulto sano y decides suplementarte, utiliza creatina monohidrato de forma constante: 3–5 g diarios permiten aumentar gradualmente las reservas musculares durante unas 3–4 semanas, sin necesitar una fase de carga. Mantén tu entrenamiento progresivo y registra kilos y repeticiones para valorar el rendimiento, no solo el peso corporal. ([link.springer.com](https://link.springer.com/article/10.1186/s12970-017-0173-z))",
+ "trampas_comunes": [
+  "Presentar los 1.39 kg adicionales de masa libre de grasa como 1.39 kg de músculo puro. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12777911/))",
+  "Convertir el ensayo de diez hombres en la promesa de que cualquiera mejorará en tres días. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/41579075/?utm_source=openai))",
+  "Vender la carga inicial como obligatoria: también existe un protocolo gradual sin carga. ([link.springer.com](https://link.springer.com/article/10.1186/s12970-017-0173-z))"
+ ],
+ "consultadas": [
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42712402/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42765482/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42280432/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41388441/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42027564/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600305/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41579075/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13099317/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42761190/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41433021/",
+   "titulo": ""
+  },
+  {
+   "url": "https://doi.org/10.1016/j.aehs.2026.01.001",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12833896/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1800546/pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/pdf/10.1080/15502783.2026.2617283",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/pdf/10.1080/15502783.2025.2586523",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.bmj.com/content/394/bmj-2026-100460.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42401376/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41825568/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/help/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/about/new-in-pmc/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.ncbi.nlm.nih.gov/sites/myncbi/nicholas.shaheen.1/bibliography/44103087/public/?sdirection=descending&sortby=pubDate",
+   "titulo": ""
+  },
+  {
+   "url": "https://support.nlm.nih.gov/knowledgebase/article/KA-03304/en-us/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nlm.nih.gov/databases/download/pubmed_medline.html",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42887003/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/s41598-026-79617-5_reference.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41937183/?format=pubmed",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/about/new-in-pmc",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.ncbi.nlm.nih.gov/entrez/query/static/faq.html",
+   "titulo": ""
+  },
+  {
+   "url": "https://bmjopen.bmj.com/content/bmjopen/15/12/e102010/DC1/embed/inline-supplementary-material-1.pdf?download=true",
+   "titulo": ""
+  },
+  {
+   "url": "https://bmjopen.bmj.com/content/bmjopen/14/8/e079987.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://ijbnpa.biomedcentral.com/counter/pdf/10.1186/s12966-025-01787-8",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/s41598-026-42962-6_reference.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12777911/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/10.1080/15502783.2026.2617283",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/full/10.1080/15502783.2026.2617283",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/full/10.1080/15502783.2026.2617283?needAccess=true&scroll=top",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/toc/rssn20/22/sup1?nav=tocList",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/toc/rssn20/22/sup1",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/abs/10.1080/15502783.2026.2617283",
+   "titulo": ""
+  }
+ ],
+ "busquedas": 7,
+ "modelo": "gpt-6.1-sol",
+ "seed": "Analiza un estudio reciente sobre los beneficios de la creatina",
+ "fecha": "2026-11-11T09:19-04:00",
+ "_nota": "Hallazgos de la búsqueda web del guionista. NO están verificados: Claude los comprueba en la fuente antes de ponerlos en pantalla."
+}
