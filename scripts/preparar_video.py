@@ -8,9 +8,9 @@ Uso:
 2. Valida la escaleta (scripts/validar_render.py): si hay errores, para.
 3. Sincroniza: anclas de palabra → frames (scripts/sincronizar.py).
 4. Copia plantilla/ a videos/<BASE>/ (conserva node_modules y out/) y deja dentro:
-   src/video.json, src/paletas.json, src/mascota.json, src/sonido.json, src/musculos.json, src/lottie.json,
+   src/video.json, src/paletas.json, src/mascota.json, src/sonido.json, src/musculos.json, src/lottie.json, src/props.json,
    src/escenas/custom/ (los .tsx de briefs/<BASE>/custom/ + su índice),
-   public/locucion.wav, sprites, kit, sonido, fuentes, iconos, ui, texturas, fondos, lottie y logos.
+   public/locucion.wav, sprites, kit, sonido, fuentes, iconos, ui, texturas, fondos, lottie, props y logos.
 Se puede repetir tantas veces como haga falta: lo que escribe Claude vive en briefs/<BASE>/ (escaleta.json y custom/).
 Luego: cd videos/<BASE> && npm install (la primera vez) && npm run stills / npx remotion render ...
 """
@@ -48,7 +48,8 @@ def main():
     shutil.copy2(RAIZ / "mascota" / "manifest.json", src / "mascota.json")
     shutil.copy2(RAIZ / "sonido" / "manifest.json", src / "sonido.json")
     # mapa muscular y catálogo de Lottie (si aún no existen en el repo, quedan vacíos y la plantilla compila igual)
-    for origen, destino, vacio in (("anatomia/musculos.json", "musculos.json", {}), ("lottie/manifest.json", "lottie.json", {"animaciones": []})):
+    for origen, destino, vacio in (("anatomia/musculos.json", "musculos.json", {}), ("lottie/manifest.json", "lottie.json", {"animaciones": []}),
+                                  ("props/manifest.json", "props.json", {"props": []})):
         if (RAIZ / origen).is_file():
             shutil.copy2(RAIZ / origen, src / destino)
         else:
@@ -76,7 +77,7 @@ def main():
     else:
         print(f"aviso: no encuentro el audio {audio}; búscalo entre los adjuntos y pásalo con --audio", file=sys.stderr)
     copias = {"mascota/sprites": "mascota/sprites", "kit": "kit", "sonido/sfx": "sonido/sfx", "sonido/musica": "sonido/musica",
-              "icons": "icons", "ui": "ui", "textures": "textures", "fondos": "fondos", "lottie": "lottie"}
+              "icons": "icons", "ui": "ui", "textures": "textures", "fondos": "fondos", "lottie": "lottie", "props/sprites": "props/sprites"}
     for origen, destino in copias.items():
         if (RAIZ / origen).is_dir():
             shutil.copytree(RAIZ / origen, pub / destino, dirs_exist_ok=True)

@@ -24,7 +24,7 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
       "clima": "negro",                 // brand/paletas.json → climas: negro (base), azul, papel, acero
       "pantalla": { "texto": "¿Creatina / para el ánimo?", "estilo": "titular" },   // titular | nota | capitulo | ninguno (lo normal: ninguno)
       "enfasis": [6],                   // índices de palabra: subtítulo grande en azul + punch-in de cámara en la primera
-      "mascota": { "sprite": "ejercicio:sentadilla", "anim": "pop", "encuadre": "general", "posicion": "centro", "espejo": false },
+      "mascota": { "sprite": "ejercicio:sentadilla", "anim": "pop", "encuadre": "general", "posicion": "centro", "espejo": false },   // anim: pop | entrar | temblor | ejercicio | estatico | hablar (solo plano_boca_reposo)
       "dividida": null,                 // { "no": "<sprite así no>", "si": "<sprite así sí>" } → pantalla dividida (sustituye a mascota)
       "inserto": { "cara": "cara_esceptico", "en": 13 },     // cara_* en un círculo (reacción)
       "anotaciones": [ { "tipo": "icono", "icono": "brain", "en": 3 }, { "tipo": "etiqueta", "texto": "otra vez", "apunta": "manos", "en": 6 } ],
@@ -76,6 +76,7 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 | lineas_velocidad, enfoque | – | detrás de la mascota |
 | impacto, sudor, destello | – | junto a la cabeza |
 | musculos | vista (`frente` \| `espalda`), resaltar (1-4 ids), tono? | mapa muscular (anatomia/musculos.json) con esos músculos encendidos escalonados y latiendo. Ids: `pecho`, `hombros`, `biceps`, `triceps`, `antebrazos`, `abdomen`, `oblicuos`, `trapecio`, `espalda_alta`, `lumbar`, `gluteos`, `cuadriceps`, `isquios`, `aductores`, `gemelos`, `tibial`, `cuello` (frente: pecho, abdomen, oblicuos, biceps, cuadriceps, tibial; espalda: espalda_alta, lumbar, gluteos, isquios). Columna (mascota a la derecha); sin mascota, grande y centrado. **La forma de decir qué músculo trabaja** |
+| prop | prop (id de `props/manifest.json`), apunta?, escala? (0.3-2.5) | objeto dibujado en el estilo de la mascota (pesas, banco, shaker, bote de creatina, plato, cama, libreta, báscula, calendario tachado, cerebro, batería…). Los de suelo (banco, rack, cama, barra, kettlebell, esterilla, báscula) se apoyan junto a la mascota, que se aparta a la izquierda; el resto flota en el lado libre o junto a la zona de `apunta`. **Mejor que un icono cuando el objeto es el protagonista** |
 | lottie | lottie (id), apunta?, escala? (0.3-2.5), tono? | animación de `lottie/manifest.json` en la palabra: efectos (confeti, fuego, destellos, latido, reloj de arena…) en color de marca, o iconos animados `ua_*` (mono: se tiñen con `tono`: foco \| alerta \| exito \| texto). Con `apunta` va junto a esa zona de la mascota; si no, en el lado libre (o centrada sin mascota). Un remate, no decoración: 0-2 por video |
 
 ## Lo que comprueba el validador (`scripts/validar_render.py`)

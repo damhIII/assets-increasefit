@@ -6,11 +6,12 @@ import mascotaJson from "../mascota.json";
 import sonidoJson from "../sonido.json";
 import musculosJson from "../musculos.json";
 import lottieJson from "../lottie.json";
+import propsJson from "../props.json";
 
 export type Anotacion = {
   tipo: "etiqueta" | "tachado" | "circulo" | "check" | "cruz" | "burbuja_pensamiento" | "burbuja_dialogo" | "dato" | "lista"
       | "rec" | "lineas_velocidad" | "impacto" | "sudor" | "destello" | "enfoque" | "libreta" | "grafica" | "icono" | "ficha"
-      | "musculos" | "lottie";
+      | "musculos" | "lottie" | "prop";
   texto?: string;            // etiqueta, tachado, burbuja_dialogo, dato (la cifra grande), libreta (título)
   detalle?: string;          // dato: texto bajo la cifra
   fuente?: string;           // dato: fuente corta verificada
@@ -25,14 +26,15 @@ export type Anotacion = {
   vista?: "frente" | "espalda";   // musculos: qué cara del cuerpo
   resaltar?: string[];       // musculos: músculos encendidos (ids en español de anatomia/musculos.json)
   lottie?: string;           // lottie: id de lottie/manifest.json
-  escala?: number;           // lottie: tamaño relativo (1 = normal)
+  escala?: number;           // lottie, prop: tamaño relativo (1 = normal)
+  prop?: string;             // prop: id de props/manifest.json
   en_f: number;              // frame GLOBAL en que aparece
 };
 export type Tono = "foco" | "alerta" | "exito";
 export type FilaFicha = { icono: string; texto: string; en_f: number };
 export type MascotaEscena = {
   sprite: string;            // id de mascota/manifest.json o "ejercicio:<nombre>" (alterna sus fases)
-  anim: "pop" | "ejercicio" | "temblor" | "entrar" | "estatico";
+  anim: "pop" | "ejercicio" | "temblor" | "entrar" | "estatico" | "hablar";   // hablar: solo con plano_boca_reposo
   encuadre: "general" | "medio" | "primer_plano";
   posicion: "centro" | "izq" | "der";
   espejo: boolean;
@@ -100,6 +102,9 @@ export const MUSCULOS = musculosJson as unknown as { vistas?: { frente: VistaCue
 // Animaciones Lottie (lottie/manifest.json): mono = un solo color, se tiñe con el tono que pidas.
 export type LottieInfo = { id: string; archivo: string; uso: string; mono: boolean; bucle: boolean; duracion_s: number };
 export const LOTTIES: Record<string, LottieInfo> = Object.fromEntries(((lottieJson as unknown as { animaciones?: LottieInfo[] }).animaciones ?? []).map((l) => [l.id, l]));
+// Objetos en el estilo de la mascota (props/manifest.json).
+export type PropInfo = { id: string; archivo: string; categoria: string; uso: string; tam: [number, number]; tam_escena: number; suelo: boolean };
+export const PROPS: Record<string, PropInfo> = Object.fromEntries(((propsJson as unknown as { props?: PropInfo[] }).props ?? []).map((p) => [p.id, p]));
 export const SONIDO = sonidoJson as unknown as { sfx: { id: string; archivo: string; volumen_sugerido: number }[]; musica: { id: string; archivo: string; volumen_bajo_voz: number; volumen_sin_voz: number }[] };
 
 // Constantes de marca: NO cambian con el clima. Paleta del feed de Instagram.

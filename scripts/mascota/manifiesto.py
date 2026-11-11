@@ -66,15 +66,58 @@ M = {
     "mano_puno": ("mano", None, None, None, None, None, "Puño cerrado (inserto)."),
     "mano_palma": ("mano", None, None, None, None, None, "Palma abierta (inserto)."),
 }
+# Hojas 13-26 (noviembre de 2026, gpt-image-2.6-sunburst): poses por tema, errores nuevos, fases intermedias y bocas.
+NUEVOS = {
+    "gesto_dormir": ("gesto", "perfil_tumbado", "izquierda", None, None, "dormido", "Durmiendo de lado en una cama (la cama forma parte del sprite)."),
+    "gesto_bostezo": ("gesto", "tres_cuartos", "derecha", None, None, "cansado", "De pie bostezando, mano tapando la boca."),
+    "gesto_despertar": ("gesto", "frente", "camara", None, None, "alegre", "Recién levantado, estira los brazos hacia arriba."),
+    "gesto_batido": ("gesto", "tres_cuartos", "derecha", None, None, "neutral", "Bebe de un shaker de proteína."),
+    "gesto_comer": ("gesto", "frente", "camara", None, None, "alegre", "Come pollo, arroz y brócoli de un plato."),
+    "gesto_creatina": ("gesto", "frente", "camara", None, None, "concentrado", "Echa una cuchara de polvo blanco en un vaso de agua (creatina)."),
+    "gesto_cafe": ("gesto", "frente", "camara", None, None, "aliviado", "Taza de café humeante con las dos manos."),
+    "correr_f1": ("ejercicio", "perfil", "derecha", "correr", 1, "confiado", "Corriendo de perfil, fase 1 del ciclo."),
+    "correr_f2": ("ejercicio", "perfil", "derecha", "correr", 2, "confiado", "Corriendo de perfil, fase 2 del ciclo (piernas cambiadas)."),
+    "gesto_jadeo": ("gesto", "tres_cuartos", "derecha", None, None, "agotado", "Manos en las rodillas, sin aliento después del cardio."),
+    "estirar_cuadriceps": ("gesto", "perfil", "derecha", None, None, "concentrado", "Estira el cuádriceps a la pata coja (calentamiento, movilidad)."),
+    "estirar_hombro": ("gesto", "frente", "camara", None, None, "neutral", "Estira el hombro cruzando el brazo por delante del pecho."),
+    "estirar_isquios": ("gesto", "perfil", "derecha", None, None, "esfuerzo", "Inclinado hacia delante tocándose las puntas de los pies."),
+    "gesto_libreta": ("gesto", "frente", "camara", None, None, "concentrado", "Anota en su libreta de entrenamiento (medir el progreso)."),
+    "gesto_cronometro": ("gesto", "frente", "camara", None, None, "confiado", "Mira un cronómetro: descanso entre series."),
+    "gesto_toalla": ("gesto", "frente", "camara", None, None, "relajado", "Toalla al cuello, se seca el sudor."),
+    "gesto_agua": ("gesto", "tres_cuartos", "derecha", None, None, "neutral", "Bebe de una botella de agua."),
+    "esfuerzo_ultima_rep": ("gesto", "frente", "camara", None, None, "esfuerzo", "Última repetición de curl: dientes apretados, sudor (cerca del fallo)."),
+    "gesto_empujar_pared": ("gesto", "perfil", "derecha", None, None, "esfuerzo", "Empuja un muro de ladrillo con todo el cuerpo (estancado)."),
+    "gesto_flexionar_mirar": ("gesto", "frente", "camara", None, None, "concentrado", "Flexiona el bíceps y lo mira fijamente (pensar en el músculo)."),
+    "gesto_frustrado": ("gesto", "frente", "camara", None, None, "frustrado", "Manos en la cabeza, mirando al suelo."),
+    "error_press_militar_arqueo": ("error", "tres_cuartos", "derecha", "press_militar", None, "esfuerzo", "ERROR: barra arriba arqueando la zona lumbar."),
+    "error_zancada_rodilla": ("error", "tres_cuartos", "camara", "zancada", None, "molestia", "ERROR: rodilla delantera hacia dentro y torso torcido."),
+    "error_hip_thrust_hiperextension": ("error", "perfil_tumbado", "izquierda", "hip_thrust", None, "esfuerzo", "ERROR: hiperextiende la lumbar (costillas arriba)."),
+    "plano_boca_reposo": ("plano_medio", "tres_cuartos", "camara", None, None, "confiado", "Plano medio que habla: boca en reposo (base). Con anim 'hablar' alterna las bocas al ritmo de la voz."),
+    "plano_boca_a": ("plano_medio", "tres_cuartos", "camara", None, None, "confiado", "Plano medio que habla: boca A (abierta)."),
+    "plano_boca_e": ("plano_medio", "tres_cuartos", "camara", None, None, "confiado", "Plano medio que habla: boca E/I (dientes)."),
+    "plano_boca_o": ("plano_medio", "tres_cuartos", "camara", None, None, "confiado", "Plano medio que habla: boca O."),
+    "plano_boca_u": ("plano_medio", "tres_cuartos", "camara", None, None, "confiado", "Plano medio que habla: boca U."),
+}
+# Fase intermedia de cada ejercicio: va entre f1 y f2 (la animación hace f1 → fm → f2 → fm).
+FM = {ej: vista for ej, vista in (("sentadilla", "perfil"), ("peso_muerto", "perfil"), ("curl", "perfil"), ("press_militar", "tres_cuartos"),
+                                    ("dominada", "espalda"), ("zancada", "perfil"), ("press_banca", "perfil_tumbado"), ("hip_thrust", "perfil_tumbado"))}
+_orden = {}
+for _k, _v in M.items():
+    _orden[_k] = _v
+    if _k.endswith("_f1") and _k[:-3] in FM:
+        _ej = _k[:-3]
+        _orden[f"{_ej}_fm"] = ("ejercicio", FM[_ej], _v[2], _ej, 1.5, _v[5], "Fase intermedia, a mitad de recorrido entre f1 y f2.")
+_orden.update(NUEVOS)
+M = _orden
+
 NOTAS = {
-    "remo_f1": ("revisar", "El torso está más erguido que en remo_f2: al alternar parece que se inclina más. Conviene regenerar el par."),
-    "remo_f2": ("revisar", "Ver remo_f1."),
     "press_banca_f1": ("ok", "Ampliado x1,48 para igualar la escala: algo más suave que el resto."),
     "press_banca_f2": ("ok", "Ampliado x1,48; el disco tapa parte de la cara."),
     "error_banca_cadera_arriba": ("ok", "Ampliado x1,48."),
     "peso_muerto_f1": ("ok", "Barra en tres cuartos (la sentadilla la muestra de canto)."),
 }
-CORRECTO = {"error_sentadilla_media": "sentadilla", "error_peso_muerto_redondo": "peso_muerto", "error_dominada_balanceo": "dominada",
+CORRECTO = {"error_press_militar_arqueo": "press_militar", "error_zancada_rodilla": "zancada", "error_hip_thrust_hiperextension": "hip_thrust",
+            "error_sentadilla_media": "sentadilla", "error_peso_muerto_redondo": "peso_muerto", "error_dominada_balanceo": "dominada",
             "error_curl_balanceo": "curl", "error_rodillas_dentro": "sentadilla", "error_banca_cadera_arriba": "press_banca"}
 
 M = {k: v for k, v in M.items() if k in proc}   # los descartados en ajustes.json no están en proc
@@ -112,7 +155,8 @@ manifest = {
     "altura_personaje_px": 900,
     "notas": [
         "Escala común: un personaje de pie mide 900 px de la coronilla a la suela en todos los sprites salvo cara_* y mano_* (insertos a su tamaño).",
-        "Las fases de un ejercicio (f1, f2) tienen el mismo tamaño de lienzo y su ancla_fase en el mismo punto: se alternan sin mover nada.",
+        "Las fases de un ejercicio (f1, fm, f2) tienen el mismo tamaño de lienzo y su ancla_fase en el mismo punto: se alternan sin mover nada. fm (fase 1.5) es la intermedia: la plantilla hace f1 → fm → f2 → fm.",
+        "plano_boca_*: la misma cara con 5 bocas (reposo, a, e, o, u). Con la mascota en plano_boca_reposo y anim 'hablar', la plantilla elige la boca según la palabra que suena.",
         "anclas.pies = centro de las suelas; anclas.cabeza = cinta; anclas.manos = muñequeras visibles. Son automáticas y aproximadas; null o lista vacía = no detectado.",
         "mira_a indica hacia dónde mira: para que mire al otro lado, espejar en horizontal (scaleX(-1)).",
     ],

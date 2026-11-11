@@ -1,9 +1,9 @@
-// Piezas que usan assets de terceros descargados al repo: mapa muscular (anatomia/) y animaciones Lottie (lottie/).
+// Piezas que usan assets de las carpetas nuevas: mapa muscular (anatomia/), animaciones Lottie (lottie/) y objetos (props/).
 // Igual que el kit: `desde` en frames LOCALES de la escena; colores siempre del clima o de los tonos de marca.
 import React, { useEffect, useState } from "react";
-import { cancelRender, continueRender, delayRender, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { cancelRender, continueRender, delayRender, Img, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { Lottie, type LottieAnimationData } from "@remotion/lottie";
-import { FUENTE, LOTTIES, MUSCULOS } from "../marco/datos";
+import { FUENTE, LOTTIES, MUSCULOS, PROPS } from "../marco/datos";
 import type { C } from "../marco/clima";
 import { colorTono, useEntrada } from "./kit";
 
@@ -92,5 +92,26 @@ export const LottieAnim: React.FC<{ id: string; x: number; y: number; size?: num
         <Lottie animationData={data} loop={info.bucle} style={{ width: size, height: size }} />
       </div>
     </Sequence>
+  );
+};
+
+/** Objeto de props/ dibujado en el estilo de la mascota. `x` es el centro; con `suelo` se apoya con su base en `y`, si no, `y` es su centro
+ *  y flota un poco. `lado` = px del lado mayor. Entra con rebote en `desde`. */
+export const PropObjeto: React.FC<{ id: string; x: number; y: number; lado: number; desde: number; suelo?: boolean }> = ({ id, x, y, lado, desde, suelo = false }) => {
+  const f = useCurrentFrame();
+  const e = useEntrada(desde, { damping: 10, stiffness: 210 });
+  const info = PROPS[id];
+  if (!info) return null;
+  const [w0, h0] = info.tam;
+  const k = lado / Math.max(w0, h0);
+  const w = w0 * k, h = h0 * k;
+  const flota = suelo ? 0 : Math.sin((f - desde) / 14) * 6;
+  const top = suelo ? y - h : y - h / 2 + flota;
+  return (
+    <div style={{ position: "absolute", left: x - w / 2, top, width: w, height: h, opacity: Math.min(1, e * 1.4),
+      transform: `translateY(${(1 - e) * 50}px) scale(${0.7 + 0.3 * e})`, transformOrigin: suelo ? "50% 100%" : "50% 50%",
+      filter: "drop-shadow(0 14px 18px rgba(0,0,0,0.35))" }}>
+      <Img src={staticFile(`props/${info.archivo}`)} style={{ width: w, height: h, display: "block" }} />
+    </div>
   );
 };

@@ -65,7 +65,7 @@ def catalogos():
     return {"paletas": _leer(RAIZ / "brand/paletas.json"), "mascota": _leer(RAIZ / "mascota/manifest.json"),
             "sonido": _leer(RAIZ / "sonido/manifest.json"), "fuentes": _leer(RAIZ / "brand/fuentes.json")["fuentes"],
             "musculos": opcional("anatomia/musculos.json", {}), "lottie": opcional("lottie/manifest.json", {"animaciones": []}),
-            "fondos": opcional("fondos/manifest.json", {"fondos": []})}
+            "fondos": opcional("fondos/manifest.json", {"fondos": []}), "props": opcional("props/manifest.json", {"props": []})}
 
 
 def cargar(dir_base):

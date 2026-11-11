@@ -2,7 +2,7 @@
 
 - Recorta cada figura con su máscara (sin restos de las vecinas), limpia el alfa y deja un margen.
 - Normaliza la escala: 1 personaje de pie = ALTURA_STD px (factor por hoja y, si hace falta, por figura).
-- Alinea las fases (f1, f2) de cada ejercicio en un lienzo común: mismo tamaño y el ancla (pies o barra) en el mismo punto.
+- Alinea las fases (f1, fm, f2) de cada ejercicio en un lienzo común: mismo tamaño y el ancla (pies o barra) en el mismo punto.
 - Calcula anclajes: pies (suela), cabeza (cinta azul), manos (muñequeras azules), y los guarda en coordenadas del sprite.
 """
 import json, os, sys
@@ -89,6 +89,13 @@ def ancla_barra(img):
     return [int(round((xs.min() + xs.max()) / 2)), int(y_top)]
 
 
+def ancla_centro(img):
+    """Ciclos donde los pies se alternan (correr): centro de masa horizontal de la figura y suela más baja."""
+    a = np.array(img)[:, :, 3] > 128
+    ys, xs = np.nonzero(a)
+    return [int(round(xs.mean())), int(ys.max())]
+
+
 def ancla_banco_der(img):
     """Press de banca (cabeza a la derecha): pata derecha del banco = punto más a la derecha de la franja inferior."""
     a = np.array(img)[:, :, 3] > 128
@@ -159,8 +166,10 @@ def main(cfg_path, ajustes_path, salida):
     # Fases: mismo lienzo y misma ancla
     for ej, tipo in aj["fases"].items():
         nombres = sorted(n for n in sprites if n.startswith(ej + "_f"))
+        if not nombres:                         # ejercicio sin fases válidas (p. ej. todas descartadas)
+            continue
         imgs = [recortar_alfa(sprites[n]["img"]) for n in nombres]
-        fn = {"barra": ancla_barra, "pies": ancla_pies, "banco_der": ancla_banco_der}[tipo]
+        fn = {"barra": ancla_barra, "pies": ancla_pies, "banco_der": ancla_banco_der, "centro": ancla_centro}[tipo]
         anc = [fn(i) for i in imgs]
         izq = max(a[0] for a in anc); arr = max(a[1] for a in anc)
         der = max(i.size[0] - a[0] for i, a in zip(imgs, anc)); abj = max(i.size[1] - a[1] for i, a in zip(imgs, anc))

@@ -17,13 +17,13 @@ import sincronizar as S
 from alinear import sin_tildes
 
 ESTILOS = {"titular", "nota", "capitulo", "ninguno"}
-ANIMS = {"pop", "entrar", "temblor", "ejercicio", "estatico"}
+ANIMS = {"pop", "entrar", "temblor", "ejercicio", "estatico", "hablar"}
 ENCUADRES = {"general", "medio", "primer_plano"}
 POSICIONES = {"centro", "izq", "der"}
 APUNTA = {"cabeza", "manos", "pies", "centro"}
 ANOTACIONES = {"etiqueta", "tachado", "circulo", "check", "cruz", "burbuja_pensamiento", "burbuja_dialogo", "dato", "lista",
                "rec", "lineas_velocidad", "impacto", "sudor", "destello", "enfoque", "libreta", "grafica", "icono", "ficha",
-               "musculos", "lottie"}
+               "musculos", "lottie", "prop"}
 VISTAS = {"frente", "espalda"}
 TRANSICIONES = {"corte", "pincel"}
 TONOS = {"foco", "alerta", "exito"}
@@ -63,6 +63,7 @@ def validar(dir_base):
     musculos = set((cat["musculos"].get("musculos") or {}).keys())
     lotties = {l["id"] for l in cat["lottie"].get("animaciones") or []}
     fondos = {x["id"] for x in cat["fondos"].get("fondos") or []}
+    props = {x["id"] for x in cat["props"].get("props") or []}
     texto_total = []                          # (dónde, palabras) del texto en pantalla, para el presupuesto
 
     def palabras(t):
@@ -142,6 +143,8 @@ def validar(dir_base):
             for campo, val in (("anim", ANIMS), ("encuadre", ENCUADRES), ("posicion", POSICIONES)):
                 if campo in m and m[campo] not in val:
                     err.append(f"{eid}: mascota.{campo} {m[campo]} ({' | '.join(sorted(val))})")
+            if m.get("anim") == "hablar" and not str(m.get("sprite", "")).startswith("plano_boca"):
+                err.append(f"{eid}: anim 'hablar' solo con sprite plano_boca_reposo (la boca sigue a la voz)")
         div = e.get("dividida")
         if div and any(o.get("tipo") != "icono" for o in e.get("anotaciones") or []):
             avisos.append(f"{eid}: con 'dividida' solo se dibujan las anotaciones de tipo icono (el resto se ignora)")
@@ -203,6 +206,11 @@ def validar(dir_base):
                     err.append(f"{donde}: lottie «{o.get('lottie')}» no está en lottie/manifest.json ({', '.join(sorted(lotties)) or 'ninguna'})")
                 if o.get("tono") and o["tono"] not in TONOS | {"texto"}:
                     err.append(f"{donde}: tono {o['tono']} (foco | alerta | exito | texto; solo en las lottie mono)")
+                if o.get("escala") is not None and not (isinstance(o["escala"], (int, float)) and 0.3 <= o["escala"] <= 2.5):
+                    err.append(f"{donde}: escala entre 0.3 y 2.5")
+            if t == "prop":
+                if o.get("prop") not in props:
+                    err.append(f"{donde}: prop «{o.get('prop')}» no está en props/manifest.json ({', '.join(sorted(props)) or 'ninguno'})")
                 if o.get("escala") is not None and not (isinstance(o["escala"], (int, float)) and 0.3 <= o["escala"] <= 2.5):
                     err.append(f"{donde}: escala entre 0.3 y 2.5")
             if t == "ficha":

@@ -4,6 +4,7 @@ Contenido editorial, mascota, kit gráfico, sonido y plantilla Remotion de los R
 
 - **editorial/**: marca y voz, ADN, estilo del guion, temas, datos verificados, prompts del investigador, del guionista y de la tarjeta final.
 - **mascota/**: sprites PNG del personaje (`manifest.json`, `personaje.json`, `contactos.jpg`).
+- **props/**: objetos (pesas, banco, comida, cama, libreta, cerebro…) en el estilo de la mascota (`manifest.json`, `contactos.jpg`).
 - **kit/**: anotaciones dibujadas a mano y cortinilla de pincel (`manifest.json`, `contactos.png`).
 - **sonido/**: efectos y música en bucle (`manifest.json`, licencias).
 - **plantilla/**: proyecto Remotion · **scripts/**: alinear, sincronizar, validar, preparar y regenerar assets.

@@ -589,8 +589,8 @@
   {
    "id": "mx_738",
    "archivo": "musica/mx_738.mp3",
-   "uso": "Pista hip hop con groove: «738». No es bucle: recortada a 75 s con fundido.",
-   "bpm": 199,
+   "uso": "Pista hip hop con groove: «738». No es bucle: recortada a 75 s con fundido. (BPM medido 199: es doble tiempo, ~100).",
+   "bpm": 100,
    "duracion_s": 75.0,
    "bucle": false,
    "volumen_bajo_voz": 0.12,

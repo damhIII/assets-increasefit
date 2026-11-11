@@ -4,7 +4,8 @@
  "altura_personaje_px": 900,
  "notas": [
   "Escala común: un personaje de pie mide 900 px de la coronilla a la suela en todos los sprites salvo cara_* y mano_* (insertos a su tamaño).",
-  "Las fases de un ejercicio (f1, f2) tienen el mismo tamaño de lienzo y su ancla_fase en el mismo punto: se alternan sin mover nada.",
+  "Las fases de un ejercicio (f1, fm, f2) tienen el mismo tamaño de lienzo y su ancla_fase en el mismo punto: se alternan sin mover nada. fm (fase 1.5) es la intermedia: la plantilla hace f1 → fm → f2 → fm.",
+  "plano_boca_*: la misma cara con 5 bocas (reposo, a, e, o, u). Con la mascota en plano_boca_reposo y anim 'hablar', la plantilla elige la boca según la palabra que suena.",
   "anclas.pies = centro de las suelas; anclas.cabeza = cinta; anclas.manos = muñequeras visibles. Son automáticas y aproximadas; null o lista vacía = no detectado.",
   "mira_a indica hacia dónde mira: para que mire al otro lado, espejar en horizontal (scaleX(-1))."
  ],
@@ -12,6 +13,7 @@
   "dominada": {
    "fases": [
     "dominada_f1",
+    "dominada_fm",
     "dominada_f2"
    ],
    "errores": [
@@ -31,6 +33,7 @@
   "peso_muerto": {
    "fases": [
     "peso_muerto_f1",
+    "peso_muerto_fm",
     "peso_muerto_f2"
    ],
    "errores": [
@@ -40,6 +43,7 @@
   "curl": {
    "fases": [
     "curl_f1",
+    "curl_fm",
     "curl_f2"
    ],
    "errores": [
@@ -49,6 +53,7 @@
   "press_banca": {
    "fases": [
     "press_banca_f1",
+    "press_banca_fm",
     "press_banca_f2"
    ],
    "errores": [
@@ -58,21 +63,37 @@
   "press_militar": {
    "fases": [
     "press_militar_f1",
+    "press_militar_fm",
     "press_militar_f2"
    ],
-   "errores": []
+   "errores": [
+    "error_press_militar_arqueo"
+   ]
   },
   "zancada": {
    "fases": [
     "zancada_f1",
+    "zancada_fm",
     "zancada_f2"
    ],
-   "errores": []
+   "errores": [
+    "error_zancada_rodilla"
+   ]
   },
   "hip_thrust": {
    "fases": [
     "hip_thrust_f1",
+    "hip_thrust_fm",
     "hip_thrust_f2"
+   ],
+   "errores": [
+    "error_hip_thrust_hiperextension"
+   ]
+  },
+  "correr": {
+   "fases": [
+    "correr_f1",
+    "correr_f2"
    ],
    "errores": []
   }
@@ -97,7 +118,7 @@
      913
     ],
     "cabeza": [
-     182,
+     183,
      67
     ],
     "manos": [
@@ -165,10 +186,14 @@
      908
     ],
     "cabeza": [
-     106,
+     107,
      71
     ],
     "manos": [
+     [
+      185,
+      319
+     ],
      [
       194,
       211
@@ -197,10 +222,14 @@
      910
     ],
     "cabeza": [
-     220,
+     219,
      67
     ],
     "manos": [
+     [
+      401,
+      277
+     ],
      [
       117,
       276
@@ -329,7 +358,7 @@
      910
     ],
     "cabeza": [
-     231,
+     230,
      65
     ],
     "manos": [
@@ -443,10 +472,10 @@
     "manos": [
      [
       143,
-      273
+      272
      ],
      [
-      253,
+      254,
       279
      ]
     ]
@@ -473,7 +502,7 @@
      910
     ],
     "cabeza": [
-     140,
+     139,
      69
     ],
     "manos": [
@@ -652,7 +681,7 @@
      546
     ],
     "cabeza": [
-     218,
+     219,
      98
     ],
     "manos": [
@@ -694,7 +723,7 @@
     "manos": [
      [
       236,
-      258
+      259
      ],
      [
       223,
@@ -740,17 +769,17 @@
    "vista": "espalda",
    "emocion": "neutral",
    "tam": [
-    420,
+    453,
     900
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
-     199,
+     211,
      886
     ],
     "cabeza": [
-     220,
+     232,
      252
     ],
     "manos": []
@@ -762,7 +791,51 @@
    "ancla_fase": {
     "tipo": "barra",
     "punto": [
-     209,
+     221,
+     14
+    ]
+   }
+  },
+  {
+   "id": "dominada_fm",
+   "archivo": "sprites/dominada_fm.png",
+   "categoria": "ejercicio",
+   "descripcion": "Fase intermedia, a mitad de recorrido entre f1 y f2.",
+   "vista": "espalda",
+   "emocion": "neutral",
+   "tam": [
+    453,
+    900
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     218,
+     839
+    ],
+    "cabeza": [
+     234,
+     150
+    ],
+    "manos": [
+     [
+      358,
+      156
+     ],
+     [
+      90,
+      156
+     ]
+    ]
+   },
+   "hoja": "hoja_23",
+   "estado": "ok",
+   "ejercicio": "dominada",
+   "fase": 1.5,
+   "ancla_fase": {
+    "tipo": "barra",
+    "punto": [
+     221,
      14
     ]
    }
@@ -775,17 +848,17 @@
    "vista": "espalda",
    "emocion": "neutral",
    "tam": [
-    420,
+    453,
     900
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
-     215,
+     227,
      792
     ],
     "cabeza": [
-     220,
+     232,
      131
     ],
     "manos": []
@@ -797,7 +870,7 @@
    "ancla_fase": {
     "tipo": "barra",
     "punto": [
-     209,
+     221,
      14
     ]
    }
@@ -883,26 +956,26 @@
    "mira_a": "derecha",
    "emocion": "confiado",
    "tam": [
-    475,
+    548,
     925
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
-     222,
+     236,
      911
     ],
     "cabeza": [
-     287,
-     343
+     301,
+     342
     ],
     "manos": [
      [
-      179,
+      193,
       739
      ],
      [
-      297,
+      311,
       732
      ]
     ]
@@ -914,11 +987,56 @@
    "ancla_fase": {
     "tipo": "pies",
     "punto": [
-     222,
+     236,
      911
     ]
    },
    "nota": "Barra en tres cuartos (la sentadilla la muestra de canto)."
+  },
+  {
+   "id": "peso_muerto_fm",
+   "archivo": "sprites/peso_muerto_fm.png",
+   "categoria": "ejercicio",
+   "descripcion": "Fase intermedia, a mitad de recorrido entre f1 y f2.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    548,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     236,
+     911
+    ],
+    "cabeza": [
+     336,
+     211
+    ],
+    "manos": [
+     [
+      224,
+      607
+     ],
+     [
+      371,
+      605
+     ]
+    ]
+   },
+   "hoja": "hoja_21",
+   "estado": "ok",
+   "ejercicio": "peso_muerto",
+   "fase": 1.5,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     236,
+     911
+    ]
+   }
   },
   {
    "id": "peso_muerto_f2",
@@ -929,23 +1047,27 @@
    "mira_a": "derecha",
    "emocion": "confiado",
    "tam": [
-    475,
+    548,
     925
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
-     222,
+     236,
      911
     ],
     "cabeza": [
-     195,
+     209,
      73
     ],
     "manos": [
      [
-      182,
+      196,
       464
+     ],
+     [
+      202,
+      553
      ]
     ]
    },
@@ -956,7 +1078,7 @@
    "ancla_fase": {
     "tipo": "pies",
     "punto": [
-     222,
+     236,
      911
     ]
    }
@@ -970,7 +1092,7 @@
    "mira_a": "derecha",
    "emocion": "confiado",
    "tam": [
-    333,
+    358,
     925
    ],
    "escala_normalizada": true,
@@ -980,13 +1102,13 @@
      911
     ],
     "cabeza": [
-     126,
-     75
+     125,
+     76
     ],
     "manos": [
      [
-      86,
-      468
+      85,
+      467
      ]
     ]
    },
@@ -994,6 +1116,51 @@
    "estado": "ok",
    "ejercicio": "curl",
    "fase": 1,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     138,
+     911
+    ]
+   }
+  },
+  {
+   "id": "curl_fm",
+   "archivo": "sprites/curl_fm.png",
+   "categoria": "ejercicio",
+   "descripcion": "Fase intermedia, a mitad de recorrido entre f1 y f2.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    358,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     138,
+     911
+    ],
+    "cabeza": [
+     118,
+     70
+    ],
+    "manos": [
+     [
+      133,
+      305
+     ],
+     [
+      274,
+      307
+     ]
+    ]
+   },
+   "hoja": "hoja_22",
+   "estado": "ok",
+   "ejercicio": "curl",
+   "fase": 1.5,
    "ancla_fase": {
     "tipo": "pies",
     "punto": [
@@ -1011,7 +1178,7 @@
    "mira_a": "derecha",
    "emocion": "confiado",
    "tam": [
-    333,
+    358,
     925
    ],
    "escala_normalizada": true,
@@ -1022,12 +1189,12 @@
     ],
     "cabeza": [
      122,
-     75
+     74
     ],
     "manos": [
      [
       137,
-      282
+      281
      ]
     ]
    },
@@ -1052,7 +1219,7 @@
    "mira_a": "derecha",
    "emocion": "neutral",
    "tam": [
-    959,
+    964,
     747
    ],
    "escala_normalizada": true,
@@ -1068,7 +1235,7 @@
       167
      ],
      [
-      541,
+      542,
       163
      ]
     ]
@@ -1087,6 +1254,48 @@
    "nota": "Ampliado x1,48 para igualar la escala: algo más suave que el resto."
   },
   {
+   "id": "press_banca_fm",
+   "archivo": "sprites/press_banca_fm.png",
+   "categoria": "ejercicio",
+   "descripcion": "Fase intermedia, a mitad de recorrido entre f1 y f2.",
+   "vista": "perfil_tumbado",
+   "mira_a": "derecha",
+   "emocion": "neutral",
+   "tam": [
+    964,
+    747
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     182,
+     733
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      663,
+      266
+     ],
+     [
+      469,
+      260
+     ]
+    ]
+   },
+   "hoja": "hoja_24",
+   "estado": "ok",
+   "ejercicio": "press_banca",
+   "fase": 1.5,
+   "ancla_fase": {
+    "tipo": "banco_der",
+    "punto": [
+     871,
+     697
+    ]
+   }
+  },
+  {
    "id": "press_banca_f2",
    "archivo": "sprites/press_banca_f2.png",
    "categoria": "ejercicio",
@@ -1095,7 +1304,7 @@
    "mira_a": "derecha",
    "emocion": "neutral",
    "tam": [
-    959,
+    964,
     747
    ],
    "escala_normalizada": true,
@@ -1134,26 +1343,26 @@
    "mira_a": "derecha",
    "emocion": "confiado",
    "tam": [
-    491,
+    554,
     1067
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
-     236,
+     252,
      1051
     ],
     "cabeza": [
-     217,
+     233,
      215
     ],
     "manos": [
      [
-      200,
+      216,
       391
      ],
      [
-      372,
+      388,
       389
      ]
     ]
@@ -1165,7 +1374,52 @@
    "ancla_fase": {
     "tipo": "pies",
     "punto": [
-     236,
+     252,
+     1051
+    ]
+   }
+  },
+  {
+   "id": "press_militar_fm",
+   "archivo": "sprites/press_militar_fm.png",
+   "categoria": "ejercicio",
+   "descripcion": "Fase intermedia, a mitad de recorrido entre f1 y f2.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    554,
+    1067
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     252,
+     1051
+    ],
+    "cabeza": [
+     235,
+     144
+    ],
+    "manos": [
+     [
+      191,
+      320
+     ],
+     [
+      414,
+      323
+     ]
+    ]
+   },
+   "hoja": "hoja_22",
+   "estado": "ok",
+   "ejercicio": "press_militar",
+   "fase": 1.5,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     252,
      1051
     ]
    }
@@ -1179,26 +1433,26 @@
    "mira_a": "derecha",
    "emocion": "confiado",
    "tam": [
-    491,
+    554,
     1067
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
-     236,
+     252,
      1051
     ],
     "cabeza": [
-     242,
+     258,
      203
     ],
     "manos": [
      [
-      165,
+      181,
       131
      ],
      [
-      344,
+      360,
       140
      ]
     ]
@@ -1210,7 +1464,7 @@
    "ancla_fase": {
     "tipo": "pies",
     "punto": [
-     236,
+     252,
      1051
     ]
    }
@@ -1224,22 +1478,22 @@
    "mira_a": "derecha",
    "emocion": "confiado",
    "tam": [
-    607,
+    625,
     925
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
-     372,
+     380,
      910
     ],
     "cabeza": [
-     378,
+     385,
      80
     ],
     "manos": [
      [
-      352,
+      361,
       475
      ]
     ]
@@ -1251,7 +1505,52 @@
    "ancla_fase": {
     "tipo": "pies",
     "punto": [
-     372,
+     380,
+     910
+    ]
+   }
+  },
+  {
+   "id": "zancada_fm",
+   "archivo": "sprites/zancada_fm.png",
+   "categoria": "ejercicio",
+   "descripcion": "Fase intermedia, a mitad de recorrido entre f1 y f2.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    625,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     380,
+     910
+    ],
+    "cabeza": [
+     305,
+     180
+    ],
+    "manos": [
+     [
+      279,
+      588
+     ],
+     [
+      277,
+      686
+     ]
+    ]
+   },
+   "hoja": "hoja_23",
+   "estado": "ok",
+   "ejercicio": "zancada",
+   "fase": 1.5,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     380,
      910
     ]
    }
@@ -1265,22 +1564,22 @@
    "mira_a": "derecha",
    "emocion": "confiado",
    "tam": [
-    607,
+    625,
     925
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
-     372,
+     380,
      910
     ],
     "cabeza": [
-     292,
+     300,
      267
     ],
     "manos": [
      [
-      268,
+      276,
       664
      ]
     ]
@@ -1292,7 +1591,7 @@
    "ancla_fase": {
     "tipo": "pies",
     "punto": [
-     372,
+     380,
      910
     ]
    }
@@ -1307,21 +1606,16 @@
    "emocion": "confiado",
    "tam": [
     823,
-    610
+    624
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
      698,
-     597
+     610
     ],
     "cabeza": null,
-    "manos": [
-     [
-      320,
-      411
-     ]
-    ]
+    "manos": []
    },
    "hoja": "hoja_12",
    "estado": "ok",
@@ -1331,7 +1625,45 @@
     "tipo": "pies",
     "punto": [
      698,
-     597
+     610
+    ]
+   }
+  },
+  {
+   "id": "hip_thrust_fm",
+   "archivo": "sprites/hip_thrust_fm.png",
+   "categoria": "ejercicio",
+   "descripcion": "Fase intermedia, a mitad de recorrido entre f1 y f2.",
+   "vista": "perfil_tumbado",
+   "mira_a": "izquierda",
+   "emocion": "confiado",
+   "tam": [
+    823,
+    624
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     698,
+     610
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      327,
+      321
+     ]
+    ]
+   },
+   "hoja": "hoja_24",
+   "estado": "ok",
+   "ejercicio": "hip_thrust",
+   "fase": 1.5,
+   "ancla_fase": {
+    "tipo": "pies",
+    "punto": [
+     698,
+     610
     ]
    }
   },
@@ -1345,19 +1677,19 @@
    "emocion": "confiado",
    "tam": [
     823,
-    610
+    624
    ],
    "escala_normalizada": true,
    "anclas": {
     "pies": [
      698,
-     597
+     610
     ],
     "cabeza": null,
     "manos": [
      [
-      340,
-      269
+      341,
+      282
      ]
     ]
    },
@@ -1369,7 +1701,7 @@
     "tipo": "pies",
     "punto": [
      698,
-     597
+     610
     ]
    }
   },
@@ -1499,8 +1831,8 @@
      870
     ],
     "cabeza": [
-     88,
-     83
+     85,
+     88
     ],
     "manos": [
      [
@@ -1509,7 +1841,7 @@
      ],
      [
       240,
-      284
+      285
      ]
     ]
    },
@@ -1537,7 +1869,7 @@
      635
     ],
     "cabeza": [
-     280,
+     281,
      70
     ],
     "manos": [
@@ -1635,7 +1967,7 @@
     ],
     "cabeza": [
      204,
-     109
+     108
     ],
     "manos": []
    },
@@ -1715,8 +2047,8 @@
      409
     ],
     "cabeza": [
-     212,
-     108
+     211,
+     109
     ],
     "manos": []
    },
@@ -1844,7 +2176,7 @@
     "manos": [
      [
       164,
-      308
+      309
      ]
     ]
    },
@@ -1870,7 +2202,7 @@
     "cabeza": null,
     "manos": [
      [
-      141,
+      142,
       182
      ]
     ]
@@ -1897,7 +2229,7 @@
     "manos": [
      [
       144,
-      323
+      324
      ]
     ]
    },
@@ -1922,8 +2254,8 @@
     "cabeza": null,
     "manos": [
      [
-      136,
-      276
+      137,
+      277
      ]
     ]
    },
@@ -1948,12 +2280,1008 @@
     "cabeza": null,
     "manos": [
      [
-      162,
-      398
+      164,
+      399
      ]
     ]
    },
    "hoja": "manos",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_dormir",
+   "archivo": "sprites/gesto_dormir.png",
+   "categoria": "gesto",
+   "descripcion": "Durmiendo de lado en una cama (la cama forma parte del sprite).",
+   "vista": "perfil_tumbado",
+   "mira_a": "izquierda",
+   "emocion": "dormido",
+   "tam": [
+    661,
+    416
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     333,
+     403
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      141,
+      183
+     ]
+    ]
+   },
+   "hoja": "hoja_13",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_bostezo",
+   "archivo": "sprites/gesto_bostezo.png",
+   "categoria": "gesto",
+   "descripcion": "De pie bostezando, mano tapando la boca.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "cansado",
+   "tam": [
+    350,
+    924
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     173,
+     910
+    ],
+    "cabeza": [
+     138,
+     71
+    ],
+    "manos": []
+   },
+   "hoja": "hoja_13",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_despertar",
+   "archivo": "sprites/gesto_despertar.png",
+   "categoria": "gesto",
+   "descripcion": "Recién levantado, estira los brazos hacia arriba.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "alegre",
+   "tam": [
+    440,
+    994
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     259,
+     980
+    ],
+    "cabeza": [
+     196,
+     141
+    ],
+    "manos": [
+     [
+      63,
+      79
+     ],
+     [
+      378,
+      80
+     ]
+    ]
+   },
+   "hoja": "hoja_13",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_batido",
+   "archivo": "sprites/gesto_batido.png",
+   "categoria": "gesto",
+   "descripcion": "Bebe de un shaker de proteína.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "neutral",
+   "tam": [
+    360,
+    926
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     187,
+     913
+    ],
+    "cabeza": [
+     132,
+     67
+    ],
+    "manos": []
+   },
+   "hoja": "hoja_14",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_comer",
+   "archivo": "sprites/gesto_comer.png",
+   "categoria": "gesto",
+   "descripcion": "Come pollo, arroz y brócoli de un plato.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "alegre",
+   "tam": [
+    348,
+    927
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     197,
+     914
+    ],
+    "cabeza": [
+     139,
+     67
+    ],
+    "manos": [
+     [
+      271,
+      327
+     ]
+    ]
+   },
+   "hoja": "hoja_14",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_creatina",
+   "archivo": "sprites/gesto_creatina.png",
+   "categoria": "gesto",
+   "descripcion": "Echa una cuchara de polvo blanco en un vaso de agua (creatina).",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "concentrado",
+   "tam": [
+    349,
+    921
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     205,
+     908
+    ],
+    "cabeza": [
+     206,
+     78
+    ],
+    "manos": [
+     [
+      100,
+      243
+     ],
+     [
+      280,
+      346
+     ]
+    ]
+   },
+   "hoja": "hoja_14",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_cafe",
+   "archivo": "sprites/gesto_cafe.png",
+   "categoria": "gesto",
+   "descripcion": "Taza de café humeante con las dos manos.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "aliviado",
+   "tam": [
+    334,
+    927
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     186,
+     914
+    ],
+    "cabeza": [
+     135,
+     65
+    ],
+    "manos": [
+     [
+      246,
+      256
+     ]
+    ]
+   },
+   "hoja": "hoja_14",
+   "estado": "ok"
+  },
+  {
+   "id": "correr_f1",
+   "archivo": "sprites/correr_f1.png",
+   "categoria": "ejercicio",
+   "descripcion": "Corriendo de perfil, fase 1 del ciclo.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    543,
+    855
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     429,
+     841
+    ],
+    "cabeza": [
+     335,
+     92
+    ],
+    "manos": [
+     [
+      148,
+      387
+     ],
+     [
+      468,
+      307
+     ]
+    ]
+   },
+   "hoja": "hoja_15",
+   "estado": "ok",
+   "ejercicio": "correr",
+   "fase": 1,
+   "ancla_fase": {
+    "tipo": "centro",
+    "punto": [
+     302,
+     841
+    ]
+   }
+  },
+  {
+   "id": "correr_f2",
+   "archivo": "sprites/correr_f2.png",
+   "categoria": "ejercicio",
+   "descripcion": "Corriendo de perfil, fase 2 del ciclo (piernas cambiadas).",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "confiado",
+   "tam": [
+    543,
+    855
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     218,
+     841
+    ],
+    "cabeza": [
+     354,
+     77
+    ],
+    "manos": [
+     [
+      465,
+      266
+     ],
+     [
+      166,
+      356
+     ]
+    ]
+   },
+   "hoja": "hoja_15",
+   "estado": "ok",
+   "ejercicio": "correr",
+   "fase": 2,
+   "ancla_fase": {
+    "tipo": "centro",
+    "punto": [
+     302,
+     841
+    ]
+   }
+  },
+  {
+   "id": "gesto_jadeo",
+   "archivo": "sprites/gesto_jadeo.png",
+   "categoria": "gesto",
+   "descripcion": "Manos en las rodillas, sin aliento después del cardio.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "agotado",
+   "tam": [
+    416,
+    815
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     232,
+     801
+    ],
+    "cabeza": [
+     277,
+     72
+    ],
+    "manos": [
+     [
+      118,
+      453
+     ],
+     [
+      288,
+      442
+     ]
+    ]
+   },
+   "hoja": "hoja_15",
+   "estado": "ok"
+  },
+  {
+   "id": "estirar_cuadriceps",
+   "archivo": "sprites/estirar_cuadriceps.png",
+   "categoria": "gesto",
+   "descripcion": "Estira el cuádriceps a la pata coja (calentamiento, movilidad).",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "concentrado",
+   "tam": [
+    357,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     214,
+     913
+    ],
+    "cabeza": [
+     227,
+     81
+    ],
+    "manos": [
+     [
+      56,
+      404
+     ],
+     [
+      308,
+      448
+     ]
+    ]
+   },
+   "hoja": "hoja_16",
+   "estado": "ok"
+  },
+  {
+   "id": "estirar_hombro",
+   "archivo": "sprites/estirar_hombro.png",
+   "categoria": "gesto",
+   "descripcion": "Estira el hombro cruzando el brazo por delante del pecho.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "neutral",
+   "tam": [
+    449,
+    926
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     198,
+     914
+    ],
+    "cabeza": [
+     174,
+     62
+    ],
+    "manos": [
+     [
+      254,
+      281
+     ]
+    ]
+   },
+   "hoja": "hoja_16",
+   "estado": "ok"
+  },
+  {
+   "id": "estirar_isquios",
+   "archivo": "sprites/estirar_isquios.png",
+   "categoria": "gesto",
+   "descripcion": "Inclinado hacia delante tocándose las puntas de los pies.",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "esfuerzo",
+   "tam": [
+    438,
+    587
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     138,
+     574
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      197,
+      426
+     ]
+    ]
+   },
+   "hoja": "hoja_16",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_libreta",
+   "archivo": "sprites/gesto_libreta.png",
+   "categoria": "gesto",
+   "descripcion": "Anota en su libreta de entrenamiento (medir el progreso).",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "concentrado",
+   "tam": [
+    332,
+    929
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     167,
+     915
+    ],
+    "cabeza": [
+     161,
+     70
+    ],
+    "manos": [
+     [
+      108,
+      299
+     ],
+     [
+      249,
+      346
+     ]
+    ]
+   },
+   "hoja": "hoja_17",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_cronometro",
+   "archivo": "sprites/gesto_cronometro.png",
+   "categoria": "gesto",
+   "descripcion": "Mira un cronómetro: descanso entre series.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "confiado",
+   "tam": [
+    391,
+    925
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     216,
+     912
+    ],
+    "cabeza": [
+     196,
+     66
+    ],
+    "manos": [
+     [
+      342,
+      259
+     ]
+    ]
+   },
+   "hoja": "hoja_17",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_toalla",
+   "archivo": "sprites/gesto_toalla.png",
+   "categoria": "gesto",
+   "descripcion": "Toalla al cuello, se seca el sudor.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "relajado",
+   "tam": [
+    346,
+    923
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     182,
+     909
+    ],
+    "cabeza": [
+     126,
+     63
+    ],
+    "manos": [
+     [
+      253,
+      137
+     ]
+    ]
+   },
+   "hoja": "hoja_17",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_agua",
+   "archivo": "sprites/gesto_agua.png",
+   "categoria": "gesto",
+   "descripcion": "Bebe de una botella de agua.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "neutral",
+   "tam": [
+    396,
+    927
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     226,
+     913
+    ],
+    "cabeza": [
+     143,
+     75
+    ],
+    "manos": [
+     [
+      103,
+      383
+     ],
+     [
+      321,
+      119
+     ]
+    ]
+   },
+   "hoja": "hoja_17",
+   "estado": "ok"
+  },
+  {
+   "id": "esfuerzo_ultima_rep",
+   "archivo": "sprites/esfuerzo_ultima_rep.png",
+   "categoria": "gesto",
+   "descripcion": "Última repetición de curl: dientes apretados, sudor (cerca del fallo).",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "esfuerzo",
+   "tam": [
+    392,
+    934
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     184,
+     919
+    ],
+    "cabeza": [
+     157,
+     75
+    ],
+    "manos": [
+     [
+      45,
+      454
+     ],
+     [
+      302,
+      260
+     ]
+    ]
+   },
+   "hoja": "hoja_18",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_empujar_pared",
+   "archivo": "sprites/gesto_empujar_pared.png",
+   "categoria": "gesto",
+   "descripcion": "Empuja un muro de ladrillo con todo el cuerpo (estancado).",
+   "vista": "perfil",
+   "mira_a": "derecha",
+   "emocion": "esfuerzo",
+   "tam": [
+    645,
+    797
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     232,
+     782
+    ],
+    "cabeza": [
+     397,
+     140
+    ],
+    "manos": []
+   },
+   "hoja": "hoja_18",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_flexionar_mirar",
+   "archivo": "sprites/gesto_flexionar_mirar.png",
+   "categoria": "gesto",
+   "descripcion": "Flexiona el bíceps y lo mira fijamente (pensar en el músculo).",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "concentrado",
+   "tam": [
+    424,
+    917
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     218,
+     903
+    ],
+    "cabeza": [
+     197,
+     87
+    ],
+    "manos": [
+     [
+      102,
+      384
+     ],
+     [
+      367,
+      144
+     ]
+    ]
+   },
+   "hoja": "hoja_18",
+   "estado": "ok"
+  },
+  {
+   "id": "gesto_frustrado",
+   "archivo": "sprites/gesto_frustrado.png",
+   "categoria": "gesto",
+   "descripcion": "Manos en la cabeza, mirando al suelo.",
+   "vista": "frente",
+   "mira_a": "camara",
+   "emocion": "frustrado",
+   "tam": [
+    344,
+    881
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     182,
+     866
+    ],
+    "cabeza": [
+     186,
+     115
+    ],
+    "manos": [
+     [
+      115,
+      125
+     ],
+     [
+      258,
+      119
+     ]
+    ]
+   },
+   "hoja": "hoja_18",
+   "estado": "ok"
+  },
+  {
+   "id": "error_press_militar_arqueo",
+   "archivo": "sprites/error_press_militar_arqueo.png",
+   "categoria": "error",
+   "descripcion": "ERROR: barra arriba arqueando la zona lumbar.",
+   "vista": "tres_cuartos",
+   "mira_a": "derecha",
+   "emocion": "esfuerzo",
+   "tam": [
+    473,
+    1066
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     218,
+     1052
+    ],
+    "cabeza": [
+     117,
+     319
+    ],
+    "manos": [
+     [
+      334,
+      147
+     ]
+    ]
+   },
+   "hoja": "hoja_19",
+   "estado": "ok",
+   "ejercicio": "press_militar",
+   "correcto": "press_militar"
+  },
+  {
+   "id": "error_zancada_rodilla",
+   "archivo": "sprites/error_zancada_rodilla.png",
+   "categoria": "error",
+   "descripcion": "ERROR: rodilla delantera hacia dentro y torso torcido.",
+   "vista": "tres_cuartos",
+   "mira_a": "camara",
+   "emocion": "molestia",
+   "tam": [
+    445,
+    739
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     346,
+     726
+    ],
+    "cabeza": [
+     241,
+     73
+    ],
+    "manos": [
+     [
+      141,
+      417
+     ],
+     [
+      205,
+      166
+     ]
+    ]
+   },
+   "hoja": "hoja_19",
+   "estado": "ok",
+   "ejercicio": "zancada",
+   "correcto": "zancada"
+  },
+  {
+   "id": "error_hip_thrust_hiperextension",
+   "archivo": "sprites/error_hip_thrust_hiperextension.png",
+   "categoria": "error",
+   "descripcion": "ERROR: hiperextiende la lumbar (costillas arriba).",
+   "vista": "perfil_tumbado",
+   "mira_a": "izquierda",
+   "emocion": "esfuerzo",
+   "tam": [
+    813,
+    746
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     662,
+     731
+    ],
+    "cabeza": null,
+    "manos": [
+     [
+      329,
+      357
+     ]
+    ]
+   },
+   "hoja": "hoja_19",
+   "estado": "ok",
+   "ejercicio": "hip_thrust",
+   "correcto": "hip_thrust"
+  },
+  {
+   "id": "plano_boca_reposo",
+   "archivo": "sprites/plano_boca_reposo.png",
+   "categoria": "plano_medio",
+   "descripcion": "Plano medio que habla: boca en reposo (base). Con anim 'hablar' alterna las bocas al ritmo de la voz.",
+   "vista": "tres_cuartos",
+   "mira_a": "camara",
+   "emocion": "confiado",
+   "tam": [
+    532,
+    581
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     233,
+     567
+    ],
+    "cabeza": [
+     211,
+     106
+    ],
+    "manos": [
+     [
+      126,
+      550
+     ],
+     [
+      409,
+      401
+     ]
+    ]
+   },
+   "hoja": "hoja_25",
+   "estado": "ok"
+  },
+  {
+   "id": "plano_boca_a",
+   "archivo": "sprites/plano_boca_a.png",
+   "categoria": "plano_medio",
+   "descripcion": "Plano medio que habla: boca A (abierta).",
+   "vista": "tres_cuartos",
+   "mira_a": "camara",
+   "emocion": "confiado",
+   "tam": [
+    531,
+    581
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     228,
+     567
+    ],
+    "cabeza": [
+     208,
+     105
+    ],
+    "manos": [
+     [
+      125,
+      550
+     ],
+     [
+      407,
+      401
+     ]
+    ]
+   },
+   "hoja": "hoja_25",
+   "estado": "ok"
+  },
+  {
+   "id": "plano_boca_e",
+   "archivo": "sprites/plano_boca_e.png",
+   "categoria": "plano_medio",
+   "descripcion": "Plano medio que habla: boca E/I (dientes).",
+   "vista": "tres_cuartos",
+   "mira_a": "camara",
+   "emocion": "confiado",
+   "tam": [
+    529,
+    582
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     229,
+     568
+    ],
+    "cabeza": [
+     206,
+     107
+    ],
+    "manos": [
+     [
+      126,
+      551
+     ],
+     [
+      405,
+      402
+     ]
+    ]
+   },
+   "hoja": "hoja_25",
+   "estado": "ok"
+  },
+  {
+   "id": "plano_boca_o",
+   "archivo": "sprites/plano_boca_o.png",
+   "categoria": "plano_medio",
+   "descripcion": "Plano medio que habla: boca O.",
+   "vista": "tres_cuartos",
+   "mira_a": "camara",
+   "emocion": "confiado",
+   "tam": [
+    532,
+    581
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     227,
+     567
+    ],
+    "cabeza": [
+     210,
+     104
+    ],
+    "manos": [
+     [
+      403,
+      403
+     ],
+     [
+      124,
+      549
+     ]
+    ]
+   },
+   "hoja": "hoja_26",
+   "estado": "ok"
+  },
+  {
+   "id": "plano_boca_u",
+   "archivo": "sprites/plano_boca_u.png",
+   "categoria": "plano_medio",
+   "descripcion": "Plano medio que habla: boca U.",
+   "vista": "tres_cuartos",
+   "mira_a": "camara",
+   "emocion": "confiado",
+   "tam": [
+    534,
+    582
+   ],
+   "escala_normalizada": true,
+   "anclas": {
+    "pies": [
+     227,
+     568
+    ],
+    "cabeza": [
+     212,
+     105
+    ],
+    "manos": [
+     [
+      403,
+      404
+     ],
+     [
+      123,
+      550
+     ]
+    ]
+   },
+   "hoja": "hoja_26",
    "estado": "ok"
   }
  ]

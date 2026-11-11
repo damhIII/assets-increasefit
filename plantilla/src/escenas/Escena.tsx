@@ -3,11 +3,11 @@
 // Dentro de la escena el frame es LOCAL (0 = inicio de la escena).
 import React from "react";
 import { AbsoluteFill, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { datos, FUENTE, IF, type Anotacion, type Escena } from "../marco/datos";
+import { datos, FUENTE, IF, PROPS, type Anotacion, type Escena } from "../marco/datos";
 import { useClimaEscena, type C } from "../marco/clima";
 import { ancla, colocar, fasesDe, Mascota } from "../personaje/Sprite";
 import { BurbujaDialogo, BurbujaPensamiento, CajaTachada, Capitulo, Circulo, Dato, Efecto, Etiqueta, FichaEstudio, Grafica, IconoPop, Inserto, Libreta, Lista, Marca } from "../componentes/kit";
-import { LottieAnim, MapaMuscular } from "../componentes/extra";
+import { LottieAnim, MapaMuscular, PropObjeto } from "../componentes/extra";
 import { CUSTOM } from "./custom";
 
 /** Cámara viva: flota y hace punch-in en un frame local. */
@@ -67,7 +67,10 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
   const v = e.mascota;
   const columna = e.anotaciones.some((o) => COLUMNA.has(o.tipo));
   const info = fasesDe(v?.sprite ?? "gesto_de_pie")[0];
-  const col = colocar(info, columna ? "general" : v?.encuadre ?? "general", columna ? "der" : v?.posicion ?? "centro", !!v?.espejo, columna ? 0.82 : 1);
+  // un objeto de suelo (banco, rack, cama…) necesita sitio: si la mascota iba al centro, se aparta a la izquierda
+  const propSuelo = e.anotaciones.some((o) => o.tipo === "prop" && !o.apunta && PROPS[o.prop ?? ""]?.suelo);
+  const pos = columna ? "der" : propSuelo && (v?.posicion ?? "centro") === "centro" ? "izq" : v?.posicion ?? "centro";
+  const col = colocar(info, columna ? "general" : v?.encuadre ?? "general", pos, !!v?.espejo, columna ? 0.82 : propSuelo ? 0.92 : 1);
   const continua = !!v && !!anterior?.mascota && anterior.mascota.sprite === v.sprite && anterior.mascota.encuadre === v.encuadre && anterior.mascota.posicion === v.posicion && !anterior.dividida;
   const cabeza = ancla(col, "cabeza");
   const centroX = col.x + (col.w * col.k) / 2;
@@ -122,6 +125,21 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
         const [lx, ly] = o.apunta ? ancla(col, o.apunta) : v ? [libre === "izq" ? 270 : 810, 820] : [540, 930];
         return <LottieAnim key={i} id={o.lottie ?? ""} x={lx} y={ly} size={size} desde={t} c={c} tono={o.tono as "foco" | "alerta" | "exito" | "texto" | undefined} />;
       }
+      case "prop": {
+        const p = PROPS[o.prop ?? ""];
+        if (!p) return null;
+        const lado = Math.round(p.tam_escena * (o.escala ?? 1) * (v ? 1 : 1.4));
+        const medio = Math.min(lado, 960) / 2;
+        const cx = (x: number) => Math.min(1030 - medio, Math.max(50 + medio, x));
+        if (o.apunta) {
+          const [ax, ay] = ancla(col, o.apunta);
+          return <PropObjeto key={i} id={p.id} x={cx(ax + (libre === "izq" ? -1 : 1) * (medio + 110))} y={Math.min(1240, Math.max(640, ay))} lado={lado} desde={t} />;
+        }
+        const px = v ? cx(libre === "izq" ? 290 : 790) : 540;
+        return p.suelo
+          ? <PropObjeto key={i} id={p.id} x={px} y={1340} lado={lado} desde={t} suelo />
+          : <PropObjeto key={i} id={p.id} x={px} y={v ? 840 : 930} lado={lado} desde={t} />;
+      }
       default: return null;
     }
   });
@@ -132,7 +150,7 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
         <div style={{ position: "absolute", left: centroX - 330, top: 1250, width: 660, height: 150, background: `radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0,0,0,${c.claridad > 0.5 ? 0.12 : 0.35}) 0%, transparent 100%)` }} />
       ) : null}
       {detras}
-      {v ? <Mascota sprite={v.sprite} anim={v.anim} colocacion={col} continua={continua} /> : null}
+      {v ? <Mascota sprite={v.sprite} anim={v.anim} colocacion={col} continua={continua} ini={e.ini_f} /> : null}
       {delante}
       {e.inserto ? <Inserto cara={e.inserto.cara} desde={Math.max(0, e.inserto.en_f - e.ini_f)} c={c} x={libre === "izq" ? 250 : 830} /> : null}
       <Custom e={e} c={c} />

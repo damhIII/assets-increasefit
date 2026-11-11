@@ -265,16 +265,6 @@
    "duracion_s": 2.0,
    "fuente": "https://lottiefiles.com/free-animation/firework-OpdPTgQ7oR",
    "licencia": "Lottie Simple License (LottieFiles)"
-  },
-  {
-   "id": "dormir",
-   "archivo": "dormir.json",
-   "uso": "Zzz de sueño: dormir, descanso.",
-   "mono": false,
-   "bucle": true,
-   "duracion_s": 2.0,
-   "fuente": "https://lottiefiles.com/free-animation/sleep-psDR7Z6H0g",
-   "licencia": "Lottie Simple License (LottieFiles)"
   }
  ]
 }

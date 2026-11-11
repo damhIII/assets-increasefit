@@ -13,13 +13,38 @@
   "hoja_11": 823,
   "hoja_12": 1000,
   "expresiones": null,
-  "manos": null
+  "manos": null,
+  "hoja_13": 894,
+  "hoja_14": 960,
+  "hoja_15": 890,
+  "hoja_16": 975,
+  "hoja_17": 920,
+  "hoja_18": 790,
+  "hoja_19": 900,
+  "hoja_20": 1015,
+  "hoja_21": 900,
+  "hoja_22": 900,
+  "hoja_23": 900,
+  "hoja_24": 900,
+  "hoja_25": 821,
+  "hoja_26": 848
  },
  "factor_figura": {
   "press_banca_f1": 1.3,
   "press_banca_f2": 1.3,
   "error_banca_cadera_arriba": 1.3,
-  "error_dominada_balanceo": 1.15
+  "error_dominada_balanceo": 1.15,
+  "sentadilla_fm": 0.848,
+  "peso_muerto_fm": 0.811,
+  "curl_fm": 0.917,
+  "press_militar_fm": 0.989,
+  "dominada_fm": 0.858,
+  "zancada_fm": 0.933,
+  "press_banca_fm": 1.276,
+  "hip_thrust_fm": 1.112,
+  "error_press_militar_arqueo": 1.077,
+  "error_zancada_rodilla": 0.953,
+  "error_hip_thrust_hiperextension": 1.262
  },
  "fases": {
   "dominada": "barra",
@@ -29,7 +54,9 @@
   "press_militar": "pies",
   "zancada": "pies",
   "press_banca": "banco_der",
-  "hip_thrust": "pies"
+  "hip_thrust": "pies",
+  "correr": "centro",
+  "remo": "pies"
  },
  "tumbados": [
   "press_banca_f1",
@@ -42,10 +69,25 @@
   "mano_senalar",
   "mano_pulgar",
   "mano_puno",
-  "mano_palma"
+  "mano_palma",
+  "gesto_dormir",
+  "press_banca_fm",
+  "hip_thrust_fm",
+  "error_hip_thrust_hiperextension",
+  "estirar_isquios"
  ],
  "descartar": [
+  "remo_viejo_f1",
+  "remo_viejo_f2",
   "remo_f1",
-  "remo_f2"
- ]
+  "remo_fm",
+  "remo_f2",
+  "sentadilla_fm",
+  "plano_ojos_cerrados"
+ ],
+ "_notas_descartes": {
+  "remo_*": "hoja_20: el torso de remo_f1 vuelve a estar más erguido que el de remo_fm/f2 (regenerar las tres fases a partir de remo_f2).",
+  "sentadilla_fm": "hoja_21: dibujada de tres cuartos frontal; las fases existentes son de perfil.",
+  "plano_ojos_cerrados": "hoja_26: salió un guiño con un ojo a medio dibujar; no vale para el parpadeo."
+ }
 }

@@ -1,0 +1,414 @@
+{
+ "version": 1,
+ "notas": [
+  "Objetos dibujados en el estilo de la mascota (tinta grafito, gris acero, detalles azul/rojo de marca). Sin texto ni marcas.",
+  "tam_escena: px del lado mayor al dibujarlo junto a la mascota en encuadre general (más grande que el tamaño real para que se lea).",
+  "suelo: true = se apoya en el suelo (Y=1340) al lado de la mascota; false = flota junto a ella como un icono.",
+  "En la escaleta: {\"tipo\": \"prop\", \"prop\": \"<id>\", \"apunta\"?, \"escala\"?, \"en\": n}. En escenas a medida: <PropObjeto> de componentes/extra.tsx."
+ ],
+ "props": [
+  {
+   "id": "prop_barra",
+   "archivo": "sprites/prop_barra.png",
+   "categoria": "gym",
+   "uso": "Barra olímpica cargada: fuerza, cargas, progresión.",
+   "tam": [
+    700,
+    262
+   ],
+   "tam_escena": 760,
+   "suelo": true,
+   "hoja": "props_01"
+  },
+  {
+   "id": "prop_disco",
+   "archivo": "sprites/prop_disco.png",
+   "categoria": "gym",
+   "uso": "Disco de pesas suelto: añadir peso, sobrecarga progresiva.",
+   "tam": [
+    278,
+    282
+   ],
+   "tam_escena": 260,
+   "suelo": false,
+   "hoja": "props_01"
+  },
+  {
+   "id": "prop_mancuerna",
+   "archivo": "sprites/prop_mancuerna.png",
+   "categoria": "gym",
+   "uso": "Mancuerna: trabajo con mancuernas, curl, entrenar en casa.",
+   "tam": [
+    377,
+    199
+   ],
+   "tam_escena": 280,
+   "suelo": false,
+   "hoja": "props_01"
+  },
+  {
+   "id": "prop_kettlebell",
+   "archivo": "sprites/prop_kettlebell.png",
+   "categoria": "gym",
+   "uso": "Kettlebell: pesas, entrenamiento funcional.",
+   "tam": [
+    271,
+    365
+   ],
+   "tam_escena": 240,
+   "suelo": true,
+   "hoja": "props_01"
+  },
+  {
+   "id": "prop_cuerda_saltar",
+   "archivo": "sprites/prop_cuerda_saltar.png",
+   "categoria": "cardio",
+   "uso": "Cuerda de saltar: cardio, calentamiento.",
+   "tam": [
+    510,
+    366
+   ],
+   "tam_escena": 300,
+   "suelo": false,
+   "hoja": "props_01"
+  },
+  {
+   "id": "prop_munequera",
+   "archivo": "sprites/prop_munequera.png",
+   "categoria": "gym",
+   "uso": "Muñequera azul como la de la mascota: detalle de marca.",
+   "tam": [
+    270,
+    228
+   ],
+   "tam_escena": 180,
+   "suelo": false,
+   "hoja": "props_01"
+  },
+  {
+   "id": "prop_banco",
+   "archivo": "sprites/prop_banco.png",
+   "categoria": "gym",
+   "uso": "Banco plano: press, hip thrust, descanso.",
+   "tam": [
+    456,
+    259
+   ],
+   "tam_escena": 620,
+   "suelo": true,
+   "hoja": "props_02"
+  },
+  {
+   "id": "prop_rack",
+   "archivo": "sprites/prop_rack.png",
+   "categoria": "gym",
+   "uso": "Rack con barra cargada: sentadilla, gimnasio.",
+   "tam": [
+    637,
+    601
+   ],
+   "tam_escena": 820,
+   "suelo": true,
+   "hoja": "props_02"
+  },
+  {
+   "id": "prop_esterilla",
+   "archivo": "sprites/prop_esterilla.png",
+   "categoria": "gym",
+   "uso": "Esterilla enrollada: movilidad, estiramientos, core.",
+   "tam": [
+    430,
+    227
+   ],
+   "tam_escena": 360,
+   "suelo": true,
+   "hoja": "props_02"
+  },
+  {
+   "id": "prop_shaker",
+   "archivo": "sprites/prop_shaker.png",
+   "categoria": "nutricion",
+   "uso": "Shaker de proteína: proteína, batidos.",
+   "tam": [
+    246,
+    456
+   ],
+   "tam_escena": 300,
+   "suelo": false,
+   "hoja": "props_03"
+  },
+  {
+   "id": "prop_bote_creatina",
+   "archivo": "sprites/prop_bote_creatina.png",
+   "categoria": "nutricion",
+   "uso": "Bote de suplemento sin etiqueta: creatina, proteína en polvo.",
+   "tam": [
+    339,
+    437
+   ],
+   "tam_escena": 300,
+   "suelo": false,
+   "hoja": "props_03"
+  },
+  {
+   "id": "prop_cuchara_polvo",
+   "archivo": "sprites/prop_cuchara_polvo.png",
+   "categoria": "nutricion",
+   "uso": "Cuchara dosificadora con polvo: la dosis (creatina 3-5 g, proteína).",
+   "tam": [
+    425,
+    249
+   ],
+   "tam_escena": 280,
+   "suelo": false,
+   "hoja": "props_03"
+  },
+  {
+   "id": "prop_plato_pollo",
+   "archivo": "sprites/prop_plato_pollo.png",
+   "categoria": "nutricion",
+   "uso": "Plato de pollo, arroz y brócoli: comida, proteína en la dieta.",
+   "tam": [
+    548,
+    352
+   ],
+   "tam_escena": 360,
+   "suelo": false,
+   "hoja": "props_03"
+  },
+  {
+   "id": "prop_huevos",
+   "archivo": "sprites/prop_huevos.png",
+   "categoria": "nutricion",
+   "uso": "Huevos, uno partido: proteína, desayuno.",
+   "tam": [
+    412,
+    324
+   ],
+   "tam_escena": 280,
+   "suelo": false,
+   "hoja": "props_03"
+  },
+  {
+   "id": "prop_taza_cafe",
+   "archivo": "sprites/prop_taza_cafe.png",
+   "categoria": "nutricion",
+   "uso": "Taza de café humeante: cafeína antes de entrenar.",
+   "tam": [
+    364,
+    477
+   ],
+   "tam_escena": 260,
+   "suelo": false,
+   "hoja": "props_03"
+  },
+  {
+   "id": "prop_cama",
+   "archivo": "sprites/prop_cama.png",
+   "categoria": "descanso",
+   "uso": "Cama: dormir, recuperación.",
+   "tam": [
+    700,
+    261
+   ],
+   "tam_escena": 780,
+   "suelo": true,
+   "hoja": "props_04"
+  },
+  {
+   "id": "prop_botella_agua",
+   "archivo": "sprites/prop_botella_agua.png",
+   "categoria": "descanso",
+   "uso": "Botella de agua: hidratación.",
+   "tam": [
+    206,
+    447
+   ],
+   "tam_escena": 280,
+   "suelo": false,
+   "hoja": "props_04"
+  },
+  {
+   "id": "prop_despertador",
+   "archivo": "sprites/prop_despertador.png",
+   "categoria": "descanso",
+   "uso": "Despertador: horas de sueño, madrugar.",
+   "tam": [
+    358,
+    432
+   ],
+   "tam_escena": 260,
+   "suelo": false,
+   "hoja": "props_04"
+  },
+  {
+   "id": "prop_toalla",
+   "archivo": "sprites/prop_toalla.png",
+   "categoria": "descanso",
+   "uso": "Toalla doblada: después de entrenar.",
+   "tam": [
+    497,
+    289
+   ],
+   "tam_escena": 300,
+   "suelo": false,
+   "hoja": "props_04"
+  },
+  {
+   "id": "prop_libreta",
+   "archivo": "sprites/prop_libreta.png",
+   "categoria": "medir",
+   "uso": "Libreta abierta: registrar kilos y repeticiones.",
+   "tam": [
+    548,
+    413
+   ],
+   "tam_escena": 340,
+   "suelo": false,
+   "hoja": "props_05"
+  },
+  {
+   "id": "prop_lapiz",
+   "archivo": "sprites/prop_lapiz.png",
+   "categoria": "medir",
+   "uso": "Lápiz: anotar el entrenamiento.",
+   "tam": [
+    251,
+    380
+   ],
+   "tam_escena": 220,
+   "suelo": false,
+   "hoja": "props_05"
+  },
+  {
+   "id": "prop_bascula",
+   "archivo": "sprites/prop_bascula.png",
+   "categoria": "medir",
+   "uso": "Báscula sin números: peso corporal (nunca como meta: el blanco es el error, no el cuerpo).",
+   "tam": [
+    493,
+    408
+   ],
+   "tam_escena": 320,
+   "suelo": true,
+   "hoja": "props_05"
+  },
+  {
+   "id": "prop_cinta_metrica",
+   "archivo": "sprites/prop_cinta_metrica.png",
+   "categoria": "medir",
+   "uso": "Cinta métrica: medir el progreso.",
+   "tam": [
+    378,
+    284
+   ],
+   "tam_escena": 260,
+   "suelo": false,
+   "hoja": "props_05"
+  },
+  {
+   "id": "prop_cronometro",
+   "archivo": "sprites/prop_cronometro.png",
+   "categoria": "medir",
+   "uso": "Cronómetro: descanso entre series, tiempo bajo tensión.",
+   "tam": [
+    339,
+    449
+   ],
+   "tam_escena": 260,
+   "suelo": false,
+   "hoja": "props_05"
+  },
+  {
+   "id": "prop_calendario",
+   "archivo": "sprites/prop_calendario.png",
+   "categoria": "medir",
+   "uso": "Calendario con un día tachado en rojo: faltar un día, constancia, semanas.",
+   "tam": [
+    493,
+    432
+   ],
+   "tam_escena": 340,
+   "suelo": false,
+   "hoja": "props_05"
+  },
+  {
+   "id": "prop_cerebro",
+   "archivo": "sprites/prop_cerebro.png",
+   "categoria": "ciencia",
+   "uso": "Cerebro: conexión mente-músculo, sistema nervioso, ánimo.",
+   "tam": [
+    441,
+    392
+   ],
+   "tam_escena": 320,
+   "suelo": false,
+   "hoja": "props_06"
+  },
+  {
+   "id": "prop_fibra_muscular",
+   "archivo": "sprites/prop_fibra_muscular.png",
+   "categoria": "ciencia",
+   "uso": "Haz de fibras musculares en sección: hipertrofia, fibras.",
+   "tam": [
+    489,
+    344
+   ],
+   "tam_escena": 360,
+   "suelo": false,
+   "hoja": "props_06"
+  },
+  {
+   "id": "prop_corazon",
+   "archivo": "sprites/prop_corazon.png",
+   "categoria": "ciencia",
+   "uso": "Corazón anatómico: cardio, salud cardiovascular.",
+   "tam": [
+    361,
+    482
+   ],
+   "tam_escena": 300,
+   "suelo": false,
+   "hoja": "props_06"
+  },
+  {
+   "id": "prop_bateria_llena",
+   "archivo": "sprites/prop_bateria_llena.png",
+   "categoria": "ciencia",
+   "uso": "Batería llena (azul): energía, recuperado, descansado.",
+   "tam": [
+    419,
+    258
+   ],
+   "tam_escena": 300,
+   "suelo": false,
+   "hoja": "props_06"
+  },
+  {
+   "id": "prop_bateria_baja",
+   "archivo": "sprites/prop_bateria_baja.png",
+   "categoria": "ciencia",
+   "uso": "Batería casi vacía (rojo): fatiga, sin energía.",
+   "tam": [
+    419,
+    257
+   ],
+   "tam_escena": 300,
+   "suelo": false,
+   "hoja": "props_06"
+  },
+  {
+   "id": "prop_matraz",
+   "archivo": "sprites/prop_matraz.png",
+   "categoria": "ciencia",
+   "uso": "Matraz con líquido azul: estudios, ciencia, laboratorio.",
+   "tam": [
+    371,
+    434
+   ],
+   "tam_escena": 300,
+   "suelo": false,
+   "hoja": "props_06"
+  }
+ ]
+}

@@ -18,7 +18,7 @@ El notebook te da **el guion** (texto plano, sin ninguna indicación), **la locu
 
 ## 3. Lee la marca y mira el material
 - Siempre: `editorial/marca.md`, `editorial/adn.md` y, en `referencias/`, `marca.md`, `mascota.md`, `layout.md`, `escaleta.md`.
-- **Abre las imágenes** `mascota/contactos.jpg` (todas las poses), `kit/contactos.png` (anotaciones), `icons/contactos.png` (iconos) y `fondos/contactos.png` (patrones de fondo), y lee `lottie/manifest.json` (animaciones): diseña con lo que existe.
+- **Abre las imágenes** `mascota/contactos.jpg` (todas las poses), `props/contactos.jpg` (objetos en el estilo de la mascota), `kit/contactos.png` (anotaciones), `icons/contactos.png` (iconos) y `fondos/contactos.png` (patrones de fondo), y lee `lottie/manifest.json` (animaciones): diseña con lo que existe.
 - Cuando toque: `climas.md`, `sonido.md`, `tecnico.md`.
 
 ## 4. Verifica las cifras del guion
@@ -36,6 +36,8 @@ Por cada estudio o estadística que diga la voz:
 - Ritmo de Reel: algo cambia cada 1,5–4 s. Corta en las pausas; una frase larga puede llevar 2–3 escenas y dos frases cortas pueden compartir una.
 - La mascota vive lo que dice la voz: comete el error (`error_*`) cuando se habla del error, hace el ejercicio bien cuando se explica cómo, reacciona con gestos y caras.
 - **Traduce cada frase a una imagen, no a un rótulo**:
+  - el objeto protagonista de la frase (el bote de creatina, la báscula, la cama, el banco, el calendario) → `prop` (objeto dibujado en el estilo de la mascota) o la mascota usándolo (`gesto_creatina`, `gesto_dormir`, `gesto_libreta`…);
+  - la mascota hablando a cámara (una frase directa al espectador, el gancho) → `plano_boca_reposo` con `anim: "hablar"`;
   - sustantivos concretos (creatina, cerebro, semanas, placebo) → `icono` (Lucide: `python3 scripts/iconos.py --buscar <palabra>` y luego `python3 scripts/iconos.py <nombre>` si falta);
   - el método de un estudio (muestra, duración, dosis) → `ficha` (icono + cifra corta por fila, cada fila en su palabra);
   - el resultado → `dato` (la cifra grande con su fuente);
