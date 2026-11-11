@@ -1,5 +1,5 @@
 // Composición: Fondo → una escena por <Sequence> (EXACTAMENTE ini_f–fin_f) → cortinillas → tarjeta resumen → marco IncreaseFit
-// (isotipo arriba, subtítulos bajo el isotipo, texto en pantalla abajo) → sonido.
+// (isotipo arriba solo al arranque, subtítulos arriba, texto en pantalla abajo) → sonido.
 import React from "react";
 import { AbsoluteFill, interpolate, Sequence, useCurrentFrame } from "remotion";
 import { datos, IF } from "./marco/datos";

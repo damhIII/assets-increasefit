@@ -1,4 +1,4 @@
-// Texto en pantalla de cada escena: ABAJO, en la franja Y≈1390–1570 (los subtítulos van arriba, bajo el logo).
+// Texto en pantalla de cada escena: ABAJO, en la franja Y≈1390–1570 (los subtítulos van arriba).
 // Ancho máx. 860 px (x 80–940) para no meterse en la columna de botones de Instagram (x>960). Complementa a la voz, no la repite.
 //   titular: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 en el foco del clima (eco del "FIT" del logo). Sin "/": una línea 800.
 //   nota:    a mano (Kalam), ligeramente girada, como una anotación.

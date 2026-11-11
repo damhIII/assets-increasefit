@@ -151,7 +151,9 @@ def sincronizar(dir_base):
         "version": 4, "base": sub["base"], "audio": "locucion.wav",
         "video": {"width": WIDTH, "height": HEIGHT, "fps": FPS, "frames": total, "voz_s": round(voz_s, 2), "cola_s": cola_s},
         "musica": esc.get("musica"),
-        "opciones": {"barra_progreso": bool((esc.get("opciones") or {}).get("barra_progreso", False))},
+        "opciones": {"barra_progreso": bool((esc.get("opciones") or {}).get("barra_progreso", False)),
+                     # isotipo arriba: "inicio" (solo los primeros segundos, por defecto) | "siempre" | "nunca"
+                     "isotipo": (esc.get("opciones") or {}).get("isotipo") or "inicio"},
         "logos": logos, "fuentes": cat["fuentes"],
         "escenas": escenas, "cortinillas": cortinillas, "tarjeta_resumen": tr, "sfx": sorted(sfx, key=lambda s: s["frame"]),
         # [palabra sin puntuación, ini_s, fin_s, énfasis 0/1, corte 0/1, tono "" | alerta | exito, icono "" | id de icons/]

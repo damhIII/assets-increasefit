@@ -21,7 +21,7 @@ La paleta es la del feed de Instagram: tres looks y nada más. **Negro** neutro 
 
 - **Tipografía**: Open Sans como el logo (línea 1 en 400, como "INCREASE"; línea 2 en 800 en el foco del clima, como el "FIT" azul). Números del gym y fuentes de datos en JetBrains Mono. Anotaciones a mano (etiquetas, notas, bocadillos) en Kalam.
 - **Azul escaso**: línea 2 del titular, palabra actual del subtítulo, foco de cada escena, cinta de la mascota. Si todo es azul, nada lo es.
-- **Logos**: `isotipo.png` (la flecha) solo, arriba y sin texto al lado; `logo_increasefit.png` bajo la tarjeta final (`logo_increasefit_oscuro.png` en climas claros).
+- **Logos**: `isotipo.png` (la flecha) solo, arriba, sin texto al lado y **solo en los primeros segundos** (no ocupa pantalla todo el video); `logo_increasefit.png` bajo la tarjeta final (`logo_increasefit_oscuro.png` en climas claros).
 - **La flecha** del isotipo es el motivo gráfico: el trazo de pincel de las cortinillas (`kit/transiciones/trazo_pincel.svg`) es su eco.
 
 ## Contenido y honestidad

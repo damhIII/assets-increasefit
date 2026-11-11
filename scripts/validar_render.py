@@ -88,6 +88,11 @@ def validar(dir_base):
         err.append(f"música desconocida {esc['musica']} (opciones: {', '.join(sorted(musica))})")
     if str(esc.get("serie_header", "")).strip():
         avisos.append("serie_header ya no se usa (el header es solo el isotipo, sin texto al lado): se ignora, bórralo de la escaleta")
+    modo_iso = (esc.get("opciones") or {}).get("isotipo")
+    if modo_iso not in (None, "inicio", "siempre", "nunca"):
+        err.append(f"opciones.isotipo {modo_iso!r}: inicio (por defecto) | siempre | nunca")
+    elif modo_iso == "siempre":
+        avisos.append("opciones.isotipo = siempre: el isotipo se queda todo el video y ocupa la franja de arriba; lo normal es inicio")
     cola = esc.get("cola_s", S.COLA_S)
     if not isinstance(cola, (int, float)) or not 0 <= cola <= 8:
         err.append(f"cola_s {cola!r}: entre 0 y 8 s")

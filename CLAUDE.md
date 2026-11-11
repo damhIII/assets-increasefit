@@ -3,7 +3,7 @@
 Repositorio de los Reels de **IncreaseFit** (cuenta de gimnasio y entrenamiento de fuerza, nivel intermedio). Contiene el contenido editorial, la mascota ilustrada, el kit gráfico, el sonido, las paletas, las fuentes y una **plantilla Remotion** que convierte la escaleta de escenas en el video.
 
 ## Cómo llega un encargo
-El notebook de Colab (`Crear_video_IncreaseFit_v5.ipynb`) **investiga** el tema en la web (GPT con búsqueda: estudios y metaanálisis reales), escribe el **guion** a partir del seed del usuario y esa investigación (solo texto, estilo `editorial/estilo_guion.md`), lo **locuta** (Gemini TTS) y saca el **tiempo de cada palabra** (Whisper). Con el guion final propone la **tarjeta final** (pregunta del gancho → veredicto → pasos). Deja `guion.txt`, `locucion.wav`, `palabras.json`, `tarjeta.json` e `investigacion.json` en `briefs/<BASE>/` (BASE = `AAAAMMDD-HHMM`).
+El notebook de Colab (`Crear_video_IncreaseFit_v6.ipynb`) **investiga** el tema en la web (GPT con búsqueda: estudios y metaanálisis reales), escribe el **guion** a partir del seed del usuario y esa investigación (solo texto, estilo `editorial/estilo_guion.md`), lo **locuta** (Gemini TTS) y saca el **tiempo de cada palabra** (Whisper). Con el guion final propone la **tarjeta final** (pregunta del gancho → veredicto → pasos). Deja `guion.txt`, `locucion.wav`, `palabras.json`, `tarjeta.json` e `investigacion.json` en `briefs/<BASE>/` (BASE = `AAAAMMDD-HHMM`).
 
 Todo lo demás lo haces tú con la skill **increasefit-reel** (`.claude/skills/increasefit-reel/SKILL.md`): verificar las cifras, diseñar las escenas (`briefs/<BASE>/escaleta.json` y escenas a medida en `briefs/<BASE>/custom/`), montar, revisar y renderizar.
 
@@ -17,7 +17,7 @@ Todo lo demás lo haces tú con la skill **increasefit-reel** (`.claude/skills/i
 - `briefs/<BASE>/` guion, locución y tiempos (los sube el notebook) + tu escaleta y escenas a medida. `videos/` proyectos de render locales (no se suben).
 
 ## Reglas que valen siempre
-- El marco IncreaseFit es fijo: isotipo solo arriba (sin texto al lado), subtítulos bajo el isotipo, texto en pantalla abajo, tarjeta final con el logo. Dentro de las escenas, libertad creativa, pero sin títulos ni carteles que se queden todo el video.
+- El marco IncreaseFit es fijo: isotipo arriba (sin texto al lado) solo en los primeros segundos, subtítulos arriba, texto en pantalla abajo, tarjeta final con el logo. Dentro de las escenas, libertad creativa, pero sin títulos ni carteles que se queden todo el video.
 - Imagen primero: el video se cuenta con la mascota, iconos, marcas del kit y subtítulos pintados (sin signos de puntuación). El texto en pantalla es la excepción (≤20 palabras por video; lo comprueba `validar_render.py`).
 - La mascota es la única figura humana: nunca personas reales, fotos ni personajes de otras cuentas o marcas.
 - Sin CTA: los videos no piden comentarios, likes ni follows. La tarjeta final (GUÁRDALO) es la única invitación.

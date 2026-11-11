@@ -7,7 +7,7 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
   "version": 4,
   "musica": "groove_92",                // id de sonido/manifest.json: pulso_120 (enérgico) · groove_92 (explicar) · tension_100 (suspense) · null = sin música
   "cola_s": 4.0,                        // segundos tras la última palabra (la tarjeta final se queda para leerla y guardarla)
-  "opciones": { "barra_progreso": false },
+  "opciones": { "barra_progreso": false, "isotipo": "inicio" },   // isotipo: inicio (solo los primeros segundos, por defecto) | siempre | nunca
   "subtitulos": {                       // cómo se pintan los subtítulos (ya salen SIN signos de puntuación, 1-3 palabras)
     "tonos": { "alerta": [41, 42], "exito": [88] },        // índices de palabra: rojo = el error o la trampa, verde = lo correcto (pocas)
     "iconos": [ { "en": 12, "icono": "brain" } ]           // insignia con icono que salta bajo esa palabra al decirla (3-6 por video)
@@ -46,10 +46,10 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 
 ## Reglas de lectura
 - Cada escena dura desde su `desde` hasta el `desde` de la siguiente; la última hasta el final (la cola incluida, con la tarjeta encima).
-- No hay `serie_header`: el header es solo el isotipo (si una escaleta vieja lo trae, se ignora).
+- No hay `serie_header`: el header es solo el isotipo (si una escaleta vieja lo trae, se ignora), y solo al arranque: con `opciones.isotipo` = `inicio` (por defecto) se va en el primer corte de escena entre 1,5 y 3,5 s (o a los 3 s si no hay corte ahí) y los subtítulos suben a su sitio. `nunca` lo quita desde el frame 0 (útil si el gancho necesita la franja de arriba); `siempre` es el comportamiento antiguo y no se recomienda.
 - `tarjeta_resumen`: si la escaleta no la trae, se usa `briefs/<BASE>/tarjeta.json` tal cual. Las escaletas viejas con `titulo` + `lineas` siguen valiendo (se dibujan como veredicto + pasos, sin pregunta).
 - `en` (anotaciones, inserto, sfx) es el índice de la palabra en que aparece o suena. Sin `en`: al empezar la escena (+6 frames, escalonado). Los whoosh se adelantan 5 frames solos.
-- `subtitulos`: el texto sale del guion sin signos de puntuación (`¿En serio?` → EN SERIO), agrupado en 1-3 palabras; cambia de grupo en cada fin de frase, coma o pausa de la voz. La palabra que suena se enciende sobre una píldora (azul, o el color de su tono); las de `enfasis` de cualquier escena son más grandes y se quedan en azul; las de `tonos` se quedan en rojo o verde. Un icono de `iconos` sale en una insignia redonda que cuelga bajo su palabra (los subtítulos van arriba, bajo el isotipo).
+- `subtitulos`: el texto sale del guion sin signos de puntuación (`¿En serio?` → EN SERIO), agrupado en 1-3 palabras; cambia de grupo en cada fin de frase, coma o pausa de la voz. La palabra que suena se enciende sobre una píldora (azul, o el color de su tono); las de `enfasis` de cualquier escena son más grandes y se quedan en azul; las de `tonos` se quedan en rojo o verde. Un icono de `iconos` sale en una insignia redonda que cuelga bajo su palabra (los subtítulos van arriba).
 - `mascota.sprite`: id de `mascota/manifest.json` o `"ejercicio:<nombre>"` (alterna sus fases; `anim` pasa a `ejercicio`). Sin `mascota` ni `dividida`, la escena no tiene personaje (útil con `capitulo` o con un componente).
 - Con una anotación de columna (`dato`, `ficha`, `lista`, `libreta`, `grafica`), la mascota se coloca sola a la derecha en encuadre general.
 - `pantalla.estilo = "capitulo"` es una tarjeta a pantalla completa (`"RÓTULO: frase"`) y oculta la mascota de esa escena.

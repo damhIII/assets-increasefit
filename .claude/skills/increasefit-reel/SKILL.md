@@ -52,7 +52,7 @@ Por cada estudio o estadística que diga la voz:
   - `pasos`: 2-3 acciones (≤6 palabras, verbo en imperativo) sacadas del consejo práctico y del matiz que dice la voz. Nada que la voz no haya dicho.
   - `tema` (chip, ≤3) y, si el veredicto sale de un estudio verificado, `fuente` (su `corta`).
   - Cifras solo las que dice la voz y estén verificadas. Si una cifra de `tarjeta.json` no se sostiene, quítala.
-- **Nada junto al logo ni fijo durante todo el video**: el header es solo el isotipo. No pongas títulos de serie, rótulos que se queden de escena en escena ni carteles permanentes (tampoco en escenas a medida).
+- **Nada junto al logo ni fijo durante todo el video**: el isotipo sale solo al arranque (se va en el primer corte entre 1,5 y 3,5 s y los subtítulos suben a su sitio; `opciones.isotipo`, ver `escaleta.md`). No pongas títulos de serie, rótulos que se queden de escena en escena ni carteles permanentes (tampoco en escenas a medida).
 - Si la composición por defecto no da para un gag o una idea, escribe una **escena a medida** (paso 6).
 
 ## 6. Escenas a medida
@@ -64,7 +64,7 @@ Por cada estudio o estadística que diga la voz:
 3. **Mira la hoja** y abre los PNG que te hagan dudar. Comprueba:
    - La mascota cuenta lo mismo que la voz y no se corta ni flota.
    - Nada vital fuera de Y 200–1580 ni en la franja de botones de Instagram (X>960, Y>1300); nada pisa los subtítulos de arriba (ni las insignias de icono que cuelgan debajo de la cápsula, hasta Y≈505) ni el texto en pantalla de abajo.
-   - Arriba solo están el isotipo y los subtítulos: ningún título fijo junto al logo.
+   - Arriba solo están los subtítulos (y el isotipo en los primeros segundos): ningún título fijo. Mira un still justo después de la salida del isotipo: los subtítulos ya subieron y nada de la escena choca con ellos.
    - La tarjeta final (still `resumen`): la pregunta se reconoce como la del gancho, el veredicto la contesta y los pasos se pueden hacer hoy.
    - Poco texto: si un fotograma se lee como una diapositiva, sobra texto. Los subtítulos, sin signos de puntuación y con su color.
    - Los iconos se entienden sin leer nada y no tapan a la mascota.
@@ -79,7 +79,7 @@ Por cada estudio o estadística que diga la voz:
 - Si tienes permiso de escritura en el repo, sube `briefs/<BASE>/escaleta.json`, `custom/`, `subtitulos.json`, los iconos nuevos de `icons/` y, si cambió, `editorial/datos_verificados.json`. `videos/` no se sube.
 
 ## Reglas fijas
-- El marco IncreaseFit es fijo: isotipo solo arriba, subtítulos bajo el isotipo, texto en pantalla abajo y tarjeta final. Dentro de las escenas, libertad (sin títulos persistentes).
+- El marco IncreaseFit es fijo: isotipo arriba solo al arranque, subtítulos arriba, texto en pantalla abajo y tarjeta final con el logo. Dentro de las escenas, libertad (sin títulos persistentes).
 - La mascota es la única figura humana: nunca personas reales, fotos ni personajes de otras cuentas o marcas.
 - Sin CTA en la voz ni en las escenas: el video no pide comentarios, likes, follows ni compartir. La única invitación es el GUÁRDALO de la tarjeta final.
 - La voz no se toca: ni recortes ni cambios de velocidad (el ritmo se ajusta en el notebook, antes de sacar los tiempos).
