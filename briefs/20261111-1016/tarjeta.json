@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "base": "20261111-1016",
+ "tema": "Retomar el gym",
+ "pregunta": "¿Una semana sin gym: empiezas de cero?",
+ "veredicto": "No, pero entrenar seguido favoreció la fuerza",
+ "tono": "no",
+ "pasos": [
+  "Retoma tu programa",
+  "Ajusta la carga con buena técnica",
+  "Evita añadir automáticamente las series pendientes"
+ ],
+ "fuente": "Coleman et al. 2024",
+ "_nota": "Propuesta a partir del guion. Claude la revisa (cifras y fuente) y la pasa a escaleta.tarjeta_resumen."
+}

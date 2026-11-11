@@ -1,0 +1,133 @@
+{
+ "version": 1,
+ "base": "20261111-1016",
+ "tema": "Retomar las pesas después de faltar una semana",
+ "aprendizaje": "Una semana sin entrenar no implica empezar de cero: vuelve a tu rutina y recupera la continuidad, sin convertir la vuelta en un castigo.",
+ "hallazgos": [
+  {
+   "id": "coleman_2024",
+   "tipo": "eca",
+   "dato": "En 39 jóvenes entrenados, interrumpir las pesas durante 1 semana dentro de un programa de 9 semanas no produjo diferencias apreciables en las ganancias de tamaño muscular del tren inferior frente a entrenar continuamente; el grupo continuo sí mejoró más su fuerza. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/38274324/?utm_source=openai))",
+   "muestra": "39 participantes: 29 hombres y 10 mujeres con experiencia entrenando fuerza.",
+   "duracion": "9 semanas.",
+   "intervencion": "Rutina dividida de torso y piernas, cada región dos veces por semana. Para piernas: 5 series de 8–12 RM por ejercicio. Un grupo suspendió las pesas durante la semana intermedia; el otro continuó.",
+   "resultado": "Hipertrofia del tren inferior sin diferencias apreciables entre grupos; mayores mejoras de fuerza isométrica y dinámica con entrenamiento continuo. El abstract no cuantifica la diferencia.",
+   "fuerza": "moderada",
+   "matiz": "Se evaluó el resultado final del programa, no la pérdida muscular inmediatamente después de la pausa. No demuestra que parar mejore las ganancias ni que todos conserven exactamente lo mismo. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC10809978/))",
+   "fuente": "Coleman et al., 2024 (PeerJ)",
+   "corta": "Coleman et al. 2024",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38274324/",
+   "doi": "10.7717/peerj.16777",
+   "cita_literal": "An experimental group that abstained from RT for 1 week at the midpoint of a 9-week, high-volume RT program (DELOAD)",
+   "url_consultada": true
+  },
+  {
+   "id": "ogasawara_2013",
+   "tipo": "eca",
+   "dato": "En 14 hombres jóvenes, alternar bloques de 6 semanas de entrenamiento con pausas de 3 semanas produjo mejoras finales similares de tamaño muscular y fuerza a entrenar continuamente durante 24 semanas. Es evidencia complementaria, no una prueba específica sobre faltar una semana. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/23053130/))",
+   "muestra": "14 hombres jóvenes asignados aleatoriamente a dos grupos.",
+   "duracion": "24 semanas.",
+   "intervencion": "Ambos grupos: press de banca al 75 % de 1-RM, 3 series de 10 repeticiones, 3 días por semana. Grupo continuo: 24 semanas. Grupo periódico: tres bloques de 6 semanas, separados por pausas de 3 semanas.",
+   "resultado": "Mejoras globales similares en sección transversal muscular y fuerza; el abstract no ofrece porcentajes ni un tamaño del efecto entre grupos.",
+   "fuerza": "baja",
+   "matiz": "Muestra pequeña y protocolo limitado al press de banca. Resultados finales similares no significan ausencia de cambios durante las pausas ni superioridad de interrumpir el entrenamiento. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/23053130/))",
+   "fuente": "Ogasawara et al., 2013 (European Journal of Applied Physiology)",
+   "corta": "Ogasawara et al. 2013",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/23053130/",
+   "doi": "10.1007/s00421-012-2511-9",
+   "cita_literal": "3-week detraining/6-week retraining cycles result in muscle hypertrophy similar to that occurring with continuous resistance training after 24 weeks.",
+   "url_consultada": true
+  }
+ ],
+ "correcciones_al_seed": [],
+ "consejo_practico": "Si faltaste por agenda y vuelves en condiciones habituales, retoma tu programa y ajusta la carga a las repeticiones que puedas completar con buena técnica. No añadas automáticamente todas las series pendientes. Es una aplicación prudente: el ensayo permitió continuar progresando después de la pausa, pero no comparó distintas estrategias de vuelta ni recuperar frente a no recuperar sesiones. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC10809978/))",
+ "trampas_comunes": [
+  "Presentar una semana sin gimnasio como si borrara meses de entrenamiento.",
+  "Prometer que parar una semana te hará crecer más: el ensayo no encontró esa ventaja.",
+  "Confundir una ausencia por agenda con una pausa por enfermedad, lesión o inmovilización; estos resultados no cubren esas situaciones.",
+  "Inventar un porcentaje obligatorio de reducción de carga al volver: estos ensayos no lo establecen."
+ ],
+ "consultadas": [
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38274324/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10809978/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10809978",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38499934/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/23053130/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41730991/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13031491",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13031491/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/21771261/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39364857/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9811819/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10511399/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/s41598-026-40612-5.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/content/pdf/10.1007/s40279-024-02009-0.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/content/pdf/10.1007/s11332-024-01281-x.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://bjsm.bmj.com/content/bjsports/early/2023/07/06/bjsports-2023-106807.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/sms.14739",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/pdf/10.1080/02640414.2024.2321021",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38274324/?utm_source=openai",
+   "titulo": "Gaining more from doing less? The effects of a one-week deload period during supervised resistance training on muscular adaptations"
+  }
+ ],
+ "busquedas": 3,
+ "modelo": "gpt-6.1-sol",
+ "seed": "Qué hacer cuando fallas una semana de entrenamiento",
+ "fecha": "2026-11-11T10:14-04:00",
+ "_nota": "Hallazgos de la búsqueda web del guionista. NO están verificados: Claude los comprueba en la fuente antes de ponerlos en pantalla."
+}
