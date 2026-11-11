@@ -1,0 +1,253 @@
+{
+ "version": 1,
+ "base": "20261111-1621",
+ "tema": "Entrenar el músculo mejora su respuesta a la insulina",
+ "aprendizaje": "Entrenar fuerza con constancia puede ayudar a que tus músculos respondan mejor a la insulina y capten glucosa; el beneficio no depende solo de ganar tamaño. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/39484808/?utm_source=openai))",
+ "hallazgos": [
+  {
+   "id": "li_2021",
+   "tipo": "metaanalisis",
+   "dato": "Un metaanálisis de 12 ensayos aleatorizados en adultos no deportistas de ≥60 años comparó entrenamiento de fuerza con control. La fuerza redujo HOMA-IR, un indicador indirecto de resistencia a la insulina: d = -0.25, IC del 95% de -0.43 a -0.06; P < 0.05. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/34552636/))",
+   "muestra": "232 participantes en fuerza y 209 en control; adultos de ≥60 años, con y sin diabetes tipo 2.",
+   "duracion": "Variable; incluyó programas de ≤12 y >12 semanas.",
+   "intervencion": "Entrenamiento de fuerza frente a control, con dosis variables entre ensayos.",
+   "resultado": "HOMA-IR: d = -0.25, IC del 95% de -0.43 a -0.06, frente a control; efecto estandarizado pequeño.",
+   "fuerza": "moderada",
+   "matiz": "No equivale a una mejora del 25%. HOMA-IR no mide directamente la captación muscular de glucosa; los resultados no cuantifican el beneficio en jóvenes ya entrenados.",
+   "fuente": "Li et al., 2021 (Journal of Exercise Science and Fitness)",
+   "corta": "Li et al. 2021",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34552636/",
+   "doi": "10.1016/j.jesf.2021.08.002",
+   "cita_literal": "Resistance exercise significantly reduced HOMA-IR level (d = -0.25, 95% CI, -0.43 to -0.06; P < 0.05)",
+   "url_consultada": true
+  },
+  {
+   "id": "bacchi_2012",
+   "tipo": "eca",
+   "dato": "En 40 adultos con diabetes tipo 2, asignados a fuerza o ejercicio aeróbico durante 4 meses, ambos grupos mejoraron la sensibilidad a la insulina medida mediante clamp. La HbA1c disminuyó −0.40% [IC del 95% −0.61 a −0.18] con aeróbico y −0.35% [−0.59 a −0.10] con fuerza. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC3308269/))",
+   "muestra": "40 adultos no entrenados de 40–70 años; 20 asignados por grupo y 38 participantes analizados.",
+   "duracion": "4 meses.",
+   "intervencion": "Ambos grupos: 3 sesiones supervisadas de 60 minutos por semana. Fuerza: 9 ejercicios, 3 series de 10 repeticiones, progresando del 30–50% al 70–80% de 1RM. Aeróbico: progresión hasta el 60–65% de la frecuencia cardiaca de reserva.",
+   "resultado": "Reducciones de HbA1c de −0.40% y −0.35%, respectivamente: cambios absolutos en puntos porcentuales, sin diferencia significativa entre grupos.",
+   "fuerza": "moderada",
+   "matiz": "HbA1c y sensibilidad a la insulina son resultados distintos. No hubo control sin ejercicio ni participantes intermedios de gimnasio; ausencia de diferencia no demuestra equivalencia.",
+   "fuente": "Bacchi et al., 2012 (Diabetes Care)",
+   "corta": "Bacchi et al. 2012",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3308269/",
+   "doi": "10.2337/dc11-1655",
+   "cita_literal": "HbA(1c) was similarly reduced in both groups (-0.40% [95% CI -0.61 to -0.18] vs. -0.35% [-0.59 to -0.10], respectively).",
+   "url_consultada": true
+  },
+  {
+   "id": "verbrugge_2022",
+   "tipo": "revision_sistematica",
+   "dato": "Una revisión identificó 176 genes cuya manipulación alteraba la captación muscular de glucosa y encontró que el ejercicio regulaba la expresión o fosforilación de más del 50% de esos genes o sus proteínas. Entre las vías implicadas aparecen GLUT4, el transportador de glucosa, y componentes de la señalización de la insulina: el músculo adapta su maquinaria, no solo su tamaño. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/34812516/?utm_source=openai))",
+   "muestra": "171 artículos sobre modelos de ratón modificados genéticamente, cruzados con datos de ejercicio en humanos y roedores.",
+   "duracion": null,
+   "intervencion": "Manipulaciones genéticas y análisis de expresión y señalización tras ejercicio aeróbico o de fuerza; sin dosis única.",
+   "resultado": "176 genes identificados; más del 50% de los genes o sus productos proteicos estaban regulados por el ejercicio.",
+   "fuerza": "baja",
+   "matiz": "Evidencia mecanística y parcialmente animal. Ese porcentaje no representa una mejora clínica ni demuestra que todos los cambios moleculares causen mayor sensibilidad.",
+   "fuente": "Verbrugge et al., 2022 (Journal of Cellular Biochemistry; publicación electrónica en 2021)",
+   "corta": "Verbrugge et al. 2022",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34812516/",
+   "doi": "10.1002/jcb.30179",
+   "cita_literal": "Notably, exercise regulates the expression or phosphorylation of more than 50% of the glucose-uptake genes or their protein products.",
+   "url_consultada": true
+  },
+  {
+   "id": "paquin_2024",
+   "tipo": "metaanalisis",
+   "dato": "En 33 estudios de intervención, el entrenamiento de fuerza se acompañó de una mejora pre–post de sensibilidad a la insulina: ES = 0.38 [0.13; 0.62]; I² = 53.0%; p < 0.01. Sin embargo, las metarregresiones no encontraron que ganar más masa libre de grasa explicara consistentemente las mejoras del metabolismo de la glucosa. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/39484808/?utm_source=openai))",
+   "muestra": "33 estudios de intervención; el abstract no proporciona el total de participantes.",
+   "duracion": null,
+   "intervencion": "Programas de fuerza con protocolos diversos; análisis de cambios metabólicos y de masa libre de grasa.",
+   "resultado": "Sensibilidad a la insulina: ES = 0.38 [0.13; 0.62], comparación pre–post dentro de los estudios, no efecto frente a control.",
+   "fuerza": "moderada",
+   "matiz": "No significa un 38% de mejora. Frente a control no hubo diferencias significativas en glucosa a las 2 horas ni en su área bajo la curva; tampoco demuestra que la hipertrofia sea irrelevante.",
+   "fuente": "Paquin et al., 2024 (Applied Physiology, Nutrition, and Metabolism)",
+   "corta": "Paquin et al. 2024",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39484808/",
+   "doi": "10.1139/apnm-2024-0128",
+   "cita_literal": "and insulin sensitivity (ES = 0.38 [0.13; 0.62]; I² = 53.0%; p < 0.01) were also apparent with RT.",
+   "url_consultada": true
+  }
+ ],
+ "correcciones_al_seed": [
+  "El tema es válido, pero conviene distinguir entrenar el músculo de simplemente tener más músculo: la hipertrofia no explica consistentemente toda la mejora metabólica observada. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/39484808/?utm_source=openai))",
+  "No hay una cifra universal trasladable a la audiencia intermedia: los ensayos aquí citados estudian principalmente personas mayores, no entrenadas o con diabetes tipo 2. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/34552636/))"
+ ],
+ "consejo_practico": "Mantén tus sesiones de fuerza repartidas durante la semana y una progresión que puedas sostener: un programa de 3 sesiones semanales produjo beneficios metabólicos en el ensayo descrito, sin que eso establezca una dosis óptima para todo el mundo. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC3308269/))",
+ "trampas_comunes": [
+  "Convertir un tamaño del efecto de 0.38 en una mejora del 38%: son medidas diferentes. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/39484808/?utm_source=openai))",
+  "Prometer que cada kilo de músculo ganado mejora proporcionalmente la sensibilidad a la insulina: esa relación no está establecida. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/39484808/?utm_source=openai))",
+  "Presentar las pesas como superiores al cardio para este objetivo: el ensayo comparativo encontró mejoras con ambos y no demostró superioridad. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/22344613/?utm_source=openai))"
+ ],
+ "consultadas": [
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/22344613/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/15761746/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/15628572/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/30697876/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/22240549/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/9702447/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3841835/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/7836113/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7240215/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/14747278/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/32568924/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38100040/",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/content/pdf/10.1007/s00421-023-05135-1.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1113/EP093020",
+   "titulo": ""
+  },
+  {
+   "url": "https://bmjopensem.bmj.com/content/2/1/e000143.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://physoc.onlinelibrary.wiley.com/doi/pdfdirect/10.1113/EP087435",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4EF49A6B769B113180BD89162EB18987/S0029665104000254a.pdf/exercise-signalling-to-glucose-transport-in-skeletal-muscle.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/40951419/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41106502/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39484808/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/37331899/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34552636/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42248329/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/40090422",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/37818093/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38623887/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/36265014/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/35816146/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10148910/",
+   "titulo": ""
+  },
+  {
+   "url": "https://sportsmedicine-open.springeropen.com/counter/pdf/10.1186/s40798-022-00480-5.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/content/pdf/10.1007/s00125-020-05166-9.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3308269/",
+   "titulo": ""
+  },
+  {
+   "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jcb.30179",
+   "titulo": ""
+  },
+  {
+   "url": "https://onlinelibrary.wiley.com/doi/10.4061/2011/127315",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12460530/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nsca.com/contentassets/2a4112fb355a4a48853bbafbe070fb8e/resistance_training_for_older_adults__position.1.pdf?srsltid%3DAfmBOoqpW4aT3Wjw-4Nxz5OEJp8R0fpp5c1RlEHit1_rz34GgZYDif4t=",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8149906/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13539497/",
+   "titulo": ""
+  },
+  {
+   "url": "https://journals.physiology.org/doi/full/10.1152/ajpcell.00295.2026",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/content/pdf/10.1007/s40279-025-02263-w.pdf",
+   "titulo": ""
+  }
+ ],
+ "busquedas": 13,
+ "modelo": "gpt-6.1-sol",
+ "seed": "Cómo el músculo mejora la sensibilidad a la insulina",
+ "fecha": "2026-11-11T16:20-04:00",
+ "_nota": "Hallazgos de la búsqueda web del guionista. NO están verificados: Claude los comprueba en la fuente antes de ponerlos en pantalla."
+}
