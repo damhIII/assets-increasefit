@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "base": "20261111-1153",
+ "tema": "Progreso sin báscula",
+ "pregunta": "¿Puedes seguir tu progreso sin báscula?",
+ "veredicto": "Sí, pero no demuestra recomposición corporal.",
+ "tono": "si",
+ "pasos": [
+  "Anota cargas y repeticiones manteniendo condiciones.",
+  "Mide cintura y brazo flexionado.",
+  "Compara tendencias semanales según tu objetivo."
+ ],
+ "fuente": "",
+ "_nota": "Propuesta a partir del guion. Claude la revisa (cifras y fuente) y la pasa a escaleta.tarjeta_resumen."
+}

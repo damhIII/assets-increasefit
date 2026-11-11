@@ -1,0 +1,233 @@
+{
+ "version": 1,
+ "base": "20261111-1153",
+ "tema": "Progreso sin báscula: rendimiento, cintura y perímetro del brazo",
+ "aprendizaje": "Combina el rendimiento en ejercicios repetibles con las medidas de cintura y brazo para seguir tu progreso sin depender del peso corporal, interpretando cada dato según tu objetivo.",
+ "hallazgos": [
+  {
+   "id": "plotkin_2022",
+   "tipo": "eca",
+   "dato": "Métrica 1: rendimiento, registrando carga y repeticiones. En 43 personas entrenadas, progresar aumentando repeticiones o carga durante 8 semanas produjo adaptaciones generalmente similares; la diferencia ajustada en fuerza favoreció ligeramente aumentar carga: 2.0 kg, IC del 90% [-2.4, 7.8]. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/36199287/?utm_source=openai))",
+   "muestra": "43 participantes con al menos 1 año de entrenamiento del tren inferior; 27 hombres y 16 mujeres. Completaron el estudio 38.",
+   "duracion": "8 semanas.",
+   "intervencion": "Dos sesiones semanales, con cuatro series de cuatro ejercicios del tren inferior. LOAD aumentaba carga manteniendo el rango de repeticiones; REPS aumentaba repeticiones manteniendo la carga. Ambos empezaron con 8–12 RM y entrenaron al fallo concéntrico.",
+   "resultado": "Diferencia ajustada de fuerza de 2.0 kg a favor de LOAD, IC del 90% [-2.4, 7.8], de relevancia práctica cuestionable.",
+   "fuerza": "moderada",
+   "matiz": "Mejorar el rendimiento no cuantifica por sí solo la hipertrofia. El ensayo fue corto y no comparó registrar el entrenamiento frente a no registrarlo.",
+   "fuente": "Plotkin et al., 2022 (PeerJ)",
+   "corta": "Plotkin et al. 2022",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/36199287/",
+   "doi": "10.7717/peerj.14142",
+   "cita_literal": "Alternatively, dynamic strength increases slightly favored LOAD (2.0 kg [-2.4, 7.8]), with differences of questionable practical significance.",
+   "url_consultada": true
+  },
+  {
+   "id": "armstrong_2022",
+   "tipo": "metaanalisis",
+   "dato": "Métrica 2: perímetro de cintura, como indicador indirecto de adiposidad abdominal. En 25 ensayos con 1686 adultos con sobrepeso u obesidad, el ejercicio aeróbico redujo la cintura 3.2 cm frente al control, IC del 95% [-3.86, -2.51]; su cambio se asoció al cambio de grasa visceral. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/35383401/?utm_source=openai))",
+   "muestra": "1686 adultos con sobrepeso u obesidad, incluidos en 25 ensayos controlados aleatorizados.",
+   "duracion": null,
+   "intervencion": "Ejercicio aeróbico regular frente a control; dosis y duración variables entre ensayos.",
+   "resultado": "Reducción de cintura de 3.2 cm frente al control, IC del 95% [-3.86, -2.51], p ≤ 0.001.",
+   "fuerza": "alta",
+   "matiz": "La cifra corresponde a intervenciones aeróbicas en esa población, no a una expectativa para intermedios que entrenan fuerza. La cintura no mide directamente grasa visceral ni demuestra recomposición; reducirla tampoco es un objetivo universal.",
+   "fuente": "Armstrong et al., 2022 (Obesity Reviews)",
+   "corta": "Armstrong et al. 2022",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/35383401/",
+   "doi": "10.1111/obr.13446",
+   "cita_literal": "Regular aerobic exercise significantly reduced waist circumference by 3.2 cm (95% confidence interval [CI] -3.86, -2.51, p ≤ 0.001) versus control.",
+   "url_consultada": true
+  },
+  {
+   "id": "gentil_2020",
+   "tipo": "metaanalisis",
+   "dato": "Métrica 3: perímetro del brazo flexionado, como seguimiento accesible del tamaño local. Un análisis de tres estudios con 67 hombres jóvenes encontró aumentos del perímetro del brazo de +4.9% y del grosor muscular por ecografía de +3.9% tras 10–12 semanas de entrenamiento. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC7787222/?utm_source=openai))",
+   "muestra": "67 hombres jóvenes, entrenados y no entrenados, procedentes de tres estudios previos.",
+   "duracion": "10–12 semanas.",
+   "intervencion": "Entrenamiento de fuerza supervisado, con protocolos distintos entre estudios. Se compararon las mediciones antes y después mediante cinta y ecografía.",
+   "resultado": "Perímetro del brazo: +4.9%; grosor de los flexores del codo por ecografía: +3.9%.",
+   "fuerza": "baja",
+   "matiz": "Análisis retrospectivo pequeño: ambos métodos detectaron cambios, pero no fueron equivalentes. El perímetro incluye tejido no muscular; no permite convertir centímetros en músculo ganado.",
+   "fuente": "Gentil et al., 2020 (Journal of Clinical and Translational Research)",
+   "corta": "Gentil et al. 2020",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7787222/",
+   "doi": "10.18053/jctres.06.202002.004",
+   "cita_literal": "One-sample analysis supported that both AC (+4.9%; tp=0.0002; BF10=6,255,759,515) and MT (+3.9%; P<0.0001; BF10=7,958,241,773) suggested that change in muscle size had occurred.",
+   "url_consultada": true
+  }
+ ],
+ "correcciones_al_seed": [],
+ "consejo_practico": "Abre un registro con tres apartados: rendimiento, cintura y brazo. Compara carga y repeticiones manteniendo ejercicio, recorrido, técnica y descansos; no hace falta probar un máximo. Para los perímetros, repite siempre el lugar y las condiciones de medición. En el brazo, utiliza la misma postura flexionada y promedia tres mediciones, como en el estudio. Valora tendencias durante semanas, no una lectura aislada. Es una propuesta práctica de seguimiento, no un protocolo validado conjuntamente. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC9528903/?utm_source=openai))",
+ "trampas_comunes": [
+  "Interpretar cada centímetro adicional de brazo como músculo puro: el perímetro no aísla el tejido muscular. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC7787222/?utm_source=openai))",
+  "Presentar una cintura menor como requisito para estar progresando: informa sobre una dimensión distinta del rendimiento y su relevancia depende del objetivo. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/35383401/?utm_source=openai))",
+  "Prometer que estas tres métricas demuestran simultáneamente ganancia muscular y pérdida de grasa: son indicadores complementarios, no una medición directa de recomposición corporal. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC7787222/?utm_source=openai))"
+ ],
+ "consultadas": [
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/36199287/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/32020062/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/40500534/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38286426/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/33426361/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7027970/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/s41574-019-0310-7.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://doi.org/10.1249/mss.0000000000003897",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13292392/",
+   "titulo": ""
+  },
+  {
+   "url": "https://doi.org/10.2337/doci26-0003",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.sciencedirect.com/science/article/pii/S0002916523280545",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13517766/",
+   "titulo": ""
+  },
+  {
+   "url": "https://drc.bmj.com/content/bmjdrc/13/Suppl_1/e006247.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://extranet.who.int/ncdccs/Data/AUS_D1bic_n57-obesity-guidelines-.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1038/oby.2007.632",
+   "titulo": ""
+  },
+  {
+   "url": "https://iris.who.int/bitstream/handle/10665/44583/9789241501491_eng.pdf%20September%202020?sequence=1",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39724371/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/35383401/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/35565696/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42309659/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/35636762/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42318161/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/40773286/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/21787904/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34387399/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/33825676/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42441283/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42251396/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9528903/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7787222/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13377779/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5652265/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11679073/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12888541/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12195754/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12116181/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9319797/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10450275",
+   "titulo": ""
+  }
+ ],
+ "busquedas": 4,
+ "modelo": "gpt-6.1-sol",
+ "seed": "Cómo medir progreso sin la báscula (3 métricas)",
+ "fecha": "2026-11-11T11:50-04:00",
+ "_nota": "Hallazgos de la búsqueda web del guionista. NO están verificados: Claude los comprueba en la fuente antes de ponerlos en pantalla."
+}
