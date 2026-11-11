@@ -1,0 +1,14 @@
+{
+ "version": 1,
+ "base": "20261111-1621",
+ "tema": "Pesas e insulina",
+ "pregunta": "¿Las pesas mejoran la respuesta a la insulina?",
+ "veredicto": "Sí, pueden ayudar; no reemplazan tratamientos.",
+ "tono": "si",
+ "pasos": [
+  "Reparte tus sesiones durante la semana",
+  "Sube carga o repeticiones sin descuidar técnica"
+ ],
+ "fuente": "Paquin et al. 2024",
+ "_nota": "Propuesta a partir del guion. Claude la revisa (cifras y fuente) y la pasa a escaleta.tarjeta_resumen."
+}
