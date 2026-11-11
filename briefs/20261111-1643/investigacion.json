@@ -1,0 +1,254 @@
+{
+ "version": 1,
+ "base": "20261111-1643",
+ "tema": "Fuerza de agarre: indicador de salud, no fórmula de longevidad",
+ "aprendizaje": "Usa el agarre como una pista de tu función muscular y una capacidad entrenable, no como una promesa de años extra de vida. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8308438/))",
+ "hallazgos": [
+  {
+   "id": "lopez_bueno_2022",
+   "tipo": "metaanalisis",
+   "dato": "Un metaanálisis de 48 estudios con 3,135,473 participantes de 35-85 años encontró una asociación inversa entre fuerza de agarre y mortalidad. Para mortalidad por cualquier causa, la asociación dosis-respuesta fue aproximadamente lineal dentro de 26-50 kg. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/36332759/?utm_source=openai))",
+   "muestra": "3,135,473 adultos; 49.6% mujeres; 35-85 años.",
+   "duracion": "Seguimientos variables; búsqueda hasta el 8 de febrero de 2022.",
+   "intervencion": null,
+   "resultado": "Mayor agarre se asoció con menor mortalidad por cualquier causa dentro de 26-50 kg; heterogeneidad I² =45.7%.",
+   "fuerza": "alta",
+   "matiz": "Alta para la asociación, no para causalidad: reúne cohortes observacionales. El intervalo 26-50 kg no es una prescripción ni un umbral universal para deportistas.",
+   "fuente": "López-Bueno et al., 2022 (Ageing Research Reviews)",
+   "corta": "López-Bueno et al. 2022",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/36332759/",
+   "doi": "10.1016/j.arr.2022.101778",
+   "cita_literal": "Forty-eight studies comprising 3,135,473 participants (49.6% women, age range 35-85 years) were included.",
+   "url_consultada": true
+  },
+  {
+   "id": "leong_2015",
+   "tipo": "observacional",
+   "dato": "PURE analizó 139,691 participantes de 17 países durante una mediana de 4.0 años: cada 5 kg menos de agarre se asociaron con mayor mortalidad por cualquier causa, HR 1.16, IC 95% 1.13-1.20. Es una asociación entre personas, no el efecto demostrado de ganar o perder 5 kg entrenando. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/25982160/?utm_source=openai))",
+   "muestra": "139,691 participantes con estado vital conocido; población de 35-70 años.",
+   "duracion": "Mediana de 4.0 años; rango intercuartílico 2.9-5.1.",
+   "intervencion": null,
+   "resultado": "HR 1.16, IC 95% 1.13-1.20 por cada 5 kg menos de fuerza de agarre, medida con dinamómetro.",
+   "fuerza": "baja",
+   "matiz": "Cohorte grande, pero observacional. El HR no equivale a 16 puntos porcentuales de mortalidad ni a una cantidad de años perdidos; los autores piden investigar si mejorar la fuerza reduce mortalidad.",
+   "fuente": "Leong et al., 2015 (The Lancet)",
+   "corta": "Leong et al. 2015",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/25982160/",
+   "doi": "10.1016/S0140-6736(14)62000-6",
+   "cita_literal": "Grip strength was inversely associated with all-cause mortality (hazard ratio per 5 kg reduction in grip strength 1.16, 95% CI 1.13-1.20; p<0.0001)",
+   "url_consultada": true
+  },
+  {
+   "id": "smith_2019",
+   "tipo": "observacional",
+   "dato": "En 5,240 adultos, seguidos una media de 9.7 ± 1.4 años, la asociación entre mayor agarre y menor mortalidad en mujeres se atenuó al ajustar por factores clínicos, conductuales e inflamación: HR 0.95, IC 95% 0.82-1.11 en el modelo final. Esto es compatible con que el agarre refleje parte del estado general de salud, no una protección aislada de la mano. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/30972827/?utm_source=openai))",
+   "muestra": "5,240 participantes; edad media 65.9 años; 53.8% mujeres.",
+   "duracion": "Seguimiento medio de 9.7 ± 1.4 años.",
+   "intervencion": null,
+   "resultado": "En mujeres, HR 0.85 tras ajustar por edad y riqueza; 0.95 tras los ajustes adicionales, con IC 95% 0.82-1.11.",
+   "fuerza": "baja",
+   "matiz": "La interpretación como marcador es una inferencia. No demuestra que la inflamación explique toda la asociación ni que entrenar el agarre reduzca inflamación o mortalidad.",
+   "fuente": "Smith et al., 2019 (Scandinavian Journal of Medicine & Science in Sports)",
+   "corta": "Smith et al. 2019",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/30972827/",
+   "doi": "10.1111/sms.13433",
+   "cita_literal": "and further attenuated after adjusting for inflammatory markers (0.95; 0.82, 1.11).",
+   "url_consultada": true
+  },
+  {
+   "id": "campa_2021",
+   "tipo": "eca",
+   "dato": "Un ensayo asignó 36 hombres mayores a entrenamiento en suspensión, entrenamiento con bandas y peso corporal o control durante 12 semanas. El agarre aumentó en suspensión (p < 0.01, ES: 1.50), permaneció estable con bandas y peso corporal y disminuyó en el control. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8308438/))",
+   "muestra": "36 hombres sedentarios, 67.4 ± 5.1 años; asignación inicial: 12, 13 y 11; completaron 33.",
+   "duracion": "12 semanas de entrenamiento.",
+   "intervencion": "Ambos grupos activos: 3 sesiones semanales de unos 60 minutos, 7 ejercicios, 3 series de 12 repeticiones —plancha: 15 segundos—, descanso de 1 minuto y esfuerzo objetivo 13/20. Control sin entrenamiento.",
+   "resultado": "ES: 1.50 para el cambio intragrupo en suspensión; no es una diferencia estandarizada frente al control.",
+   "fuerza": "baja",
+   "matiz": "Ensayo pequeño en mayores sedentarios, no en intermedios de gimnasio. Demuestra que el agarre puede entrenarse; no midió longevidad ni demuestra superioridad universal de la suspensión.",
+   "fuente": "Campa et al., 2021 (Nutrients)",
+   "corta": "Campa et al. 2021",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8308438/",
+   "doi": "10.3390/nu13072267",
+   "cita_literal": "Handgrip strength increased in the suspension training group (p < 0.01, ES: 1.50)",
+   "url_consultada": true
+  }
+ ],
+ "correcciones_al_seed": [
+  "«Predice longevidad» es una simplificación: estos estudios estiman mortalidad durante un seguimiento, no cuántos años vivirá una persona. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/36332759/?utm_source=openai))",
+  "El «por qué» no está completamente resuelto. La interpretación prudente es que el agarre funciona como indicador de función muscular y comparte determinantes con la salud general; no que apretar más fuerte alargue directamente la vida. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8308438/))",
+  "Mejorar un marcador no demuestra mejorar el desenlace que predice: el ensayo de entrenamiento aumentó el agarre, pero no evaluó mortalidad. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8308438/))"
+ ],
+ "consejo_practico": "Mantén un programa de fuerza que incluya tirones y trabajo de brazos, y trata el agarre como una capacidad que puedes mejorar; el objetivo aplicable es rendir mejor, sin convertirlo en una promesa de longevidad. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8308438/))",
+ "trampas_comunes": [
+  "Prometer que cada 5 kg ganados de agarre reducen la mortalidad un 16%: invierte indebidamente una asociación observacional y la convierte en efecto de entrenamiento. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/25982160/?utm_source=openai))",
+  "Vender un aparato de agarre como herramienta para vivir más: entrenar la medición no ha demostrado prolongar la vida en los estudios citados. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8308438/))",
+  "Usar 26-50 kg como objetivo obligatorio para cualquier edad, sexo o nivel de entrenamiento: ese intervalo del metaanálisis no es una prescripción individual. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/36332759/?utm_source=openai))"
+ ],
+ "consultadas": [
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/25982160/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/31810062/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/36096322/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41895225/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/36332759/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/30972827/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/17056604/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/29313844/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5510175/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/12752838/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/28541466/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.bmj.com/content/341/bmj.c4467",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.bmj.com/content/bmj/345/bmj.e7279.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://jech.bmj.com/content/jech/early/2016/08/24/jech-2015-206776.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://bjsm.bmj.com/content/bjsports/60/6/465.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://academic.oup.com/biomedgerontology/article-pdf/57/10/B359/9732793/B359.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://bmjopen.bmj.com/content/bmjopen/9/5/e027019.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://bmjopen.bmj.com/content/bmjopen/12/7/e058489.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/41668861/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/26423425/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12524766/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/35319001/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13534076/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42443739/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34209004/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5167493/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/37160853/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/27009295/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13735565/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/26265075/",
+   "titulo": ""
+  },
+  {
+   "url": "https://bjsm.bmj.com/content/bjsports/early/2026/02/09/bjsports-2024-109173.full.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/content/pdf/10.1007/s41999-023-00789-8.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://eurapa.biomedcentral.com/counter/pdf/10.1186/s11556-023-00333-4",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/5638289/bin/pone.0185879.s004.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://doi.org/10.47870/1517-8692202430032022_0248i",
+   "titulo": ""
+  },
+  {
+   "url": "https://journals.sagepub.com/doi/pdf/10.1089/rej.2018.2111",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38105886/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38247440/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11189751/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10722261/",
+   "titulo": ""
+  }
+ ],
+ "busquedas": 5,
+ "modelo": "gpt-6.1-sol",
+ "seed": "Por qué la fuerza de agarre predice longevidad",
+ "fecha": "2026-11-11T16:42-04:00",
+ "_nota": "Hallazgos de la búsqueda web del guionista. NO están verificados: Claude los comprueba en la fuente antes de ponerlos en pantalla."
+}

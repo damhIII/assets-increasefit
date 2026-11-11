@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "base": "20261111-1643",
+ "tema": "Agarre y longevidad",
+ "pregunta": "¿Tu agarre predice cuántos años vas a vivir?",
+ "veredicto": "No: es una pista de tu salud.",
+ "tono": "no",
+ "pasos": [
+  "Mantén tirones y trabajo de brazos.",
+  "Registra cuándo el agarre te limita.",
+  "Busca mejorar tu rendimiento."
+ ],
+ "fuente": "López-Bueno et al. 2022",
+ "_nota": "Propuesta a partir del guion. Claude la revisa (cifras y fuente) y la pasa a escaleta.tarjeta_resumen."
+}
