@@ -1,22 +1,23 @@
 {
-  "_nota": "Temas de inspiración para el guion: no son un menú cerrado. 'datos' apunta a ids de datos_verificados.json.",
+  "_nota": "Temas de inspiración para el guion: no son un menú cerrado. 'datos' apunta a ids de datos_verificados.json. La mayoría van en positivo (lo que sí funciona); los mitos siguen, pero son la minoría. Los temas nuevos no traen datos verificados: el investigador busca la evidencia.",
   "temas": [
     {
       "id": 1,
       "titulo": "Sobrecarga progresiva",
-      "tesis": "El músculo crece cuando le pides un poco más que la última vez, no cuando sudas más.",
+      "tesis": "Pedirle al músculo un poco más que la última vez es la forma más fiable de crecer: una repetición o un poco más de peso ya cuentan.",
       "ideas": [
-        "Llevas 6 meses levantando los mismos 60 kilos",
-        "Tu libreta vale más que tu pre-entreno",
-        "Terminar destruido no es progresar"
+        "Una repetición más que la semana pasada ya es progreso",
+        "Tu libreta es el mejor suplemento, y es gratis",
+        "Llevas 6 meses levantando los mismos 60 kilos"
       ]
     },
     {
       "id": 2,
       "titulo": "Rango de movimiento",
-      "tesis": "Media repetición suele ser medio resultado; la parte de abajo es la que más cuenta.",
+      "tesis": "Bajar del todo hace que cada repetición rinda más: el recorrido completo gana en casi todo.",
       "ideas": [
-        "Tu sentadilla de 140 kilos es un cuarto de sentadilla",
+        "El truco gratis para que tu sentadilla rinda más: bajar",
+        "Menos peso y más recorrido, más músculo",
         "Las medias repeticiones de arriba no suman"
       ],
       "datos": [
@@ -26,10 +27,11 @@
     {
       "id": 3,
       "titulo": "Cerca del fallo",
-      "tesis": "La serie que cuenta es la que termina cerca de no poder más, no la que se siente heroica.",
+      "tesis": "Terminar las series cerca del fallo es de lo que más acelera el crecimiento; para la fuerza no hace falta llegar tan al límite.",
       "ideas": [
-        "Esa serie 'durísima' tenía cinco repeticiones más",
-        "No hace falta llegar al fallo en cada serie"
+        "La serie que más te hace crecer es la que termina cerca de no poder más",
+        "Buenas noticias: no hace falta llegar al fallo en cada serie",
+        "Esa serie 'durísima' tenía cinco repeticiones más"
       ],
       "datos": [
         "robinson"
@@ -38,9 +40,9 @@
     {
       "id": 4,
       "titulo": "Volumen",
-      "tesis": "Más series ayudan hasta cierto punto; las series de relleno solo suman cansancio.",
+      "tesis": "Con unas diez series semanales por músculo creces bastante más que con menos de cinco; pasado cierto punto, más series solo suman cansancio.",
       "ideas": [
-        "25 series de pecho no te hacen el doble de grande",
+        "Pasar de cuatro a diez series por semana casi duplica lo que creces",
         "Dos series bien hechas le ganan a cinco de relleno"
       ],
       "datos": [
@@ -49,10 +51,11 @@
     },
     {
       "id": 5,
-      "titulo": "Descanso entre series",
-      "tesis": "Descansar poco no te hace más duro: te deja levantar menos en la siguiente serie.",
+      "titulo": "Descansar más te hace más fuerte",
+      "tesis": "Descansar unos tres minutos en los ejercicios grandes te deja levantar más y crecer más que apurarte.",
       "ideas": [
-        "Descansar 60 segundos no te hace más hardcore",
+        "El truco más barato para levantar más: mirar el reloj",
+        "Descansar más no es de flojos: te hace más fuerte",
         "Tu descanso de 7 minutos es scroll, no recuperación"
       ],
       "datos": [
@@ -62,8 +65,9 @@
     {
       "id": 6,
       "titulo": "Frecuencia",
-      "tesis": "Repartir el volumen en la semana suele rendir más que castigar un músculo una vez.",
+      "tesis": "Entrenar cada músculo dos veces por semana suele dar más músculo que castigarlo una sola vez.",
       "ideas": [
+        "El mismo trabajo repartido en dos días te hace crecer más",
         "Día de pecho: una vez por semana y a esperar siete días"
       ],
       "datos": [
@@ -72,47 +76,48 @@
     },
     {
       "id": 7,
-      "titulo": "Peso muerto sin ego",
-      "tesis": "La espalda neutra no es estética: es lo que deja que las piernas y la cadera hagan el trabajo.",
+      "titulo": "Peso muerto que suma",
+      "tesis": "La espalda neutra deja que piernas y cadera muevan más kilos: es técnica para levantar más, no solo para no lesionarte.",
       "ideas": [
-        "Si tu espalda parece un signo de interrogación, baja el peso",
-        "La barra no se levanta con los brazos"
+        "La barra se levanta con las piernas y la cadera, no con los brazos",
+        "Si tu espalda parece un signo de interrogación, baja el peso"
       ]
     },
     {
       "id": 8,
-      "titulo": "Curl con ego",
-      "tesis": "Si el cuerpo entero ayuda, el bíceps solo mira.",
+      "titulo": "Curl que hace crecer",
+      "tesis": "Si el bíceps hace todo el trabajo, crece; si el cuerpo entero ayuda, el bíceps solo mira.",
       "ideas": [
-        "Si te balanceas, tu bíceps está de espectador",
-        "Subir la mancuerna es la mitad del ejercicio"
+        "Bajar la mancuerna despacio es la mitad gratis del ejercicio",
+        "Si te balanceas, tu bíceps está de espectador"
       ]
     },
     {
       "id": 9,
-      "titulo": "Dominadas de verdad",
-      "tesis": "Una repetición completa vale más que tres con patada.",
+      "titulo": "Tu primera dominada",
+      "tesis": "La primera dominada está más cerca de lo que crees: bajar lento y las repeticiones completas te llevan ahí.",
       "ideas": [
-        "Diez dominadas con patada son cuatro dominadas",
-        "¿No te sale ni una? Empieza por bajar"
+        "¿No te sale ni una? Empieza por bajar despacio",
+        "Cuatro dominadas completas valen más que diez con patada"
       ]
     },
     {
       "id": 10,
       "titulo": "Press de banca",
-      "tesis": "El pecho crece con control, no con rebote.",
+      "tesis": "El pecho crece con control: pausar abajo te hace más fuerte en la parte más difícil.",
       "ideas": [
-        "Tu banca rebota en el pecho porque tu ego no frena",
-        "El banco no es un sofá"
+        "Una pausa de un segundo en el pecho y tu banca mejora",
+        "Tu banca rebota en el pecho porque tu ego no frena"
       ]
     },
     {
       "id": 11,
       "titulo": "Proteína",
-      "tesis": "Lo que cuenta es el total del día; pasado cierto punto, más no es mejor.",
+      "tesis": "Lo que cuenta es el total del día: llegar a tu cantidad es fácil y no hace falta pasarse ni mirar el reloj.",
       "ideas": [
-        "Tres batidos al día no te hacen el triple de grande",
-        "La proteína no tiene horario de oficina"
+        "Buenas noticias: la proteína no tiene horario de oficina",
+        "Llegar a tu proteína es más fácil de lo que crees",
+        "Tres batidos al día no te hacen el triple de grande"
       ],
       "datos": [
         "proteina"
@@ -121,8 +126,9 @@
     {
       "id": 12,
       "titulo": "Creatina",
-      "tesis": "Es de los pocos suplementos con evidencia sólida, y no es magia.",
+      "tesis": "Uno de los pocos suplementos que funcionan de verdad: barato, seguro y con mucha evidencia, aunque no es magia.",
       "ideas": [
+        "El suplemento más estudiado cuesta menos que tu café",
         "La creatina no es un esteroide con buen marketing"
       ],
       "datos": [
@@ -131,10 +137,11 @@
     },
     {
       "id": 13,
-      "titulo": "Cardio y fuerza",
-      "tesis": "El cardio no se come tus músculos; mal organizado, te puede quitar potencia.",
+      "titulo": "Cardio sin miedo",
+      "tesis": "Puedes hacer cardio y seguir ganando músculo y fuerza: solo conviene separarlo de lo explosivo.",
       "ideas": [
-        "El cardio no se come tus músculos"
+        "Buenas noticias: el cardio no se come tus músculos",
+        "Cardio y pesas el mismo día: cómo ordenarlos"
       ],
       "datos": [
         "cardio"
@@ -154,10 +161,10 @@
     {
       "id": 15,
       "titulo": "Pesado o ligero",
-      "tesis": "Para crecer sirve un rango amplio de cargas si llegas cerca del fallo; para la fuerza máxima, hay que tocar pesado.",
+      "tesis": "Para crecer sirven cargas ligeras y pesadas si llegas cerca del fallo: elige la que disfrutes; para la fuerza máxima, toca pesado.",
       "ideas": [
-        "Pesado para crecer, ligero para definir. Falso.",
-        "No existen las repeticiones para 'tonificar'"
+        "¿Te molestan las articulaciones con mucho peso? Lo ligero también hace crecer",
+        "Pesado para crecer, ligero para definir. Falso."
       ],
       "datos": [
         "carga"
@@ -166,34 +173,37 @@
     {
       "id": 16,
       "titulo": "Lo aburrido funciona",
-      "tesis": "El programa que repites durante meses le gana al programa nuevo de cada lunes.",
+      "tesis": "Repetir un buen programa durante meses es la forma más segura de progresar: lo aburrido funciona.",
       "ideas": [
         "El ejercicio secreto que te falta es la sentadilla",
-        "Cambiar de rutina cada semana es empezar de cero"
+        "Lo que más progresa es lo que repites"
       ]
     },
     {
       "id": 17,
       "titulo": "Calentar de verdad",
-      "tesis": "Calentar es ensayar el ejercicio con poco peso, no sudar en la elíptica.",
+      "tesis": "Unas series de aproximación con poco peso preparan el ejercicio y te dejan llegar más fuerte a la serie buena.",
       "ideas": [
+        "Calentar bien es la forma más rápida de levantar más hoy",
         "Cinco minutos de elíptica no son calentar para una sentadilla pesada"
       ]
     },
     {
       "id": 18,
       "titulo": "Dormir también es entrenar",
-      "tesis": "El gimnasio da la señal; el músculo se construye recuperando.",
+      "tesis": "Dormir bien es la mejora más barata de tu entreno: el gimnasio da la señal y el músculo se construye recuperando.",
       "ideas": [
+        "La mejora gratis de tu entreno empieza en la almohada",
         "Entrenas una hora y duermes cinco. Adivina cuál pesa más."
       ]
     },
     {
       "id": 19,
       "titulo": "Estancado",
-      "tesis": "Muchas veces no es la genética: es fatiga acumulada o un plan que no progresa.",
+      "tesis": "Estancarse casi siempre tiene arreglo: muchas veces es fatiga acumulada o un plan que no progresa, no la genética.",
       "ideas": [
-        "Tres semanas sin subir nada. No es tu genética."
+        "Tres semanas sin subir nada tiene arreglo",
+        "Una semana más suave y vuelves más fuerte"
       ]
     },
     {
@@ -204,6 +214,60 @@
         "Si no tienes agujetas, no entrenaste bien",
         "Si dejas de entrenar, el músculo se vuelve grasa",
         "Las máquinas no sirven, solo peso libre"
+      ]
+    },
+    {
+      "id": 21,
+      "titulo": "Memoria muscular",
+      "tesis": "Si dejaste de entrenar un tiempo, recuperas lo perdido más rápido de lo que te costó ganarlo la primera vez.",
+      "ideas": [
+        "Volver al gym después de meses: buenas noticias",
+        "Lo que ganaste no se pierde del todo"
+      ]
+    },
+    {
+      "id": 22,
+      "titulo": "Cafeína antes de entrenar",
+      "tesis": "La cafeína es de las pocas ayudas con evidencia sólida para rendir más en el entreno, con la dosis y el momento adecuados.",
+      "ideas": [
+        "Tu café puede sumarte repeticiones",
+        "Cuánto y cuándo tomarla para que se note"
+      ]
+    },
+    {
+      "id": 23,
+      "titulo": "Entrenar acompañado",
+      "tesis": "Entrenar con alguien que te supervisa o te empuja suele dar más fuerza que entrenar solo.",
+      "ideas": [
+        "Tu compañero de gym es un suplemento",
+        "Con un entrenador cerca levantas más de lo que crees"
+      ]
+    },
+    {
+      "id": 24,
+      "titulo": "Entrenos cortos que funcionan",
+      "tesis": "Con poco tiempo también se progresa: pocas series bien hechas dan buena parte del resultado.",
+      "ideas": [
+        "Treinta minutos bien usados también te hacen crecer",
+        "No necesitas dos horas de gym"
+      ]
+    },
+    {
+      "id": 25,
+      "titulo": "Pensar en el músculo",
+      "tesis": "En los ejercicios de aislamiento, concentrarte en el músculo que trabaja puede ayudarte a crecerlo más.",
+      "ideas": [
+        "Pensar en el bíceps mientras haces curl sí sirve",
+        "Cuándo conviene pensar en el músculo y cuándo en mover el peso"
+      ]
+    },
+    {
+      "id": 26,
+      "titulo": "Medir para progresar",
+      "tesis": "Anotar tus series y ver los números subir es de lo que más ayuda a seguir progresando y a no abandonar.",
+      "ideas": [
+        "Lo que se mide, mejora",
+        "Ver subir tus kilos es la mejor motivación"
       ]
     }
   ]
