@@ -1,0 +1,188 @@
+{
+ "version": 1,
+ "base": "20261111-1458",
+ "tema": "Constancia: un ritual de inicio fácil, no dos minutos mágicos",
+ "aprendizaje": "Repite un pequeño ritual de preparación ligado a una señal estable para facilitar el inicio del entrenamiento; los dos minutos son una herramienta práctica, no un umbral científicamente validado.",
+ "hallazgos": [
+  {
+   "id": "kaushal_2017",
+   "tipo": "eca",
+   "dato": "En 94 nuevos socios de gimnasio, una intervención centrada en señales de preparación y regularidad produjo más actividad física moderada-vigorosa que el control a las 8 semanas: acelerometría, d = 0.39, p = .04; autoinforme, d = 0.53, p = .01. Son tamaños del efecto, no porcentajes de mejora. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/28188586/?utm_source=openai))",
+   "muestra": "94 nuevos socios de gimnasio, con intención de hacer ejercicio pero por debajo de las recomendaciones de actividad física al inicio.",
+   "duracion": "8 semanas.",
+   "intervencion": "Asignación aleatoria a control o formación de hábitos: taller inicial y llamada de refuerzo en la semana 4, trabajando señales de preparación y regularidad de la práctica.",
+   "resultado": "Más actividad moderada-vigorosa frente al control: d = 0.39 mediante acelerometría y d = 0.53 mediante autoinforme.",
+   "fuerza": "moderada",
+   "matiz": "No probó la regla de los dos minutos ni aisló el efecto de cada componente. Midió actividad física, no fuerza o hipertrofia, en principiantes; no demuestra mantenimiento durante años.",
+   "fuente": "Kaushal et al., 2017 (Annals of Behavioral Medicine)",
+   "corta": "Kaushal et al. 2017",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/28188586/",
+   "doi": "10.1007/s12160-017-9881-5",
+   "cita_literal": "accelerometry (d = 0.39, p = .04) and self-report (d = 0.53, p = .01) compared with the control group.",
+   "url_consultada": true
+  },
+  {
+   "id": "keller_2024",
+   "tipo": "eca",
+   "dato": "Un ensayo con 127 adultos comparó caminar en contextos estables, en contextos variables o sin planificación obligatoria. Durante 4 semanas, ambos grupos planificadores aumentaron las caminatas, pero solo el de contexto estable desarrolló y mantuvo automaticidad; esto no se tradujo en mantenimiento de las caminatas durante el seguimiento. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/39225981/?utm_source=openai))",
+   "muestra": "127 adultos de mediana edad, trabajadores e insuficientemente activos.",
+   "duracion": "4 semanas de intervención y seguimiento 4 semanas después.",
+   "intervencion": "Planificar caminatas en contextos estables frente a contextos variables y frente a un control sin obligación de planificar; pasos medidos con acelerómetro.",
+   "resultado": "Solo la planificación en contextos estables desarrolló y mantuvo automaticidad. El abstract no proporciona un tamaño del efecto numérico.",
+   "fuerza": "moderada",
+   "matiz": "Automaticidad significa que iniciar la conducta se siente más automático, no que la adherencia esté garantizada. Estudió caminar, no entrenamiento de fuerza ni deportistas intermedios.",
+   "fuente": "Keller et al., 2024 (Annals of Behavioral Medicine)",
+   "corta": "Keller et al. 2024",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39225981/",
+   "doi": "10.1093/abm/kaae045",
+   "cita_literal": "during a 4-week intervention and at a 4-week follow-up.",
+   "url_consultada": true
+  },
+  {
+   "id": "carrera_2018",
+   "tipo": "eca",
+   "dato": "En un experimento aleatorizado con 877 usuarios de un gimnasio, seleccionar los días y horas para acudir durante las siguientes dos semanas no aumentó la asistencia frente a registrar el ejercicio de las dos semanas anteriores. El abstract informa un efecto nulo estimado con precisión, pero no ofrece su magnitud numérica. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/30336306/?utm_source=openai))",
+   "muestra": "877 usuarios de un gimnasio privado.",
+   "duracion": "Planificación para las siguientes 2 semanas.",
+   "intervencion": "Grupo experimental: seleccionar días y horas de asistencia. Control: registrar los días de ejercicio de las 2 semanas anteriores.",
+   "resultado": "La planificación simple no produjo un efecto positivo sobre la asistencia frente al control.",
+   "fuerza": "moderada",
+   "matiz": "No demuestra que todos los planes sean inútiles: evaluó una intervención concreta de planificación, no un ritual preparatorio repetido ni la regla de los dos minutos.",
+   "fuente": "Carrera et al., 2018 (Journal of Health Economics)",
+   "corta": "Carrera et al. 2018",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/30336306/",
+   "doi": "10.1016/j.jhealeco.2018.09.002",
+   "cita_literal": "using a randomized design involving 877 subjects at a private gym.",
+   "url_consultada": true
+  }
+ ],
+ "correcciones_al_seed": [
+  "No encontré ensayos que validen específicamente la regla de los dos minutos para mantener la asistencia al gimnasio. La búsqueda encontró una publicación que la menciona como herramienta para el aprendizaje de radiólogos, no como ensayo de adherencia al entrenamiento. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/34223960/?utm_source=openai))",
+  "El respaldo es indirecto: trabajar señales de preparación y regularidad puede ayudar, pero estos ensayos no establecen que 120 segundos sean superiores a otra duración ni que empezar garantice completar la sesión. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/28188586/?utm_source=openai))",
+  "La evidencia seleccionada no permite cuantificar cuánto mejoraría esta estrategia la constancia de personas de nivel intermedio que ya entrenan fuerza. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/28188586/?utm_source=openai))"
+ ],
+ "consejo_practico": "Como aplicación razonable, no como protocolo probado: en tus días programados, vincula una señal habitual a un inicio breve y concreto, por ejemplo, «al cerrar el ordenador, me pongo la ropa y cojo la bolsa del gimnasio». Puedes limitar ese ritual a unos dos minutos; después sigue tu sesión prevista. El objetivo es repetir la preparación en un contexto estable, no sustituir el entrenamiento por dos minutos. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/28188586/?utm_source=openai))",
+ "trampas_comunes": [
+  "Presentar los dos minutos como una dosis científicamente demostrada para crear constancia: los ensayos citados no evaluaron ese umbral. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/28188586/?utm_source=openai))",
+  "Prometer que tener un horario escrito o sentir una conducta más automática garantiza mantenerla: ambos resultados tienen límites experimentales claros. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/30336306/?utm_source=openai))"
+ ],
+ "consultadas": [
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/28188586/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/25851609/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/30336306/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39225981/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/26148187/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39354798/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39571470/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/37545087/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/33405284/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/40102904/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/31923898/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/29945470/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34223960/",
+   "titulo": ""
+  },
+  {
+   "url": "https://onlinelibrary.wiley.com/doi/10.1155/2024/6480929",
+   "titulo": ""
+  },
+  {
+   "url": "https://bpspsychub.onlinelibrary.wiley.com/doi/10.1111/bjhp.12800",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/content/pdf/10.1007/s11606-017-4171-2.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/article/10.1186/s12877-023-04435-7",
+   "titulo": ""
+  },
+  {
+   "url": "https://link.springer.com/chapter/10.1007/978-3-031-89557-9_7",
+   "titulo": ""
+  },
+  {
+   "url": "https://catalogimages.wiley.com/images/db/pdf/9780857087263.index.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://catalogimages.wiley.com/images/db/pdf/9780471738237.index.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://catalogimages.wiley.com/images/db/pdf/0787981265.index.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://onlinelibrary.wiley.com/doi/10.1111/ssqu.13377",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11652125/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34857806/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/28188586/?utm_source=openai",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39225981/?utm_source=openai",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/30336306/?utm_source=openai",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34223960/?utm_source=openai",
+   "titulo": ""
+  }
+ ],
+ "busquedas": 3,
+ "modelo": "gpt-6.1-sol",
+ "seed": "Cómo mantener la constancia: la regla de los 2 minutos aplicada al gym",
+ "fecha": "2026-11-11T14:58-04:00",
+ "_nota": "Hallazgos de la búsqueda web del guionista. NO están verificados: Claude los comprueba en la fuente antes de ponerlos en pantalla."
+}

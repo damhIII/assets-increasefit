@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "base": "20261111-1458",
+ "tema": "Constancia en gym",
+ "pregunta": "¿Facilitar los primeros 2 minutos mejora tu constancia?",
+ "veredicto": "Puede ayudar; 2 minutos no son mágicos",
+ "tono": "matiz",
+ "pasos": [
+  "Usa siempre la misma señal",
+  "Ponte ropa y toma tu bolsa",
+  "Continúa después con tu sesión"
+ ],
+ "fuente": "Kaushal et al. 2017",
+ "_nota": "Propuesta a partir del guion. Claude la revisa (cifras y fuente) y la pasa a escaleta.tarjeta_resumen."
+}
