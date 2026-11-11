@@ -13,7 +13,7 @@ Un **clima** cambia el ambiente de color de una escena; el marco IncreaseFit no 
 | `foco` | el acento IncreaseFit: línea 2 del titular, barra de progreso, círculo, cifra del dato, gráfica, "GUÁRDALO" |
 
 ## Qué NO cambia nunca
-Header, cápsula de subtítulos (siempre oscura, palabra actual en azul luz), alerta `#FF5A4E`, éxito `#3DD68C`, logos y los colores de la mascota. El acento siempre es el `foco` del clima: nunca un azul escrito a mano.
+Cápsula de subtítulos (siempre oscura, palabra actual en azul luz), alerta `#FF5A4E`, éxito `#3DD68C`, logos y los colores de la mascota. El acento siempre es el `foco` del clima: nunca un azul escrito a mano.
 
 ## Implementación (ya hecha)
 `marco/clima.ts`: `climaEnFrame(frame)` funde los colores (incluido `foco`) con `interpolateColors` durante `transicion_frames` (12) centrados en el inicio de la escena. Dentro de una escena usa `useClimaEscena(e)`.
@@ -22,7 +22,7 @@ Header, cápsula de subtítulos (siempre oscura, palabra actual en azul luz), al
 La tarjeta azul del feed: la frase que define el video, el gancho o el remate. Fondo `#2353F1`, todo el texto en blanco y el foco en blanco. **Solo texto: sin mascota** (la cinta azul se pierde contra el fondo) ni anotaciones de color. Úsalo una vez por video como mucho.
 
 ## Clima claro (`papel`)
-La tarjeta blanca del feed y la pausa visual más fuerte. Header, texto y etiquetas pasan a tinta (`#111111`); la línea 2 del titular se vuelve marcador azul `#2353F1` con texto blanco; la cápsula de subtítulos sigue oscura. Ideal para el porqué, la ciencia o un dato.
+La tarjeta blanca del feed y la pausa visual más fuerte. Texto y etiquetas pasan a tinta (`#111111`); la línea 2 del titular se vuelve marcador azul `#2353F1` con texto blanco; la cápsula de subtítulos sigue oscura. Ideal para el porqué, la ciencia o un dato.
 
 ## Personalidad
 - **negro**: el gym de siempre, como las fotos oscuras del feed.

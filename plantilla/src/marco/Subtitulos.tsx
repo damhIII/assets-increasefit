@@ -3,14 +3,12 @@
 // Karaoke: la palabra que suena se enciende sobre una píldora de color con pop; las de énfasis son más grandes y se quedan
 // en color; los tonos (alerta = el error, éxito = lo correcto) y los iconos los pinta la escaleta (bloque "subtitulos").
 // La cápsula es siempre oscura: sobre ella el azul de texto es IF.azulLuz y el #2353F1 solo va de relleno (píldora, insignia).
-// Posición: ARRIBA. Mientras se ve el isotipo (solo el arranque, ver marco/Header.tsx) van justo debajo (Y≈292–395);
-// cuando el isotipo se va, suben a su sitio (Y≈214–317) en la misma salida. Las insignias de icono cuelgan DEBAJO de la
-// cápsula (hasta Y≈505 al arranque, Y≈427 después); la escena empieza en Y≈540.
+// Posición: ARRIBA y fija desde el frame 0 (Y≈214–317): el video no lleva isotipo encima, el logo solo sale en la tarjeta
+// final. Las insignias de icono cuelgan DEBAJO de la cápsula (hasta Y≈427); la escena empieza en Y≈540.
 import React, { useMemo } from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { datos, FUENTE, IF, type Palabra } from "./datos";
 import { Icono } from "../componentes/kit";
-import { presenciaIsotipo } from "./Header";
 
 type W = { w: string; a: number; b: number; enf: boolean; corte: boolean; tono: "" | "alerta" | "exito"; icono: string };
 
@@ -21,7 +19,7 @@ export const soloPalabra = (w: string) =>
 const MAX_PALABRAS = 3, MAX_LETRAS = 16, PAUSA_S = 0.45, ANTES_S = 0.1;
 // Cápsula más opaca que IF.capsula para que también se lea sobre los climas claros; las palabras que vienen, en blanco tenue.
 const CAPSULA = "rgba(10,10,10,0.88)", FUTURA = "rgba(255,255,255,0.4)";
-export const SUBS_TOP = 292, SUBS_TOP_SIN_ISOTIPO = 214;
+export const SUBS_TOP = 214;
 
 function agrupar(subs: Palabra[]): W[][] {
   const ws: W[] = [];
@@ -84,7 +82,7 @@ const PalabraSub: React.FC<{ p: W; siguiente: number; t: number; f: number; fps:
 export const Subtitulos: React.FC<{ top?: number }> = ({ top: topFijo }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const top = topFijo ?? SUBS_TOP_SIN_ISOTIPO + (SUBS_TOP - SUBS_TOP_SIN_ISOTIPO) * presenciaIsotipo(f);
+  const top = topFijo ?? SUBS_TOP;
   const t = f / fps;
   const grupos = useMemo(() => agrupar(datos.subtitulos), []);
   const i = grupos.findIndex((g, k) => t >= g[0].a - ANTES_S && (k === grupos.length - 1 || t < grupos[k + 1][0].a - ANTES_S));

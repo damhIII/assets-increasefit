@@ -150,14 +150,12 @@ def sincronizar(dir_base):
         for i in (st.get("tonos") or {}).get(t) or []:
             tono[int(i)] = t
     icono = {int(x["en"]): x["icono"] for x in st.get("iconos") or [] if x.get("en") is not None and x.get("icono")}
-    logos = {k: (RAIZ / v).exists() for k, v in (("increasefit", "logo_increasefit.png"), ("oscuro", "logo_increasefit_oscuro.png"), ("isotipo", "isotipo.png"))}
+    logos = {k: (RAIZ / v).exists() for k, v in (("increasefit", "logo_increasefit.png"), ("oscuro", "logo_increasefit_oscuro.png"))}
     return {
         "version": 4, "base": sub["base"], "audio": "locucion.wav",
         "video": {"width": WIDTH, "height": HEIGHT, "fps": FPS, "frames": total, "voz_s": round(voz_s, 2), "cola_s": cola_s},
         "musica": esc.get("musica"),
-        "opciones": {"barra_progreso": bool((esc.get("opciones") or {}).get("barra_progreso", False)),
-                     # isotipo arriba: "inicio" (solo los primeros segundos, por defecto) | "siempre" | "nunca"
-                     "isotipo": (esc.get("opciones") or {}).get("isotipo") or "inicio"},
+        "opciones": {"barra_progreso": bool((esc.get("opciones") or {}).get("barra_progreso", False))},
         "logos": logos, "fuentes": cat["fuentes"],
         "escenas": escenas, "cortinillas": cortinillas, "tarjeta_resumen": tr, "sfx": sorted(sfx, key=lambda s: s["frame"]),
         # [palabra sin puntuación, ini_s, fin_s, énfasis 0/1, corte 0/1, tono "" | alerta | exito, icono "" | id de icons/]

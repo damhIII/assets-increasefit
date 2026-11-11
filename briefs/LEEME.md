@@ -11,5 +11,3 @@ Lo añade Claude al dirigir el video:
 - `subtitulos.json`: el guion alineado con la voz (`scripts/alinear.py`).
 - `escaleta.json`: las escenas ancladas a palabras.
 - `custom/*.tsx`: escenas a medida, si las hay.
-
-Las carpetas con `brief.json` son del pipeline anterior (v2) y quedan como histórico.

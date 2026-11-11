@@ -64,8 +64,8 @@ export type DatosVideo = {
   version: number; base: string; audio: string;
   video: { width: number; height: number; fps: number; frames: number; voz_s: number; cola_s: number };
   musica: string | null;
-  opciones: { barra_progreso: boolean; isotipo?: "inicio" | "siempre" | "nunca" };   // isotipo: solo al arranque por defecto
-  logos: { increasefit: boolean; oscuro: boolean; isotipo: boolean };
+  opciones: { barra_progreso: boolean };
+  logos: { increasefit: boolean; oscuro: boolean };
   fuentes: { rol: string; familia: string; css: string | null; stack: string; pesos: number[] }[];
   escenas: Escena[];
   cortinillas: number[];

@@ -8,7 +8,7 @@ El notebook de Colab (`Crear_video_IncreaseFit_v6.ipynb`) **investiga** el tema 
 Todo lo demás lo haces tú con la skill **increasefit-reel** (`.claude/skills/increasefit-reel/SKILL.md`): verificar las cifras, diseñar las escenas (`briefs/<BASE>/escaleta.json` y escenas a medida en `briefs/<BASE>/custom/`), montar, revisar y renderizar.
 
 ## Estructura
-- `editorial/` voz y marca (`marca.md`), ADN (`adn.md`), estilo del guion (`estilo_guion.md`), temas de inspiración, **datos verificados** (biblioteca que comparten GPT y Claude), el prompt del investigador (`prompt_investigacion.md`), el del guionista (`prompt_guion.md`), el de la tarjeta final (`prompt_tarjeta.md`) y el perfil de locución antiguo (`voz_tts.md`, ya no lo usa el notebook).
+- `editorial/` voz y marca (`marca.md`), ADN (`adn.md`), estilo del guion (`estilo_guion.md`), temas de inspiración, **datos verificados** (biblioteca que comparten GPT y Claude), el prompt del investigador (`prompt_investigacion.md`), el del guionista (`prompt_guion.md`) y el de la tarjeta final (`prompt_tarjeta.md`).
 - `plantilla/` proyecto Remotion: marco (`src/marco/`), mascota (`src/personaje/`), kit animado (`src/componentes/kit.tsx`), composición por escena (`src/escenas/Escena.tsx`) y escenas a medida (`src/escenas/custom/`, generado).
 - `scripts/` `alinear.py` (guion ↔ voz), `sincronizar.py` (escaleta → frames, subtítulos sin puntuación), `validar_render.py` (incluye el presupuesto de texto), `preparar_video.py`, `iconos.py` (añade iconos de Lucide), `validar_paletas.py`, `tenir_svg.py`, y los regeneradores de mascota, kit y sonido.
 - `mascota/` sprites PNG (catálogo `mascota/manifest.json`, ficha `mascota/personaje.json`, hoja `mascota/contactos.jpg`). `scripts/mascota/` corta y normaliza hojas nuevas.
@@ -18,7 +18,7 @@ Todo lo demás lo haces tú con la skill **increasefit-reel** (`.claude/skills/i
 - `briefs/<BASE>/` guion, locución y tiempos (los sube el notebook) + tu escaleta y escenas a medida. `videos/` proyectos de render locales (no se suben).
 
 ## Reglas que valen siempre
-- El marco IncreaseFit es fijo: isotipo arriba (sin texto al lado) solo en los primeros segundos, subtítulos arriba, texto en pantalla abajo, tarjeta final con el logo. Dentro de las escenas, libertad creativa, pero sin títulos ni carteles que se queden todo el video.
+- El marco IncreaseFit es fijo: subtítulos arriba desde el primer frame (sin logo ni isotipo encima), texto en pantalla abajo, tarjeta final con el logo. Dentro de las escenas, libertad creativa, pero sin títulos ni carteles que se queden todo el video.
 - Imagen primero: el video se cuenta con la mascota, iconos, marcas del kit y subtítulos pintados (sin signos de puntuación). El texto en pantalla es la excepción (≤20 palabras por video; lo comprueba `validar_render.py`).
 - La mascota es la única figura humana: nunca personas reales, fotos ni personajes de otras cuentas o marcas.
 - Sin CTA: los videos no piden comentarios, likes ni follows. La tarjeta final (GUÁRDALO) es la única invitación.
@@ -26,4 +26,4 @@ Todo lo demás lo haces tú con la skill **increasefit-reel** (`.claude/skills/i
 - Determinismo: nada de `Math.random()` en Remotion.
 
 ## Qué se edita dónde
-Todo vive en este repo. Tras tocar `brand/paletas.json`, ejecuta `python3 scripts/validar_paletas.py`. Tras añadir sprites, regenera con `scripts/mascota/` (`procesar.py` → `bocas.py` → `manifiesto.py`) y revisa `mascota/contactos.jpg`. Para cambiar cómo investiga o escribe el guionista, edita `editorial/prompt_investigacion.md`, `editorial/prompt_guion.md`, `editorial/prompt_tarjeta.md` o `editorial/estilo_guion.md` (el notebook los lee de aquí). La voz se elige en el notebook (`TTS_VOICE`, `ESTILO_VOZ`, `VELOCIDAD_VOZ`, `PAUSAS_PARRAFOS`).
+Todo vive en este repo. Tras tocar `brand/paletas.json`, ejecuta `python3 scripts/validar_paletas.py`. Tras añadir sprites, regenera con `scripts/mascota/` (`procesar.py` → `bocas.py` → `manifiesto.py`) y revisa `mascota/contactos.jpg`. Para cambiar cómo investiga o escribe el guionista, edita `editorial/prompt_investigacion.md`, `editorial/prompt_guion.md`, `editorial/prompt_tarjeta.md` o `editorial/estilo_guion.md` (el notebook los lee de aquí). La voz se elige en el notebook (`TTS_VOICE`, `ESTILO_VOZ`, `VELOCIDAD_VOZ`, `PAUSAS`).

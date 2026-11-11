@@ -6,7 +6,7 @@
 - Si el entorno no puede descargar Chrome Headless Shell, usa un Chrome local: `--browser-executable=/usr/bin/google-chrome` en la CLI, `npm run stills -- --browser=/usr/bin/google-chrome` o `Config.setBrowserExecutable` en `remotion.config.ts`. Con 2 CPU, no fuerces `--concurrency`.
 
 ## Estructura de la plantilla
-- `src/marco/`: `datos.ts` (tipos, `datos`, `SPRITES`, `escenaEn`, `frameDePalabra`, constantes `IF`, `FUENTE`), `clima.ts` (`useClima`, `useClimaEscena`), `Fuentes.tsx`, `Fondo`, `Header`, `TextoPantalla`, `Subtitulos`, `BarraProgreso`, `Sonido`.
+- `src/marco/`: `datos.ts` (tipos, `datos`, `SPRITES`, `escenaEn`, `frameDePalabra`, constantes `IF`, `FUENTE`), `clima.ts` (`useClima`, `useClimaEscena`), `Fuentes.tsx`, `Fondo`, `TextoPantalla`, `Subtitulos`, `BarraProgreso`, `Sonido`.
 - `src/personaje/Sprite.tsx`: `colocar`, `ancla`, `fasesDe`, `<Mascota>`.
 - `src/componentes/kit.tsx`: piezas animadas (ver `layout.md`).
 - `src/escenas/Escena.tsx`: composición por defecto de cada escena y `Camara`. `src/escenas/custom/`: tus escenas a medida (vienen de `briefs/<BASE>/custom/`).

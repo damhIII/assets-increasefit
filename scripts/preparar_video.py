@@ -85,7 +85,7 @@ def main():
         if f.get("css") and (RAIZ / f["css"]).is_file():
             (pub / f["css"]).parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(RAIZ / f["css"], pub / f["css"])
-    for png in ("logo_increasefit.png", "logo_increasefit_oscuro.png", "isotipo.png"):
+    for png in ("logo_increasefit.png", "logo_increasefit_oscuro.png"):
         if (RAIZ / png).is_file():
             shutil.copy2(RAIZ / png, pub / png)
     print(f"Proyecto listo en {out} · {video['video']['frames']} frames · {len(video['escenas'])} escenas · {len(nombres)} componentes a medida")

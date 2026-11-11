@@ -10,7 +10,7 @@
     "alerta": "#FF5A4E",
     "exito": "#3DD68C",
     "texto": "#FFFFFF",
-    "regla": "Barra de progreso, header, cápsula de subtítulos, línea 2 del titular, foco de la escena y bloque CTA son SIEMPRE IncreaseFit. El color del foco lo da cada clima en `foco`: azul luz sobre negro, azul sobre blanco y blanco sobre azul. El azul #2353F1 nunca va como texto sobre negro (contraste 3,4:1): ahí se usa azul luz."
+    "regla": "Barra de progreso, cápsula de subtítulos, línea 2 del titular, foco de la escena y tarjeta final son SIEMPRE IncreaseFit. El color del foco lo da cada clima en `foco`: azul luz sobre negro, azul sobre blanco y blanco sobre azul. El azul #2353F1 nunca va como texto sobre negro (contraste 3,4:1): ahí se usa azul luz."
   },
   "climas": {
     "negro": {

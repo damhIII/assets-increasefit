@@ -1,5 +1,5 @@
 // Composición: Fondo → una escena por <Sequence> (EXACTAMENTE ini_f–fin_f) → cortinillas → tarjeta resumen → marco IncreaseFit
-// (isotipo arriba solo al arranque, subtítulos arriba, texto en pantalla abajo) → sonido.
+// (subtítulos arriba, texto en pantalla abajo; el logo solo en la tarjeta final) → sonido.
 import React from "react";
 import { AbsoluteFill, interpolate, Sequence, useCurrentFrame } from "remotion";
 import { datos, IF } from "./marco/datos";
@@ -7,7 +7,6 @@ import { useFuentes } from "./marco/Fuentes";
 import { climaEnFrame, type C } from "./marco/clima";
 import { Fondo } from "./marco/Fondo";
 import { BarraProgreso } from "./marco/BarraProgreso";
-import { Header } from "./marco/Header";
 import { TextoPantalla } from "./marco/TextoPantalla";
 import { Subtitulos } from "./marco/Subtitulos";
 import { Sonido } from "./marco/Sonido";
@@ -47,7 +46,6 @@ export const Video: React.FC = () => {
           <Resumen c={climaEnFrame(f)} />
         </Sequence>
       ) : null}
-      <Header />
       {conResumen ? null : <TextoPantalla />}
       {/* Con la tarjeta en pantalla: si la voz ya terminó, fuera subtítulos; si aún habla (tarjeta con "desde"), bajan bajo la tarjeta */}
       {conResumen && !vozActiva ? null : <Subtitulos top={conResumen ? 1470 : undefined} />}
