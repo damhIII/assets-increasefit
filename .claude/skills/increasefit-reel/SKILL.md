@@ -64,10 +64,10 @@ Por cada estudio o estadística que diga la voz:
 
 ## 7. Prepara, mira y corrige
 1. `python3 scripts/preparar_video.py briefs/<BASE>` valida la escaleta (`scripts/validar_render.py`), la convierte en frames y deja el proyecto en `videos/<BASE>/`. Si hay errores, corrige y repite.
-2. `cd videos/<BASE> && npm install` (la primera vez) → `npm run tipos` → `npm run stills` (un fotograma por escena + `out/stills/hoja.jpg`).
+2. `cd videos/<BASE> && npm install` (la primera vez) → `npm run tipos` → `npm run stills` (un fotograma por escena + `out/stills/hoja.jpg` y `out/stills/hoja_zonas.jpg`, la misma hoja con la interfaz de Instagram en rojo).
 3. **Mira la hoja** y abre los PNG que te hagan dudar. Comprueba:
    - La mascota cuenta lo mismo que la voz y no se corta ni flota.
-   - Nada vital fuera de Y 200–1580 ni en la franja de botones de Instagram (X>960, Y>1300); nada pisa los subtítulos de arriba (ni las insignias de icono que cuelgan debajo de la cápsula, hasta Y≈505) ni el texto en pantalla de abajo.
+   - En `hoja_zonas.jpg` nada vital cae en rojo: arriba (Y<260, nombre y foto de perfil), abajo (Y>1540, nombre, descripción y audio) ni la columna de botones (X>900 desde Y≈1100). Nada pisa los subtítulos (Y≈300–402, ni las insignias de icono que cuelgan debajo, hasta Y≈500) ni el texto en pantalla de abajo.
    - Arriba solo están los subtítulos, también en el gancho: ni logo, ni isotipo, ni títulos fijos, y nada de la escena choca con ellos.
    - La tarjeta final (still `resumen`): la pregunta se reconoce como la del gancho, el veredicto la contesta y los pasos se pueden hacer hoy.
    - Poco texto: si un fotograma se lee como una diapositiva, sobra texto. Los subtítulos, sin signos de puntuación y con su color.
@@ -83,7 +83,7 @@ Por cada estudio o estadística que diga la voz:
 - Si tienes permiso de escritura en el repo, sube `briefs/<BASE>/escaleta.json`, `custom/`, `subtitulos.json`, los iconos nuevos de `icons/` y, si cambió, `editorial/datos_verificados.json`. `videos/` no se sube.
 
 ## Reglas fijas
-- El marco IncreaseFit es fijo: subtítulos arriba (sin logo encima), texto en pantalla abajo y tarjeta final con el logo. Dentro de las escenas, libertad (sin títulos persistentes).
+- El marco IncreaseFit es fijo: subtítulos arriba en Y≈300, bajo la interfaz de Instagram (sin logo encima), texto en pantalla abajo y tarjeta final con el logo. Dentro de las escenas, libertad (sin títulos persistentes).
 - La mascota es la única figura humana: nunca personas reales, fotos ni personajes de otras cuentas o marcas.
 - Sin CTA en la voz ni en las escenas: el video no pide comentarios, likes, follows ni compartir. La única invitación es el GUÁRDALO de la tarjeta final.
 - La voz no se toca: ni recortes ni cambios de velocidad (el ritmo se ajusta en el notebook, antes de sacar los tiempos).

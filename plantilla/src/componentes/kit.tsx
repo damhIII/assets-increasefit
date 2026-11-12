@@ -334,7 +334,7 @@ export const TarjetaResumen: React.FC<{
   const linea = ent(16, { damping: 18, stiffness: 120 });
   const m = ent(14, { damping: 10, stiffness: 190 });
   return (
-    <div style={{ position: "absolute", left: 60, top: 290, width: 960, display: "flex", flexDirection: "column", gap: 22 }}>
+    <div style={{ position: "absolute", left: 60, top: 320, width: 900, display: "flex", flexDirection: "column", gap: 22 }}>{/* x 60–960 · Y≈320–1530 (zonas de Instagram) */}
       <div style={{ borderRadius: 40, background: c.superficie, border: `3px solid ${c.foco}66`, boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
         padding: "42px 54px 40px", boxSizing: "border-box", transform: `translateY(${(1 - e) * 200}px) scale(${0.9 + 0.1 * e})`, opacity: Math.min(1, e) }}>
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
@@ -373,7 +373,7 @@ export const TarjetaResumen: React.FC<{
         ) : null}
       </div>
       <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 30 }}>
-        <Img src={staticFile("mascota/sprites/gesto_pulgar_arriba.png")} style={{ height: 300, transformOrigin: "50% 100%", transform: `scale(${m})`,
+        <Img src={staticFile("mascota/sprites/gesto_pulgar_arriba.png")} style={{ height: 260, transformOrigin: "50% 100%", transform: `scale(${m})`,
           filter: "drop-shadow(0 14px 18px rgba(0,0,0,0.4))" }} />
         {datos.logos.increasefit ? (
           <Img src={staticFile(claro && datos.logos.oscuro ? "logo_increasefit_oscuro.png" : "logo_increasefit.png")}

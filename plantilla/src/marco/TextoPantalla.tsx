@@ -1,5 +1,6 @@
-// Texto en pantalla de cada escena: ABAJO, en la franja Y≈1390–1570 (los subtítulos van arriba).
-// Ancho máx. 860 px (x 80–940) para no meterse en la columna de botones de Instagram (x>960). Complementa a la voz, no la repite.
+// Texto en pantalla de cada escena: ABAJO, en la franja Y≈1360–1540 (los subtítulos van arriba; por debajo de 1540 van el
+// nombre, la foto de perfil y la descripción de Instagram). Ancho máx. 800 px (x 80–880) para no meterse en la columna de
+// botones de Instagram (x>900 desde Y≈1100). Complementa a la voz, no la repite.
 //   titular: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 en el foco del clima (eco del "FIT" del logo). Sin "/": una línea 800.
 //   nota:    a mano (Kalam), ligeramente girada, como una anotación.
 //   capitulo y ninguno: no se dibuja aquí (capitulo es una tarjeta de la escena).
@@ -8,8 +9,8 @@ import { interpolate, interpolateColors, spring, useCurrentFrame, useVideoConfig
 import { datos, FUENTE, IF } from "./datos";
 import { useClima } from "./clima";
 
-export const TEXTO_TOP = 1390;
-const ANCHO = 860;
+export const TEXTO_TOP = 1360;
+const ANCHO = 800;
 const ajustar = (txt: string, base: number, factor: number) => Math.min(base, Math.floor(ANCHO / Math.max(1, txt.length * factor)));
 
 export const TextoPantalla: React.FC = () => {

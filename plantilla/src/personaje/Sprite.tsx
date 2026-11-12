@@ -7,7 +7,7 @@ import { ALTURA_PERSONAJE, datos, EJERCICIOS, SPRITES, type MascotaEscena, type 
 
 export const SUELO = 1340;
 const K0 = 800 / ALTURA_PERSONAJE;                     // personaje de pie = 800 px en encuadre general
-const CX = { centro: 540, izq: 320, der: 760 } as const;
+const CX = { centro: 540, izq: 320, der: 730 } as const;   // der: los pies no se meten en la columna de botones
 
 /** "ejercicio:sentadilla" -> [sentadilla_f1, sentadilla_f2]; un id normal -> [id]. Ids desconocidos -> gesto_de_pie. */
 export function fasesDe(sprite: string): SpriteInfo[] {
@@ -42,11 +42,11 @@ export function colocar(info: SpriteInfo, encuadre: MascotaEscena["encuadre"], p
     k = K0 * 2.5 * escalaExtra;
     return { x: 540 - ax(cab) * k, y: 860 - cab[1] * k, k, w, h, espejo, info };
   }
-  // general: pies en el suelo, que quepa en la zona de escena (x 50–1030, y 540–SUELO)
+  // general: pies en el suelo, que quepa en la zona de escena (x 50–1000, y 540–SUELO)
   k = Math.min(k, 960 / w, (SUELO - 540) / h);
   const pies = info.anclas.pies;
   let x = cx - ax(pies) * k;
-  x = Math.min(Math.max(x, 50), 1030 - w * k);
+  x = Math.min(Math.max(x, 50), 1000 - w * k);
   return { x, y: SUELO - pies[1] * k, k, w, h, espejo, info };
 }
 

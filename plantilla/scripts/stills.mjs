@@ -1,5 +1,6 @@
 // Renderiza un fotograma por escena (+ la tarjeta resumen) con UN solo bundle y monta una hoja de contactos.
-//   npm run stills                       → out/stills/<id>.png y out/stills/hoja.jpg
+//   npm run stills                       → out/stills/<id>.png, out/stills/hoja.jpg y out/stills/hoja_zonas.jpg
+//                                          (hoja_zonas: en rojo lo que tapa Instagram, en azul el sitio de los subtítulos)
 //   npm run stills -- --frames=120,480   → solo esos frames
 //   npm run stills -- --browser=/usr/bin/google-chrome   (si no se puede descargar Chrome Headless Shell)
 import { bundle } from "@remotion/bundler";
@@ -34,6 +35,18 @@ try {
   const filtro = n > 1 ? `${escalas};${lienzo}xstack=inputs=${n}:layout=${pos}:fill=black` : "[0:v]scale=270:480";
   execFileSync("ffmpeg", ["-y", "-loglevel", "error", ...entradas, "-filter_complex", filtro, "-frames:v", "1", path.join(salida, "hoja.jpg")]);
   console.log(`hoja de contactos (${cols}×${filas}) → out/stills/hoja.jpg`);
+  // Misma hoja con las zonas de la interfaz de Instagram encima (px sobre 1080×1920): arriba nombre y foto de perfil,
+  // abajo nombre/descripción/audio, a la derecha la columna de botones. En azul, la franja de los subtítulos.
+  const ZONAS = [
+    "drawbox=x=0:y=0:w=1080:h=260:color=red@0.35:t=fill",
+    "drawbox=x=0:y=1540:w=1080:h=380:color=red@0.35:t=fill",
+    "drawbox=x=900:y=1100:w=180:h=440:color=red@0.35:t=fill",
+    "drawbox=x=90:y=300:w=900:h=200:color=0x1FB7DE@0.9:t=6",
+  ].join(",");
+  const escalasZ = objetivos.map((_, i) => `[${i}:v]${ZONAS},scale=270:480[s${i}]`).join(";");
+  const filtroZ = n > 1 ? `${escalasZ};${lienzo}xstack=inputs=${n}:layout=${pos}:fill=black` : `[0:v]${ZONAS},scale=270:480`;
+  execFileSync("ffmpeg", ["-y", "-loglevel", "error", ...entradas, "-filter_complex", filtroZ, "-frames:v", "1", path.join(salida, "hoja_zonas.jpg")]);
+  console.log("zonas de Instagram encima → out/stills/hoja_zonas.jpg");
 } catch {
   console.log("sin ffmpeg: mira los PNG sueltos");
 }

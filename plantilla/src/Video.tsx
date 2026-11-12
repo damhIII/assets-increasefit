@@ -48,7 +48,7 @@ export const Video: React.FC = () => {
       ) : null}
       {conResumen ? null : <TextoPantalla />}
       {/* Con la tarjeta en pantalla: si la voz ya terminó, fuera subtítulos; si aún habla (tarjeta con "desde"), bajan bajo la tarjeta */}
-      {conResumen && !vozActiva ? null : <Subtitulos top={conResumen ? 1470 : undefined} />}
+      {conResumen && !vozActiva ? null : <Subtitulos top={conResumen ? 1390 : undefined} />}
       {datos.opciones?.barra_progreso ? <BarraProgreso /> : null}
       <Sonido />
     </AbsoluteFill>

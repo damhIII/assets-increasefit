@@ -83,9 +83,9 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
     if (!v) return [540 + (k - (n - 1) / 2) * Math.min(300, 900 / Math.max(1, n)), 900];
     if (o.apunta) {
       const a = ancla(col, o.apunta);
-      return [Math.min(900, Math.max(180, a[0] + (libre === "izq" ? -250 : 250))), Math.min(1180, Math.max(680, a[1] - 60 + k * 40))];
+      return [Math.min(790, Math.max(180, a[0] + (libre === "izq" ? -250 : 250))), Math.min(1180, Math.max(680, a[1] - 60 + k * 40))];
     }
-    return [libre === "izq" ? 260 : 820, Math.min(1180, 720 + k * 250)];
+    return [libre === "izq" ? 260 : 790, Math.min(1180, 720 + k * 250)];   // x≤790: el icono (210 px) no llega a los botones (x>900)
   };
 
   const detras = e.anotaciones.map((o, i) => (o.tipo === "lineas_velocidad" || o.tipo === "enfoque" ? <Efecto key={`d${i}`} tipo={o.tipo} a={ancla(col, "centro")} desde={local(o)} c={c} /> : null));
@@ -130,7 +130,7 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
         if (!p) return null;
         const lado = Math.round(p.tam_escena * (o.escala ?? 1) * (v ? 1 : 1.4));
         const medio = Math.min(lado, 960) / 2;
-        const cx = (x: number) => Math.min(1030 - medio, Math.max(50 + medio, x));
+        const cx = (x: number) => Math.min((p.suelo ? 900 : 1030) - medio, Math.max(50 + medio, x));   // en el suelo (Y>1100) no entra en los botones
         if (o.apunta) {
           const [ax, ay] = ancla(col, o.apunta);
           return <PropObjeto key={i} id={p.id} x={cx(ax + (libre === "izq" ? -1 : 1) * (medio + 110))} y={Math.min(1240, Math.max(640, ay))} lado={lado} desde={t} />;

@@ -3,8 +3,9 @@
 // Karaoke: la palabra que suena se enciende sobre una píldora de color con pop; las de énfasis son más grandes y se quedan
 // en color; los tonos (alerta = el error, éxito = lo correcto) y los iconos los pinta la escaleta (bloque "subtitulos").
 // La cápsula es siempre oscura: sobre ella el azul de texto es IF.azulLuz y el #2353F1 solo va de relleno (píldora, insignia).
-// Posición: ARRIBA y fija desde el frame 0 (Y≈214–317): el video no lleva isotipo encima, el logo solo sale en la tarjeta
-// final. Las insignias de icono cuelgan DEBAJO de la cápsula (hasta Y≈427); la escena empieza en Y≈540.
+// Posición: ARRIBA y fija desde el frame 0 (Y≈300–402): por debajo del nombre y la foto de perfil que Instagram pinta arriba
+// (Y<260). El video no lleva isotipo encima, el logo solo sale en la tarjeta final. Las insignias de icono cuelgan DEBAJO de
+// la cápsula (hasta Y≈500); la escena empieza en Y≈540.
 import React, { useMemo } from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { datos, FUENTE, IF, type Palabra } from "./datos";
@@ -19,7 +20,7 @@ export const soloPalabra = (w: string) =>
 const MAX_PALABRAS = 3, MAX_LETRAS = 16, PAUSA_S = 0.45, ANTES_S = 0.1;
 // Cápsula más opaca que IF.capsula para que también se lea sobre los climas claros; las palabras que vienen, en blanco tenue.
 const CAPSULA = "rgba(10,10,10,0.88)", FUTURA = "rgba(255,255,255,0.4)";
-export const SUBS_TOP = 214;
+export const SUBS_TOP = 300;
 
 function agrupar(subs: Palabra[]): W[][] {
   const ws: W[] = [];
