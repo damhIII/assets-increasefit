@@ -1,0 +1,202 @@
+{
+ "version": 1,
+ "base": "20261114-1316",
+ "tema": "Retomar después de faltar: la utilidad y los límites de «nunca falles dos veces»",
+ "aprendizaje": "Si faltas a una sesión, centra tu siguiente paso en retomar el plan: la constancia también se construye volviendo, no manteniendo una racha perfecta.",
+ "hallazgos": [
+  {
+   "id": "milkman_2021",
+   "tipo": "eca",
+   "dato": "Un megaensayo con 61,293 socios de gimnasios comparó 54 programas digitales de cuatro semanas. El 45% aumentó las visitas semanales entre un 9% y un 27%; el programa con mayor efecto estimado premiaba volver después de faltar. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/34880497/))",
+   "muestra": "61,293 socios de una cadena estadounidense; no seleccionados específicamente como levantadores intermedios.",
+   "duracion": "Cuatro semanas de intervención y cuatro de seguimiento.",
+   "intervencion": "La condición destacada combinaba planificación, recordatorios e incentivos con un bonus de 125 puntos, equivalente a US$0.09, por volver tras faltar; se comparó con un control placebo y con planificación, recordatorios e incentivos sin ese bonus. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8822539/?utm_source=openai))",
+   "resultado": "0.40 visitas semanales adicionales frente al control placebo: un 27% más. Son cifras del texto completo; el abstract presenta el intervalo global del 9% al 27%.",
+   "fuerza": "moderada",
+   "matiz": "Midió asistencia, no fuerza ni hipertrofia. Probó recompensar el retorno, no la regla verbal «nunca falles dos veces»; seleccionar la condición ganadora puede sobreestimar su efecto.",
+   "fuente": "Milkman et al., 2021 (Nature)",
+   "corta": "Milkman et al. 2021",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34880497/",
+   "doi": "10.1038/s41586-021-04128-4",
+   "cita_literal": "We show that 45% of these interventions significantly increased weekly gym visits by 9% to 27%;",
+   "url_consultada": true
+  },
+  {
+   "id": "lally_2010",
+   "tipo": "observacional",
+   "dato": "Durante 12 semanas, 96 voluntarios intentaron repetir diariamente una conducta de alimentación, bebida o actividad en el mismo contexto; 82 aportaron datos suficientes. Omitir una oportunidad no alteró materialmente la formación del hábito. ([onlinelibrary.wiley.com](https://onlinelibrary.wiley.com/doi/10.1002/ejsp.674))",
+   "muestra": "96 voluntarios; 82 con datos suficientes para analizar.",
+   "duracion": "12 semanas.",
+   "intervencion": "Sin grupos aleatorizados: cada participante eligió una conducta diaria y registró su realización y automaticidad.",
+   "resultado": "Una oportunidad omitida no afectó materialmente al proceso; el abstract no cuantifica el tamaño de ese efecto.",
+   "fuerza": "baja",
+   "matiz": "Estudio observacional con autoinformes y conductas diversas, no entrenamiento de fuerza específico. No establece qué sucede al faltar dos veces ni identifica un umbral de abandono.",
+   "fuente": "Lally et al., 2010 (European Journal of Social Psychology)",
+   "corta": "Lally et al. 2010",
+   "url": "https://onlinelibrary.wiley.com/doi/10.1002/ejsp.674",
+   "doi": "10.1002/ejsp.674",
+   "cita_literal": "Missing one opportunity to perform the behaviour did not materially affect the habit formation process.",
+   "url_consultada": true
+  }
+ ],
+ "correcciones_al_seed": [
+  "No se encontró una prueba directa de que «nunca falles dos veces seguidas» sea superior a otras estrategias. La evidencia localizada respalda incentivar el retorno y no interpretar una omisión aislada como perder el hábito; no demuestra que la segunda falta lo rompa. ([pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov/34880497/))",
+  "El 27% corresponde a más visitas semanales durante una intervención con incentivos, no a más músculo, más fuerza ni al efecto de repetir esa frase. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8822539/?utm_source=openai))"
+ ],
+ "consejo_practico": "Como aplicación razonable, no como regla validada: si faltas, concreta el día y la hora de tu próxima sesión y coloca ahí un recordatorio. El objetivo es facilitar el retorno, no proteger una racha a cualquier precio. ([pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8822539/?utm_source=openai))",
+ "trampas_comunes": [
+  "Presentar dos faltas consecutivas como un umbral científico que destruye el hábito.",
+  "Prometer un 27% más de progreso muscular con una regla de asistencia."
+ ],
+ "consultadas": [
+  {
+   "url": "https://www.nih.gov/news-events/nih-research-matters/testing-ways-encourage-exercise",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12318445",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8822539/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34880497/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/s41586-021-04128-4?CJEVENT=c47f398035ff11ee8317adf30a18ba73",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/d41586-021-03671-4",
+   "titulo": ""
+  },
+  {
+   "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/ejsp.674?source=content_type%3Areact%7Cfirst_level_url%3Aarticle%7Csection%3Amain_content%7Cbutton%3Abody_link",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/21749245/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/d41586-021-03400-x",
+   "titulo": ""
+  },
+  {
+   "url": "https://doi.org/10.1080/17437199.2011.603640%C2%A0",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.mdpi.com/2076-393X/11/1/133",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/d41586-021-03724-8",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.mdpi.com/2076-393X/11/1/133/pdf?version=1672977721",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/pdf/10.1080/23311908.2022.2041277?role=button",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.sciencedirect.com/science/article/pii/S027795362030304X",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/pdf/10.1080/17437199.2013.876238?needAccess=true&role=button",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/pdf/10.1080/08870446.2021.2003362?needAccess=true",
+   "titulo": ""
+  },
+  {
+   "url": "https://onlinelibrary.wiley.com/doi/10.1002/ejsp.674",
+   "titulo": ""
+  },
+  {
+   "url": "https://bmjopen.bmj.com/content/bmjopen/suppl/2022/02/11/bmjopen-2021-056904.DC1/bmjopen-2021-056904supp001_data_supplement.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://jamanetwork.com/journals/jama/article-abstract/365799",
+   "titulo": ""
+  },
+  {
+   "url": "https://pubmed.ncbi.nlm.nih.gov/22053942/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC531662/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK537318/?report=printable",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.sciencedirect.com/science/article/abs/pii/S037722172600860X",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10792389/pdf/nihms-1918000.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://journals.sagepub.com/doi/pdf/10.1111/j.1535-7597.2004.42009.x",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3456914",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4206247/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5324332/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6427993",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7286542/",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3942686/",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.nature.com/articles/s41591-022-01803-5.pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.tandfonline.com/doi/pdf/10.1080/23750472.2023.2267057",
+   "titulo": ""
+  },
+  {
+   "url": "https://www.frontiersin.org/articles/10.3389/fped.2021.626262/pdf",
+   "titulo": ""
+  },
+  {
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8822539/?utm_source=openai",
+   "titulo": ""
+  }
+ ],
+ "busquedas": 5,
+ "modelo": "gpt-6.1-sol",
+ "seed": "La regla del \"nunca falles dos veces seguidas\"",
+ "fecha": "2026-11-14T13:14-04:00",
+ "_nota": "Hallazgos de la búsqueda web del guionista. NO están verificados: Claude los comprueba en la fuente antes de ponerlos en pantalla."
+}
