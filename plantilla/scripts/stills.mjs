@@ -1,6 +1,7 @@
 // Renderiza un fotograma por escena (+ la tarjeta resumen) con UN solo bundle y monta una hoja de contactos.
 //   npm run stills                       → out/stills/<id>.png, out/stills/hoja.jpg y out/stills/hoja_zonas.jpg
-//                                          (hoja_zonas: en rojo lo que tapa Instagram, en azul el sitio de los subtítulos)
+//                                          (hoja_zonas: en rojo lo que tapa Instagram, en naranja los márgenes laterales
+//                                           que Instagram puede recortar, en azul el sitio de los subtítulos)
 //   npm run stills -- --frames=120,480   → solo esos frames
 //   npm run stills -- --browser=/usr/bin/google-chrome   (si no se puede descargar Chrome Headless Shell)
 import { bundle } from "@remotion/bundler";
@@ -36,12 +37,16 @@ try {
   execFileSync("ffmpeg", ["-y", "-loglevel", "error", ...entradas, "-filter_complex", filtro, "-frames:v", "1", path.join(salida, "hoja.jpg")]);
   console.log(`hoja de contactos (${cols}×${filas}) → out/stills/hoja.jpg`);
   // Misma hoja con las zonas de la interfaz de Instagram encima (px sobre 1080×1920): arriba nombre y foto de perfil,
-  // abajo nombre/descripción/audio, a la derecha la columna de botones. En azul, la franja de los subtítulos.
+  // abajo nombre/descripción/audio, a la derecha la columna de botones. En naranja, los márgenes laterales que Instagram
+  // puede recortar al adaptar el Reel a la pantalla (MARGEN = MARGEN_LADOS de src/marco/datos.ts). En azul, los subtítulos.
+  const MARGEN = 120;
   const ZONAS = [
     "drawbox=x=0:y=0:w=1080:h=260:color=red@0.35:t=fill",
     "drawbox=x=0:y=1540:w=1080:h=380:color=red@0.35:t=fill",
     "drawbox=x=900:y=1100:w=180:h=440:color=red@0.35:t=fill",
-    "drawbox=x=90:y=300:w=900:h=200:color=0x1FB7DE@0.9:t=6",
+    `drawbox=x=0:y=260:w=${MARGEN}:h=1280:color=orange@0.35:t=fill`,
+    `drawbox=x=${1080 - MARGEN}:y=260:w=${MARGEN}:h=840:color=orange@0.35:t=fill`,
+    `drawbox=x=${MARGEN}:y=300:w=${1080 - 2 * MARGEN}:h=200:color=0x1FB7DE@0.9:t=6`,
   ].join(",");
   const escalasZ = objetivos.map((_, i) => `[${i}:v]${ZONAS},scale=270:480[s${i}]`).join(";");
   const filtroZ = n > 1 ? `${escalasZ};${lienzo}xstack=inputs=${n}:layout=${pos}:fill=black` : `[0:v]${ZONAS},scale=270:480`;

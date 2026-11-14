@@ -60,14 +60,15 @@ Por cada estudio o estadística que diga la voz:
 - Si la composición por defecto no da para un gag o una idea, escribe una **escena a medida** (paso 6).
 
 ## 6. Escenas a medida
-`briefs/<BASE>/custom/<nombre>.tsx` con `export default` un `React.FC<{ e: Escena; c: C }>`. En la escena: `"componente": "<nombre>"` (se dibuja encima de la composición por defecto) y `"solo_componente": true` si la sustituye. Escribe los imports como si el archivo estuviera en `src/escenas/custom/` (`../../marco/datos`, `../../componentes/kit`, `../../personaje/Sprite`). Frame local a la escena, determinismo total (ver `tecnico.md`).
+`briefs/<BASE>/custom/<nombre>.tsx` con `export default` un `React.FC<{ e: Escena; c: C }>`. Coloca todo con `ZONA` y `encajarX` de `../../marco/datos` (zona segura: x 120–960, ver `layout.md`), nunca con coordenadas pegadas al borde. En la escena: `"componente": "<nombre>"` (se dibuja encima de la composición por defecto) y `"solo_componente": true` si la sustituye. Escribe los imports como si el archivo estuviera en `src/escenas/custom/` (`../../marco/datos`, `../../componentes/kit`, `../../personaje/Sprite`). Frame local a la escena, determinismo total (ver `tecnico.md`).
 
 ## 7. Prepara, mira y corrige
 1. `python3 scripts/preparar_video.py briefs/<BASE>` valida la escaleta (`scripts/validar_render.py`), la convierte en frames y deja el proyecto en `videos/<BASE>/`. Si hay errores, corrige y repite.
 2. `cd videos/<BASE> && npm install` (la primera vez) → `npm run tipos` → `npm run stills` (un fotograma por escena + `out/stills/hoja.jpg` y `out/stills/hoja_zonas.jpg`, la misma hoja con la interfaz de Instagram en rojo).
 3. **Mira la hoja** y abre los PNG que te hagan dudar. Comprueba:
    - La mascota cuenta lo mismo que la voz y no se corta ni flota.
-   - En `hoja_zonas.jpg` nada vital cae en rojo: arriba (Y<260, nombre y foto de perfil), abajo (Y>1540, nombre, descripción y audio) ni la columna de botones (X>900 desde Y≈1100). Nada pisa los subtítulos (Y≈300–402, ni las insignias de icono que cuelgan debajo, hasta Y≈500) ni el texto en pantalla de abajo.
+   - En `hoja_zonas.jpg` nada vital cae en rojo: arriba (Y<260, nombre y foto de perfil), abajo (Y>1540, nombre, descripción y audio) ni la columna de botones (X>900 desde Y≈1100).
+   - **Nada vital toca las franjas naranjas** de los lados (x<120 y x>960): Instagram las recorta en muchas pantallas. Ni la mascota, ni iconos, ni cifras, ni bordes de tarjetas o paneles. Solo fondo y efectos decorativos. Si algo las pisa, recolócalo con `ZONA` (ver `layout.md`); no lo arregles achicando el margen. Nada pisa los subtítulos (Y≈300–402, ni las insignias de icono que cuelgan debajo, hasta Y≈500) ni el texto en pantalla de abajo.
    - Arriba solo están los subtítulos, también en el gancho: ni logo, ni isotipo, ni títulos fijos, y nada de la escena choca con ellos.
    - La tarjeta final (still `resumen`): la pregunta se reconoce como la del gancho, el veredicto la contesta y los pasos se pueden hacer hoy.
    - Poco texto: si un fotograma se lee como una diapositiva, sobra texto. Los subtítulos, sin signos de puntuación y con su color.
@@ -84,6 +85,7 @@ Por cada estudio o estadística que diga la voz:
 
 ## Reglas fijas
 - El marco IncreaseFit es fijo: subtítulos arriba en Y≈300, bajo la interfaz de Instagram (sin logo encima), texto en pantalla abajo y tarjeta final con el logo. Dentro de las escenas, libertad (sin títulos persistentes).
+- Zona segura: el contenido nunca se pega a los bordes. Mínimo 120 px a cada lado (x 120–960; hasta x 900 por debajo de Y≈1100), porque Instagram recorta los lados según la pantalla.
 - La mascota es la única figura humana: nunca personas reales, fotos ni personajes de otras cuentas o marcas.
 - Sin CTA en la voz ni en las escenas: el video no pide comentarios, likes, follows ni compartir. La única invitación es el GUÁRDALO de la tarjeta final.
 - La voz no se toca: ni recortes ni cambios de velocidad (el ritmo se ajusta en el notebook, antes de sacar los tiempos).

@@ -1,7 +1,10 @@
 // Piezas del kit gráfico (kit/*.svg) animadas. Todas reciben `desde` en frames LOCALES de la escena.
+// Todas las piezas de contenido se encajan solas dentro de la ZONA segura (marco/datos.ts): aunque una escena a medida
+// pida x = 20, la pieza se queda a ZONA.izq del borde. Los efectos decorativos (Efecto, cortinilla) sí llegan al borde.
+// Las columnas (Dato, FichaEstudio, Lista, Libreta, Grafica) van de ZONA.izq a x≈620, a la izquierda de la mascota.
 import React from "react";
 import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import { datos, FUENTE, IF, type Semana } from "../marco/datos";
+import { datos, encajarX, FUENTE, IF, ZONA, type Semana } from "../marco/datos";
 import type { C } from "../marco/clima";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -29,8 +32,8 @@ export const Etiqueta: React.FC<{ texto: string; a: [number, number]; desde: num
   const e = useEntrada(desde);
   const izq = a[0] > 540;                                   // la etiqueta va al lado libre
   const ly = Math.min(1250, Math.max(580, a[1] - 150));
-  const lx = izq ? 70 : 610;
   const ancho = 400;
+  const lx = izq ? ZONA.izq : ZONA.der - ancho;
   const sx = izq ? lx + Math.min(ancho, texto.length * 26 + 30) : lx + 10, sy = ly + 70;
   const ctrl: [number, number] = [(sx + a[0]) / 2, Math.min(sy, a[1]) - 90];
   const d = `M${sx},${sy} Q${ctrl[0]},${ctrl[1]} ${a[0]},${a[1]}`;
@@ -59,7 +62,7 @@ export const CajaTachada: React.FC<{ texto: string; x: number; y: number; desde:
   const raya = interpolate(f, [t0, t0 + 7], [0, 1], clamp);
   const ancho = Math.min(560, texto.length * 30 + 80);
   return (
-    <div style={{ position: "absolute", left: x, top: y, width: ancho, height: 110, transform: `scale(${0.6 + 0.4 * e}) rotate(-3deg)`, opacity: Math.min(1, e * 1.5) }}>
+    <div style={{ position: "absolute", left: encajarX(x, ancho), top: y, width: ancho, height: 110, transform: `scale(${0.6 + 0.4 * e}) rotate(-3deg)`, opacity: Math.min(1, e * 1.5) }}>
       <Img src={staticFile("kit/marcas/caja_etiqueta.svg")} style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
       <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: 46, color: IF.grafito, letterSpacing: "-0.01em" }}>{texto}</div>
       <div style={{ position: "absolute", left: "4%", top: 34, width: "92%", height: 46, clipPath: `inset(0 ${100 - raya * 100}% 0 0)` }}>
@@ -85,7 +88,7 @@ export const Circulo: React.FC<{ a: [number, number]; desde: number; r?: number;
 export const Marca: React.FC<{ tipo: "check" | "cruz"; x: number; y: number; desde: number; size?: number }> = ({ tipo, x, y, desde, size = 190 }) => {
   const e = useEntrada(desde, { damping: 9, stiffness: 240 });
   return (
-    <div style={{ position: "absolute", left: x - size / 2, top: y - size / 2, transform: `scale(${2 - e}) rotate(${(1 - e) * -20}deg)`, opacity: Math.min(1, e * 2) }}>
+    <div style={{ position: "absolute", left: encajarX(x - size / 2, size), top: y - size / 2, transform: `scale(${2 - e}) rotate(${(1 - e) * -20}deg)`, opacity: Math.min(1, e * 2) }}>
       <Tinta src={`kit/marcas/${tipo}.svg`} color={tipo === "check" ? IF.exito : IF.alerta} w={size} h={size * (tipo === "check" ? 220 / 260 : 1)} />
     </div>
   );
@@ -96,7 +99,7 @@ export const BurbujaPensamiento: React.FC<{ x: number; y: number; sprite: string
   const e = useEntrada(desde);
   const w = 460, h = w * 450 / 660;
   return (
-    <div style={{ position: "absolute", left: x, top: y, width: w, height: h, transform: `scale(${0.5 + 0.5 * e})`, transformOrigin: "15% 95%", opacity: Math.min(1, e) }}>
+    <div style={{ position: "absolute", left: encajarX(x, w), top: y, width: w, height: h, transform: `scale(${0.5 + 0.5 * e})`, transformOrigin: "15% 95%", opacity: Math.min(1, e) }}>
       <Img src={staticFile("kit/burbujas/burbuja_pensamiento.svg")} style={{ position: "absolute", inset: 0, width: w, height: h }} />
       <Img src={staticFile(`mascota/sprites/${sprite}.png`)} style={{ position: "absolute", left: w * 0.5 - 70, top: h * 0.4 - 95, height: 190, objectFit: "contain" }} />
     </div>
@@ -108,7 +111,7 @@ export const BurbujaDialogo: React.FC<{ x: number; y: number; texto: string; des
   const e = useEntrada(desde);
   const w = 480, h = w * 420 / 640;
   return (
-    <div style={{ position: "absolute", left: x, top: y, width: w, height: h, transform: `scale(${0.5 + 0.5 * e})`, transformOrigin: espejo ? "80% 95%" : "20% 95%", opacity: Math.min(1, e) }}>
+    <div style={{ position: "absolute", left: encajarX(x, w), top: y, width: w, height: h, transform: `scale(${0.5 + 0.5 * e})`, transformOrigin: espejo ? "80% 95%" : "20% 95%", opacity: Math.min(1, e) }}>
       <Img src={staticFile("kit/burbujas/burbuja_dialogo.svg")} style={{ position: "absolute", inset: 0, width: w, height: h, transform: espejo ? "scaleX(-1)" : undefined }} />
       <div style={{ position: "absolute", left: w * 0.1, top: h * 0.12, width: w * 0.8, height: h * 0.55, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center",
         fontFamily: FUENTE.mano, fontWeight: 700, fontSize: Math.min(54, Math.floor(900 / Math.max(10, texto.length))), color: IF.grafito, lineHeight: 1.05 }}>{texto}</div>
@@ -120,7 +123,7 @@ export const BurbujaDialogo: React.FC<{ x: number; y: number; texto: string; des
 export const Inserto: React.FC<{ cara: string; desde: number; c: C; x?: number; y?: number; r?: number }> = ({ cara, desde, c, x = 830, y = 690, r = 150 }) => {
   const e = useEntrada(desde, { damping: 10, stiffness: 200 });
   return (
-    <div style={{ position: "absolute", left: x - r, top: y - r, width: r * 2, height: r * 2, transform: `scale(${e})` }}>
+    <div style={{ position: "absolute", left: encajarX(x - r, r * 2), top: y - r, width: r * 2, height: r * 2, transform: `scale(${e})` }}>
       <div style={{ position: "absolute", inset: 8, borderRadius: "50%", overflow: "hidden", background: c.superficie }}>
         <Img src={staticFile(`mascota/sprites/${cara}.png`)} style={{ position: "absolute", left: -r * 0.12, top: r * 0.05, width: r * 2.24 }} />
       </div>
@@ -130,7 +133,7 @@ export const Inserto: React.FC<{ cara: string; desde: number; c: C; x?: number; 
 };
 
 /** Cifra grande (cuenta hasta su valor si es numérica) con su explicación y la fuente. */
-export const Dato: React.FC<{ texto: string; detalle?: string; fuente?: string; desde: number; c: C; x?: number; y?: number; ancho?: number }> = ({ texto, detalle, fuente, desde, c, x = 70, y = 610, ancho = 560 }) => {
+export const Dato: React.FC<{ texto: string; detalle?: string; fuente?: string; desde: number; c: C; x?: number; y?: number; ancho?: number }> = ({ texto, detalle, fuente, desde, c, x = ZONA.izq, y = 610, ancho = 500 }) => {
   const f = useCurrentFrame();
   const e = useEntrada(desde);
   const m = texto.match(/^([^\d]*)(\d+(?:[.,]\d+)?)(.*)$/);
@@ -143,7 +146,7 @@ export const Dato: React.FC<{ texto: string; detalle?: string; fuente?: string; 
   }
   const tam = Math.min(190, Math.floor(ancho / Math.max(1, texto.length * 0.62)));
   return (
-    <div style={{ position: "absolute", left: x, top: y, width: ancho, transform: `translateY(${(1 - e) * 60}px)`, opacity: Math.min(1, e) }}>
+    <div style={{ position: "absolute", left: encajarX(x, ancho), top: y, width: ancho, transform: `translateY(${(1 - e) * 60}px)`, opacity: Math.min(1, e) }}>
       <div style={{ fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: tam, color: c.foco, lineHeight: 1, letterSpacing: "-0.03em" }}>{mostrado}</div>
       {detalle ? <div style={{ marginTop: 14, fontFamily: FUENTE.titulos, fontWeight: 700, fontSize: 40, color: c.texto, lineHeight: 1.2 }}>{detalle}</div> : null}
       {fuente ? <div style={{ marginTop: 16, fontFamily: FUENTE.mono, fontSize: 24, color: c.texto_suave, letterSpacing: "0.04em" }}>{fuente}</div> : null}
@@ -164,7 +167,7 @@ export const IconoPop: React.FC<{ nombre: string; x: number; y: number; desde: n
   const barra = interpolate(f, [desde + 10, desde + 18], [0, 1], clamp);
   const L = size * 0.95;
   return (
-    <div style={{ position: "absolute", left: x - size / 2, top: y - size / 2 + flota, width: size, height: size, transform: `scale(${e}) rotate(${(1 - e) * -30}deg)`, opacity: Math.min(1, e * 2) }}>
+    <div style={{ position: "absolute", left: encajarX(x - size / 2, size), top: y - size / 2 + flota, width: size, height: size, transform: `scale(${e}) rotate(${(1 - e) * -30}deg)`, opacity: Math.min(1, e * 2) }}>
       <div style={{ position: "absolute", inset: 0, borderRadius: "50%", background: c.superficie, border: `6px solid ${col}`, boxShadow: `0 18px 40px rgba(0,0,0,0.35), 0 0 40px ${col}33` }} />
       <Icono nombre={nombre} color={col} size={size * 0.52} style={{ position: "absolute", left: size * 0.24, top: size * 0.24 }} />
       {tachado ? (
@@ -179,11 +182,11 @@ export const IconoPop: React.FC<{ nombre: string; x: number; y: number; desde: n
 
 /** Ficha de un estudio contada con iconos: cada fila = icono + cifra corta ("100", "8 sem", "5 g"), que entra en su frame local.
  *  Abajo, la fuente verificada (JetBrains Mono) o EJEMPLO ILUSTRATIVO. Va en la columna izquierda (la mascota pasa a la derecha). */
-export const FichaEstudio: React.FC<{ filas: { icono: string; texto: string }[]; frames: number[]; fuente?: string; c: C; x?: number; y?: number; ancho?: number }> = ({ filas, frames, fuente, c, x = 60, y = 600, ancho = 560 }) => {
+export const FichaEstudio: React.FC<{ filas: { icono: string; texto: string }[]; frames: number[]; fuente?: string; c: C; x?: number; y?: number; ancho?: number }> = ({ filas, frames, fuente, c, x = ZONA.izq, y = 600, ancho = 500 }) => {
   const f = useCurrentFrame();
   const e = useEntrada(Math.max(0, (frames[0] ?? 0) - 4));
   return (
-    <div style={{ position: "absolute", left: x, top: y, width: ancho, borderRadius: 34, background: c.superficie, border: `3px solid ${c.estructura}44`, padding: "26px 34px",
+    <div style={{ position: "absolute", left: encajarX(x, ancho), top: y, width: ancho, borderRadius: 34, background: c.superficie, border: `3px solid ${c.estructura}44`, padding: "26px 34px",
       boxSizing: "border-box", transform: `translateY(${(1 - e) * 70}px)`, opacity: Math.min(1, e), boxShadow: "0 24px 60px rgba(0,0,0,0.3)" }}>
       {filas.slice(0, 4).map((r, i) => {
         const ei = spring({ fps: 30, frame: f - (frames[i] ?? 0), config: { damping: 10, stiffness: 220 } });
@@ -193,7 +196,7 @@ export const FichaEstudio: React.FC<{ filas: { icono: string; texto: string }[];
             <div style={{ width: 104, height: 104, borderRadius: 26, background: `${c.foco}22`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
               <Icono nombre={r.icono} color={c.foco} size={64} />
             </div>
-            <div style={{ fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: Math.min(84, Math.floor(700 / Math.max(3, r.texto.length))), color: c.texto, lineHeight: 1, letterSpacing: "-0.02em" }}>{r.texto}</div>
+            <div style={{ fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: Math.min(84, Math.floor((ancho - 200) / (0.6 * Math.max(3, r.texto.length)))), color: c.texto, lineHeight: 1, letterSpacing: "-0.02em" }}>{r.texto}</div>
           </div>
         );
       })}
@@ -203,7 +206,7 @@ export const FichaEstudio: React.FC<{ filas: { icono: string; texto: string }[];
 };
 
 /** Checklist: cada ítem aparece y se marca a su tiempo (frames locales). */
-export const Lista: React.FC<{ items: string[]; frames: number[]; c: C; x?: number; y?: number; ancho?: number }> = ({ items, frames, c, x = 60, y = 600, ancho = 560 }) => {
+export const Lista: React.FC<{ items: string[]; frames: number[]; c: C; x?: number; y?: number; ancho?: number }> = ({ items, frames, c, x = ZONA.izq, y = 600, ancho = 500 }) => {
   const f = useCurrentFrame();
   return (
     <>
@@ -211,7 +214,7 @@ export const Lista: React.FC<{ items: string[]; frames: number[]; c: C; x?: numb
         const e = spring({ fps: 30, frame: f - frames[i], config: { damping: 12, stiffness: 180 } });
         const marcado = f >= frames[i] + 8;
         return (
-          <div key={i} style={{ position: "absolute", left: x, top: y + i * 128, width: ancho, display: "flex", alignItems: "center", gap: 22,
+          <div key={i} style={{ position: "absolute", left: encajarX(x, ancho), top: y + i * 128, width: ancho, display: "flex", alignItems: "center", gap: 22,
             transform: `translateX(${(1 - e) * -90}px)`, opacity: Math.min(1, e) }}>
             <Img src={staticFile(`kit/marcas/${marcado ? "casilla_marcada" : "casilla"}.svg`)} style={{ width: 96, height: 90, flexShrink: 0 }} />
             <div style={{ fontFamily: FUENTE.titulos, fontWeight: 700, fontSize: 42, color: c.texto, lineHeight: 1.1 }}>{it}</div>
@@ -248,7 +251,7 @@ export const Capitulo: React.FC<{ texto: string; c: C }> = ({ texto, c }) => {
   const e = useEntrada(0, { damping: 13, stiffness: 160 });
   const [rotulo, frase] = texto.includes(":") ? texto.split(/:(.*)/s).map((s) => s.trim()) : [texto, ""];
   return (
-    <div style={{ position: "absolute", left: 50, top: 560, width: 980, height: 760, borderRadius: 36, background: c.superficie, border: `3px solid ${c.estructura}44`, overflow: "hidden",
+    <div style={{ position: "absolute", left: ZONA.izq, top: 560, width: ZONA.ancho, height: 760, borderRadius: 36, background: c.superficie, border: `3px solid ${c.estructura}44`, overflow: "hidden",
       transform: `scale(${0.92 + 0.08 * e + f * 0.0006})`, opacity: Math.min(1, e) }}>
       <div style={{ position: "absolute", left: 0, right: 0, top: 150, textAlign: "center", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: Math.min(230, Math.floor(1700 / Math.max(4, rotulo.length))),
         color: c.texto, opacity: 0.13, letterSpacing: "0.02em", textTransform: "uppercase", transform: `translateX(${-f * 0.8}px)` }}>{rotulo}</div>
@@ -260,13 +263,13 @@ export const Capitulo: React.FC<{ texto: string; c: C }> = ({ texto, c }) => {
 };
 
 /** Libreta de entreno (progresión ILUSTRATIVA: escaleta.progresion). */
-export const Libreta: React.FC<{ c: C; titulo: string; frames: number[]; filas?: Semana[]; x?: number; y?: number; ancho?: number }> = ({ c, titulo, frames, filas: propias, x = 60, y = 600, ancho = 540 }) => {
+export const Libreta: React.FC<{ c: C; titulo: string; frames: number[]; filas?: Semana[]; x?: number; y?: number; ancho?: number }> = ({ c, titulo, frames, filas: propias, x = ZONA.izq, y = 600, ancho = 500 }) => {
   const f = useCurrentFrame();
   const filas = (propias ?? datos.progresion).slice(0, 4);
   const e = useEntrada(frames[0] - 8);
   const kg = (n: number) => String(n).replace(".", ",");
   return (
-    <div style={{ position: "absolute", left: x, top: y, width: ancho, borderRadius: 22, background: c.superficie, border: `2px solid ${c.estructura}44`, padding: "22px 26px", boxSizing: "border-box",
+    <div style={{ position: "absolute", left: encajarX(x, ancho), top: y, width: ancho, borderRadius: 22, background: c.superficie, border: `2px solid ${c.estructura}44`, padding: "22px 26px", boxSizing: "border-box",
       transform: `translateY(${(1 - e) * 60}px)`, opacity: Math.min(1, e), fontFamily: FUENTE.mono }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, color: c.texto_suave, fontSize: 24, letterSpacing: "0.12em", marginBottom: 14 }}><Icono nombre="notebook-pen" color={c.foco} size={30} />{titulo.toUpperCase()}</div>
       {filas.map((r, i) => {
@@ -286,7 +289,7 @@ export const Libreta: React.FC<{ c: C; titulo: string; frames: number[]; filas?:
 };
 
 /** Gráfica de la progresión que se dibuja (fuerza estimada, sube aunque el kg se repita). */
-export const Grafica: React.FC<{ c: C; desde: number; filas?: Semana[]; x?: number; y?: number; ancho?: number; alto?: number }> = ({ c, desde, filas: propias, x = 60, y = 620, ancho = 560, alto = 380 }) => {
+export const Grafica: React.FC<{ c: C; desde: number; filas?: Semana[]; x?: number; y?: number; ancho?: number; alto?: number }> = ({ c, desde, filas: propias, x = ZONA.izq, y = 620, ancho = 500, alto = 380 }) => {
   const f = useCurrentFrame();
   const filas = propias ?? datos.progresion;
   const valores = filas.map((r) => r.kg * (1 + r.reps / 30));
@@ -297,7 +300,7 @@ export const Grafica: React.FC<{ c: C; desde: number; filas?: Semana[]; x?: numb
   const d = valores.map((v, i) => `${i ? "L" : "M"}${px(i)},${py(v)}`).join(" ");
   const largo = valores.reduce((n, v, i) => (i ? n + Math.hypot(px(i) - px(i - 1), py(v) - py(valores[i - 1])) : 0), 0);
   return (
-    <div style={{ position: "absolute", left: x, top: y, width: ancho, height: alto, borderRadius: 22, background: c.superficie, border: `2px solid ${c.estructura}44` }}>
+    <div style={{ position: "absolute", left: encajarX(x, ancho), top: y, width: ancho, height: alto, borderRadius: 22, background: c.superficie, border: `2px solid ${c.estructura}44` }}>
       <div style={{ position: "absolute", left: 26, top: 18, fontFamily: FUENTE.mono, fontSize: 20, letterSpacing: "0.12em", color: c.texto_suave }}>EJEMPLO ILUSTRATIVO</div>
       <svg width={ancho} height={alto} style={{ position: "absolute", inset: 0 }}>
         <path d={d} fill="none" stroke={c.foco} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={largo} strokeDashoffset={largo * (1 - prog)} />
@@ -334,7 +337,7 @@ export const TarjetaResumen: React.FC<{
   const linea = ent(16, { damping: 18, stiffness: 120 });
   const m = ent(14, { damping: 10, stiffness: 190 });
   return (
-    <div style={{ position: "absolute", left: 60, top: 320, width: 900, display: "flex", flexDirection: "column", gap: 22 }}>{/* x 60–960 · Y≈320–1530 (zonas de Instagram) */}
+    <div style={{ position: "absolute", left: ZONA.izq, top: 320, width: ZONA.ancho, display: "flex", flexDirection: "column", gap: 22 }}>{/* x 120–960 · Y≈320–1530 (zona segura) */}
       <div style={{ borderRadius: 40, background: c.superficie, border: `3px solid ${c.foco}66`, boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
         padding: "42px 54px 40px", boxSizing: "border-box", transform: `translateY(${(1 - e) * 200}px) scale(${0.9 + 0.1 * e})`, opacity: Math.min(1, e) }}>
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>

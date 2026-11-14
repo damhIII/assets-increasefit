@@ -8,7 +8,7 @@
 // la cápsula (hasta Y≈500); la escena empieza en Y≈540.
 import React, { useMemo } from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { datos, FUENTE, IF, type Palabra } from "./datos";
+import { datos, FUENTE, IF, ZONA, type Palabra } from "./datos";
 import { Icono } from "../componentes/kit";
 
 type W = { w: string; a: number; b: number; enf: boolean; corte: boolean; tono: "" | "alerta" | "exito"; icono: string };
@@ -95,7 +95,7 @@ export const Subtitulos: React.FC<{ top?: number }> = ({ top: topFijo }) => {
   return (
     <div style={{ position: "absolute", top, left: 0, width: 1080, display: "flex", justifyContent: "center" }}>
       <div style={{ background: CAPSULA, backdropFilter: "blur(16px)", borderRadius: 30, padding: "12px 18px", display: "flex", gap: 6, alignItems: "center",
-        maxWidth: 940, flexWrap: "wrap", justifyContent: "center", opacity: Math.min(1, 0.5 + entrada),
+        maxWidth: ZONA.ancho, flexWrap: "wrap", justifyContent: "center", opacity: Math.min(1, 0.5 + entrada),
         transform: `translateY(${(1 - entrada) * -20}px) scale(${0.9 + 0.1 * entrada})`, transformOrigin: "50% 0%" }}>
         {g.map((p, k) => <PalabraSub key={k} p={p} siguiente={g[k + 1]?.a ?? sigGrupo} t={t} f={f} fps={fps} />)}
       </div>

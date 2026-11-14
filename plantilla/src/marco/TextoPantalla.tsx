@@ -1,16 +1,16 @@
 // Texto en pantalla de cada escena: ABAJO, en la franja Y≈1360–1540 (los subtítulos van arriba; por debajo de 1540 van el
-// nombre, la foto de perfil y la descripción de Instagram). Ancho máx. 800 px (x 80–880) para no meterse en la columna de
-// botones de Instagram (x>900 desde Y≈1100). Complementa a la voz, no la repite.
+// nombre, la foto de perfil y la descripción de Instagram). De ZONA.izq a ZONA.botones (x 120–900): fuera del margen lateral
+// y de la columna de botones de Instagram (x>900 desde Y≈1100). Complementa a la voz, no la repite.
 //   titular: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 en el foco del clima (eco del "FIT" del logo). Sin "/": una línea 800.
 //   nota:    a mano (Kalam), ligeramente girada, como una anotación.
 //   capitulo y ninguno: no se dibuja aquí (capitulo es una tarjeta de la escena).
 import React from "react";
 import { interpolate, interpolateColors, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { datos, FUENTE, IF } from "./datos";
+import { datos, FUENTE, IF, ZONA } from "./datos";
 import { useClima } from "./clima";
 
 export const TEXTO_TOP = 1360;
-const ANCHO = 800;
+const ANCHO = ZONA.botones - ZONA.izq;
 const ajustar = (txt: string, base: number, factor: number) => Math.min(base, Math.floor(ANCHO / Math.max(1, txt.length * factor)));
 
 export const TextoPantalla: React.FC = () => {
@@ -48,7 +48,7 @@ export const TextoPantalla: React.FC = () => {
     return (
       <>
         {velo}
-        <div style={{ position: "absolute", top: TEXTO_TOP + 30, left: 110, width: ANCHO, textAlign: "center", ...entra(0) }}>
+        <div style={{ position: "absolute", top: TEXTO_TOP + 30, left: ZONA.izq, width: ANCHO, textAlign: "center", ...entra(0) }}>
           <span style={{ display: "inline-block", fontFamily: FUENTE.mano, fontWeight: 700, fontSize: s, color: claro ? IF.tinta : IF.hielo, transform: "rotate(-3deg)", lineHeight: 1.1 }}>{texto}</span>
         </div>
       </>
@@ -60,7 +60,7 @@ export const TextoPantalla: React.FC = () => {
   return (
     <>
     {velo}
-    <div style={{ position: "absolute", top: l1 ? TEXTO_TOP : TEXTO_TOP + 40, left: 80, width: ANCHO, fontFamily: FUENTE.titulos, lineHeight: 1.02 }}>
+    <div style={{ position: "absolute", top: l1 ? TEXTO_TOP : TEXTO_TOP + 40, left: ZONA.izq, width: ANCHO, fontFamily: FUENTE.titulos, lineHeight: 1.02 }}>
       {l1 ? <div style={{ fontWeight: 400, fontSize: s1, color: blanco, letterSpacing: "-0.01em", ...entra(0) }}>{l1}</div> : null}
       <div style={{ position: "relative", display: "inline-block", marginTop: 6, ...entra(l1 ? 1 : 0) }}>
         {claro ? <div style={{ position: "absolute", left: -10, right: -10, top: "12%", bottom: "6%", background: c.foco, transformOrigin: "left center", transform: `scaleX(${marcador})` }} /> : null}

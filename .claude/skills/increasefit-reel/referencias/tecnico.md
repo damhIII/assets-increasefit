@@ -16,14 +16,14 @@
 // briefs/<BASE>/custom/flecha_sube.tsx  (imports como si estuviera en src/escenas/custom/)
 import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
-import { IF, frameDePalabra, type Escena } from "../../marco/datos";
+import { IF, ZONA, frameDePalabra, type Escena } from "../../marco/datos";
 import type { C } from "../../marco/clima";
 
 const FlechaSube: React.FC<{ e: Escena; c: C }> = ({ e, c }) => {
   const f = useCurrentFrame();                              // local a la escena
   const golpe = frameDePalabra(31) - e.ini_f;                // la palabra [31] en frame local
   const y = interpolate(f, [golpe, golpe + 12], [1300, 1000], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  return <div style={{ position: "absolute", left: 640, top: y, width: 80, height: 80, background: c.foco }} />   // el acento siempre del clima, nunca un azul a mano;
+  return <div style={{ position: "absolute", left: ZONA.botones - 260, top: y, width: 80, height: 80, background: c.foco }} />   // el acento siempre del clima, nunca un azul a mano; x siempre desde ZONA
 };
 export default FlechaSube;
 ```
@@ -36,9 +36,10 @@ export default FlechaSube;
 - Determinismo total: prohibido `Math.random()` (usa `Math.sin`, índices o `random(seed)` de Remotion).
 - Hooks solo dentro de componentes y en número fijo por render.
 - Dentro de una `<Sequence>` el frame es local: `useClimaEscena(e)` para los colores.
+- Zona segura: las x del contenido salen de `ZONA` (`ZONA.izq`, `ZONA.der`, `ZONA.botones`, `ZONA.ancho`, `ZONA.cx`) o de `encajarX(x, ancho)`; nada de `left: 30` o `left: 1000`. Ver `layout.md`.
 
 ## Revisión y render
 1. `npm run tipos` (TypeScript) y `npm run stills`: un solo bundle, un PNG por escena y por la tarjeta en `out/stills/` + hoja de contactos `out/stills/hoja.jpg`. Para frames concretos: `npm run stills -- --frames=120,480`.
-2. Mira las imágenes y corrige en `briefs/<BASE>/`: solapes, textos fuera de zona, fuentes, mascota cortada o flotando, anotaciones que no apuntan.
+2. Mira las imágenes y corrige en `briefs/<BASE>/`: solapes, textos fuera de zona, contenido en las franjas naranjas de los lados de `hoja_zonas.jpg`, fuentes, mascota cortada o flotando, anotaciones que no apuntan.
 3. Render: `npx remotion render Video out/<BASE>.mp4 --codec=h264 --crf=18`.
 4. Entrega el MP4 y la portada. Si el entorno no puede renderizar, entrega el proyecto en zip (sin `node_modules`) y el comando exacto.

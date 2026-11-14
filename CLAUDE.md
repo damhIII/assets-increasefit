@@ -24,6 +24,7 @@ Todo lo demás lo haces tú con la skill **increasefit-reel** (`.claude/skills/i
 - Sin CTA: los videos no piden comentarios, likes ni follows. La tarjeta final (GUÁRDALO) es la única invitación.
 - Cifras de estudios en pantalla solo con su fuente verificada en `editorial/datos_verificados.json`; las de ejemplo, rotuladas como ilustrativas.
 - Determinismo: nada de `Math.random()` en Remotion.
+- Zona segura: Instagram recorta los lados del Reel según la pantalla. Nada importante a menos de 120 px de los bordes laterales (x 120–960); en código, `ZONA` y `encajarX` de `plantilla/src/marco/datos.ts`.
 
 ## Qué se edita dónde
 Todo vive en este repo. Tras tocar `brand/paletas.json`, ejecuta `python3 scripts/validar_paletas.py`. Tras añadir sprites, regenera con `scripts/mascota/` (`procesar.py` → `bocas.py` → `manifiesto.py`) y revisa `mascota/contactos.jpg`. Para cambiar cómo investiga o escribe el guionista, edita `editorial/prompt_investigacion.md`, `editorial/prompt_guion.md`, `editorial/prompt_tarjeta.md` o `editorial/estilo_guion.md` (el notebook los lee de aquí). La voz se elige en el notebook (`TTS_VOICE`, `ESTILO_VOZ`, `VELOCIDAD_VOZ`, `PAUSAS`).

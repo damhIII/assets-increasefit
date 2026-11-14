@@ -3,7 +3,7 @@
 // Dentro de la escena el frame es LOCAL (0 = inicio de la escena).
 import React from "react";
 import { AbsoluteFill, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { datos, FUENTE, IF, PROPS, type Anotacion, type Escena } from "../marco/datos";
+import { datos, FUENTE, IF, PROPS, ZONA, type Anotacion, type Escena } from "../marco/datos";
 import { useClimaEscena, type C } from "../marco/clima";
 import { ancla, colocar, fasesDe, Mascota } from "../personaje/Sprite";
 import { BurbujaDialogo, BurbujaPensamiento, CajaTachada, Capitulo, Circulo, Dato, Efecto, Etiqueta, FichaEstudio, Grafica, IconoPop, Inserto, Libreta, Lista, Marca } from "../componentes/kit";
@@ -44,18 +44,20 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
   // Pantalla dividida: ASÍ NO | ASÍ SÍ (de las anotaciones solo dibuja los iconos, en el centro)
   if (e.dividida) {
     const { no, si } = e.dividida;
-    const izq = colocar(fasesDe(no)[0], "general", "izq", false, 0.68, 280);
-    const der = colocar(fasesDe(si)[0], "general", "der", false, 0.68, 800);
+    const anchoP = (ZONA.ancho - 20) / 2;                    // dos paneles con 20 px entre medias, dentro de la zona segura
+    const xNo = ZONA.izq, xSi = ZONA.izq + anchoP + 20;
+    const izq = colocar(fasesDe(no)[0], "general", "izq", false, 0.68, xNo + anchoP / 2);
+    const der = colocar(fasesDe(si)[0], "general", "der", false, 0.68, xSi + anchoP / 2);
     return (
       <Camara punch={punch} origen={[540, 1000]}>
-        <div style={{ position: "absolute", left: 30, top: 560, width: 495, height: 790, borderRadius: 30, background: `${IF.alerta}1A`, border: `3px solid ${IF.alerta}66` }} />
-        <div style={{ position: "absolute", left: 555, top: 560, width: 495, height: 790, borderRadius: 30, background: `${IF.exito}1A`, border: `3px solid ${IF.exito}66` }} />
-        <div style={{ position: "absolute", left: 30, top: 585, width: 495, textAlign: "center", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: 44, color: IF.alerta }}>ASÍ NO</div>
-        <div style={{ position: "absolute", left: 555, top: 585, width: 495, textAlign: "center", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: 44, color: IF.exito }}>ASÍ SÍ</div>
+        <div style={{ position: "absolute", left: xNo, top: 560, width: anchoP, height: 790, borderRadius: 30, background: `${IF.alerta}1A`, border: `3px solid ${IF.alerta}66` }} />
+        <div style={{ position: "absolute", left: xSi, top: 560, width: anchoP, height: 790, borderRadius: 30, background: `${IF.exito}1A`, border: `3px solid ${IF.exito}66` }} />
+        <div style={{ position: "absolute", left: xNo, top: 585, width: anchoP, textAlign: "center", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: 44, color: IF.alerta }}>ASÍ NO</div>
+        <div style={{ position: "absolute", left: xSi, top: 585, width: anchoP, textAlign: "center", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: 44, color: IF.exito }}>ASÍ SÍ</div>
         <Mascota sprite={no} anim={no.startsWith("ejercicio:") ? "ejercicio" : "temblor"} colocacion={izq} />
         <Mascota sprite={si} anim={si.startsWith("ejercicio:") ? "ejercicio" : "pop"} colocacion={der} desde={6} />
-        <Marca tipo="cruz" x={470} y={680} desde={10} size={110} />
-        <Marca tipo="check" x={995} y={680} desde={16} size={110} />
+        <Marca tipo="cruz" x={xNo + anchoP - 55} y={680} desde={10} size={110} />
+        <Marca tipo="check" x={xSi + anchoP - 55} y={680} desde={16} size={110} />
         {e.anotaciones.filter((o) => o.tipo === "icono").map((o, k) => (
           <IconoPop key={`i${k}`} nombre={o.icono ?? "lightbulb"} x={540} y={760 + k * 200} desde={Math.max(0, o.en_f - e.ini_f)} c={c} tono={o.tono} tachado={!!o.tachado} size={170} />
         ))}
@@ -80,10 +82,10 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
   const iconos = e.anotaciones.filter((o) => o.tipo === "icono");
   const posIcono = (o: Anotacion): [number, number] => {
     const k = iconos.indexOf(o), n = iconos.length;
-    if (!v) return [540 + (k - (n - 1) / 2) * Math.min(300, 900 / Math.max(1, n)), 900];
+    if (!v) return [ZONA.cx + (k - (n - 1) / 2) * Math.min(300, (ZONA.ancho - 260) / Math.max(1, n - 1)), 900];   // insignias de 260 px
     if (o.apunta) {
       const a = ancla(col, o.apunta);
-      return [Math.min(790, Math.max(180, a[0] + (libre === "izq" ? -250 : 250))), Math.min(1180, Math.max(680, a[1] - 60 + k * 40))];
+      return [Math.min(790, Math.max(ZONA.izq + 105, a[0] + (libre === "izq" ? -250 : 250))), Math.min(1180, Math.max(680, a[1] - 60 + k * 40))];
     }
     return [libre === "izq" ? 260 : 790, Math.min(1180, 720 + k * 250)];   // x≤790: el icono (210 px) no llega a los botones (x>900)
   };
@@ -93,11 +95,11 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
     const t = local(o);
     switch (o.tipo) {
       case "etiqueta": return <Etiqueta key={i} texto={o.texto ?? ""} a={ancla(col, o.apunta ?? "centro")} desde={t} c={c} />;
-      case "tachado": return <CajaTachada key={i} texto={o.texto ?? ""} x={libre === "izq" ? 60 : 540} y={Math.max(580, cabeza[1] - 40)} desde={t} />;
+      case "tachado": return <CajaTachada key={i} texto={o.texto ?? ""} x={libre === "izq" ? ZONA.izq : 540} y={Math.max(580, cabeza[1] - 40)} desde={t} />;
       case "circulo": return <Circulo key={i} a={ancla(col, o.apunta ?? "centro")} desde={t} color={c.foco} />;
-      case "check": case "cruz": return <Marca key={i} tipo={o.tipo} x={Math.min(990, col.x + col.w * col.k - 30)} y={Math.max(620, cabeza[1] - 60)} desde={t} />;
-      case "burbuja_pensamiento": return <BurbujaPensamiento key={i} sprite={o.sprite ?? "gesto_celebrar"} x={libre === "izq" ? Math.max(40, cabeza[0] - 520) : Math.min(580, cabeza[0] + 60)} y={Math.max(560, cabeza[1] - 330)} desde={t} />;
-      case "burbuja_dialogo": return <BurbujaDialogo key={i} texto={o.texto ?? ""} espejo={libre === "izq"} x={libre === "izq" ? Math.max(30, cabeza[0] - 520) : Math.min(570, cabeza[0] + 40)} y={Math.max(560, cabeza[1] - 330)} desde={t} />;
+      case "check": case "cruz": return <Marca key={i} tipo={o.tipo} x={Math.min(ZONA.der - 95, col.x + col.w * col.k - 30)} y={Math.max(620, cabeza[1] - 60)} desde={t} />;
+      case "burbuja_pensamiento": return <BurbujaPensamiento key={i} sprite={o.sprite ?? "gesto_celebrar"} x={libre === "izq" ? Math.max(ZONA.izq, cabeza[0] - 520) : Math.min(ZONA.der - 460, cabeza[0] + 60)} y={Math.max(560, cabeza[1] - 330)} desde={t} />;
+      case "burbuja_dialogo": return <BurbujaDialogo key={i} texto={o.texto ?? ""} espejo={libre === "izq"} x={libre === "izq" ? Math.max(ZONA.izq, cabeza[0] - 520) : Math.min(ZONA.der - 480, cabeza[0] + 40)} y={Math.max(560, cabeza[1] - 330)} desde={t} />;
       case "dato": return <Dato key={i} texto={o.texto ?? ""} detalle={o.detalle} fuente={o.fuente ?? (o.ilustrativo ? "EJEMPLO ILUSTRATIVO" : undefined)} desde={t} c={c} />;
       case "lista": {
         const n = (o.items ?? []).length || 1;
@@ -118,19 +120,21 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
       }
       case "rec": case "impacto": case "sudor": case "destello": return <Efecto key={i} tipo={o.tipo} a={cabeza} desde={t} c={c} />;
       case "musculos": return v
-        ? <MapaMuscular key={i} vista={o.vista} resaltar={o.resaltar ?? []} tono={o.tono} desde={t} c={c} x={70} y={570} alto={740} />
+        ? <MapaMuscular key={i} vista={o.vista} resaltar={o.resaltar ?? []} tono={o.tono} desde={t} c={c} x={ZONA.izq} y={570} alto={740} />
         : <MapaMuscular key={i} vista={o.vista} resaltar={o.resaltar ?? []} tono={o.tono} desde={t} c={c} x={540 - 216} y={540} alto={864} />;
       case "lottie": {
         const size = Math.round(420 * (o.escala ?? 1));
-        const [lx, ly] = o.apunta ? ancla(col, o.apunta) : v ? [libre === "izq" ? 270 : 810, 820] : [540, 930];
+        const borde = size * 0.4;                              // los Lottie traen ~10 % de aire transparente
+        const [ax, ly] = o.apunta ? ancla(col, o.apunta) : v ? [libre === "izq" ? ZONA.izq + borde : ZONA.der - borde, 820] : [ZONA.cx, 930];
+        const lx = Math.min(ZONA.der - borde, Math.max(ZONA.izq + borde, ax));
         return <LottieAnim key={i} id={o.lottie ?? ""} x={lx} y={ly} size={size} desde={t} c={c} tono={o.tono as "foco" | "alerta" | "exito" | "texto" | undefined} />;
       }
       case "prop": {
         const p = PROPS[o.prop ?? ""];
         if (!p) return null;
-        const lado = Math.round(p.tam_escena * (o.escala ?? 1) * (v ? 1 : 1.4));
-        const medio = Math.min(lado, 960) / 2;
-        const cx = (x: number) => Math.min((p.suelo ? 900 : 1030) - medio, Math.max(50 + medio, x));   // en el suelo (Y>1100) no entra en los botones
+        const lado = Math.min(ZONA.ancho, Math.round(p.tam_escena * (o.escala ?? 1) * (v ? 1 : 1.4)));
+        const medio = lado / 2;
+        const cx = (x: number) => Math.min((p.suelo ? ZONA.botones : ZONA.der) - medio, Math.max(ZONA.izq + medio, x));   // en el suelo (Y>1100) no entra en los botones
         if (o.apunta) {
           const [ax, ay] = ancla(col, o.apunta);
           return <PropObjeto key={i} id={p.id} x={cx(ax + (libre === "izq" ? -1 : 1) * (medio + 110))} y={Math.min(1240, Math.max(640, ay))} lado={lado} desde={t} />;
@@ -152,7 +156,7 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
       {detras}
       {v ? <Mascota sprite={v.sprite} anim={v.anim} colocacion={col} continua={continua} ini={e.ini_f} /> : null}
       {delante}
-      {e.inserto ? <Inserto cara={e.inserto.cara} desde={Math.max(0, e.inserto.en_f - e.ini_f)} c={c} x={libre === "izq" ? 250 : 830} /> : null}
+      {e.inserto ? <Inserto cara={e.inserto.cara} desde={Math.max(0, e.inserto.en_f - e.ini_f)} c={c} x={libre === "izq" ? ZONA.izq + 150 : ZONA.der - 150} /> : null}
       <Custom e={e} c={c} />
     </Camara>
   );

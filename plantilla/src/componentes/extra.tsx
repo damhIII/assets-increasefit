@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { cancelRender, continueRender, delayRender, Img, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { Lottie, type LottieAnimationData } from "@remotion/lottie";
-import { FUENTE, LOTTIES, MUSCULOS, PROPS } from "../marco/datos";
+import { encajarX, FUENTE, LOTTIES, MUSCULOS, PROPS, ZONA } from "../marco/datos";
 import type { C } from "../marco/clima";
 import { colorTono, useEntrada } from "./kit";
 
@@ -12,7 +12,7 @@ type Tono = "foco" | "alerta" | "exito";
 
 /** Mapa muscular (frente o espalda) con 1-4 músculos que se encienden escalonados en el color del tono y laten. */
 export const MapaMuscular: React.FC<{ vista?: "frente" | "espalda"; resaltar: string[]; tono?: Tono; desde: number; c: C; x?: number; y?: number; alto?: number; etiquetas?: boolean }> = ({
-  vista = "frente", resaltar, tono, desde, c, x = 60, y = 570, alto = 760, etiquetas = false }) => {
+  vista = "frente", resaltar, tono, desde, c, x = ZONA.izq, y = 570, alto = 760, etiquetas = false }) => {
   const f = useCurrentFrame();
   const e = useEntrada(desde);
   const v = MUSCULOS.vistas?.[vista];
@@ -22,7 +22,7 @@ export const MapaMuscular: React.FC<{ vista?: "frente" | "espalda"; resaltar: st
   const color = colorTono(tono, c);
   const latido = 0.82 + 0.18 * Math.sin(f / 5);
   return (
-    <div style={{ position: "absolute", left: x, top: y, width: ancho, height: alto, transform: `translateY(${(1 - e) * 70}px) scale(${0.92 + 0.08 * e})`, opacity: Math.min(1, e) }}>
+    <div style={{ position: "absolute", left: encajarX(x, ancho), top: y, width: ancho, height: alto, transform: `translateY(${(1 - e) * 70}px) scale(${0.92 + 0.08 * e})`, opacity: Math.min(1, e) }}>
       <svg viewBox={v.viewBox} width={ancho} height={alto} style={{ overflow: "visible" }}>
         <path d={v.contorno} fill={c.texto} fillOpacity={0.06} stroke={c.texto} strokeOpacity={0.45} strokeWidth={4} />
         {v.partes.map((p) => {
@@ -108,7 +108,7 @@ export const PropObjeto: React.FC<{ id: string; x: number; y: number; lado: numb
   const flota = suelo ? 0 : Math.sin((f - desde) / 14) * 6;
   const top = suelo ? y - h : y - h / 2 + flota;
   return (
-    <div style={{ position: "absolute", left: x - w / 2, top, width: w, height: h, opacity: Math.min(1, e * 1.4),
+    <div style={{ position: "absolute", left: encajarX(x - w / 2, w, suelo ? ZONA.botones : ZONA.der), top, width: w, height: h, opacity: Math.min(1, e * 1.4),
       transform: `translateY(${(1 - e) * 50}px) scale(${0.7 + 0.3 * e})`, transformOrigin: suelo ? "50% 100%" : "50% 50%",
       filter: "drop-shadow(0 14px 18px rgba(0,0,0,0.35))" }}>
       <Img src={staticFile(`props/${info.archivo}`)} style={{ width: w, height: h, display: "block" }} />

@@ -3,7 +3,7 @@
 // Ejercicios: con 3 fases (f1, fm, f2) la repetición va f1 → fm → f2 → fm. anim "hablar" (solo plano_boca_*): la boca sigue a la voz.
 import React from "react";
 import { Img, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import { ALTURA_PERSONAJE, datos, EJERCICIOS, SPRITES, type MascotaEscena, type SpriteInfo } from "../marco/datos";
+import { ALTURA_PERSONAJE, datos, EJERCICIOS, encajarX, SPRITES, ZONA, type MascotaEscena, type SpriteInfo } from "../marco/datos";
 
 export const SUELO = 1340;
 const K0 = 800 / ALTURA_PERSONAJE;                     // personaje de pie = 800 px en encuadre general
@@ -27,11 +27,11 @@ export function colocar(info: SpriteInfo, encuadre: MascotaEscena["encuadre"], p
   const ax = (a: [number, number]) => (espejo ? w - a[0] : a[0]);
   if (info.categoria === "cara" || info.categoria === "mano") {
     k = 1.25 * escalaExtra;
-    return { x: cx - (w * k) / 2, y: 930 - (h * k) / 2, k, w, h, espejo, info };
+    return { x: encajarX(cx - (w * k) / 2, w * k), y: 930 - (h * k) / 2, k, w, h, espejo, info };
   }
   if (info.categoria === "plano_medio") {
     k = K0 * 1.2 * escalaExtra;
-    return { x: cx - (w * k) / 2, y: 1450 - h * k, k, w, h, espejo, info };
+    return { x: encajarX(cx - (w * k) / 2, w * k), y: 1450 - h * k, k, w, h, espejo, info };
   }
   const cab = info.anclas.cabeza;
   if (encuadre === "medio" && cab) {
@@ -42,11 +42,11 @@ export function colocar(info: SpriteInfo, encuadre: MascotaEscena["encuadre"], p
     k = K0 * 2.5 * escalaExtra;
     return { x: 540 - ax(cab) * k, y: 860 - cab[1] * k, k, w, h, espejo, info };
   }
-  // general: pies en el suelo, que quepa en la zona de escena (x 50–1000, y 540–SUELO)
-  k = Math.min(k, 960 / w, (SUELO - 540) / h);
+  // general: pies en el suelo, que quepa en la zona segura (x ZONA.izq–ZONA.der, y 540–SUELO)
+  k = Math.min(k, ZONA.ancho / w, (SUELO - 540) / h);
   const pies = info.anclas.pies;
   let x = cx - ax(pies) * k;
-  x = Math.min(Math.max(x, 50), 1000 - w * k);
+  x = encajarX(x, w * k);
   return { x, y: SUELO - pies[1] * k, k, w, h, espejo, info };
 }
 

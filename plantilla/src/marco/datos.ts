@@ -115,6 +115,26 @@ export const IF = {
   grafito: "#141414", grafito2: "#050505", tinta: "#111111", negro: "#000000", blanco: "#FFFFFF",
   alerta: "#FF5A4E", exito: "#3DD68C", subFutura: "#6B6B6B", capsula: "rgba(8,8,8,0.72)",
 };
+
+// ZONA SEGURA (px sobre 1080×1920). Instagram adapta el Reel a cada pantalla: en teléfonos muy alargados (20:9) puede
+// recortar ~100 px por lado, y además tapa arriba (perfil), abajo (descripción, audio) y la columna de botones.
+// Mascota, iconos, cifras, textos y tarjetas EN REPOSO van dentro; solo el fondo y los efectos decorativos (confeti,
+// líneas de velocidad, enfoque, viñeta, marco REC) pueden llegar al borde. El punch-in de la cámara empuja hasta ~30 px
+// hacia fuera durante un instante: el margen ya lo cubre. Para dar más o menos aire, cambia MARGEN_LADOS (y el de
+// scripts/stills.mjs): la plantilla se recoloca sola.
+export const MARGEN_LADOS = 120;
+export const ZONA = {
+  izq: MARGEN_LADOS,                              // x mínima del contenido
+  der: 1080 - MARGEN_LADOS,                       // x máxima del contenido
+  botones: Math.min(900, 1080 - MARGEN_LADOS),    // x máxima por debajo de Y≈1100 (me gusta, comentar, compartir…)
+  arriba: 260,                                    // por encima: nombre y foto de perfil
+  abajo: 1540,                                    // por debajo: nombre, descripción y audio
+  ancho: 1080 - 2 * MARGEN_LADOS,                 // ancho útil (840)
+  cx: 540,
+};
+/** x de una caja de ancho `w` (que empezaría en `x`) metida dentro de [ZONA.izq, limiteDer]; si no cabe, centrada. */
+export const encajarX = (x: number, w: number, limiteDer: number = ZONA.der) =>
+  w > limiteDer - ZONA.izq ? (ZONA.izq + limiteDer - w) / 2 : Math.min(Math.max(x, ZONA.izq), limiteDer - w);
 const stack = (rol: string, def: string) => datos.fuentes.find((f) => f.rol === rol)?.stack ?? def;
 export const FUENTE = {
   titulos: stack("titulos", '"Open Sans", sans-serif'),

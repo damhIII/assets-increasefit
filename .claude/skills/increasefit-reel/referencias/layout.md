@@ -11,13 +11,18 @@ Rol: director y motion designer de explainers de fitness. Ritmo de Reel, cortes 
 6. **Sonido** (`marco/Sonido.tsx`): voz, música con ducking y efectos.
 
 ## Zonas (px sobre 1080x1920)
-- Subtítulos Y≈300–402 desde el frame 0 (sin logo ni isotipo encima: el logo solo sale en la tarjeta final); las insignias de icono cuelgan debajo hasta Y≈500. Escena Y≈540–1340 (suelo en 1340). Texto en pantalla Y≈1360–1540 (x 80–880, con un velo oscuro detrás). Tarjeta final x 60–960 · Y≈320–1530.
+- Subtítulos Y≈300–402 desde el frame 0 (sin logo ni isotipo encima: el logo solo sale en la tarjeta final); las insignias de icono cuelgan debajo hasta Y≈500. Escena Y≈540–1340 (suelo en 1340). Texto en pantalla Y≈1360–1540 (x 120–900, con un velo oscuro detrás). Tarjeta final x 120–960 · Y≈320–1530.
 - **Nada fijo durante todo el video**: ni logos, ni títulos de serie, ni rótulos persistentes, ni etiquetas que se queden de escena en escena (tampoco en escenas a medida). Lo de arriba es solo de los subtítulos.
 - **Interfaz de Instagram** (lo que tapa en un Reel; `npm run stills` la pinta en rojo en `out/stills/hoja_zonas.jpg`):
   - Arriba, Y<260: nombre y foto de perfil, botón seguir, "Reels" y la cámara. Ahí no va nada vital (por eso los subtítulos empiezan en Y≈300).
   - Abajo, Y>1540: nombre, foto de perfil, descripción y audio.
   - Derecha, X>900 desde Y≈1100: me gusta, comentar, compartir, guardar y ···. Ni texto, ni iconos, ni la mascota, ni objetos de suelo.
-  - Lados: deja al menos 60 px de margen.
+- **Zona segura lateral (obligatoria)**: Instagram adapta el Reel al tamaño de cada pantalla y en los teléfonos alargados recorta los lados (hasta ~100 px por lado). Todo el contenido en reposo (mascota, iconos, cifras, fichas, etiquetas, burbujas, insertos, props, textos, tarjetas) va entre **x = 120 y x = 960**, y por debajo de Y≈1100 hasta **x = 900** (botones). `npm run stills` pinta en naranja esos márgenes en `hoja_zonas.jpg`.
+  - En código no escribas los números: usa `ZONA` de `marco/datos.ts` (`ZONA.izq` = 120, `ZONA.der` = 960, `ZONA.botones` = 900, `ZONA.ancho` = 840, `ZONA.cx` = 540) y `encajarX(x, ancho)` para meter una caja dentro. El margen se cambia en un solo sitio (`MARGEN_LADOS`).
+  - Las piezas del kit (`IconoPop`, `Dato`, `FichaEstudio`, `Lista`, `Libreta`, `Grafica`, `Etiqueta`, `CajaTachada`, `Marca`, burbujas, `Inserto`, `MapaMuscular`, `PropObjeto`) y la mascota ya se encajan solas; lo que dibujes a mano (`<div>`, `<svg>`, `<Img>`) en una escena a medida, no: calcúlalo con `ZONA`.
+  - Pueden llegar al borde solo el fondo y los efectos decorativos (confeti, fuegos, líneas de velocidad, enfoque, marco REC, cortinilla). Una entrada o salida puede cruzar el borde mientras se mueve; la posición final y el pico del rebote (overshoot, `scale` > 1), no.
+  - El punch-in de la cámara (5,5 %) empuja hacia fuera lo que está lejos del centro unos 25–30 px durante un instante: el margen de 120 ya lo cubre, no lo recortes "porque aún se ve".
+  - En `medio` y `primer_plano` el cuerpo de la mascota puede salirse del cuadro (es el encuadre), pero la cabeza y las manos que cuentan algo quedan dentro de la zona.
 
 ## Texto en pantalla (`pantalla.estilo`)
 - `titular`: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 en el foco del clima (eco del "FIT" del logo). Sin "/" va una línea en 800. Se dibuja **abajo**, bajo los pies de la mascota.
