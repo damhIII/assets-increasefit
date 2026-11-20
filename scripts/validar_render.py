@@ -17,19 +17,23 @@ import sincronizar as S
 from alinear import sin_tildes
 
 ESTILOS = {"titular", "nota", "capitulo", "ninguno"}
-ANIMS = {"pop", "entrar", "temblor", "ejercicio", "estatico", "hablar"}
+ANIMS = {"pop", "entrar", "temblor", "ejercicio", "estatico", "hablar", "saltar", "asentir", "celebrar"}
 ENCUADRES = {"general", "medio", "primer_plano"}
 POSICIONES = {"centro", "izq", "der"}
 APUNTA = {"cabeza", "manos", "pies", "centro"}
 ANOTACIONES = {"etiqueta", "tachado", "circulo", "check", "cruz", "burbuja_pensamiento", "burbuja_dialogo", "dato", "lista",
                "rec", "lineas_velocidad", "impacto", "sudor", "destello", "enfoque", "libreta", "grafica", "icono", "ficha",
-               "musculos", "lottie", "prop"}
+               "musculos", "lottie", "prop", "pictograma", "barras", "anillo", "linea_tiempo", "estudio", "imagen"}
+COLUMNA = {"dato", "lista", "libreta", "grafica", "ficha", "musculos", "pictograma", "barras", "anillo", "linea_tiempo", "estudio", "imagen"}
+CAMARAS = {"viva", "quieta", "alejar", "sacudida"}
+PARTICULAS = {"polvo", "chispas", "burbujas", "confeti_suave"}
+MARCOS = {"polaroid", "celular", "circulo", "tarjeta"}
 VISTAS = {"frente", "espalda"}
-TRANSICIONES = {"corte", "pincel"}
+TRANSICIONES = {"corte", "pincel", "zoom", "deslizar", "barrido", "iris", "flash", "fundido"}
 TONOS = {"foco", "alerta", "exito"}
 # Texto en pantalla (sin contar subtítulos, fuentes, ASÍ NO/ASÍ SÍ ni la tarjeta resumen): palabras máximas por pieza…
 LIMITES = {"pantalla": 4, "capitulo": 5, "etiqueta": 2, "tachado": 3, "burbuja_dialogo": 4, "dato": 2, "detalle": 5,
-           "lista": 3, "ficha": 2, "libreta": 2}
+           "lista": 3, "ficha": 2, "libreta": 2, "barra": 2, "hito": 2, "muestra": 3, "duracion": 2, "pictograma": 4}
 PRESUPUESTO_TEXTO = 20          # …y palabras en pantalla en TODO el video
 TEXTO_POR_ESCENA = 2            # piezas con texto por escena (lo normal es 0 o 1)
 # Tarjeta final: palabras máximas por campo y número de pasos
@@ -64,6 +68,7 @@ def validar(dir_base):
     lotties = {l["id"] for l in cat["lottie"].get("animaciones") or []}
     fondos = {x["id"] for x in cat["fondos"].get("fondos") or []}
     props = {x["id"] for x in cat["props"].get("props") or []}
+    imgs = S.imagenes_de(d)
     texto_total = []                          # (dónde, palabras) del texto en pantalla, para el presupuesto
 
     def palabras(t):
@@ -96,6 +101,10 @@ def validar(dir_base):
         avisos.append("serie_header ya no se usa (arriba solo van los subtítulos): se ignora, bórralo de la escaleta")
     if "isotipo" in (esc.get("opciones") or {}):
         avisos.append("opciones.isotipo ya no se usa (el video no lleva isotipo; el logo sale en la tarjeta final): se ignora, bórralo de la escaleta")
+    if (esc.get("opciones") or {}).get("cortes_a_ritmo"):
+        pista = next((x for x in cat["sonido"]["musica"] if x["id"] == esc.get("musica")), None)
+        if not pista or not pista.get("bpm") or pista.get("fase_s") is None:
+            avisos.append("opciones.cortes_a_ritmo: la música no tiene bpm y fase_s (python3 scripts/beats.py): los cortes no se moverán")
     cola = esc.get("cola_s", S.COLA_S)
     if not isinstance(cola, (int, float)) or not 0 <= cola <= 8:
         err.append(f"cola_s {cola!r}: entre 0 y 8 s")
@@ -122,7 +131,19 @@ def validar(dir_base):
         if e.get("fondo") and e["fondo"] not in fondos:
             err.append(f"{eid}: fondo desconocido {e['fondo']} (fondos/manifest.json: {', '.join(sorted(fondos)) or 'ninguno'})")
         if e.get("transicion", "corte") not in TRANSICIONES:
-            err.append(f"{eid}: transición {e.get('transicion')} (corte | pincel)")
+            err.append(f"{eid}: transición {e.get('transicion')} ({' | '.join(sorted(TRANSICIONES))})")
+        cam = e.get("camara")
+        if cam is not None:
+            ct = cam if isinstance(cam, str) else (cam or {}).get("tipo", "viva")
+            if ct not in CAMARAS:
+                err.append(f"{eid}: camara {ct} ({' | '.join(sorted(CAMARAS))})")
+            if isinstance(cam, dict) and cam.get("en") is not None:
+                idx_ok(cam["en"], f"{eid}.camara.en")
+        if e.get("particulas") and e["particulas"] not in PARTICULAS:
+            err.append(f"{eid}: particulas {e['particulas']} ({' | '.join(sorted(PARTICULAS))})")
+        columna = [o.get("tipo") for o in e.get("anotaciones") or [] if o.get("tipo") in COLUMNA]
+        if len(columna) > 1:
+            avisos.append(f"{eid}: {len(columna)} piezas de columna en la misma escena ({', '.join(columna)}): se pisan, reparte en dos escenas")
         pant = e.get("pantalla") or {}
         if pant.get("estilo", "ninguno") not in ESTILOS:
             err.append(f"{eid}: estilo de pantalla {pant.get('estilo')} ({' | '.join(sorted(ESTILOS))})")
@@ -234,6 +255,97 @@ def validar(dir_base):
                     err.append(f"{donde}: la fuente «{o['fuente']}» no está en editorial/datos_verificados.json: verifícala y añádela antes de mostrarla")
                 if not o.get("fuente") and not o.get("ilustrativo"):
                     err.append(f"{donde}: un dato en pantalla lleva su 'fuente' verificada, o 'ilustrativo': true si es un ejemplo")
+            # ── v9: piezas de datos e imagen ──
+            def fuente_o_ilustrativo(obligatoria_verificada=False):
+                if o.get("fuente") and o["fuente"] not in fuentes_ok:
+                    err.append(f"{donde}: la fuente «{o['fuente']}» no está en editorial/datos_verificados.json: verifícala y añádela antes de mostrarla")
+                if obligatoria_verificada and not o.get("fuente"):
+                    err.append(f"{donde}: {t} lleva siempre su 'fuente' verificada (es la ficha de un estudio real)")
+                elif not o.get("fuente") and not o.get("ilustrativo"):
+                    err.append(f"{donde}: {t} lleva su 'fuente' verificada, o 'ilustrativo': true si es un ejemplo")
+            if t in ("pictograma", "barras", "anillo", "linea_tiempo", "estudio"):
+                piezas_texto += 1
+            if t == "pictograma":
+                if o.get("total", 100) not in (10, 20, 50, 100):
+                    err.append(f"{donde}: total {o.get('total')} (10 | 20 | 50 | 100)")
+                cant = o.get("cantidad")
+                if not isinstance(cant, int) or not 0 <= cant <= o.get("total", 100):
+                    err.append(f"{donde}: cantidad (entero) entre 0 y total: cuántas figuras se encienden")
+                if o.get("texto"):
+                    limite(donde, "pictograma", o["texto"])      # «1 de cada 3» cabe
+                if o.get("icono"):
+                    icono_ok(o["icono"], donde)
+                fuente_o_ilustrativo()
+            if t == "barras":
+                bs = o.get("barras") or []
+                if not 2 <= len(bs) <= 4:
+                    err.append(f"{donde}: barras de 2 a 4 grupos")
+                for b_i, b in enumerate(bs):
+                    if not isinstance(b.get("valor"), (int, float)):
+                        err.append(f"{donde}.barras[{b_i}]: falta el valor (número)")
+                    if not b.get("etiqueta"):
+                        err.append(f"{donde}.barras[{b_i}]: falta la etiqueta (≤2 palabras: «con plan», «control»)")
+                    else:
+                        limite(f"{donde}.barras[{b_i}]", "barra", b["etiqueta"])
+                        textos.append((donde, str(b["etiqueta"])))
+                    if b.get("tono") and b["tono"] not in TONOS:
+                        err.append(f"{donde}.barras[{b_i}]: tono {b['tono']} ({' | '.join(sorted(TONOS))})")
+                    textos.append((donde, f"{b.get('valor')}{o.get('unidad') or ''}"))
+                fuente_o_ilustrativo()
+            if t == "anillo":
+                if not isinstance(o.get("valor"), (int, float)) or not 0 <= o["valor"] <= 100:
+                    err.append(f"{donde}: valor entre 0 y 100 (el porcentaje del anillo)")
+                else:
+                    textos.append((donde, f"{o['valor']}{o.get('unidad', '%')}"))
+                if o.get("texto"):
+                    limite(donde, "dato", o["texto"])
+                fuente_o_ilustrativo()
+            if t == "linea_tiempo":
+                hs = o.get("hitos") or []
+                if not 2 <= len(hs) <= 4:
+                    err.append(f"{donde}: linea_tiempo de 2 a 4 hitos")
+                for h_i, h in enumerate(hs):
+                    if not h.get("texto"):
+                        err.append(f"{donde}.hitos[{h_i}]: falta texto (≤2 palabras: «semana 1», «hoy»)")
+                    else:
+                        limite(f"{donde}.hitos[{h_i}]", "hito", h["texto"])
+                        textos.append((donde, str(h["texto"])))
+                    if h.get("icono"):
+                        icono_ok(h["icono"], f"{donde}.hitos[{h_i}]")
+                    if h.get("en") is not None:
+                        idx_ok(h["en"], f"{donde}.hitos[{h_i}].en")
+            if t == "estudio":
+                es = o.get("estudio") or {}
+                if not es.get("tipo"):
+                    err.append(f"{donde}: estudio.tipo (Metaanálisis, Ensayo aleatorizado, Cohorte…)")
+                elif len(palabras(es["tipo"])) > 3:
+                    err.append(f"{donde}: estudio.tipo «{es['tipo']}» de más de 3 palabras")
+                for campo in ("muestra", "duracion"):
+                    if es.get(campo):
+                        limite(f"{donde}.{campo}", campo, es[campo])
+                        textos.append((donde, str(es[campo])))
+                if es.get("revista") and len(palabras(es["revista"])) > 4:
+                    err.append(f"{donde}: estudio.revista abreviada (≤4 palabras)")
+                fuente_o_ilustrativo(obligatoria_verificada=True)
+            if t == "imagen":
+                info = imgs.get(o.get("imagen"))
+                if not info:
+                    err.append(f"{donde}: imagen «{o.get('imagen')}» no está en imagenes/manifest.json de este brief "
+                               f"(descárgala con: python3 scripts/imagenes.py descargar briefs/<BASE> \"consulta\")"
+                               + (f"; hay: {', '.join(sorted(imgs))}" if imgs else ""))
+                else:
+                    if str(info.get("licencia", "")).lower() not in S.LICENCIAS_OK:
+                        err.append(f"{donde}: licencia «{info.get('licencia')}» no permitida (solo {', '.join(S.LICENCIAS_OK)}: uso comercial y modificación)")
+                    if info.get("personas") is True:
+                        err.append(f"{donde}: la imagen «{o['imagen']}» está marcada con personas: la mascota es la única figura humana")
+                    if not (d / "imagenes" / str(info.get("archivo", ""))).is_file():
+                        err.append(f"{donde}: falta el archivo imagenes/{info.get('archivo')}")
+                    if info.get("revisada") is not True:
+                        avisos.append(f"{donde}: imagen «{o['imagen']}» sin revisar: ábrela, comprueba que NO salen personas ni marcas y pon \"revisada\": true en imagenes/manifest.json")
+                if o.get("marco", "polaroid") not in MARCOS:
+                    err.append(f"{donde}: marco {o.get('marco')} ({' | '.join(sorted(MARCOS))})")
+                if o.get("escala") is not None and not (isinstance(o["escala"], (int, float)) and 0.6 <= o["escala"] <= 1):
+                    err.append(f"{donde}: escala de la imagen entre 0.6 y 1")
             if t in ("libreta", "grafica") and len(esc.get("progresion") or []) < 2:
                 err.append(f"{donde}: {t} necesita 'progresion' en la escaleta (2-6 semanas con kg y reps)")
             for campo in ("texto", "detalle"):
@@ -250,7 +362,7 @@ def validar(dir_base):
                 err.append(f"{eid}: falta custom/{e['componente']}.tsx")
         elif e.get("solo_componente"):
             err.append(f"{eid}: solo_componente sin componente")
-        if not (m or div or e.get("componente") or pant.get("estilo") == "capitulo"):
+        if not (m or div or e.get("componente") or pant.get("estilo") == "capitulo" or columna):
             avisos.append(f"{eid}: escena sin mascota, sin dividida y sin componente")
         for s in e.get("sfx") or []:
             if s.get("id") not in sfx_ids:

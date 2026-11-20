@@ -6,6 +6,8 @@
   "scripts": {
     "studio": "remotion studio",
     "stills": "node scripts/stills.mjs",
+    "movimiento": "node scripts/stills.mjs --cada=0.5",
+    "margenes": "node scripts/stills.mjs --margenes",
     "render": "remotion render Video",
     "tipos": "tsc --noEmit"
   },

@@ -4,7 +4,8 @@ Todo en `sonido/` (catálogo en `sonido/manifest.json`, copiado a `src/sonido.js
 
 - **Voz**: `locucion.wav`, la única pista que no se toca: ni recortes ni cambios de velocidad.
 - **Música**: `escaleta.musica`. Bucles propios (`pulso_120` enérgico, `groove_92` para explicar, `tension_100` suspense) y pistas descargadas (`mx_*`, `bucle: false`, ya recortadas a ~75 s con fundido: mira su `uso` y `bpm` en el catálogo). Ducking automático: `volumen_bajo_voz` (~0,12) mientras hay voz y `volumen_sin_voz` (~0,35) en los huecos y la cola; fundido final de 20 frames.
-- **Efectos**: `sfx` de cada escena (`id` + `en` = índice de la palabra; `volumen` opcional). Además la plantilla añade un `whoosh_corto` en cada escena con `transicion: "pincel"` si no hay ya un efecto pegado.
+- **Efectos**: `sfx` de cada escena (`id` + `en` = índice de la palabra; `volumen` opcional). Además la plantilla añade un efecto en cada transición que no sea corte, si no hay ya uno pegado: `whoosh_corto` (pincel, zoom, iris), `whoosh_largo` (deslizar, barrido), `brillo` (flash); el fundido va en silencio.
+- **Cortes a ritmo**: cada pista tiene `bpm` y `fase_s` (primer golpe) en el catálogo (`scripts/beats.py` los calcula). Con `"opciones": {"cortes_a_ritmo": true}` cada corte de escena se mueve como mucho 4 frames para caer en un golpe. La voz no se toca.
 
 ## Al añadir efectos
 - En la palabra que lo motiva (`en`); los whoosh se adelantan 5 frames solos.

@@ -8,22 +8,41 @@ import { useClimaEscena, type C } from "../marco/clima";
 import { ancla, colocar, fasesDe, Mascota } from "../personaje/Sprite";
 import { BurbujaDialogo, BurbujaPensamiento, CajaTachada, Capitulo, Circulo, Dato, Efecto, Etiqueta, FichaEstudio, Grafica, IconoPop, Inserto, Libreta, Lista, Marca } from "../componentes/kit";
 import { LottieAnim, MapaMuscular, PropObjeto } from "../componentes/extra";
+import { Anillo, Barras, LineaTiempo, Pictograma, TarjetaEstudio } from "../componentes/datos_viz";
+import { ImagenMarco } from "../componentes/imagen";
+import { Particulas } from "../marco/Particulas";
+import { MODO_MARGENES } from "../marco/revision";
 import { CUSTOM } from "./custom";
 
-/** Cámara viva: flota y hace punch-in en un frame local. */
-export const Camara: React.FC<{ children: React.ReactNode; punch: number | null; origen: [number, number] }> = ({ children, punch, origen }) => {
+/** Cámara de la escena. tipo (escena.camara):
+ *  · viva (por defecto): flota y hace punch-in en la primera palabra de énfasis.
+ *  · quieta: sin flotar (para fichas, barras o imágenes que se tienen que leer); conserva el punch-in.
+ *  · alejar: se aleja despacio (escala 1 → 0,955) durante la escena: nunca acerca, así nada se empuja hacia los márgenes.
+ *  · sacudida: como viva + un temblor corto en la palabra `en` (golpe, sorpresa). Movimiento casi todo vertical y de 12 frames.
+ *  En el modo revisión de márgenes no se mueve nada: se comprueba la posición en reposo. */
+export const Camara: React.FC<{ children: React.ReactNode; punch: number | null; origen: [number, number]; tipo?: Escena["camara"]["tipo"]; en?: number | null; dur?: number }> = ({ children, punch, origen, tipo = "viva", en = null, dur = 90 }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const p = punch !== null ? spring({ fps, frame: f - punch, config: { damping: 12, stiffness: 200 } }) : 0;
-  const s = 1 + 0.055 * p;
+  let s = 1 + 0.055 * p;
+  const flota = tipo === "quieta" ? 0 : 1;
+  let dx = 0, dy = Math.sin(f / 12) * 5 * flota;
+  if (tipo === "alejar") s *= 1 - 0.045 * Math.min(1, Math.max(0, f / Math.max(30, dur)));
+  if (tipo === "sacudida" && en !== null && f >= en && f < en + 12) {
+    const k = 1 - (f - en) / 12;
+    dy += Math.sin((f - en) * 2.1) * 16 * k;
+    dx = Math.sin((f - en) * 2.9) * 5 * k;
+  }
+  if (MODO_MARGENES) return <AbsoluteFill>{children}</AbsoluteFill>;
   return (
-    <AbsoluteFill style={{ transform: `translateY(${Math.sin(f / 12) * 5}px) rotate(${Math.sin(f / 40) * 0.35}deg) scale(${s})`, transformOrigin: `${origen[0]}px ${origen[1]}px` }}>
+    <AbsoluteFill style={{ transform: `translate(${dx}px, ${dy}px) rotate(${Math.sin(f / 40) * 0.35 * flota}deg) scale(${s})`, transformOrigin: tipo === "alejar" ? "540px 940px" : `${origen[0]}px ${origen[1]}px` }}>
       {children}
     </AbsoluteFill>
   );
 };
 
-const COLUMNA = new Set(["dato", "lista", "libreta", "grafica", "ficha", "musculos"]);
+const COLUMNA = new Set(["dato", "lista", "libreta", "grafica", "ficha", "musculos", "pictograma", "barras", "anillo", "linea_tiempo", "estudio", "imagen"]);
+const fuenteDe = (o: Anotacion) => o.fuente ?? (o.ilustrativo ? "EJEMPLO ILUSTRATIVO" : undefined);
 
 const Custom: React.FC<{ e: Escena; c: C }> = ({ e, c }) => {
   const Comp = e.componente ? CUSTOM[e.componente] : undefined;
@@ -35,7 +54,9 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
   const local = (o: Anotacion) => Math.max(0, o.en_f - e.ini_f);
   const punch = e.enfasis_f.length ? e.enfasis_f[0] - e.ini_f : null;
 
-  if (e.solo_componente) return <AbsoluteFill><Custom e={e} c={c} /></AbsoluteFill>;
+  const fondoParticulas = e.particulas ? <Particulas tipo={e.particulas} c={c} semilla={e.id} /> : null;
+  const cam = { tipo: e.camara?.tipo ?? "viva", en: e.camara?.en_f != null ? e.camara.en_f - e.ini_f : null, dur: e.fin_f - e.ini_f } as const;
+  if (e.solo_componente) return <AbsoluteFill>{fondoParticulas}<Custom e={e} c={c} /></AbsoluteFill>;
 
   if (e.pantalla.estilo === "capitulo") {
     return <AbsoluteFill><Capitulo texto={e.pantalla.texto} c={c} /><Custom e={e} c={c} /></AbsoluteFill>;
@@ -49,7 +70,7 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
     const izq = colocar(fasesDe(no)[0], "general", "izq", false, 0.68, xNo + anchoP / 2);
     const der = colocar(fasesDe(si)[0], "general", "der", false, 0.68, xSi + anchoP / 2);
     return (
-      <Camara punch={punch} origen={[540, 1000]}>
+      <>{fondoParticulas}<Camara punch={punch} origen={[540, 1000]} {...cam}>
         <div style={{ position: "absolute", left: xNo, top: 560, width: anchoP, height: 790, borderRadius: 30, background: `${IF.alerta}1A`, border: `3px solid ${IF.alerta}66` }} />
         <div style={{ position: "absolute", left: xSi, top: 560, width: anchoP, height: 790, borderRadius: 30, background: `${IF.exito}1A`, border: `3px solid ${IF.exito}66` }} />
         <div style={{ position: "absolute", left: xNo, top: 585, width: anchoP, textAlign: "center", fontFamily: FUENTE.titulos, fontWeight: 800, fontSize: 44, color: IF.alerta }}>ASÍ NO</div>
@@ -62,7 +83,7 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
           <IconoPop key={`i${k}`} nombre={o.icono ?? "lightbulb"} x={540} y={760 + k * 200} desde={Math.max(0, o.en_f - e.ini_f)} c={c} tono={o.tono} tachado={!!o.tachado} size={170} />
         ))}
         <Custom e={e} c={c} />
-      </Camara>
+      </Camara></>
     );
   }
 
@@ -90,6 +111,8 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
     return [libre === "izq" ? 260 : 790, Math.min(1180, 720 + k * 250)];   // x≤790: el icono (210 px) no llega a los botones (x>900)
   };
 
+  // caja de una pieza de columna: con mascota, la columna izquierda; sin mascota, centrada con `anchoSolo` px
+  const caja = (anchoSolo: number) => (v || !anchoSolo ? { x: ZONA.izq, y: 600, ancho: 500 } : { x: ZONA.cx - anchoSolo / 2, y: 580, ancho: anchoSolo });
   const detras = e.anotaciones.map((o, i) => (o.tipo === "lineas_velocidad" || o.tipo === "enfoque" ? <Efecto key={`d${i}`} tipo={o.tipo} a={ancla(col, "centro")} desde={local(o)} c={c} /> : null));
   const delante = e.anotaciones.map((o, i) => {
     const t = local(o);
@@ -144,12 +167,32 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
           ? <PropObjeto key={i} id={p.id} x={px} y={1340} lado={lado} desde={t} suelo />
           : <PropObjeto key={i} id={p.id} x={px} y={v ? 840 : 930} lado={lado} desde={t} />;
       }
+      // ── v9: piezas de datos e imagen. Con mascota van en la columna izquierda (x 120–620, la mascota pasa a la derecha);
+      //    sin mascota, centradas y más grandes. Siempre dentro de ZONA.
+      case "pictograma": return <Pictograma key={i} total={o.total ?? 100} cantidad={o.cantidad ?? 0} texto={o.texto} detalle={o.detalle} fuente={fuenteDe(o)}
+        tono={o.tono} icono={o.icono} desde={t} c={c} {...caja(640)} />;
+      case "barras": return <Barras key={i} barras={o.barras ?? []} unidad={o.unidad} fuente={fuenteDe(o)} desde={t} c={c} {...caja(720)} />;
+      case "anillo": return <Anillo key={i} valor={o.valor ?? 0} texto={o.texto} detalle={o.detalle} unidad={o.unidad} fuente={fuenteDe(o)} tono={o.tono} desde={t} c={c} {...caja(600)} />;
+      case "linea_tiempo": {
+        const hs = o.hitos ?? [];
+        return <LineaTiempo key={i} hitos={hs} frames={hs.map((h) => Math.max(0, h.en_f - e.ini_f))} vertical={!!v} desde={t} c={c}
+          {...(v ? caja(0) : { x: ZONA.izq, y: 820, ancho: ZONA.ancho })} />;
+      }
+      case "estudio": return <TarjetaEstudio key={i} tipo={o.estudio?.tipo ?? "Estudio"} anio={o.estudio?.anio} muestra={o.estudio?.muestra} duracion={o.estudio?.duracion}
+        revista={o.estudio?.revista} fuente={o.fuente} desde={t} c={c} {...caja(640)} />;
+      case "imagen": {
+        if (!o.archivo) return null;
+        const k = Math.min(1, Math.max(0.6, o.escala ?? 1));
+        const b = v ? { x: ZONA.izq, y: 590, ancho: Math.round(500 * k), altoMax: 720 } : { x: ZONA.cx - Math.round(340 * k), y: 570, ancho: Math.round(680 * k), altoMax: 760 };
+        return <ImagenMarco key={i} archivo={o.archivo} credito={o.credito} marco={o.marco} duotono={o.duotono !== false} proporcion={(o.alto ?? 3) / (o.ancho ?? 4)}
+          desde={t} c={c} {...b} />;
+      }
       default: return null;
     }
   });
 
   return (
-    <Camara punch={punch} origen={cabeza}>
+    <>{fondoParticulas}<Camara punch={punch} origen={cabeza} {...cam}>
       {v && v.encuadre === "general" && !["cara", "mano", "plano_medio"].includes(info.categoria) ? (
         <div style={{ position: "absolute", left: centroX - 330, top: 1250, width: 660, height: 150, background: `radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0,0,0,${c.claridad > 0.5 ? 0.12 : 0.35}) 0%, transparent 100%)` }} />
       ) : null}
@@ -158,6 +201,6 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
       {delante}
       {e.inserto ? <Inserto cara={e.inserto.cara} desde={Math.max(0, e.inserto.en_f - e.ini_f)} c={c} x={libre === "izq" ? ZONA.izq + 150 : ZONA.der - 150} /> : null}
       <Custom e={e} c={c} />
-    </Camara>
+    </Camara></>
   );
 };

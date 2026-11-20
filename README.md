@@ -7,7 +7,7 @@ Contenido editorial, mascota, kit gráfico, sonido y plantilla Remotion de los R
 - **props/**: objetos (pesas, banco, comida, cama, libreta, cerebro…) en el estilo de la mascota (`manifest.json`, `contactos.jpg`).
 - **kit/**: anotaciones dibujadas a mano y cortinilla de pincel (`manifest.json`, `contactos.png`).
 - **sonido/**: efectos y música en bucle (`manifest.json`, licencias).
-- **plantilla/**: proyecto Remotion · **scripts/**: alinear, sincronizar, validar, preparar y regenerar assets.
+- **plantilla/**: proyecto Remotion (piezas de datos: pictograma, barras, anillo, línea de tiempo, ficha del estudio; imágenes en marco; transiciones, cámara, partículas) · **scripts/**: alinear, sincronizar, validar, preparar, revisar márgenes, imágenes con licencia, golpes de música y regenerar assets.
 - **icons/**: Lucide, Tabler (`tb-`) y Healthicons (`hi-`): colorear con máscara CSS (`mask-image`), no con `<Img>`. `scripts/iconos.py` añade más.
 - **anatomia/**: mapa muscular (react-native-body-highlighter, MIT) · **lottie/**: animaciones Lottie recoloreadas a la marca (LottieFiles, Lottie Simple License; useAnimations, MIT) · **fondos/**: patrones de fondo por escena en blanco (se tiñen con el clima).
 - **ui/**: sellos MITO/REALIDAD, VS, anillo de descanso, tarjeta de serie (teñir con `scripts/tenir_svg.py` en otros climas).

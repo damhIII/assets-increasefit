@@ -24,7 +24,12 @@ export const Sonido: React.FC = () => {
   const pista = SONIDO.musica.find((m) => m.id === datos.musica);
   const archivoSfx = (id: string) => SONIDO.sfx.find((s) => s.id === id)?.archivo;
   // whoosh automático en cada cortinilla de pincel, salvo que ya haya un efecto pegado
-  const auto = datos.cortinillas.filter((F) => !datos.sfx.some((s) => Math.abs(s.frame - F) < 6)).map((F) => ({ id: "whoosh_corto", frame: F - 6, volumen: 0.45 }));
+  // v9: efecto automático en cada transición que no sea corte (salvo que ya haya un efecto pegado o sea un fundido)
+  const SFX_TRANS: Record<string, [string, number] | null> = { pincel: ["whoosh_corto", 0.45], zoom: ["whoosh_corto", 0.4], deslizar: ["whoosh_largo", 0.35],
+    barrido: ["whoosh_largo", 0.4], iris: ["whoosh_corto", 0.35], flash: ["brillo", 0.35], fundido: null };
+  const trans = datos.transiciones ?? datos.cortinillas.map((frame) => ({ frame, tipo: "pincel" as const }));
+  const auto = trans.filter((t) => SFX_TRANS[t.tipo] && archivoSfx(SFX_TRANS[t.tipo]![0]) && !datos.sfx.some((s) => Math.abs(s.frame - t.frame) < 6))
+    .map((t) => ({ id: SFX_TRANS[t.tipo]![0], frame: t.frame - 6, volumen: SFX_TRANS[t.tipo]![1] }));
   return (
     <>
       {datos.audio ? <Audio src={staticFile(datos.audio)} /> : null}

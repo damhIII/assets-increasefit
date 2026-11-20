@@ -6,6 +6,7 @@ import React from "react";
 import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { datos, encajarX, FUENTE, IF, ZONA, type Semana } from "../marco/datos";
 import type { C } from "../marco/clima";
+import { MODO_MARGENES } from "../marco/revision";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 export const useEntrada = (desde: number, cfg = { damping: 12, stiffness: 180 }) => {
@@ -230,6 +231,7 @@ export const Efecto: React.FC<{ tipo: "lineas_velocidad" | "impacto" | "sudor" |
   const f = useCurrentFrame();
   const e = useEntrada(desde, { damping: 9, stiffness: 220 });
   const col = c.claridad > 0.5 ? IF.tinta : IF.blanco;
+  if (MODO_MARGENES && (tipo === "enfoque" || tipo === "rec" || tipo === "lineas_velocidad")) return null;   // decorativos: pueden llegar al borde
   if (tipo === "enfoque") return <div style={{ position: "absolute", inset: 0, opacity: 0.3 * Math.min(1, e), transform: `scale(${1.05 + 0.02 * Math.sin(f / 3)})` }}><Tinta src="kit/efectos/lineas_enfoque.svg" color={col} w={1080} h={1920} /></div>;
   if (tipo === "rec") {
     return (
@@ -339,7 +341,7 @@ export const TarjetaResumen: React.FC<{
   return (
     <div style={{ position: "absolute", left: ZONA.izq, top: 320, width: ZONA.ancho, display: "flex", flexDirection: "column", gap: 22 }}>{/* x 120–960 · Y≈320–1530 (zona segura) */}
       <div style={{ borderRadius: 40, background: c.superficie, border: `3px solid ${c.foco}66`, boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
-        padding: "42px 54px 40px", boxSizing: "border-box", transform: `translateY(${(1 - e) * 200}px) scale(${0.9 + 0.1 * e})`, opacity: Math.min(1, e) }}>
+        padding: "42px 54px 40px", boxSizing: "border-box", transform: `translateY(${(1 - e) * 200}px) scale(${0.9 + 0.1 * Math.min(1, e)})`, opacity: Math.min(1, e) }}>{/* escala ≤ 1: el rebote no pisa los márgenes */}
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <div style={{ fontFamily: FUENTE.mono, fontWeight: 700, fontSize: 24, letterSpacing: "0.3em", color: c.foco }}>GUÁRDALO</div>
           {tema ? (
@@ -390,6 +392,7 @@ export const TarjetaResumen: React.FC<{
 /** Cortinilla con el trazo de pincel (estética de la flecha del logo). Frame local 0 = centro del corte. */
 export const CortinillaPincel: React.FC = () => {
   const f = useCurrentFrame();
+  if (MODO_MARGENES) return null;
   const x = interpolate(f, [0, 16], [-2900, 1500], clamp);
   return (
     <div style={{ position: "absolute", left: x, top: 640, transform: "rotate(-9deg) scale(2.1)", transformOrigin: "left center" }}>

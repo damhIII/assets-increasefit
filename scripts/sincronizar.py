@@ -20,6 +20,35 @@ FPS, WIDTH, HEIGHT = 30, 1080, 1920
 TONOS = ("alerta", "exito")
 COLA_S = 4.0                       # segundos tras la última palabra: la tarjeta final se queda para leerla y guardarla
 TONOS_TARJETA = ("si", "no", "matiz")
+RITMO_MAX_F = 4                    # cortes_a_ritmo: un corte se mueve como mucho 4 frames (0,13 s) para caer en un golpe
+LICENCIAS_OK = ("cc0", "pdm", "by", "by-sa")   # imágenes: las únicas licencias que se pueden usar (comercial + modificación)
+
+
+def imagenes_de(dir_base):
+    """briefs/<BASE>/imagenes/manifest.json → {id: info}. Vacío si no hay imágenes."""
+    f = Path(dir_base) / "imagenes" / "manifest.json"
+    if not f.exists():
+        return {}
+    return {x["id"]: x for x in json.loads(f.read_text(encoding="utf-8")).get("imagenes") or [] if x.get("id")}
+
+
+def credito(info):
+    """'Autor · CC BY 4.0' (lo que exige la licencia; CC0 y dominio público no lo exigen, pero se agradece)."""
+    lic = str(info.get("licencia") or "").lower()
+    ver = str(info.get("licencia_version") or "").strip()
+    nombre = {"cc0": "CC0", "pdm": "Dominio público"}.get(lic, f"CC {lic.upper()} {ver}".strip())
+    autor = str(info.get("autor") or "").strip()
+    return f"{autor} · {nombre}" if autor else nombre
+
+
+def rejilla_ritmo(esc, cat):
+    """Frames de los golpes de la música elegida (para cortes_a_ritmo), o None si no se puede."""
+    if not (esc.get("opciones") or {}).get("cortes_a_ritmo"):
+        return None
+    m = next((x for x in cat["sonido"]["musica"] if x["id"] == esc.get("musica")), None)
+    if not m or not m.get("bpm") or m.get("fase_s") is None:
+        return None
+    return float(m["fase_s"]), 60.0 / float(m["bpm"])
 
 
 def tarjeta_de(esc, dir_base):
@@ -92,9 +121,17 @@ def sincronizar(dir_base):
         return max(0, min(total - 1, round(P[i]["ini"] * FPS) + int(desfase)))
 
     enfasis = set()
-    escenas, sfx, cortinillas = [], [], []
+    escenas, sfx, cortinillas, transiciones = [], [], [], []
+    ritmo = rejilla_ritmo(esc, cat)
+    imgs = imagenes_de(dir_base)
     for k, e in enumerate(esc["escenas"]):
         ini = 0 if k == 0 else frame(e["desde"], e.get("desfase_f", 0))
+        if ritmo and k > 0 and "desfase_f" not in e:            # corte al golpe de música más cercano (si está a ≤ 4 frames)
+            fase, periodo = ritmo
+            n_b = round((ini / FPS - fase) / periodo)
+            golpe = round((fase + n_b * periodo) * FPS)
+            if abs(golpe - ini) <= RITMO_MAX_F and golpe > (escenas[-1]["ini_f"] + 8 if escenas else 0):
+                ini = golpe
         m = e.get("mascota")
         if m:
             sprite = m["sprite"]
@@ -104,6 +141,12 @@ def sincronizar(dir_base):
         for j, o in enumerate(e.get("anotaciones") or []):
             o = dict(o)
             o["en_f"] = frame(o.pop("en")) if o.get("en") is not None else None
+            if o.get("hitos"):                                  # linea_tiempo: cada hito en su palabra
+                o["hitos"] = [{"texto": str(h.get("texto", "")), "icono": h.get("icono") or None,
+                               "en_f": frame(h["en"]) if h.get("en") is not None else None} for h in o["hitos"]]
+            if o.get("tipo") == "imagen" and o.get("imagen") in imgs:   # imagen: ruta pública, crédito y tamaño
+                info = imgs[o["imagen"]]
+                o.update({"archivo": f"imagenes/{info['archivo']}", "credito": credito(info), "ancho": info.get("ancho"), "alto": info.get("alto")})
             if o.get("filas"):                                  # ficha: cada fila con su propio momento
                 o["filas"] = [{"icono": r.get("icono", ""), "texto": str(r.get("texto", "")),
                                "en_f": frame(r["en"]) if r.get("en") is not None else None} for r in o["filas"]]
@@ -119,11 +162,16 @@ def sincronizar(dir_base):
         trans = e.get("transicion", "corte")
         if trans == "pincel" and k > 0:
             cortinillas.append(ini)
+        if trans != "corte" and k > 0:
+            transiciones.append({"frame": ini, "tipo": trans})
+        cam = e.get("camara") or "viva"
+        cam = {"tipo": cam} if isinstance(cam, str) else dict(cam)
+        cam = {"tipo": cam.get("tipo", "viva"), "en_f": frame(cam["en"]) if cam.get("en") is not None else None}
         escenas.append({"id": e["id"], "ini_f": ini, "fin_f": None, "clima": e.get("clima") or base_clima, "transicion": trans,
                         "pantalla": {"texto": (e.get("pantalla") or {}).get("texto", ""), "estilo": (e.get("pantalla") or {}).get("estilo", "ninguno")},
                         "enfasis_f": sorted(frame(i) for i in (e.get("enfasis") or [])),
                         "mascota": m, "dividida": e.get("dividida"), "inserto": ins, "anotaciones": anot,
-                        "fondo": e.get("fondo") or None,
+                        "fondo": e.get("fondo") or None, "camara": cam, "particulas": e.get("particulas") or None,
                         "componente": e.get("componente"), "solo_componente": bool(e.get("solo_componente", False))})
     for k, e in enumerate(escenas):
         e["fin_f"] = escenas[k + 1]["ini_f"] if k + 1 < len(escenas) else total
@@ -133,6 +181,11 @@ def sincronizar(dir_base):
             for r_i, r in enumerate(o.get("filas") or []):
                 if r["en_f"] is None:
                     r["en_f"] = min(e["fin_f"] - 1, o["en_f"] + r_i * 12)
+            for h_i, h in enumerate(o.get("hitos") or []):
+                if h["en_f"] is None:
+                    h["en_f"] = min(e["fin_f"] - 1, o["en_f"] + h_i * 15)
+        if e["camara"]["tipo"] == "sacudida" and e["camara"]["en_f"] is None:
+            e["camara"]["en_f"] = e["enfasis_f"][0] if e["enfasis_f"] else e["ini_f"] + 6
         if e["inserto"] and e["inserto"]["en_f"] is None:
             e["inserto"]["en_f"] = e["ini_f"] + 4
     for s in sfx:
@@ -155,9 +208,10 @@ def sincronizar(dir_base):
         "version": 4, "base": sub["base"], "audio": "locucion.wav",
         "video": {"width": WIDTH, "height": HEIGHT, "fps": FPS, "frames": total, "voz_s": round(voz_s, 2), "cola_s": cola_s},
         "musica": esc.get("musica"),
-        "opciones": {"barra_progreso": bool((esc.get("opciones") or {}).get("barra_progreso", False))},
+        "opciones": {"barra_progreso": bool((esc.get("opciones") or {}).get("barra_progreso", False)),
+                     "cortes_a_ritmo": bool(ritmo)},
         "logos": logos, "fuentes": cat["fuentes"],
-        "escenas": escenas, "cortinillas": cortinillas, "tarjeta_resumen": tr, "sfx": sorted(sfx, key=lambda s: s["frame"]),
+        "escenas": escenas, "cortinillas": cortinillas, "transiciones": transiciones, "tarjeta_resumen": tr, "sfx": sorted(sfx, key=lambda s: s["frame"]),
         # [palabra sin puntuación, ini_s, fin_s, énfasis 0/1, corte 0/1, tono "" | alerta | exito, icono "" | id de icons/]
         "subtitulos": [[palabra_subtitulo(p["w"]), p["ini"], p["fin"], 1 if p["i"] in enfasis else 0, corta_aqui(p["w"]),
                         tono.get(p["i"], ""), icono.get(p["i"], "")] for p in P],

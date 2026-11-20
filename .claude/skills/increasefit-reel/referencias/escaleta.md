@@ -7,7 +7,7 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
   "version": 4,
   "musica": "groove_92",                // id de sonido/manifest.json: pulso_120 (enérgico) · groove_92 (explicar) · tension_100 (suspense) · null = sin música
   "cola_s": 4.0,                        // segundos tras la última palabra (la tarjeta final se queda para leerla y guardarla)
-  "opciones": { "barra_progreso": false },
+  "opciones": { "barra_progreso": false, "cortes_a_ritmo": true },   // cortes_a_ritmo: cada corte se mueve ≤4 frames al golpe de música más cercano (no toca escenas con desfase_f)
   "subtitulos": {                       // cómo se pintan los subtítulos (ya salen SIN signos de puntuación, 1-3 palabras)
     "tonos": { "alerta": [41, 42], "exito": [88] },        // índices de palabra: rojo = el error o la trampa, verde = lo correcto (pocas)
     "iconos": [ { "en": 12, "icono": "brain" } ]           // insignia con icono que salta bajo esa palabra al decirla (3-6 por video)
@@ -20,11 +20,13 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
       "id": "gancho",                   // único, minúsculas/números/_ (nombra la Sequence y los stills)
       "desde": 0,                       // índice de palabra donde empieza; la primera escena SIEMPRE 0; estrictamente creciente
       "desfase_f": -3,                  // opcional: adelanta (−) o retrasa (+) el corte unos frames respecto a esa palabra
-      "transicion": "corte",            // corte (seco) | pincel (cortinilla de pincel + whoosh al entrar)
+      "transicion": "corte",            // corte (seco, lo normal) | pincel | zoom | deslizar | barrido | iris | flash | fundido (ver recetas.md); las que no son corte llevan su efecto de sonido solo
+      "camara": "viva",                 // viva (por defecto) | quieta | alejar | {"tipo": "sacudida", "en": 12} (temblor corto en esa palabra)
+      "particulas": null,               // null | polvo | chispas | burbujas | confeti_suave (capa decorativa detrás; 1-3 escenas por video)
       "clima": "negro",                 // brand/paletas.json → climas: negro (base), azul, papel, acero
       "pantalla": { "texto": "¿Creatina / para el ánimo?", "estilo": "titular" },   // titular | nota | capitulo | ninguno (lo normal: ninguno)
       "enfasis": [6],                   // índices de palabra: subtítulo grande en azul + punch-in de cámara en la primera
-      "mascota": { "sprite": "ejercicio:sentadilla", "anim": "pop", "encuadre": "general", "posicion": "centro", "espejo": false },   // anim: pop | entrar | temblor | ejercicio | estatico | hablar (solo plano_boca_reposo)
+      "mascota": { "sprite": "ejercicio:sentadilla", "anim": "pop", "encuadre": "general", "posicion": "centro", "espejo": false },   // anim: pop | entrar | temblor | ejercicio | estatico | hablar (solo plano_boca_reposo) | saltar | celebrar | asentir
       "dividida": null,                 // { "no": "<sprite así no>", "si": "<sprite así sí>" } → pantalla dividida (sustituye a mascota)
       "inserto": { "cara": "cara_esceptico", "en": 13 },     // cara_* en un círculo (reacción)
       "anotaciones": [ { "tipo": "icono", "icono": "brain", "en": 3 }, { "tipo": "etiqueta", "texto": "otra vez", "apunta": "manos", "en": 6 } ],
@@ -52,7 +54,8 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 - `en` (anotaciones, inserto, sfx) es el índice de la palabra en que aparece o suena. Sin `en`: al empezar la escena (+6 frames, escalonado). Los whoosh se adelantan 5 frames solos.
 - `subtitulos`: el texto sale del guion sin signos de puntuación (`¿En serio?` → EN SERIO), agrupado en 1-3 palabras; cambia de grupo en cada fin de frase, coma o pausa de la voz. La palabra que suena se enciende sobre una píldora (azul, o el color de su tono); las de `enfasis` de cualquier escena son más grandes y se quedan en azul; las de `tonos` se quedan en rojo o verde. Un icono de `iconos` sale en una insignia redonda que cuelga bajo su palabra (los subtítulos van arriba).
 - `mascota.sprite`: id de `mascota/manifest.json` o `"ejercicio:<nombre>"` (alterna sus fases; `anim` pasa a `ejercicio`). Sin `mascota` ni `dividida`, la escena no tiene personaje (útil con `capitulo` o con un componente).
-- Con una anotación de columna (`dato`, `ficha`, `lista`, `libreta`, `grafica`), la mascota se coloca sola a la derecha en encuadre general.
+- Con una anotación de columna (`dato`, `ficha`, `lista`, `libreta`, `grafica`, `musculos`, `pictograma`, `barras`, `anillo`, `linea_tiempo`, `estudio`, `imagen`), la mascota se coloca sola a la derecha en encuadre general y la pieza va en la columna izquierda (x 120–620). Sin mascota, la pieza va centrada y más grande. **Una sola pieza de columna por escena.**
+- Transiciones con solape (`deslizar`, `iris`, `fundido`): la escena anterior sigue viva 10 frames debajo mientras entra la nueva; no cambia la duración ni los tiempos de la voz.
 - `fondo` (por escena, opcional): un patrón suave de `fondos/` encima del degradado del clima, siempre en el color de texto del clima y a baja opacidad (abre `fondos/contactos.png`). Úsalo para situar el tema (gimnasio, sueño, nutrición, ciencia, cardio) en 1-3 escenas, no en todas.
 - `pantalla.estilo = "capitulo"` es una tarjeta a pantalla completa (`"RÓTULO: frase"`) y oculta la mascota de esa escena.
 - Si dos escenas seguidas tienen el mismo sprite, encuadre y posición, la segunda no repite la entrada (continuidad).
@@ -77,17 +80,25 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 | impacto, sudor, destello | – | junto a la cabeza |
 | musculos | vista (`frente` \| `espalda`), resaltar (1-4 ids), tono? | mapa muscular (anatomia/musculos.json) con esos músculos encendidos escalonados y latiendo. Ids: `pecho`, `hombros`, `biceps`, `triceps`, `antebrazos`, `abdomen`, `oblicuos`, `trapecio`, `espalda_alta`, `lumbar`, `gluteos`, `cuadriceps`, `isquios`, `aductores`, `gemelos`, `tibial`, `cuello` (frente: pecho, abdomen, oblicuos, biceps, cuadriceps, tibial; espalda: espalda_alta, lumbar, gluteos, isquios). Columna (mascota a la derecha); sin mascota, grande y centrado. **La forma de decir qué músculo trabaja** |
 | prop | prop (id de `props/manifest.json`), apunta?, escala? (0.3-2.5) | objeto dibujado en el estilo de la mascota (pesas, banco, shaker, bote de creatina, plato, cama, libreta, báscula, calendario tachado, cerebro, batería…). Los de suelo (banco, rack, cama, barra, kettlebell, esterilla, báscula) se apoyan junto a la mascota, que se aparta a la izquierda; el resto flota en el lado libre o junto a la zona de `apunta`. **Mejor que un icono cuando el objeto es el protagonista** |
+| pictograma | total (10 \| 20 \| 50 \| 100), cantidad (int), texto? (≤4: "1 de cada 4"), detalle? (≤5), tono?, icono? (por defecto `person-standing`), fuente \| ilustrativo | figuras que entran y `cantidad` que se encienden en el color del tono; la cifra de `texto` cuenta a la vez. **La forma de contar una proporción o un riesgo**. Columna |
+| barras | barras (2-4: `{etiqueta ≤2, valor, tono?}`), unidad? ("%", " min"), fuente \| ilustrativo | barras que crecen con su número contando; la más alta en el foco (o el `tono` de cada una). Los valores, los REALES del estudio. Columna |
+| anillo | valor (0-100), texto?, detalle? (≤5), unidad? (por defecto %), tono?, fuente \| ilustrativo | anillo que se dibuja con el porcentaje contando en el centro. Columna |
+| linea_tiempo | hitos (2-4: `{texto ≤2, icono?, en}`) | cada hito se enciende en su palabra y la línea avanza; vertical con mascota, horizontal sin ella. Columna |
+| estudio | estudio: `{tipo ≤3, anio?, muestra? ≤3, duracion? ≤2, revista? ≤4}`, fuente (obligatoria, verificada) | la ficha del paper ("ESTUDIO · 2021", Ensayo aleatorizado, 61.293 socios, 4 semanas, Nature). Una vez por video. Columna |
+| imagen | imagen (id de `imagenes/manifest.json`), marco? (polaroid \| celular \| circulo \| tarjeta), duotono? (true), escala? (0.6-1) | ilustración con licencia libre en su marco, con zoom lento DENTRO del marco y el crédito debajo. Revisada y sin personas (ver `imagenes.md`). Columna |
 | lottie | lottie (id), apunta?, escala? (0.3-2.5), tono? | animación de `lottie/manifest.json` en la palabra: efectos (confeti, fuego, destellos, latido, reloj de arena…) en color de marca, o iconos animados `ua_*` (mono: se tiñen con `tono`: foco \| alerta \| exito \| texto). Con `apunta` va junto a esa zona de la mascota; si no, en el lado libre (o centrada sin mascota). Un remate, no decoración: 0-2 por video |
 
 ## Lo que comprueba el validador (`scripts/validar_render.py`)
-Ids, anclas dentro del guion y crecientes, sprites/caras/climas/sfx/música/iconos/fondos/lottie/músculos existentes, componentes que existen, `dato` y `ficha` con fuente verificada o ilustrativo, `progresion` si hay libreta o gráfica, nada que suene a CTA, escenas de al menos 8 frames y el **presupuesto de texto**:
+Ids, anclas dentro del guion y crecientes, sprites/caras/climas/sfx/música/iconos/fondos/lottie/músculos/imágenes existentes, transiciones, cámaras y partículas válidas, licencias de imagen permitidas (CC0, PDM, BY, BY-SA) y sin personas, `estudio` con fuente verificada, componentes que existen, `dato` y `ficha` con fuente verificada o ilustrativo, `progresion` si hay libreta o gráfica, nada que suene a CTA, escenas de al menos 8 frames y el **presupuesto de texto**:
 
 | límite | valor |
 |---|---|
 | palabras en pantalla en todo el video (sin subtítulos, fuentes, ASÍ NO/SÍ ni tarjeta) | ≤ 20 |
 | texto en pantalla (titular, nota) · capítulo | ≤ 4 · ≤ 5 palabras |
 | etiqueta · fila de ficha · cifra del dato | ≤ 2 palabras |
-| tachado · ítem de lista | ≤ 3 palabras |
+| tachado · ítem de lista · muestra del estudio | ≤ 3 palabras |
+| etiqueta de barra · hito · duración del estudio | ≤ 2 palabras |
+| texto del pictograma | ≤ 4 palabras |
 | burbuja_dialogo · detalle del dato | ≤ 4 · ≤ 5 palabras |
 | piezas con texto por escena | ≤ 2 (aviso con 2) |
 | tarjeta final | tema ≤ 3 · pregunta ≤ 8 · veredicto ≤ 7 · 2-3 pasos ≤ 6 · fuente verificada (si la hay) |

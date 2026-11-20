@@ -59,6 +59,36 @@
    "archivo": "fondos/discos.svg",
    "tipo": "geometrico",
    "uso": "Círculos concéntricos como discos de pesas en los bordes: fuerza, cargas."
+  },
+  {
+   "id": "patron_oficina",
+   "archivo": "fondos/patron_oficina.svg",
+   "tipo": "iconos",
+   "uso": "Trabajo y oficina: laptop, maletín, silla, café, reloj. Pasar el día sentado, estrés del trabajo, poco tiempo."
+  },
+  {
+   "id": "patron_salud",
+   "archivo": "fondos/patron_salud.svg",
+   "tipo": "iconos",
+   "uso": "Salud general: corazón, pulso, estetoscopio, escudo, hoja. Beneficios para la salud, prevención, longevidad."
+  },
+  {
+   "id": "patron_mente",
+   "archivo": "fondos/patron_mente.svg",
+   "tipo": "iconos",
+   "uso": "Mente y ánimo: cerebro, caras, sol, nube con luna. Ansiedad, ánimo, estrés, memoria, motivación."
+  },
+  {
+   "id": "patron_tiempo",
+   "archivo": "fondos/patron_tiempo.svg",
+   "tipo": "iconos",
+   "uso": "Tiempo y constancia: calendario, reloj de arena, despertador, check. Hábitos, semanas, rachas, volver."
+  },
+  {
+   "id": "patron_vida",
+   "archivo": "fondos/patron_vida.svg",
+   "tipo": "iconos",
+   "uso": "Vida diaria fuera del gym: casa, auto, bolsas, escaleras, mochila. Encajar el entreno en el día, actividad cotidiana."
   }
  ]
 }

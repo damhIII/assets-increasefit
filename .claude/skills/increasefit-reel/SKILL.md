@@ -10,15 +10,16 @@ El notebook te da **el guion** (texto plano, sin ninguna indicación), **la locu
 **Imagen primero, texto mínimo.** La voz ya dice las palabras y los subtítulos ya las escriben: tu trabajo es **reforzar con imágenes** lo que dice el guion (mascota, iconos, marcas del kit, fichas con cifras) y **pintar los subtítulos** para que se lean con ritmo. El texto en pantalla es la excepción, no la norma: la mayoría de las escenas van con `pantalla: ninguno` y el validador corta si te pasas del presupuesto.
 
 ## 1. Localiza el material
-- `briefs/<BASE>/` con `guion.txt`, `locucion.wav`, `palabras.json`, `tarjeta.json` (la tarjeta final que propuso el guionista a partir del guion) e `investigacion.json` (opcional: los hallazgos de la búsqueda web del guionista). "El último" = la carpeta `AAAAMMDD-HHMM` más reciente.
+- `briefs/<BASE>/` con `guion.txt`, `locucion.wav`, `palabras.json`, `tarjeta.json` (la tarjeta final que propuso el guionista a partir del guion), `investigacion.json` (opcional: los hallazgos de la búsqueda web del guionista; el estudio protagonista lleva `principal: true`) e `imagenes/` (opcional: ilustraciones con licencia libre que bajó el notebook, con `manifest.json` y `contactos.jpg`). "El último" = la carpeta `AAAAMMDD-HHMM` más reciente.
 - Si te adjuntan los archivos en el chat, crea `briefs/<BASE>/` con ellos (BASE = la que diga el prompt).
 
 ## 2. Lee la locución
 `python3 scripts/alinear.py briefs/<BASE>` escribe `subtitulos.json` e imprime el guion numerado por frases, con el tiempo de cada frase y las pausas de la voz (`‖0.45s`). Los números `[n]` son las **anclas** de todo lo que diseñes. No oyes el audio: el ritmo está ahí. Las pausas largas son cortes naturales; la palabra que sigue a una micro-pausa suele ser el remate.
 
 ## 3. Lee la marca y mira el material
-- Siempre: `editorial/marca.md`, `editorial/adn.md` y, en `referencias/`, `marca.md`, `mascota.md`, `layout.md`, `escaleta.md`.
+- Siempre: `editorial/marca.md`, `editorial/adn.md` y, en `referencias/`, `marca.md`, `mascota.md`, `layout.md`, `escaleta.md` y **`recetas.md`** (qué pieza usar para cada momento de un guion de salud: estudio, riesgo, comparación, tiempo, vida diaria).
 - **Abre las imágenes** `mascota/contactos.jpg` (todas las poses), `props/contactos.jpg` (objetos en el estilo de la mascota), `kit/contactos.png` (anotaciones), `icons/contactos.png` (iconos) y `fondos/contactos.png` (patrones de fondo), y lee `lottie/manifest.json` (animaciones): diseña con lo que existe.
+- Si hay `imagenes/`: **abre `imagenes/contactos.jpg`** y sigue `referencias/imagenes.md` (nunca personas; marca `revisada` las que uses).
 - Cuando toque: `climas.md`, `sonido.md`, `tecnico.md`.
 
 ## 4. Verifica las cifras del guion
@@ -39,8 +40,11 @@ Por cada estudio o estadística que diga la voz:
   - el objeto protagonista de la frase (el bote de creatina, la báscula, la cama, el banco, el calendario) → `prop` (objeto dibujado en el estilo de la mascota) o la mascota usándolo (`gesto_creatina`, `gesto_dormir`, `gesto_libreta`…);
   - la mascota hablando a cámara (una frase directa al espectador, el gancho) → `plano_boca_reposo` con `anim: "hablar"`;
   - sustantivos concretos (creatina, cerebro, semanas, placebo) → `icono` (Lucide: `python3 scripts/iconos.py --buscar <palabra>` y luego `python3 scripts/iconos.py <nombre>` si falta);
+  - el estudio que se presenta ("un metaanálisis de…") → `estudio` (la ficha del paper: tipo, año, muestra, duración, revista);
   - el método de un estudio (muestra, duración, dosis) → `ficha` (icono + cifra corta por fila, cada fila en su palabra);
-  - el resultado → `dato` (la cifra grande con su fuente);
+  - el resultado → `dato` (la cifra grande con su fuente), `pictograma` (una proporción o un riesgo: "uno de cada cuatro"), `barras` (dos grupos comparados con sus valores reales) o `anillo` (un porcentaje);
+  - el tiempo ("en cuatro semanas", "a los sesenta") → `linea_tiempo` (2-4 hitos, cada uno en su palabra);
+  - un órgano, un hueso, un diagrama que los props no tienen → `imagen` (ilustración con licencia, en duotono y dentro de un marco; ver `referencias/imagenes.md`);
   - qué músculo trabaja o duele → `musculos` (mapa muscular con ese músculo encendido);
   - un logro, una explosión de energía, el paso del tiempo → `lottie` (confeti, fuego, destellos, reloj de arena) como remate puntual;
   - comparaciones y grupos → `dividida`, dos sprites o check/cruz;
@@ -49,6 +53,7 @@ Por cada estudio o estadística que diga la voz:
 - **Presupuesto de texto** (lo comprueba el validador): como mucho 20 palabras en pantalla en todo el video, sin contar subtítulos ni tarjeta resumen; ≤4 palabras por texto en pantalla, ≤2 por etiqueta y por fila de ficha, y como mucho 2 piezas con texto por escena (lo normal es 0 o 1). El texto en pantalla solo para: la cifra de un estudio con su fuente, el concepto clave una vez (el gancho o el giro) y la tarjeta final. Nunca repite lo que dice la voz.
 - **Pinta los subtítulos** (bloque `subtitulos` de la escaleta): ya salen sin signos de puntuación y en grupos de 1-3 palabras; tú decides `enfasis` (1–2 palabras por escena que de verdad pegan: más grandes y en azul), `tonos` (`alerta` en rojo para el error o la trampa, `exito` en verde para lo correcto; pocas) e `iconos` (una insignia que salta bajo la palabra al decirla: 3–6 en todo el video, en sustantivos concretos que no tengan ya un icono en la escena).
 - Climas: empieza y termina en `negro`; 1–2 climas más según lo que pasa (`azul` solo para una frase clave sin mascota, `papel` para la pausa clara).
+- **Movimiento** (detalles en `recetas.md`): `transicion` (corte casi siempre; 2-4 de `zoom`, `deslizar`, `barrido`, `iris`, `flash`, `fundido`, `pincel` para marcar los cambios de bloque), `camara` (`quieta` donde hay que leer, `alejar` en la pausa, `sacudida` con `en` en el golpe), anims nuevas de la mascota (`saltar`, `celebrar`, `asentir`), `particulas` en 1-3 escenas y `"opciones": {"cortes_a_ritmo": true}` para que los cortes caigan en el golpe de la música.
 - Efectos de sonido en la palabra que los motiva, no en todas las escenas: el silencio también remata.
 - **Tarjeta final** (lo que la gente guarda): es la conclusión de **este** Reel, no un resumen suelto. Parte de `tarjeta.json` y cópiala a `tarjeta_resumen` en la escaleta, retocándola si hace falta, con este hilo:
   - `pregunta`: la del gancho, resumida (≤8 palabras) y reconocible: quien vuelve a la tarjeta en una semana tiene que recordar de qué Reel es.
@@ -64,7 +69,7 @@ Por cada estudio o estadística que diga la voz:
 
 ## 7. Prepara, mira y corrige
 1. `python3 scripts/preparar_video.py briefs/<BASE>` valida la escaleta (`scripts/validar_render.py`), la convierte en frames y deja el proyecto en `videos/<BASE>/`. Si hay errores, corrige y repite.
-2. `cd videos/<BASE> && npm install` (la primera vez) → `npm run tipos` → `npm run stills` (un fotograma por escena + `out/stills/hoja.jpg` y `out/stills/hoja_zonas.jpg`, la misma hoja con la interfaz de Instagram en rojo).
+2. `cd videos/<BASE> && npm install` (la primera vez) → `npm run tipos` → `npm run stills` (un fotograma por escena + `out/stills/hoja.jpg` y `out/stills/hoja_zonas.jpg`, la misma hoja con la interfaz de Instagram en rojo) → `npm run movimiento` (un fotograma cada 0,5 s en `out/movimiento/hoja_movimiento.jpg`: huecos muertos, ritmo, transiciones).
 3. **Mira la hoja** y abre los PNG que te hagan dudar. Comprueba:
    - La mascota cuenta lo mismo que la voz y no se corta ni flota.
    - En `hoja_zonas.jpg` nada vital cae en rojo: arriba (Y<260, nombre y foto de perfil), abajo (Y>1540, nombre, descripción y audio) ni la columna de botones (X>900 desde Y≈1100).
@@ -76,16 +81,18 @@ Por cada estudio o estadística que diga la voz:
    - Las anotaciones apuntan donde deben y se leen.
    - Las fuentes cargaron (Open Sans, JetBrains Mono, Kalam), no la serif del navegador.
    - Datos con su fuente; cifras de ejemplo rotuladas como ilustrativas.
-4. Corrige **siempre en `briefs/<BASE>/`** (escaleta y `custom/`) y repite 1–3: `preparar_video.py` rehace `src/`, así que lo que edites en `videos/<BASE>/src` se pierde.
+4. **Revisión automática de la zona segura (obligatoria antes de renderizar):** `npm run margenes`. Renderiza un fotograma por segundo y el reposo de cada escena con el fondo en negro y lo decorativo apagado, y `scripts/revisar_margenes.py` busca píxeles de contenido en x<120, x>960 o x>900 bajo Y 1100. Si falla, mira `out/margenes/*_marcado.jpg` (en magenta lo que se sale) y recoloca con `ZONA`/`encajarX` o cambia la composición. Nunca achiques el margen. En climas claros (`papel`) la tinta oscura no se detecta: esas escenas, a ojo en `hoja_zonas.jpg`.
+5. Corrige **siempre en `briefs/<BASE>/`** (escaleta y `custom/`) y repite 1–4: `preparar_video.py` rehace `src/`, así que lo que edites en `videos/<BASE>/src` se pierde.
 
 ## 8. Render y entrega
 - `npx remotion render Video out/<BASE>.mp4 --codec=h264 --crf=18` y la portada: `npx remotion still Video out/portada.png --frame=<frame con acción del arranque>`.
 - Entrega el MP4 y la portada con 3–5 líneas sobre las decisiones clave y el estado de las cifras (verificadas, añadidas a la biblioteca, corregidas respecto a `investigacion.json` o sin verificar).
-- Si tienes permiso de escritura en el repo, sube `briefs/<BASE>/escaleta.json`, `custom/`, `subtitulos.json`, los iconos nuevos de `icons/` y, si cambió, `editorial/datos_verificados.json`. `videos/` no se sube.
+- Si el Reel lleva imágenes CC BY / BY-SA, da en la entrega el crédito para la descripción del post (`imagenes/manifest.json`).
+- Si tienes permiso de escritura en el repo, sube `briefs/<BASE>/escaleta.json`, `custom/`, `subtitulos.json`, `imagenes/manifest.json` (con las revisadas), los iconos nuevos de `icons/` y, si cambió, `editorial/datos_verificados.json`. `videos/` no se sube.
 
 ## Reglas fijas
 - El marco IncreaseFit es fijo: subtítulos arriba en Y≈300, bajo la interfaz de Instagram (sin logo encima), texto en pantalla abajo y tarjeta final con el logo. Dentro de las escenas, libertad (sin títulos persistentes).
 - Zona segura: el contenido nunca se pega a los bordes. Mínimo 120 px a cada lado (x 120–960; hasta x 900 por debajo de Y≈1100), porque Instagram recorta los lados según la pantalla.
-- La mascota es la única figura humana: nunca personas reales, fotos ni personajes de otras cuentas o marcas.
+- La mascota es la única figura humana: nunca personas reales, fotos de personas ni personajes de otras cuentas o marcas. Las imágenes con licencia son ilustraciones, diagramas u objetos, revisadas a ojo.
 - Sin CTA en la voz ni en las escenas: el video no pide comentarios, likes, follows ni compartir. La única invitación es el GUÁRDALO de la tarjeta final.
 - La voz no se toca: ni recortes ni cambios de velocidad (el ritmo se ajusta en el notebook, antes de sacar los tiempos).

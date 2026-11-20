@@ -1,0 +1,222 @@
+{
+  "_nota": "Ejes temáticos que sortea el notebook (v8) cuando no se le pasa un tema. Cada video sale de UN eje elegido al azar entre los que no se usaron en los últimos videos; dentro del eje, GPT busca y elige un estudio reciente. Las 'pistas' son puntos de partida opcionales (el notebook sortea una). 'peso' (opcional, por defecto 1) hace que un eje salga más o menos a menudo. Para cambiar la temática de la cuenta, edita esta lista: no hace falta tocar el notebook.",
+  "ejes": [
+    {
+      "id": "longevidad",
+      "titulo": "Fuerza y vivir más (y mejor)",
+      "descripcion": "La fuerza y el músculo como marcadores de salud a largo plazo: mortalidad, años vividos con buena salud, cuánto entrenamiento de fuerza a la semana se asocia con beneficios.",
+      "pistas": [
+        "¿Cuánto entrenamiento de fuerza a la semana se asocia con vivir más?",
+        "¿Las pesas suman a la salud lo mismo que caminar o hacer cardio?",
+        "¿Qué pasa con tu salud si combinas fuerza y actividad aeróbica?"
+      ],
+      "peso": 1.2
+    },
+    {
+      "id": "animo",
+      "titulo": "Fuerza contra la ansiedad y el bajón",
+      "descripcion": "Entrenamiento de fuerza y salud mental en adultos: síntomas de depresión, ansiedad, estado de ánimo.",
+      "pistas": [
+        "¿Levantar pesas mejora los síntomas de depresión?",
+        "¿El entrenamiento de fuerza reduce la ansiedad?",
+        "¿Cuánto tiene que durar una rutina para notar el cambio en el ánimo?"
+      ],
+      "peso": 1.2
+    },
+    {
+      "id": "sueno",
+      "titulo": "Entrenar y dormir mejor",
+      "descripcion": "Efecto del ejercicio de fuerza en la calidad y la duración del sueño, el insomnio y el descanso.",
+      "pistas": [
+        "¿Las pesas ayudan a dormir mejor que el cardio?",
+        "¿Entrenar por la tarde o noche arruina el sueño?",
+        "¿Cuántas semanas de entrenamiento hacen falta para dormir mejor?"
+      ]
+    },
+    {
+      "id": "estres_trabajo",
+      "titulo": "Estrés del trabajo y entrenamiento",
+      "descripcion": "Ejercicio y estrés percibido, agotamiento laboral (burnout) y recuperación mental en personas que trabajan.",
+      "pistas": [
+        "¿Entrenar protege del agotamiento laboral?",
+        "¿Una sesión corta después del trabajo baja el estrés?",
+        "¿La gente que entrena maneja mejor las semanas pesadas?"
+      ]
+    },
+    {
+      "id": "sedentarismo",
+      "titulo": "Pasar el día sentado",
+      "descripcion": "Trabajos de oficina y horas de silla: si el ejercicio (con fuerza) compensa el tiempo sentado y qué hacer en el día a día.",
+      "pistas": [
+        "¿Entrenar compensa ocho horas sentado en la oficina?",
+        "¿Cuánto ejercicio hace falta para contrarrestar estar sentado todo el día?",
+        "¿Sirven las pausas activas durante la jornada?"
+      ]
+    },
+    {
+      "id": "poco_tiempo",
+      "titulo": "La dosis mínima que ya funciona",
+      "descripcion": "Cuánto ejercicio de fuerza hace falta como mínimo para notar beneficios de salud: sesiones cortas, una o dos veces por semana, concentrar el ejercicio en el fin de semana.",
+      "pistas": [
+        "¿Una o dos sesiones de pesas por semana ya cuentan para la salud?",
+        "¿Entrenos de veinte o treinta minutos sirven de algo?",
+        "¿Hacer todo el ejercicio el fin de semana da los mismos beneficios?"
+      ],
+      "peso": 1.3
+    },
+    {
+      "id": "corazon",
+      "titulo": "Pesas y corazón",
+      "descripcion": "Entrenamiento de fuerza y salud cardiovascular: presión arterial, riesgo cardiovascular, colesterol.",
+      "pistas": [
+        "¿Las pesas bajan la presión arterial?",
+        "¿El entrenamiento de fuerza cuida el corazón o solo el cardio?",
+        "¿Qué tipo de ejercicio baja más la presión arterial?"
+      ]
+    },
+    {
+      "id": "glucosa",
+      "titulo": "Músculo y azúcar en sangre",
+      "descripcion": "Fuerza, músculo y control de la glucosa; riesgo de diabetes tipo 2 en población general (prevención, no tratamiento).",
+      "pistas": [
+        "¿Tener más fuerza se asocia con menos riesgo de diabetes tipo dos?",
+        "¿Moverse un poco después de comer cambia el azúcar en sangre?",
+        "¿El músculo funciona como una esponja de glucosa?"
+      ]
+    },
+    {
+      "id": "huesos",
+      "titulo": "Huesos fuertes",
+      "descripcion": "Entrenamiento de fuerza y densidad ósea, osteoporosis y fracturas, especialmente en mujeres alrededor de la menopausia.",
+      "pistas": [
+        "¿Levantar peso fortalece los huesos?",
+        "¿Las mujeres en la menopausia deberían entrenar fuerza?",
+        "¿Nunca es tarde para mejorar la densidad ósea?"
+      ]
+    },
+    {
+      "id": "cerebro",
+      "titulo": "Fuerza y cerebro",
+      "descripcion": "Entrenamiento de fuerza y función cognitiva: memoria, atención, concentración, deterioro cognitivo con la edad.",
+      "pistas": [
+        "¿Las pesas mejoran la memoria?",
+        "¿Entrenar fuerza protege el cerebro con los años?",
+        "¿Una sesión de ejercicio mejora la concentración ese mismo día?"
+      ]
+    },
+    {
+      "id": "espalda_dolor",
+      "titulo": "Menos dolor de espalda y articulaciones",
+      "descripcion": "Ejercicio de fuerza para el dolor lumbar crónico, el cuello y las rodillas en adultos que trabajan (desde la salud, sin técnica de ejercicios concretos).",
+      "pistas": [
+        "¿Fortalecer el cuerpo ayuda con el dolor de espalda crónico?",
+        "¿Las pesas son malas para las rodillas o al revés?",
+        "¿El ejercicio sirve para el dolor de cuello de oficina?"
+      ]
+    },
+    {
+      "id": "envejecer",
+      "titulo": "Llegar fuerte a los sesenta y más",
+      "descripcion": "Pérdida de músculo con la edad (sarcopenia), caídas, independencia y calidad de vida; por qué empezar a los treinta o cuarenta importa.",
+      "pistas": [
+        "¿Cuánto músculo se pierde con la edad si no entrenas?",
+        "¿Las personas mayores que empiezan a entrenar también ganan fuerza?",
+        "¿La fuerza de piernas predice la independencia en la vejez?"
+      ]
+    },
+    {
+      "id": "energia",
+      "titulo": "Más energía y menos cansancio",
+      "descripcion": "Ejercicio y fatiga, vitalidad y energía en el día a día; la paradoja de cansarse para tener más energía.",
+      "pistas": [
+        "¿Entrenar cuando estás cansado te deja con más energía?",
+        "¿El ejercicio reduce la fatiga en personas sedentarias?",
+        "¿Cuánto ejercicio hace falta para sentirte con más energía?"
+      ]
+    },
+    {
+      "id": "constancia",
+      "titulo": "Constancia y hábitos",
+      "descripcion": "Cómo se forma el hábito de ir al gym, cuánto tarda, qué hace que la gente lo mantenga o lo deje, planificación, recordatorios.",
+      "pistas": [
+        "¿Cuánto tarda en volverse automático ir al gym?",
+        "¿Entrenar siempre a la misma hora ayuda a no dejarlo?",
+        "¿Qué distingue a quienes siguen yendo al gym después de seis meses?"
+      ],
+      "peso": 1.2
+    },
+    {
+      "id": "motivacion",
+      "titulo": "Motivación para ir hoy",
+      "descripcion": "El efecto inmediato de una sesión en el ánimo y la sensación de logro; estrategias con evidencia para ir cuando no apetece.",
+      "pistas": [
+        "¿Cuánto mejora el ánimo justo después de una sesión?",
+        "¿Qué funciona mejor para ir al gym cuando no tienes ganas?",
+        "¿Recompensarte por ir al gym sirve o es un truco que se acaba?"
+      ],
+      "peso": 1.2
+    },
+    {
+      "id": "volver",
+      "titulo": "Empezar o volver después de una pausa",
+      "descripcion": "Lo rápido que llegan los primeros beneficios al empezar, la memoria muscular al volver, que nunca es tarde para empezar.",
+      "pistas": [
+        "¿Qué tan rápido se recupera la fuerza después de semanas sin entrenar?",
+        "¿Cuándo se notan los primeros beneficios de empezar a entrenar?",
+        "¿Empezar a entrenar después de los cuarenta da resultados?"
+      ]
+    },
+    {
+      "id": "confianza",
+      "titulo": "Autoestima e imagen corporal",
+      "descripcion": "Entrenamiento de fuerza y cómo te sientes con tu cuerpo, autoestima y sensación de capacidad (sin estética extrema ni comparaciones).",
+      "pistas": [
+        "¿Entrenar fuerza mejora la autoestima aunque el cuerpo no cambie mucho?",
+        "¿Sentirte más fuerte cambia cómo te ves?",
+        "¿Las pesas mejoran la imagen corporal más que otros ejercicios?"
+      ]
+    },
+    {
+      "id": "social",
+      "titulo": "Entrenar acompañado",
+      "descripcion": "Compañero de entrenamiento, clases grupales, apoyo social: cómo influye en la constancia, el esfuerzo y el disfrute.",
+      "pistas": [
+        "¿Ir al gym con alguien hace que vayas más?",
+        "¿Entrenar en grupo hace que te esfuerces más?",
+        "¿El apoyo de tu pareja o amigos cambia tu constancia?"
+      ]
+    },
+    {
+      "id": "grasa_salud",
+      "titulo": "Grasa visceral y salud metabólica",
+      "descripcion": "La composición corporal vista desde la salud (grasa visceral, cintura, salud metabólica), no desde la estética. Sin promesas de adelgazar ni dietas.",
+      "pistas": [
+        "¿Las pesas reducen la grasa visceral aunque la báscula no se mueva?",
+        "¿Ganar músculo mejora la salud metabólica aunque no bajes de peso?",
+        "¿Fuerza o cardio para la grasa que rodea los órganos?"
+      ]
+    },
+    {
+      "id": "enfermedades_cronicas",
+      "titulo": "Prevenir enfermedades comunes",
+      "descripcion": "Actividad física con fuerza y riesgo de enfermedades crónicas frecuentes en población general (cardiometabólicas, algunos cánceres comunes), siempre como asociación y con matiz.",
+      "pistas": [
+        "¿Entrenar fuerza se asocia con menos riesgo de enfermedades crónicas?",
+        "¿Cuánta actividad física a la semana se asocia con menos riesgo de enfermar?",
+        "¿Ser fuerte protege aunque tengas algunos kilos de más?"
+      ],
+      "peso": 0.8
+    },
+    {
+      "id": "productividad",
+      "titulo": "Entrenar y rendir en el trabajo",
+      "descripcion": "Ejercicio y productividad, concentración, días de baja y bienestar en el trabajo; encajar el entrenamiento en la jornada.",
+      "pistas": [
+        "¿La gente que entrena rinde más en el trabajo?",
+        "¿Hacer ejercicio en la jornada laboral reduce los días de baja?",
+        "¿Entrenar antes del trabajo mejora la concentración?"
+      ],
+      "peso": 0.8
+    }
+  ]
+}

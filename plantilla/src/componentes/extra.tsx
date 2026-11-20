@@ -5,6 +5,8 @@ import { cancelRender, continueRender, delayRender, Img, interpolate, Sequence, 
 import { Lottie, type LottieAnimationData } from "@remotion/lottie";
 import { encajarX, FUENTE, LOTTIES, MUSCULOS, PROPS, ZONA } from "../marco/datos";
 import type { C } from "../marco/clima";
+import { MODO_MARGENES } from "../marco/revision";
+const LOTTIE_DECORATIVAS = new Set(["confeti", "fuegos_artificiales", "explosion", "destellos"]);
 import { colorTono, useEntrada } from "./kit";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -75,6 +77,7 @@ export const LottieAnim: React.FC<{ id: string; x: number; y: number; size?: num
   const e = useEntrada(desde, { damping: 11, stiffness: 200 });
   const info = LOTTIES[id];
   if (!data || !info) return null;
+  if (MODO_MARGENES && LOTTIE_DECORATIVAS.has(id)) return null;     // confeti, fuegos…: decorativos, pueden llegar al borde
   const color = tono === "texto" || !tono ? c.texto : colorTono(tono, c);
   const fid = `tinte-${id}-${desde}`;
   return (

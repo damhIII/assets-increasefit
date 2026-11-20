@@ -11,7 +11,8 @@ import propsJson from "../props.json";
 export type Anotacion = {
   tipo: "etiqueta" | "tachado" | "circulo" | "check" | "cruz" | "burbuja_pensamiento" | "burbuja_dialogo" | "dato" | "lista"
       | "rec" | "lineas_velocidad" | "impacto" | "sudor" | "destello" | "enfoque" | "libreta" | "grafica" | "icono" | "ficha"
-      | "musculos" | "lottie" | "prop";
+      | "musculos" | "lottie" | "prop"
+      | "pictograma" | "barras" | "anillo" | "linea_tiempo" | "estudio" | "imagen";
   texto?: string;            // etiqueta, tachado, burbuja_dialogo, dato (la cifra grande), libreta (título)
   detalle?: string;          // dato: texto bajo la cifra
   fuente?: string;           // dato: fuente corta verificada
@@ -28,13 +29,28 @@ export type Anotacion = {
   lottie?: string;           // lottie: id de lottie/manifest.json
   escala?: number;           // lottie, prop: tamaño relativo (1 = normal)
   prop?: string;             // prop: id de props/manifest.json
+  // ── piezas de datos (v9) ──
+  total?: number;            // pictograma: 10 | 20 | 50 | 100 figuras
+  cantidad?: number;         // pictograma: cuántas se encienden
+  barras?: { etiqueta: string; valor: number; tono?: Tono }[];   // barras: 2-4 grupos con su valor real
+  unidad?: string;           // barras, anillo: sufijo del número ("%", " min")
+  valor?: number;            // anillo: 0-100
+  hitos?: { texto: string; icono?: string; en_f: number }[];     // linea_tiempo: 2-4 momentos, cada uno en su palabra
+  estudio?: { tipo: string; anio?: number | string; muestra?: string; duracion?: string; revista?: string };   // estudio: la ficha del paper
+  // ── imagen con licencia (v9) ──
+  imagen?: string;           // id de briefs/<BASE>/imagenes/manifest.json
+  archivo?: string;          // lo rellena sincronizar.py: ruta en public/
+  credito?: string;          // lo rellena sincronizar.py: "Autor · CC BY 4.0"
+  ancho?: number; alto?: number;   // px originales (los rellena sincronizar.py)
+  marco?: "polaroid" | "celular" | "circulo" | "tarjeta";
+  duotono?: boolean;         // por defecto true: la imagen se tiñe a la paleta del clima
   en_f: number;              // frame GLOBAL en que aparece
 };
 export type Tono = "foco" | "alerta" | "exito";
 export type FilaFicha = { icono: string; texto: string; en_f: number };
 export type MascotaEscena = {
   sprite: string;            // id de mascota/manifest.json o "ejercicio:<nombre>" (alterna sus fases)
-  anim: "pop" | "ejercicio" | "temblor" | "entrar" | "estatico" | "hablar";   // hablar: solo con plano_boca_reposo
+  anim: "pop" | "ejercicio" | "temblor" | "entrar" | "estatico" | "hablar" | "saltar" | "asentir" | "celebrar";   // hablar: solo con plano_boca_reposo
   encuadre: "general" | "medio" | "primer_plano";
   posicion: "centro" | "izq" | "der";
   espejo: boolean;
@@ -43,7 +59,9 @@ export type Escena = {
   id: string;
   ini_f: number; fin_f: number;               // globales, contiguos
   clima: string;
-  transicion: "corte" | "pincel";             // pincel = cortinilla + whoosh al entrar
+  transicion: Transicion;                     // cómo entra la escena (ver TRANSICIONES); pincel = cortinilla + whoosh
+  camara: { tipo: "viva" | "quieta" | "alejar" | "sacudida"; en_f: number | null };   // movimiento de cámara de la escena
+  particulas: "polvo" | "chispas" | "burbujas" | "confeti_suave" | null;   // capa decorativa detrás (puede llegar al borde)
   pantalla: { texto: string; estilo: "titular" | "capitulo" | "nota" | "ninguno" };
   enfasis_f: number[];                        // frames globales de las palabras de énfasis (punch-in en la primera)
   mascota: MascotaEscena | null;
@@ -56,6 +74,10 @@ export type Escena = {
 };
 // Tarjeta final: tema (chip) → pregunta del gancho → veredicto (color según tono) → pasos para aplicarlo → fuente.
 // sincronizar.py convierte el formato antiguo (titulo + lineas) a veredicto + pasos.
+// Transiciones de entrada. Las de SOLAPE necesitan ver la escena anterior debajo durante TRANS_SOLAPE frames.
+export type Transicion = "corte" | "pincel" | "zoom" | "deslizar" | "barrido" | "iris" | "flash" | "fundido";
+export const TRANS_SOLAPE = 10;
+export const CON_SOLAPE: Transicion[] = ["deslizar", "iris", "fundido"];
 export type TarjetaDatos = { tema: string; pregunta: string; veredicto: string; tono: "si" | "no" | "matiz" | ""; pasos: string[]; fuente: string; ini_f: number };
 export type Palabra = [string, number, number, number, number, "" | "alerta" | "exito", string];
 export type Sfx = { id: string; frame: number; volumen: number };
@@ -64,11 +86,12 @@ export type DatosVideo = {
   version: number; base: string; audio: string;
   video: { width: number; height: number; fps: number; frames: number; voz_s: number; cola_s: number };
   musica: string | null;
-  opciones: { barra_progreso: boolean };
+  opciones: { barra_progreso: boolean; cortes_a_ritmo?: boolean };
   logos: { increasefit: boolean; oscuro: boolean };
   fuentes: { rol: string; familia: string; css: string | null; stack: string; pesos: number[] }[];
   escenas: Escena[];
   cortinillas: number[];
+  transiciones: { frame: number; tipo: Transicion }[];   // todas las transiciones que no son corte (para sonido y overlays)
   tarjeta_resumen: TarjetaDatos | null;
   sfx: Sfx[];
   // palabra SIN puntuación (puede ser "" si era solo un signo), ini_s, fin_s, énfasis 0/1, corte 0/1 (fin de frase o coma),

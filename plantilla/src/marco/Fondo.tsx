@@ -5,6 +5,7 @@ import React from "react";
 import { AbsoluteFill, Img, staticFile, useCurrentFrame } from "remotion";
 import { useClima } from "./clima";
 import { climaDe, escenaEn } from "./datos";
+import { MODO_MARGENES } from "./revision";
 
 export const Fondo: React.FC = () => {
   const f = useCurrentFrame();
@@ -13,6 +14,7 @@ export const Fondo: React.FC = () => {
   const escena = escenaEn(f);
   const textura = climaDe(escena.clima).textura || "textures/noise_grain.svg";
   const patron = escena.fondo ? `url(${staticFile(`fondos/${escena.fondo}.svg`)})` : null;
+  if (MODO_MARGENES) return <AbsoluteFill style={{ background: "#000000" }} />;   // revisión de márgenes: fondo liso
   return (
     <AbsoluteFill style={{ background: `linear-gradient(170deg, ${c.fondo_a} 0%, ${c.fondo_b} 100%)` }}>
       <AbsoluteFill style={{ background: `radial-gradient(circle at ${bx}px ${by}px, ${c.tinte}AA 0%, ${c.tinte}00 55%)` }} />

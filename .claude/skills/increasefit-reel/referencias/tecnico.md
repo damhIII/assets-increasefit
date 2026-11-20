@@ -31,6 +31,8 @@ export default FlechaSube;
 ## Assets
 - `kit/*.svg` blancos (`tintable` en `kit/manifest.json`) y `icons/*.svg`: con máscara CSS (`<Tinta>`, `<Icono>`), nunca con `<Img>`. El resto, con `<Img src={staticFile(...)} />`.
 - Sprites: `staticFile("mascota/sprites/<id>.png")`.
+- Imágenes con licencia del brief: `public/imagenes/<archivo>` (las copia `preparar_video.py` desde `briefs/<BASE>/imagenes/`); dibújalas con `<ImagenMarco>` para conservar el crédito y la zona segura.
+- Modo revisión: `MODO_MARGENES` de `marco/revision.ts` es `true` cuando se renderiza con `npm run margenes`. En una escena a medida, si dibujas algo DECORATIVO que llega al borde (partículas, rayos, fondos), no lo pintes en ese modo: `if (MODO_MARGENES) return null;`.
 
 ## Reglas de código
 - Determinismo total: prohibido `Math.random()` (usa `Math.sin`, índices o `random(seed)` de Remotion).
@@ -39,6 +41,7 @@ export default FlechaSube;
 - Zona segura: las x del contenido salen de `ZONA` (`ZONA.izq`, `ZONA.der`, `ZONA.botones`, `ZONA.ancho`, `ZONA.cx`) o de `encajarX(x, ancho)`; nada de `left: 30` o `left: 1000`. Ver `layout.md`.
 
 ## Revisión y render
+0. Comandos del proyecto: `npm run stills` (un fotograma por escena) · `npm run movimiento` (cada 0,5 s → `out/movimiento/hoja_movimiento.jpg`) · `npm run margenes` (revisión automática de la zona segura → `out/margenes/`, sale con error si algo se sale).
 1. `npm run tipos` (TypeScript) y `npm run stills`: un solo bundle, un PNG por escena y por la tarjeta en `out/stills/` + hoja de contactos `out/stills/hoja.jpg`. Para frames concretos: `npm run stills -- --frames=120,480`.
 2. Mira las imágenes y corrige en `briefs/<BASE>/`: solapes, textos fuera de zona, contenido en las franjas naranjas de los lados de `hoja_zonas.jpg`, fuentes, mascota cortada o flotando, anotaciones que no apuntan.
 3. Render: `npx remotion render Video out/<BASE>.mp4 --codec=h264 --crf=18`.

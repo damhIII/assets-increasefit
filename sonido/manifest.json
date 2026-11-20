@@ -512,7 +512,8 @@
    "compases": 8,
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
-   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros",
+   "fase_s": 0.215
   },
   {
    "id": "groove_92",
@@ -524,7 +525,8 @@
    "compases": 8,
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
-   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros",
+   "fase_s": 0.615
   },
   {
    "id": "tension_100",
@@ -536,7 +538,8 @@
    "compases": 8,
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
-   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros"
+   "fuente": "Sintetizado para IncreaseFit (scripts/sonido/synth.py) · obra propia, sin licencias de terceros",
+   "fase_s": 0.563
   },
   {
    "id": "mx_623",
@@ -548,7 +551,8 @@
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
    "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/tag/workout/",
-   "url_origen": "https://assets.mixkit.co/music/623/623.mp3"
+   "url_origen": "https://assets.mixkit.co/music/623/623.mp3",
+   "fase_s": 0.461
   },
   {
    "id": "mx_471",
@@ -560,7 +564,8 @@
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
    "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/tag/workout/",
-   "url_origen": "https://assets.mixkit.co/music/471/471.mp3"
+   "url_origen": "https://assets.mixkit.co/music/471/471.mp3",
+   "fase_s": 0.023
   },
   {
    "id": "mx_1001",
@@ -572,7 +577,8 @@
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
    "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/tag/workout/",
-   "url_origen": "https://assets.mixkit.co/music/1001/1001.mp3"
+   "url_origen": "https://assets.mixkit.co/music/1001/1001.mp3",
+   "fase_s": 0.183
   },
   {
    "id": "mx_1183",
@@ -584,7 +590,8 @@
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
    "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/tag/workout/",
-   "url_origen": "https://assets.mixkit.co/music/1183/1183.mp3"
+   "url_origen": "https://assets.mixkit.co/music/1183/1183.mp3",
+   "fase_s": 0.464
   },
   {
    "id": "mx_738",
@@ -596,7 +603,8 @@
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
    "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/hip-hop/",
-   "url_origen": "https://assets.mixkit.co/music/738/738.mp3"
+   "url_origen": "https://assets.mixkit.co/music/738/738.mp3",
+   "fase_s": 0.554
   },
   {
    "id": "mx_400",
@@ -608,7 +616,8 @@
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
    "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/hip-hop/",
-   "url_origen": "https://assets.mixkit.co/music/400/400.mp3"
+   "url_origen": "https://assets.mixkit.co/music/400/400.mp3",
+   "fase_s": 0.255
   },
   {
    "id": "mx_282",
@@ -620,7 +629,8 @@
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
    "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/hip-hop/",
-   "url_origen": "https://assets.mixkit.co/music/282/282.mp3"
+   "url_origen": "https://assets.mixkit.co/music/282/282.mp3",
+   "fase_s": 0.363
   },
   {
    "id": "mx_281",
@@ -632,7 +642,8 @@
    "volumen_bajo_voz": 0.12,
    "volumen_sin_voz": 0.35,
    "fuente": "Mixkit Stock Music Free License (redes sociales y anuncios, sin atribución) · https://mixkit.co/free-stock-music/hip-hop/",
-   "url_origen": "https://assets.mixkit.co/music/281/281.mp3"
+   "url_origen": "https://assets.mixkit.co/music/281/281.mp3",
+   "fase_s": 0.453
   }
  ]
 }

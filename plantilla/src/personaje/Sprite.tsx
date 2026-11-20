@@ -113,10 +113,19 @@ export const Mascota: React.FC<Props> = ({ sprite, anim, colocacion: c, continua
 
   const e = continua ? 1 : spring({ fps, frame: f, config: { damping: 11, stiffness: 190 } });
   const respira = 1 + 0.007 * Math.sin(f / 13);
-  let dx = 0, rot = 0;
+  let dx = 0, rot = 0, dy = 0, sy = 1;
+  // v9: anims con movimiento SOLO vertical (no empujan a la mascota hacia los márgenes laterales)
+  if (anim === "saltar" || anim === "celebrar") {
+    const ciclo = anim === "celebrar" ? 26 : 54;                       // celebrar: saltitos seguidos; saltar: un salto cada ~1,8 s
+    const alto = anim === "celebrar" ? (Math.floor(Math.max(0, f) / ciclo) % 2 ? 26 : 40) : 40;
+    const t = Math.max(0, f - 4) % ciclo;
+    if (t < 14) dy = -Math.sin((t / 14) * Math.PI) * alto;
+    else if (t < 19) sy = 1 - 0.045 * Math.sin(((t - 14) / 5) * Math.PI);   // aterriza y se aplasta un poco
+  }
+  if (anim === "asentir" && f < 75) sy = 1 - 0.022 * Math.max(0, Math.sin(f * 0.42));
   if (anim === "temblor") { dx = Math.sin(f * 2.4) * 5; rot = Math.sin(f * 1.7) * 0.6; }
   if (anim === "entrar" && !continua) dx = (1 - spring({ fps, frame: f, config: { damping: 14, stiffness: 120 } })) * (c.x + c.w * c.k / 2 > 540 ? 700 : -700);
-  const sx = (anim === "pop" || anim === "ejercicio" || anim === "hablar") && !continua ? 0.86 + 0.14 * e : 1;
+  const sx = (anim === "pop" || anim === "ejercicio" || anim === "hablar" || anim === "saltar" || anim === "celebrar" || anim === "asentir") && !continua ? 0.86 + 0.14 * e : 1;
   const squash = esEjercicio && desdeCambio < 3 ? 0.03 * (1 - desdeCambio / 3) : 0;
   const pies = puntoEnPantalla(c, c.info.anclas.pies) ?? [c.x + c.w * c.k / 2, c.y + c.h * c.k];
   const origen = `${pies[0] - c.x}px ${pies[1] - c.y}px`;
@@ -125,8 +134,8 @@ export const Mascota: React.FC<Props> = ({ sprite, anim, colocacion: c, continua
       transform: c.espejo ? "scaleX(-1)" : undefined }} />
   );
   return (
-    <div style={{ position: "absolute", left: c.x + dx, top: c.y, width: c.w * c.k, height: c.h * c.k, transformOrigin: origen,
-      transform: `scale(${sx * (1 + squash)}, ${sx * respira * (1 - squash)}) rotate(${rot}deg)`, opacity: anim === "entrar" ? 1 : Math.min(1, e * 1.4),
+    <div style={{ position: "absolute", left: c.x + dx, top: c.y + dy, width: c.w * c.k, height: c.h * c.k, transformOrigin: origen,
+      transform: `scale(${sx * (1 + squash)}, ${sx * respira * (1 - squash) * sy}) rotate(${rot}deg)`, opacity: anim === "entrar" ? 1 : Math.min(1, e * 1.4),
       filter: filtro ?? "drop-shadow(0 18px 24px rgba(0,0,0,0.35))" }}>
       {esEjercicio && fases.length > 1 && desdeCambio < 4 && f > 4 ? img(fases[prev], 0.28 * (1 - desdeCambio / 4), "estela") : null}
       {img(fases[idx], 1, "pose")}
