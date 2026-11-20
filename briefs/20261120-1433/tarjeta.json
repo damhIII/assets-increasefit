@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "base": "20261120-1433",
+ "tema": "Pesas y salud",
+ "pregunta": "¿Sirven las pesas si tienes poco tiempo?",
+ "veredicto": "Sí: 90–119 min/sem, menor mortalidad asociada",
+ "tono": "matiz",
+ "pasos": [
+  "Reserva lunes y jueves",
+  "Reparte 90–119 min por semana",
+  "Aumenta gradualmente si estás empezando"
+ ],
+ "fuente": "Zhang et al. 2026",
+ "_nota": "Propuesta a partir del guion. Claude la revisa (cifras y fuente) y la pasa a escaleta.tarjeta_resumen."
+}
