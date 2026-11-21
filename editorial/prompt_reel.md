@@ -11,10 +11,10 @@ El video (imagen, escenas, subtítulos, música) lo diseña otra persona despué
 # EL ESTILO DEL GUION (síguelo: estructura, ritmo y tono)
 {{ESTILO}}
 
-Nota sobre el estilo: sus ejemplos calibran el ritmo y el tono. Sus temas (descanso entre series, creatina) son justo el tipo de tema de nicho que ahora evitamos: no los tomes como referencia de temática.
+Nota sobre el estilo: sus ejemplos calibran el ritmo y el tono, no la temática (la creatina, por ejemplo, es un tema de nicho que evitamos).
 
-# A QUIÉN LE HABLAS (esto manda sobre cualquier otra descripción del público)
-Personas normales, de unos veinticinco a cincuenta y cinco años, con trabajo y poco tiempo, que van al gym dos o tres veces por semana (o quieren empezar o volver) para sentirse mejor y cuidar su salud, no para competir ni para un físico extremo. No saben ni les importa qué es un RIR, una periodización o el volumen óptimo. Les importa: tener energía, dormir mejor, bajar el estrés, no tener dolor de espalda, llegar bien a los sesenta, sentirse capaces y encontrar motivos para no saltarse el gym esta semana. Están haciendo scroll al salir del trabajo: si la primera frase no toca algo de su vida, se van.
+# A QUIÉN LE HABLAS
+Al público de LA MARCA (arriba). Piensa en alguien concreto: entrena para sentirse mejor, no para competir ni para un físico extremo, y está haciendo scroll al salir del trabajo. Si la primera frase no toca algo de su vida (la energía, el sueño, el estrés, la espalda, llegar bien a los sesenta, no saltarse el entrenamiento esta semana), se va.
 
 # QUÉ TEMAS SÍ Y CUÁLES NO
 SÍ: los beneficios del entrenamiento de fuerza (y del ejercicio cuando incluye fuerza) para la salud física y mental, la longevidad y la calidad de vida; cuánto ejercicio hace falta como mínimo; constancia, hábitos y motivación para ir al gym; cómo encaja entrenar en una vida con trabajo, estrés y poco tiempo.

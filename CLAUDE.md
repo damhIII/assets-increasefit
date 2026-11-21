@@ -1,30 +1,25 @@
 # assets-increasefit
 
-Repositorio de los Reels de **IncreaseFit** (cuenta de gimnasio y entrenamiento de fuerza, nivel intermedio). Contiene el contenido editorial, la mascota ilustrada, el kit gráfico, el sonido, las paletas, las fuentes y una **plantilla Remotion** que convierte la escaleta de escenas en el video.
+Repositorio de los Reels de **IncreaseFit**, una cuenta de salud y entrenamiento para personas normales con trabajos normales (público en `editorial/marca.md`): contenido editorial, mascota, recursos gráficos y sonoros y la plantilla Remotion que convierte la escaleta en el video.
 
 ## Cómo llega un encargo
-El notebook de Colab (`Crear_video_IncreaseFit_v8.ipynb`) sortea un eje temático (o usa el que le pidan), y en **una sola llamada** GPT busca un estudio reciente en la web, escribe el **guion** con él (solo texto, estilo `editorial/estilo_guion.md`), lo **locuta** (Gemini TTS) y saca el **tiempo de cada palabra** (Whisper). Con el guion final propone la **tarjeta final** (pregunta del gancho → veredicto → pasos). Deja `guion.txt`, `locucion.wav`, `palabras.json`, `tarjeta.json`, `investigacion.json` y, si encontró, `imagenes/` (ilustraciones con licencia libre) en `briefs/<BASE>/` (BASE = `AAAAMMDD-HHMM`).
-
-Todo lo demás lo haces tú con la skill **increasefit-reel** (`.claude/skills/increasefit-reel/SKILL.md`): verificar las cifras, diseñar las escenas (`briefs/<BASE>/escaleta.json` y escenas a medida en `briefs/<BASE>/custom/`), montar, revisar y renderizar.
+1. El notebook de Colab `Crear_video_IncreaseFit_v9.ipynb` sortea un eje (`editorial/ejes.json`); GPT busca un estudio y escribe guion y tarjeta final (`editorial/prompt_reel.md`); una persona revisa el guion; Gemini locuta y Whisper saca el tiempo de cada palabra.
+2. El notebook sube a `briefs/<BASE>/` (`AAAAMMDD-HHMM`) `guion.txt`, `locucion.wav`, `palabras.json`, `tarjeta.json`, `investigacion.json` y, si las hay, `imagenes/`.
+3. Tú diseñas la escaleta y renderizas con la skill **increasefit-reel** (`.claude/skills/increasefit-reel/SKILL.md`); sus "Reglas fijas" son las reglas de esta etapa. Es de solo lectura: lo que generas (`subtitulos.json`, `escaleta.json`, `custom/`, `videos/`) es local a tu sesión y no se sube al repo; entregas en el chat.
 
 ## Estructura
-- `editorial/` voz y marca (`marca.md`), ADN (`adn.md`), estilo del guion (`estilo_guion.md`), temas de inspiración, **datos verificados** (biblioteca que comparten GPT y Claude), el prompt del investigador (`prompt_investigacion.md`), el del guionista (`prompt_guion.md`) y el de la tarjeta final (`prompt_tarjeta.md`).
-- `plantilla/` proyecto Remotion: marco (`src/marco/`), mascota (`src/personaje/`), kit animado (`src/componentes/kit.tsx`), composición por escena (`src/escenas/Escena.tsx`) y escenas a medida (`src/escenas/custom/`, generado).
-- `scripts/` `imagenes.py` (busca y descarga imágenes con licencia libre), `revisar_margenes.py` (zona segura en los fotogramas), `beats.py` (golpes de la música), `fondos.py` y `contactos.py` (patrones de fondo y hojas de contactos), `alinear.py` (guion ↔ voz), `sincronizar.py` (escaleta → frames, subtítulos sin puntuación), `validar_render.py` (incluye el presupuesto de texto), `preparar_video.py`, `iconos.py` (añade iconos de Lucide), `validar_paletas.py`, `tenir_svg.py`, y los regeneradores de mascota, kit y sonido.
-- `mascota/` sprites PNG (catálogo `mascota/manifest.json`, ficha `mascota/personaje.json`, hoja `mascota/contactos.jpg`). `scripts/mascota/` corta y normaliza hojas nuevas.
-- `kit/` anotaciones dibujadas a mano (SVG) y la cortinilla de pincel. `sonido/` efectos y música (bucles propios y pistas descargadas). `icons/` Lucide, Tabler (`tb-`) y Healthicons (`hi-`) (siempre con máscara CSS; vista previa `icons/contactos.png`). `textures/`, `ui/` SVG de apoyo.
-- `props/` objetos en el estilo de la mascota (`manifest.json`, `contactos.jpg`; se regeneran con `scripts/props.py`) · `anatomia/musculos.json` mapa muscular (frente y espalda) · `lottie/` animaciones Lottie en colores de marca (`manifest.json`) · `fondos/` patrones de fondo por escena (`manifest.json`, `contactos.png`). Licencias de terceros junto a cada carpeta.
-- `brand/paletas.json` climas de escena · `brand/fuentes.json` fuentes · `fonts/css/` `@font-face` con woff2 en base64 · logos PNG en la raíz.
-- `briefs/<BASE>/` guion, locución y tiempos (los sube el notebook) + tu escaleta y escenas a medida. `videos/` proyectos de render locales (no se suben).
-
-## Reglas que valen siempre
-- El marco IncreaseFit es fijo: subtítulos arriba desde el primer frame (sin logo ni isotipo encima), texto en pantalla abajo, tarjeta final con el logo. Dentro de las escenas, libertad creativa, pero sin títulos ni carteles que se queden todo el video.
-- Imagen primero: el video se cuenta con la mascota, iconos, marcas del kit y subtítulos pintados (sin signos de puntuación). El texto en pantalla es la excepción (≤20 palabras por video; lo comprueba `validar_render.py`).
-- La mascota es la única figura humana: nunca personas reales, fotos de personas ni personajes de otras cuentas o marcas. Como apoyo se permiten imágenes con licencia libre (CC0, dominio público, CC BY, CC BY-SA) que sean ilustraciones, diagramas u objetos, revisadas a ojo, con su crédito (`referencias/imagenes.md`).
-- Sin CTA: los videos no piden comentarios, likes ni follows. La tarjeta final (GUÁRDALO) es la única invitación.
-- Cifras de estudios en pantalla solo con su fuente verificada en `editorial/datos_verificados.json`; las de ejemplo, rotuladas como ilustrativas.
-- Determinismo: nada de `Math.random()` en Remotion.
-- Zona segura: Instagram recorta los lados del Reel según la pantalla. Nada importante a menos de 120 px de los bordes laterales (x 120–960); en código, `ZONA` y `encajarX` de `plantilla/src/marco/datos.ts`. Antes de renderizar, `npm run margenes` lo comprueba automáticamente.
-
-## Qué se edita dónde
-Todo vive en este repo. Tras tocar `brand/paletas.json`, ejecuta `python3 scripts/validar_paletas.py`. Tras añadir sprites, regenera con `scripts/mascota/` (`procesar.py` → `bocas.py` → `manifiesto.py`) y revisa `mascota/contactos.jpg`. Para cambiar cómo investiga o escribe el guionista, edita `editorial/prompt_investigacion.md`, `editorial/prompt_guion.md`, `editorial/prompt_tarjeta.md` o `editorial/estilo_guion.md` (el notebook los lee de aquí). La voz se elige en el notebook (`TTS_VOICE`, `ESTILO_VOZ`, `VELOCIDAD_VOZ`, `PAUSAS`).
+- `.claude/skills/increasefit-reel/` la skill: pasos, reglas fijas y `referencias/`.
+- `briefs/` una carpeta por video con lo que sube el notebook (`briefs/LEEME.md`).
+- `editorial/` lo que lee el notebook: marca y público, ADN, estilo del guion, ejes y prompts.
+- `plantilla/` proyecto Remotion; `scripts/preparar_video.py` lo copia a `videos/<BASE>/` (local).
+- `scripts/` alinear, sincronizar, validar, preparar, revisar el video, iconos, imágenes y regeneradores.
+- `mascota/` sprites del personaje (`manifest.json`, `contactos.jpg`).
+- `props/` objetos en el estilo de la mascota (`manifest.json`, `contactos.jpg`).
+- `kit/` anotaciones dibujadas a mano y cortinilla de pincel.
+- `icons/` Lucide, Tabler (`tb-`) y Healthicons (`hi-`); vista previa en `icons/contactos.png`.
+- `lottie/` animaciones Lottie en colores de marca.
+- `fondos/` patrones de fondo por escena.
+- `anatomia/` mapa muscular.
+- `ui/` y `textures/` SVG de apoyo.
+- `sonido/` efectos y música.
+- `brand/` climas (`paletas.json`) y fuentes; `fonts/` las fuentes incrustadas; logos PNG en la raíz.

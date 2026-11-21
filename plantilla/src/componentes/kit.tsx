@@ -182,7 +182,7 @@ export const IconoPop: React.FC<{ nombre: string; x: number; y: number; desde: n
 };
 
 /** Ficha de un estudio contada con iconos: cada fila = icono + cifra corta ("100", "8 sem", "5 g"), que entra en su frame local.
- *  Abajo, la fuente verificada (JetBrains Mono) o EJEMPLO ILUSTRATIVO. Va en la columna izquierda (la mascota pasa a la derecha). */
+ *  Abajo, la fuente (JetBrains Mono) o EJEMPLO ILUSTRATIVO. Va en la columna izquierda (la mascota pasa a la derecha). */
 export const FichaEstudio: React.FC<{ filas: { icono: string; texto: string }[]; frames: number[]; fuente?: string; c: C; x?: number; y?: number; ancho?: number }> = ({ filas, frames, fuente, c, x = ZONA.izq, y = 600, ancho = 500 }) => {
   const f = useCurrentFrame();
   const e = useEntrada(Math.max(0, (frames[0] ?? 0) - 4));

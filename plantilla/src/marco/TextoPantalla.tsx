@@ -8,6 +8,7 @@ import React from "react";
 import { interpolate, interpolateColors, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { datos, FUENTE, IF, ZONA } from "./datos";
 import { useClima } from "./clima";
+import { MODO_MARGENES } from "./revision";
 
 export const TEXTO_TOP = 1360;
 const ANCHO = ZONA.botones - ZONA.izq;
@@ -19,7 +20,7 @@ export const TextoPantalla: React.FC = () => {
   const c = useClima();
   const es = datos.escenas;
   const i = es.findIndex((x) => f >= x.ini_f && f < x.fin_f);
-  if (i < 0) return null;
+  if (i < 0 || MODO_MARGENES) return null;     // modo revisión: su franja tiene que quedar vacía (scripts/revisar_video.py)
   const p = es[i];
   const { texto, estilo } = p.pantalla;
   if (!texto || estilo === "capitulo" || estilo === "ninguno") return null;

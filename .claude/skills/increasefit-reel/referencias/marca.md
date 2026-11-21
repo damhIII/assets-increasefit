@@ -1,6 +1,6 @@
 # Marca IncreaseFit
 
-Cuenta de contenido de gimnasio y fuerza para gente que ya entrena. Tono: **humor seco + ciencia explicada fácil** (voz y ADN completos en `editorial/marca.md` y `editorial/adn.md`). Estética: deportiva, limpia y con peso; ilustración de cómic con anotaciones a mano, como la pizarra de un entrenador. Animación con rebote y golpe, sin efectos baratos ni estética de "motivación de póster".
+Cuenta de salud y entrenamiento para personas normales con trabajos normales que entrenan (o quieren empezar o volver), nivel medio-bajo (definición completa del público en `editorial/marca.md`). Tono: **humor seco + ciencia explicada fácil**. Estética: deportiva, limpia y con peso; ilustración de cómic con anotaciones a mano, como la pizarra de un entrenador. Animación con rebote y golpe, sin efectos baratos ni estética de "motivación de póster".
 
 La paleta es la del feed de Instagram: tres looks y nada más. **Negro** neutro (la escena de gym), **azul eléctrico** de fondo con texto blanco (la idea clave) y **blanco** con detalles azules (la pausa clara).
 
@@ -26,7 +26,7 @@ La paleta es la del feed de Instagram: tres looks y nada más. **Negro** neutro 
 
 ## Contenido y honestidad
 - Las cifras de entreno de ejemplo (kilos, repeticiones, progresión) son **ejemplo ilustrativo**: rotúlalas así.
-- Los datos de estudios se muestran con su fuente corta verificada (`editorial/datos_verificados.json`), en JetBrains Mono, pequeña y legible.
+- Los datos de estudios se muestran con su fuente corta (la `corta` del hallazgo de `investigacion.json`), en JetBrains Mono, pequeña y legible.
 - Sin CTA: el video no pide comentarios, likes ni follows; cierra con un remate y la tarjeta final para guardar (pregunta del gancho → veredicto → cómo aplicarlo).
 - Nada de antes/después corporales, básculas como meta, comida "prohibida" ni cuerpos ridiculizados. El blanco del humor es el error, no la persona.
 

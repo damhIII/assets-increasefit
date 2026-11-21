@@ -5,7 +5,7 @@ La cuenta habla de **salud, beneficios del entrenamiento de fuerza y motivación
 ## El estudio (el corazón del Reel)
 | Lo que dice la voz | Pieza | Notas |
 |---|---|---|
-| "Un metaanálisis de dos mil veinticinco…" / "un ensayo con trescientas personas" | `estudio` (ficha del paper) con la mascota en bata (`vest_bata_senalar`) | Una vez por video, cuando se presenta el estudio. `fuente` verificada obligatoria |
+| "Un metaanálisis de dos mil veinticinco…" / "un ensayo con trescientas personas" | `estudio` (ficha del paper) con la mascota en bata (`vest_bata_senalar`) | Una vez por video, cuando se presenta el estudio. `fuente` obligatoria (la `corta` del hallazgo) |
 | El método: muestra, semanas, dosis | `ficha` (iconos + cifras cortas) | Si ya usaste `estudio` con muestra y duración, no repitas: pasa al resultado |
 | "Un tercio menos de riesgo", "uno de cada cuatro" | `pictograma` (`total` 10/20/100, `cantidad`) | La forma más clara de contar riesgo o proporción. Riesgo relativo ≠ absoluto: si la voz dice "treinta por ciento menos", no pintes 30 de 100 encendidas como si fuera absoluto; usa `barras` (con / sin) o `anillo` |
 | Dos grupos comparados ("los que entrenaban vs los que no") | `barras` con los valores reales | La barra del resultado bueno en `exito` o en el foco; la otra en gris (por defecto) |

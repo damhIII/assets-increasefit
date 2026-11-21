@@ -25,4 +25,4 @@ Si un video contradice una sola de estas ideas, no se publica.
 - Deja algo aplicable hoy en el gym, dicho en positivo (qué hacer, no solo qué evitar).
 - Quien lo ve se va con ganas de entrenar: incluso si desmonta un mito, termina con lo que sí funciona.
 - En el conjunto de la cuenta, la mayoría de los videos cuentan cosas que funcionan; los mitos y errores son la minoría.
-- Las cifras citadas son exactamente las verificadas y conservan su acotación.
+- Las cifras citadas son exactamente las del estudio y conservan su acotación.

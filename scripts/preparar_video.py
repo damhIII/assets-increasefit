@@ -12,7 +12,8 @@ Uso:
    src/escenas/custom/ (los .tsx de briefs/<BASE>/custom/ + su índice),
    public/locucion.wav, sprites, kit, sonido, fuentes, iconos, ui, texturas, fondos, lottie, props, logos e imagenes/ del brief.
 Se puede repetir tantas veces como haga falta: lo que escribe Claude vive en briefs/<BASE>/ (escaleta.json y custom/).
-Luego: cd videos/<BASE> && npm install (la primera vez) && npm run stills / npx remotion render ...
+Salida silenciosa: solo avisos, errores y una línea final.
+Luego, en videos/<BASE>: npm run instalar (la primera vez) → npm run tipos → npm run revisar → npm run stills → npm run render.
 """
 import argparse, json, re, shutil, sys
 from pathlib import Path
@@ -43,6 +44,7 @@ def main():
     shutil.copytree(RAIZ / "plantilla", out, dirs_exist_ok=True, ignore=shutil.ignore_patterns("node_modules", "out", "*.log"))
     src, pub = out / "src", out / "public"
     pub.mkdir(exist_ok=True)
+    (out / "out" / "logs").mkdir(parents=True, exist_ok=True)       # npm run render > out/logs/render.log …
     (src / "video.json").write_text(json.dumps(video, ensure_ascii=False, indent=1), encoding="utf-8")
     shutil.copy2(RAIZ / "brand" / "paletas.json", src / "paletas.json")
     shutil.copy2(RAIZ / "mascota" / "manifest.json", src / "mascota.json")
@@ -75,7 +77,7 @@ def main():
     if audio.is_file():
         shutil.copy2(audio, pub / "locucion.wav")
     else:
-        print(f"aviso: no encuentro el audio {audio}; búscalo entre los adjuntos y pásalo con --audio", file=sys.stderr)
+        print(f"  aviso: no encuentro el audio {audio}; búscalo entre los adjuntos y pásalo con --audio")
     # v9: imágenes con licencia de este brief (scripts/imagenes.py) → public/imagenes/
     shutil.rmtree(pub / "imagenes", ignore_errors=True)
     if (d / "imagenes").is_dir():
@@ -92,8 +94,7 @@ def main():
     for png in ("logo_increasefit.png", "logo_increasefit_oscuro.png"):
         if (RAIZ / png).is_file():
             shutil.copy2(RAIZ / png, pub / png)
-    print(f"Proyecto listo en {out} · {video['video']['frames']} frames · {len(video['escenas'])} escenas · {len(nombres)} componentes a medida")
-    print(f"  cd {out} && npm install && npm run stills   (y antes de renderizar: npm run margenes)")
+    print(f"listo · {out} · {video['video']['frames']} frames · {len(video['escenas'])} escenas · {len(nombres)} a medida")
 
 
 if __name__ == "__main__":

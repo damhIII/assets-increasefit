@@ -15,7 +15,7 @@ export type Anotacion = {
       | "pictograma" | "barras" | "anillo" | "linea_tiempo" | "estudio" | "imagen";
   texto?: string;            // etiqueta, tachado, burbuja_dialogo, dato (la cifra grande), libreta (título)
   detalle?: string;          // dato: texto bajo la cifra
-  fuente?: string;           // dato: fuente corta verificada
+  fuente?: string;           // dato: fuente corta (la `corta` del hallazgo de investigacion.json)
   ilustrativo?: boolean;     // dato: ejemplo, no estudio
   apunta?: "cabeza" | "manos" | "pies" | "centro";
   sprite?: string;           // burbuja_pensamiento
@@ -143,8 +143,8 @@ export const IF = {
 // recortar ~100 px por lado, y además tapa arriba (perfil), abajo (descripción, audio) y la columna de botones.
 // Mascota, iconos, cifras, textos y tarjetas EN REPOSO van dentro; solo el fondo y los efectos decorativos (confeti,
 // líneas de velocidad, enfoque, viñeta, marco REC) pueden llegar al borde. El punch-in de la cámara empuja hasta ~30 px
-// hacia fuera durante un instante: el margen ya lo cubre. Para dar más o menos aire, cambia MARGEN_LADOS (y el de
-// scripts/stills.mjs): la plantilla se recoloca sola.
+// hacia fuera durante un instante: el margen ya lo cubre. Para dar más o menos aire, cambia MARGEN_LADOS (y MARGEN en
+// scripts/stills.mjs y scripts/revisar_video.py, y ZONA_* en scripts/validar_render.py): la plantilla se recoloca sola.
 export const MARGEN_LADOS = 120;
 export const ZONA = {
   izq: MARGEN_LADOS,                              // x mínima del contenido

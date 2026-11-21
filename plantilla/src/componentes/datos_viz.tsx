@@ -4,7 +4,7 @@
 //    y la altura se limita para no bajar de Y≈1330 (suelo; debajo va el texto en pantalla).
 //  · Entran con muelle SIN pasarse de su tamaño final (escala ≤ 1): ni el pico del rebote pisa los márgenes laterales.
 //  · `desde` (y los frames de cada hito) en frames LOCALES de la escena. Determinismo total.
-//  · Cifras de estudios: la composición exige `fuente` verificada o `ilustrativo` (validar_render.py). Aquí solo se dibuja.
+//  · Cifras de estudios: la composición exige `fuente` (de investigacion.json) o `ilustrativo` (validar_render.py). Aquí solo se dibuja.
 import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { encajarX, FUENTE, IF, ZONA, type Tono } from "../marco/datos";
@@ -210,7 +210,7 @@ export const LineaTiempo: React.FC<{ hitos: { texto: string; icono?: string }[];
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-/** Ficha del estudio (la "portada del paper"): tipo de estudio, año, muestra, duración y revista, con la fuente verificada.
+/** Ficha del estudio (la "ficha del paper"): tipo de estudio, año, muestra, duración y revista, con su fuente.
  *  Da credibilidad sin leer autores en voz alta. Se dibuja: no es una captura de la revista. */
 export const TarjetaEstudio: React.FC<{ tipo: string; anio?: number | string; muestra?: string; duracion?: string; revista?: string; fuente?: string;
   desde: number; c: C; x?: number; y?: number; ancho?: number }> = ({ tipo, anio, muestra, duracion, revista, fuente, desde, c, x = ZONA.izq, y = 600, ancho = 500 }) => {

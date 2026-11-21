@@ -10,6 +10,7 @@ import React, { useMemo } from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { datos, FUENTE, IF, ZONA, type Palabra } from "./datos";
 import { Icono } from "../componentes/kit";
+import { MODO_MARGENES } from "./revision";
 
 type W = { w: string; a: number; b: number; enf: boolean; corte: boolean; tono: "" | "alerta" | "exito"; icono: string };
 
@@ -86,6 +87,7 @@ export const Subtitulos: React.FC<{ top?: number }> = ({ top: topFijo }) => {
   const top = topFijo ?? SUBS_TOP;
   const t = f / fps;
   const grupos = useMemo(() => agrupar(datos.subtitulos), []);
+  if (MODO_MARGENES) return null;     // modo revisión: su franja tiene que quedar vacía (scripts/revisar_video.py)
   const i = grupos.findIndex((g, k) => t >= g[0].a - ANTES_S && (k === grupos.length - 1 || t < grupos[k + 1][0].a - ANTES_S));
   if (i < 0) return null;
   const g = grupos[i];

@@ -6,8 +6,9 @@ Uso:
   python3 scripts/validar_render.py briefs/<BASE> --stills     # además lista los fotogramas a revisar
 
 No juzga lo creativo: solo que lo que se pide exista, que los tiempos cuadren y que se respeten las reglas fijas
-(marco, sin CTA, cifras de estudios con su fuente verificada) y el PRESUPUESTO DE TEXTO: el video se cuenta con imágenes
-y subtítulos; el texto en pantalla es la excepción (límites en LIMITES y PRESUPUESTO_TEXTO).
+(marco, sin CTA, fuentes que salen de los hallazgos de investigacion.json) y el PRESUPUESTO DE TEXTO: el video se cuenta
+con imágenes y subtítulos; el texto en pantalla es la excepción (límites en LIMITES y PRESUPUESTO_TEXTO).
+Además calcula, sin renderizar, si la cabeza o las manos de la mascota quedan fuera de la zona segura o si flota.
 """
 import json, re, sys
 from pathlib import Path
@@ -41,6 +42,129 @@ TARJETA = {"tema": 3, "pregunta": 8, "veredicto": 7, "paso": 6}
 TARJETA_PASOS = (2, 3)
 TARJETA_TITULO_ANTIGUO = 5      # formato antiguo (titulo + lineas)
 CTA = ("comenta", "dale like", "like", "sigueme", "suscribete", "guardalo y", "comparte", "link en", "en la bio")
+# Geometría de la mascota: la misma que colocar() de plantilla/src/personaje/Sprite.tsx y ZONA de plantilla/src/marco/datos.ts
+SUELO, ESCENA_ARRIBA, IG_ABAJO = 1340, 540, 1540
+ZONA_IZQ, ZONA_DER, ZONA_BOTONES, Y_BOTONES = 120, 960, 900, 1100
+CX_POS = {"centro": 540, "izq": 320, "der": 730}
+FLOTA_PX = 20                   # pies más de 20 px por encima del suelo en medio / primer plano = flota
+
+
+def fuentes_de(d):
+    """Fuentes que pueden ir en pantalla: el campo `corta` de los hallazgos de briefs/<BASE>/investigacion.json.
+    None si el brief no tiene investigacion.json (entonces ninguna pieza puede llevar fuente)."""
+    f = Path(d) / "investigacion.json"
+    if not f.exists():
+        return None
+    inv = json.loads(f.read_text(encoding="utf-8"))
+    return {str(h["corta"]).strip() for h in inv.get("hallazgos") or [] if isinstance(h, dict) and str(h.get("corta") or "").strip()}
+
+
+def _encajar(x, w, lim=ZONA_DER):
+    return (ZONA_IZQ + lim - w) / 2 if w > lim - ZONA_IZQ else min(max(x, ZONA_IZQ), lim - w)
+
+
+def colocar(info, encuadre, posicion, espejo, k0, extra=1.0, cx=None):
+    """Port de colocar() (Sprite.tsx) → (x, y, k) del sprite en pantalla."""
+    w, h = info["tam"]
+    cx = CX_POS.get(posicion, 540) if cx is None else cx
+    ax = (lambda a: w - a[0]) if espejo else (lambda a: a[0])
+    cab = info["anclas"].get("cabeza")
+    if info["categoria"] in ("cara", "mano"):
+        k = 1.25 * extra
+        return _encajar(cx - w * k / 2, w * k), 930 - h * k / 2, k
+    if info["categoria"] == "plano_medio":
+        k = k0 * 1.2 * extra
+        return _encajar(cx - w * k / 2, w * k), 1450 - h * k, k
+    if encuadre == "medio" and cab:
+        k = k0 * 1.55 * extra
+        return cx - ax(cab) * k, 720 - cab[1] * k, k
+    if encuadre == "primer_plano" and cab:
+        k = k0 * 2.5 * extra
+        return 540 - ax(cab) * k, 860 - cab[1] * k, k
+    k = min(k0 * extra, (ZONA_DER - ZONA_IZQ) / w, (SUELO - ESCENA_ARRIBA) / h)
+    pies = info["anclas"]["pies"]
+    return _encajar(cx - ax(pies) * k, w * k), SUELO - pies[1] * k, k
+
+
+def revisar_mascota(escenas, mascota, props):
+    """Avisos (sin renderizar) de mascota cortada o flotando, con las anclas de mascota/manifest.json y la misma colocación
+    que la composición por defecto (Escena.tsx): columna → general a la derecha ×0,82; objeto de suelo → izquierda ×0,92;
+    dividida → dos paneles ×0,68. Las escenas a medida (solo_componente) y los capítulos no se revisan.
+    · cortada: la cabeza o una mano visible quedan fuera de x 120–960 (x ≤ 900 bajo Y 1100) o por encima de Y 540
+      (franja de subtítulos e insignias). En medio y primer plano, las manos por debajo de Y 1540 salen del cuadro por el
+      encuadre y no se avisan.
+    · flota: en medio o primer plano, los pies quedan visibles por encima del suelo (Y 1340)."""
+    sprites = {s["id"]: s for s in mascota["sprites"]}
+    ejercicios = mascota.get("ejercicios") or {}
+    k0 = 800 / float(mascota.get("altura_personaje_px") or 900)     # personaje de pie = 800 px en encuadre general
+    suelo_ids = {p["id"] for p in props if p.get("suelo")}
+    avisos = []
+
+    def fases(sp):
+        if isinstance(sp, str) and sp.startswith("ejercicio:"):
+            return [sprites[i] for i in (ejercicios.get(sp[10:]) or {}).get("fases", []) if i in sprites]
+        return [sprites[sp]] if sp in sprites else []
+
+    def fuera(x, y):
+        lim = ZONA_BOTONES if y > Y_BOTONES else ZONA_DER
+        if x < ZONA_IZQ or x > lim:
+            return f"x {x:.0f} (zona x {ZONA_IZQ}–{lim})"
+        if y < ESCENA_ARRIBA:
+            return f"y {y:.0f} (pisa la franja de subtítulos, por encima de Y {ESCENA_ARRIBA})"
+        return ""
+
+    def revisar(eid, sp, encuadre, posicion, espejo, extra=1.0, cx=None):
+        fs = fases(sp)
+        if not fs:
+            return
+        x, y, k = colocar(fs[0], encuadre, posicion, espejo, k0, extra, cx)     # todas las fases comparten lienzo y ancla
+        w = fs[0]["tam"][0]
+        punto = lambda a: (x + ((w - a[0]) if espejo else a[0]) * k, y + a[1] * k)
+        efectivo = encuadre if fs[0]["anclas"].get("cabeza") else "general"
+        cuerpo = fs[0]["categoria"] not in ("cara", "mano", "plano_medio")
+        vistos = set()
+        for f in fs:
+            A = f["anclas"]
+            partes = ([("la cabeza", A["cabeza"])] if A.get("cabeza") else []) + [("una mano", m) for m in A.get("manos") or []]
+            for nombre, a in partes:
+                px, py = punto(a)
+                if nombre == "una mano" and efectivo in ("medio", "primer_plano") and py >= IG_ABAJO:
+                    continue
+                motivo = fuera(px, py)
+                if motivo and (nombre, motivo) not in vistos:
+                    vistos.add((nombre, motivo))
+                    avisos.append(f"{eid}: mascota cortada · {nombre} de {f['id']} queda en {motivo}: cambia posición o encuadre")
+            if cuerpo and efectivo in ("medio", "primer_plano") and A.get("pies"):
+                _, py = punto(A["pies"])
+                if py < SUELO - FLOTA_PX and ("flota", f["id"]) not in vistos:
+                    vistos.add(("flota", f["id"]))
+                    avisos.append(f"{eid}: mascota flotando · los pies de {f['id']} quedan en y {py:.0f}, por encima del suelo "
+                                  f"(Y {SUELO}): usa encuadre general")
+
+    for k, e in enumerate(escenas):
+        eid = e.get("id", f"#{k}")
+        if e.get("solo_componente") or (e.get("pantalla") or {}).get("estilo") == "capitulo":
+            continue
+        div = e.get("dividida")
+        if div:
+            ancho_p = (ZONA_DER - ZONA_IZQ - 20) / 2
+            revisar(eid, div.get("no"), "general", "izq", False, 0.68, ZONA_IZQ + ancho_p / 2)
+            revisar(eid, div.get("si"), "general", "der", False, 0.68, ZONA_IZQ + ancho_p + 20 + ancho_p / 2)
+            continue
+        m = e.get("mascota")
+        if not m:
+            continue
+        anots = e.get("anotaciones") or []
+        columna = any(o.get("tipo") in COLUMNA for o in anots)
+        prop_suelo = any(o.get("tipo") == "prop" and not o.get("apunta") and o.get("prop") in suelo_ids for o in anots)
+        pos = m.get("posicion", "centro")
+        if columna:
+            pos = "der"
+        elif prop_suelo and pos == "centro":
+            pos = "izq"
+        revisar(eid, m.get("sprite"), "general" if columna else m.get("encuadre", "general"), pos, bool(m.get("espejo")),
+                0.82 if columna else 0.92 if prop_suelo else 1.0)
+    return avisos
 
 
 def validar(dir_base):
@@ -60,8 +184,7 @@ def validar(dir_base):
     sfx_ids = {s["id"] for s in cat["sonido"]["sfx"]}
     musica = {m["id"] for m in cat["sonido"]["musica"]}
     climas = cat["paletas"]["climas"]
-    dv = json.loads((S.RAIZ / "editorial/datos_verificados.json").read_text(encoding="utf-8"))["datos"]
-    fuentes_ok = {x["corta"] for x in dv.values()} | {x["fuente"] for x in dv.values()}
+    fuentes_ok = fuentes_de(d)               # None = el brief no tiene investigacion.json
     n = len(sub["palabras"])
     iconos = {f.stem for f in (S.RAIZ / "icons").glob("*.svg")}
     musculos = set((cat["musculos"].get("musculos") or {}).keys())
@@ -79,6 +202,15 @@ def validar(dir_base):
         texto_total.append((donde, k))
         if k > LIMITES[clave]:
             err.append(f"{donde}: «{t}» tiene {k} palabras (máximo {LIMITES[clave]}): cuéntalo con la mascota, un icono o el subtítulo")
+
+    def fuente_ok(donde, fuente):
+        """La fuente en pantalla es la `corta` de un hallazgo de investigacion.json, tal cual: solo coherencia (que no se invente)."""
+        if fuentes_ok is None:
+            err.append(f"{donde}: «{fuente}» no puede ir como fuente porque el brief no tiene investigacion.json: "
+                       "quítala y, si es un ejemplo, pon 'ilustrativo': true")
+        elif fuente not in fuentes_ok:
+            err.append(f"{donde}: la fuente «{fuente}» no es la `corta` de ningún hallazgo de investigacion.json "
+                       f"({', '.join(sorted(fuentes_ok)) or 'no tiene hallazgos'}): usa esa, o quítala y pon 'ilustrativo': true")
 
     def icono_ok(nombre, donde):
         if nombre not in iconos:
@@ -244,25 +376,21 @@ def validar(dir_base):
                         textos.append((donde, str(r["texto"])))
                     if r.get("en") is not None:
                         idx_ok(r["en"], f"{donde}.filas[{r_i}].en")
-                if o.get("fuente") and o["fuente"] not in fuentes_ok:
-                    err.append(f"{donde}: la fuente «{o['fuente']}» no está en editorial/datos_verificados.json: verifícala y añádela antes de mostrarla")
-                if not o.get("fuente") and not o.get("ilustrativo"):
-                    err.append(f"{donde}: una ficha lleva su 'fuente' verificada, o 'ilustrativo': true si es un ejemplo")
+            # Piezas con cifras: `fuente` = la `corta` de un hallazgo de investigacion.json, o 'ilustrativo': true si es un ejemplo
+            def fuente_o_ilustrativo(obligatoria=False):
+                if o.get("fuente"):
+                    fuente_ok(donde, o["fuente"])
+                elif obligatoria:
+                    err.append(f"{donde}: {t} lleva siempre su 'fuente' (la `corta` del hallazgo: es la ficha de un estudio real)")
+                elif not o.get("ilustrativo"):
+                    err.append(f"{donde}: {t} lleva su 'fuente' (la `corta` del hallazgo), o 'ilustrativo': true si es un ejemplo")
+            if t == "ficha":
+                fuente_o_ilustrativo()
             if t == "dato":
                 if not o.get("texto"):
                     err.append(f"{donde}: dato necesita la cifra en 'texto'")
-                if o.get("fuente") and o["fuente"] not in fuentes_ok:
-                    err.append(f"{donde}: la fuente «{o['fuente']}» no está en editorial/datos_verificados.json: verifícala y añádela antes de mostrarla")
-                if not o.get("fuente") and not o.get("ilustrativo"):
-                    err.append(f"{donde}: un dato en pantalla lleva su 'fuente' verificada, o 'ilustrativo': true si es un ejemplo")
+                fuente_o_ilustrativo()
             # ── v9: piezas de datos e imagen ──
-            def fuente_o_ilustrativo(obligatoria_verificada=False):
-                if o.get("fuente") and o["fuente"] not in fuentes_ok:
-                    err.append(f"{donde}: la fuente «{o['fuente']}» no está en editorial/datos_verificados.json: verifícala y añádela antes de mostrarla")
-                if obligatoria_verificada and not o.get("fuente"):
-                    err.append(f"{donde}: {t} lleva siempre su 'fuente' verificada (es la ficha de un estudio real)")
-                elif not o.get("fuente") and not o.get("ilustrativo"):
-                    err.append(f"{donde}: {t} lleva su 'fuente' verificada, o 'ilustrativo': true si es un ejemplo")
             if t in ("pictograma", "barras", "anillo", "linea_tiempo", "estudio"):
                 piezas_texto += 1
             if t == "pictograma":
@@ -326,7 +454,7 @@ def validar(dir_base):
                         textos.append((donde, str(es[campo])))
                 if es.get("revista") and len(palabras(es["revista"])) > 4:
                     err.append(f"{donde}: estudio.revista abreviada (≤4 palabras)")
-                fuente_o_ilustrativo(obligatoria_verificada=True)
+                fuente_o_ilustrativo(obligatoria=True)
             if t == "imagen":
                 info = imgs.get(o.get("imagen"))
                 if not info:
@@ -427,8 +555,8 @@ def validar(dir_base):
         for x in tr["pasos"]:
             if len(palabras(x)) > TARJETA["paso"]:
                 err.append(f"tarjeta_resumen: el paso «{x}» tiene más de {TARJETA['paso']} palabras")
-        if tr["fuente"] and tr["fuente"] not in fuentes_ok:
-            err.append(f"tarjeta_resumen: la fuente «{tr['fuente']}» no está en editorial/datos_verificados.json: verifícala y añádela, o quítala")
+        if tr["fuente"]:
+            fuente_ok("tarjeta_resumen", tr["fuente"])
         textos += [("tarjeta", tr[k]) for k in ("tema", "pregunta", "veredicto") if tr[k]] + [("tarjeta", x) for x in tr["pasos"]]
         if tr.get("desde") is not None:
             idx_ok(tr["desde"], "tarjeta_resumen.desde")
@@ -436,16 +564,12 @@ def validar(dir_base):
             avisos.append(f"cola_s {cola}: con la tarjeta nueva deja al menos 3.5-4 s para leerla")
     else:
         avisos.append("sin tarjeta_resumen (ni en la escaleta ni en tarjeta.json)")
-    cifras = []
     for donde, t in textos:
         tt = f" {sin_tildes(t)} "
         malas = [c for c in CTA if re.search(rf"\b{re.escape(c)}\b", tt)]
         if malas:
             err.append(f"{donde}: «{t}» suena a CTA ({', '.join(malas)}): la marca no pide nada")
-        if re.search(r"\d", t):
-            cifras.append(f"«{t}» ({donde})")
-    if cifras:
-        avisos.append("cifras en pantalla, confirma que salen del guion, de un dato verificado o van como ejemplo: " + "; ".join(cifras))
+    avisos += revisar_mascota(escenas, cat["mascota"], cat["props"].get("props") or [])
     if not err:
         v = S.sincronizar(d)
         fin_voz = v["tarjeta_resumen"]["ini_f"] if v["tarjeta_resumen"] else v["video"]["frames"]

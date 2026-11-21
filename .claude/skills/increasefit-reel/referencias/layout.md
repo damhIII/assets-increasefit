@@ -1,6 +1,6 @@
 # Layout, capas y kit
 
-Rol: director y motion designer de explainers de fitness. Ritmo de Reel, cortes secos, rebote y golpe, humor visual. Libertad creativa dentro de estas reglas.
+Rol: director y motion designer de explainers de salud y entrenamiento. Ritmo de Reel, cortes secos, rebote y golpe, humor visual. Libertad creativa dentro de estas reglas.
 
 ## Capas (de atrás hacia delante), ya hechas en `src/Video.tsx`
 1. **Fondo** (`marco/Fondo.tsx`): degradado y textura del clima de la escena, brillo de tinte que deriva, patrón opcional de la escena (`escena.fondo`, de `fondos/`), viñeta.
@@ -11,8 +11,7 @@ Rol: director y motion designer de explainers de fitness. Ritmo de Reel, cortes 
 6. **Sonido** (`marco/Sonido.tsx`): voz, música con ducking y efectos.
 
 ## Zonas (px sobre 1080x1920)
-- Subtítulos Y≈300–402 desde el frame 0 (sin logo ni isotipo encima: el logo solo sale en la tarjeta final); las insignias de icono cuelgan debajo hasta Y≈500. Escena Y≈540–1340 (suelo en 1340). Texto en pantalla Y≈1360–1540 (x 120–900, con un velo oscuro detrás). Tarjeta final x 120–960 · Y≈320–1530.
-- **Nada fijo durante todo el video**: ni logos, ni títulos de serie, ni rótulos persistentes, ni etiquetas que se queden de escena en escena (tampoco en escenas a medida). Lo de arriba es solo de los subtítulos.
+- Subtítulos Y≈300–402 desde el frame 0; las insignias de icono cuelgan debajo hasta Y≈500. Escena Y≈540–1340 (suelo en 1340). Texto en pantalla Y≈1360–1540 (x 120–900, con un velo oscuro detrás). Tarjeta final x 120–960 · Y≈320–1530. Lo de arriba es solo de los subtítulos: la escena no pisa su franja (Y 260–402, hasta Y 500 cuando hay insignias) ni, si lleva texto en pantalla, la de abajo (Y 1360–1540).
 - **Interfaz de Instagram** (lo que tapa en un Reel; `npm run stills` la pinta en rojo en `out/stills/hoja_zonas.jpg`):
   - Arriba, Y<260: nombre y foto de perfil, botón seguir, "Reels" y la cámara. Ahí no va nada vital (por eso los subtítulos empiezan en Y≈300).
   - Abajo, Y>1540: nombre, foto de perfil, descripción y audio.
@@ -24,8 +23,8 @@ Rol: director y motion designer de explainers de fitness. Ritmo de Reel, cortes 
   - El punch-in de la cámara (5,5 %) empuja hacia fuera lo que está lejos del centro unos 25–30 px durante un instante: el margen de 120 ya lo cubre, no lo recortes "porque aún se ve". La cámara `alejar` solo aleja (nunca acerca) y `sacudida` es casi vertical y dura 12 frames.
   - Transiciones: los movimientos que cruzan el borde (deslizar, barrido, zoom de entrada) duran ≤10 frames; la posición de reposo de cada escena no cambia.
   - Las anims nuevas de la mascota (`saltar`, `celebrar`, `asentir`) solo la mueven en vertical: no la acercan a los márgenes laterales.
-  - **Compruébalo con `npm run margenes`** (modo revisión: fondo negro, decorativos apagados, cámara quieta; `scripts/revisar_margenes.py` marca en magenta lo que se sale). La tarjeta final se revisa según su diseño (x 120–960): si roza los botones bajo Y 1100 solo avisa.
-  - En `medio` y `primer_plano` el cuerpo de la mascota puede salirse del cuadro (es el encuadre), pero la cabeza y las manos que cuentan algo quedan dentro de la zona.
+  - **Lo comprueba `npm run revisar`** (modo revisión: fondo liso, sin subtítulos ni texto en pantalla, decorativos apagados, cámara quieta; `scripts/revisar_video.py` marca en magenta lo que se sale de la zona o pisa las franjas de los subtítulos y del texto en pantalla). La tarjeta final se revisa con su diseño (x 120–960): la columna de botones, que roza por diseño, no se mira.
+  - En `medio` y `primer_plano` el cuerpo de la mascota puede salirse del cuadro (es el encuadre), pero la cabeza y las manos que cuentan algo quedan dentro de la zona (`validar_render.py` avisa si no, y si la mascota flota).
 
 ## Texto en pantalla (`pantalla.estilo`)
 - `titular`: "línea 1 / línea 2" → línea 1 Open Sans 400 blanca + línea 2 Open Sans 800 en el foco del clima (eco del "FIT" del logo). Sin "/" va una línea en 800. Se dibuja **abajo**, bajo los pies de la mascota.
@@ -49,4 +48,4 @@ Cada idea del guion debería verse **sin leer nada**: la mascota haciéndolo, un
 `marco/Subtitulos.tsx`: **arriba** (Y≈300, por debajo del nombre y la foto de perfil de Instagram, desde el primer frame). 1-3 palabras a la vez desde `datos.subtitulos`, **solo palabras** (sin signos de puntuación: los quita `sincronizar.py` y otra vez el componente); el grupo cambia en cada fin de frase, coma o pausa. Open Sans 800, 64 px, mayúsculas, en una cápsula oscura con blur (no la quites). La palabra que suena se enciende sobre una píldora azul (#2353F1, texto blanco) que salta; las ya dichas quedan en blanco y las que vienen en gris. Las de `enfasis` son más grandes, giran un poco al sonar y se quedan en azul luz; las de `subtitulos.tonos` usan rojo (alerta) o verde (éxito) en vez de azul. Las de `subtitulos.iconos` llevan una insignia redonda con el icono que cuelga **debajo** de la cápsula (~90 px, hasta Y≈500) cuando se dicen: no pongas nada vital debajo de la cápsula en esas escenas.
 
 ## Cierre
-No hay CTA en la voz. La última escena es el remate; al acabar la voz entra la tarjeta final (`TarjetaResumen`): GUÁRDALO + chip del tema → la pregunta del gancho → el veredicto (verde = sí, rojo = no, foco = matiz) → CÓMO APLICARLO con 2-3 pasos numerados → fuente; debajo, la mascota con el pulgar y el logo. Se queda la cola (`cola_s`, 4 s por defecto) para leerla y guardarla. Lee la tarjeta como la última escena del guion: tiene que sonar a la conclusión de **este** Reel, no a un resumen genérico.
+La última escena es el remate; al acabar la voz entra la tarjeta final (`TarjetaResumen`): GUÁRDALO + chip del tema → la pregunta del gancho → el veredicto (verde = sí, rojo = no, foco = matiz) → CÓMO APLICARLO con 2-3 pasos numerados → fuente; debajo, la mascota con el pulgar y el logo. Se queda la cola (`cola_s`, 4 s por defecto) para leerla y guardarla. Lee la tarjeta como la última escena del guion: tiene que sonar a la conclusión de **este** Reel, no a un resumen genérico.

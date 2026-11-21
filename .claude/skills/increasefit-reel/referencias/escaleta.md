@@ -42,7 +42,7 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
     "veredicto": "Ayuda, pero no es tratamiento",  // ≤7: la respuesta corta, la misma que da el guion
     "tono": "matiz",                    // si (verde) | no (rojo) | matiz (foco)
     "pasos": ["5 g de monohidrato al día", "Súmala a tu tratamiento", "Ignora las versiones mejoradas"],   // 2-3, ≤6 palabras, verbo en imperativo
-    "fuente": ""                        // opcional: `corta` de datos_verificados.json si el veredicto sale de un estudio
+    "fuente": ""                        // opcional: la `corta` del hallazgo de investigacion.json si el veredicto sale del estudio
   }
 }
 ```
@@ -71,7 +71,7 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 | burbuja_dialogo | texto (≤4 palabras) | lo que dice la mascota (no repite la voz) |
 | icono | icono, tono?, tachado?, apunta? | icono de `icons/` en una insignia que salta y flota; `tono`: foco (por defecto) \| alerta \| exito; `tachado: true` lo tacha en rojo; con `apunta` va junto a esa zona de la mascota, si no, apilado en el lado libre; sin mascota, en fila centrada. **La forma preferida de reforzar una palabra** |
 | ficha | filas (2-4: `{icono, texto ≤2 palabras, en}`), fuente \| ilustrativo | el método de un estudio con iconos: `{"icono":"users","texto":"100","en":9}`, `{"icono":"calendar","texto":"8 sem"}`, `{"icono":"pill","texto":"5 g"}`; cada fila entra en su palabra. Columna (mascota a la derecha) |
-| dato | texto (la cifra, ≤2 palabras), detalle (≤5), fuente \| ilustrativo | `fuente` = `corta` de `editorial/datos_verificados.json` (obligatoria si es de un estudio); si es un ejemplo, `"ilustrativo": true` |
+| dato | texto (la cifra, ≤2 palabras), detalle (≤5), fuente \| ilustrativo | `fuente` = la `corta` de un hallazgo de `investigacion.json` (obligatoria si es de un estudio); si es un ejemplo, `"ilustrativo": true` |
 | lista | items (2-4, ≤3 palabras) | checklist que se marca a lo largo de la escena (cuenta mucho texto: mejor iconos) |
 | libreta | texto (título) | usa `progresion`; rotula EJEMPLO ILUSTRATIVO |
 | grafica | – | usa `progresion`; rotula EJEMPLO ILUSTRATIVO |
@@ -84,12 +84,12 @@ La escribes tú en `briefs/<BASE>/escaleta.json`. Describe las escenas ancladas 
 | barras | barras (2-4: `{etiqueta ≤2, valor, tono?}`), unidad? ("%", " min"), fuente \| ilustrativo | barras que crecen con su número contando; la más alta en el foco (o el `tono` de cada una). Los valores, los REALES del estudio. Columna |
 | anillo | valor (0-100), texto?, detalle? (≤5), unidad? (por defecto %), tono?, fuente \| ilustrativo | anillo que se dibuja con el porcentaje contando en el centro. Columna |
 | linea_tiempo | hitos (2-4: `{texto ≤2, icono?, en}`) | cada hito se enciende en su palabra y la línea avanza; vertical con mascota, horizontal sin ella. Columna |
-| estudio | estudio: `{tipo ≤3, anio?, muestra? ≤3, duracion? ≤2, revista? ≤4}`, fuente (obligatoria, verificada) | la ficha del paper ("ESTUDIO · 2021", Ensayo aleatorizado, 61.293 socios, 4 semanas, Nature). Una vez por video. Columna |
+| estudio | estudio: `{tipo ≤3, anio?, muestra? ≤3, duracion? ≤2, revista? ≤4}`, fuente (obligatoria: la `corta` del hallazgo) | la ficha del paper ("ESTUDIO · 2021", Ensayo aleatorizado, 61.293 socios, 4 semanas, Nature). Una vez por video. Columna |
 | imagen | imagen (id de `imagenes/manifest.json`), marco? (polaroid \| celular \| circulo \| tarjeta), duotono? (true), escala? (0.6-1) | ilustración con licencia libre en su marco, con zoom lento DENTRO del marco y el crédito debajo. Revisada y sin personas (ver `imagenes.md`). Columna |
 | lottie | lottie (id), apunta?, escala? (0.3-2.5), tono? | animación de `lottie/manifest.json` en la palabra: efectos (confeti, fuego, destellos, latido, reloj de arena…) en color de marca, o iconos animados `ua_*` (mono: se tiñen con `tono`: foco \| alerta \| exito \| texto). Con `apunta` va junto a esa zona de la mascota; si no, en el lado libre (o centrada sin mascota). Un remate, no decoración: 0-2 por video |
 
 ## Lo que comprueba el validador (`scripts/validar_render.py`)
-Ids, anclas dentro del guion y crecientes, sprites/caras/climas/sfx/música/iconos/fondos/lottie/músculos/imágenes existentes, transiciones, cámaras y partículas válidas, licencias de imagen permitidas (CC0, PDM, BY, BY-SA) y sin personas, `estudio` con fuente verificada, componentes que existen, `dato` y `ficha` con fuente verificada o ilustrativo, `progresion` si hay libreta o gráfica, nada que suene a CTA, escenas de al menos 8 frames y el **presupuesto de texto**:
+Ids, anclas dentro del guion y crecientes, sprites/caras/climas/sfx/música/iconos/fondos/lottie/músculos/imágenes existentes, transiciones, cámaras y partículas válidas, licencias de imagen permitidas (CC0, PDM, BY, BY-SA) y sin personas, componentes que existen, fuentes coherentes (la `fuente` de `dato`, `ficha`, `estudio`, `pictograma`, `barras`, `anillo` y de la tarjeta es la `corta` de un hallazgo de `investigacion.json`; sin `fuente`, `"ilustrativo": true`; `estudio` siempre con fuente; sin `investigacion.json`, ninguna fuente), `progresion` si hay libreta o gráfica, nada que suene a CTA, escenas de al menos 8 frames y el **presupuesto de texto**:
 
 | límite | valor |
 |---|---|
@@ -101,6 +101,6 @@ Ids, anclas dentro del guion y crecientes, sprites/caras/climas/sfx/música/icon
 | texto del pictograma | ≤ 4 palabras |
 | burbuja_dialogo · detalle del dato | ≤ 4 · ≤ 5 palabras |
 | piezas con texto por escena | ≤ 2 (aviso con 2) |
-| tarjeta final | tema ≤ 3 · pregunta ≤ 8 · veredicto ≤ 7 · 2-3 pasos ≤ 6 · fuente verificada (si la hay) |
+| tarjeta final | tema ≤ 3 · pregunta ≤ 8 · veredicto ≤ 7 · 2-3 pasos ≤ 6 · fuente de `investigacion.json` (si la hay) |
 
-Avisa (sin bloquear) si la pregunta de la tarjeta no retoma ninguna palabra del gancho, si falta el tono o el tema, de las cifras en pantalla para que confirmes su origen, de demasiadas escenas con texto, de demasiados tonos o iconos en los subtítulos y de escenas demasiado cortas o largas. Las escaletas versión 3 siguen siendo válidas.
+Avisa (sin bloquear) si la pregunta de la tarjeta no retoma ninguna palabra del gancho, si falta el tono o el tema, si la cabeza o las manos de la mascota quedan fuera de la zona segura o si flota (con las anclas de `mascota/manifest.json`, sin renderizar), de demasiadas escenas con texto, de demasiados tonos o iconos en los subtítulos y de escenas demasiado cortas o largas. Las escaletas versión 3 siguen siendo válidas.

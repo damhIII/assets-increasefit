@@ -36,14 +36,14 @@
 
 ## Ejemplos de referencia (calibran el ritmo y el tono; no copies sus temas ni sus frases)
 
-**Ángulo "lo que sí funciona":**
-¿Quieres ganar fuerza más rápido sin entrenar ni un día más? Prueba a descansar MÁS.
-Un estudio con veintiún hombres que ya entrenaban comparó dos descansos entre series durante ocho semanas: un minuto o tres minutos.
-Mismo programa, mismos ejercicios. Lo único que cambiaba era el reloj.
-El grupo que descansaba tres minutos ganó más fuerza en sentadilla y en banca, y más grosor en el muslo.
-Nada mal para algo que no cuesta nada, ¿no?
-Es un estudio pequeño y con hombres jóvenes, así que tómalo como un empujón, no como una ley.
-La próxima sesión, en tus ejercicios grandes, cronometra tres minutos antes de la siguiente serie. Vas a llegar con más fuerza.
+**Ángulo "lo que sí funciona"** (ejemplo inventado: ese estudio no existe; solo calibra el ritmo y el tono, nunca lo cites):
+¿Llegas del trabajo sin energía y el gym te da pereza? Justo ese día es cuando más suma.
+Un estudio con oficinistas que no entrenaban comparó dos grupos durante unas semanas: uno hizo un par de sesiones cortas de pesas por semana y el otro siguió igual.
+Mismo trabajo, mismas horas en la silla. Lo único que cambiaba eran esas sesiones.
+El grupo que entrenaba terminaba el día con más energía y dormía mejor.
+Nada mal para un par de ratos a la semana, ¿no?
+Es un estudio pequeño y la energía la contaban ellos mismos: tómalo como un empujón, no como una ley.
+Esta semana, agenda dos sesiones cortas como si fueran reuniones. Vas a salir con más energía.
 
 **Ángulo "mito que te frena":**
 ¿La creatina mejora los síntomas de depresión? ¿En serio?
