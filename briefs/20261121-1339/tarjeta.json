@@ -1,0 +1,15 @@
+{
+ "version": 1,
+ "base": "20261121-1339",
+ "tema": "Hábito del gym",
+ "pregunta": "¿Ir al gym puede hacerse más fácil?",
+ "veredicto": "Sí, pero puede tomar meses.",
+ "tono": "matiz",
+ "pasos": [
+  "Agenda tus días de pesas",
+  "Ve al salir del trabajo",
+  "Repite la misma secuencia"
+ ],
+ "fuente": "Singh et al. 2024",
+ "_nota": "Propuesta a partir del guion. Claude la pasa a escaleta.tarjeta_resumen (retocándola si hace falta)."
+}

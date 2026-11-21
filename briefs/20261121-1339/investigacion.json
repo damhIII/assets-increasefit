@@ -1,0 +1,51 @@
+{
+ "version": 2,
+ "base": "20261121-1339",
+ "eje": "constancia",
+ "eje_titulo": "Constancia y hábitos",
+ "eje_como": "sorteo",
+ "pedido": "",
+ "tema": "Cuánto tarda el hábito de entrenar",
+ "angulo": "buena_noticia",
+ "aprendizaje": "Ir al gym puede hacerse más automático con la repetición, pero no existe un plazo universal.",
+ "nota_eleccion": "Elegí esta revisión porque permite ajustar expectativas con tiempos concretos, sin convertirlos en una fecha límite para el gimnasio. El ensayo más reciente tenía resultados menos claros sobre la actividad física.",
+ "candidatos": [
+  {
+   "corta": "Singh et al. 2024",
+   "anio": 2024,
+   "por_que_no": ""
+  },
+  {
+   "corta": "Divine y Astill 2025",
+   "anio": 2025,
+   "por_que_no": "La actividad física fue autorreportada y no difirió entre los grupos, pese a los cambios en automaticidad."
+  }
+ ],
+ "correcciones_al_seed": [],
+ "consejo_practico": "Esta semana agenda tus días de pesas, ve al salir del trabajo y repite esa secuencia los días que te toque.",
+ "trampas_comunes": [],
+ "hallazgos": [
+  {
+   "id": "singh_2024",
+   "principal": true,
+   "tipo": "revision_sistematica",
+   "anio": 2024,
+   "dato": "Solo 4 estudios estimaron tiempos de formación del hábito.",
+   "muestra": "2601 adultos de poblaciones diversas; 20 estudios.",
+   "duracion": "Variable según el estudio.",
+   "intervencion": "Distintas estrategias para formar hábitos saludables; incluían actividad física.",
+   "resultado": "Medianas de 59–66 días y medias de 106–154 días; no es una comparación entre grupos.",
+   "fuerza": "baja",
+   "matiz": "11 estudios tenían alto riesgo de sesgo. Mezcla conductas y no establece un plazo específico para el gimnasio.",
+   "fuente": "Singh et al., 2024 (Healthcare)",
+   "corta": "Singh et al. 2024",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39685110/",
+   "doi": "10.3390/healthcare12232488",
+   "cita_literal": "Four studies reported the median or mean times to reach habit formation, ranging from 59-66 days (median) and 106-154 days (means)"
+  }
+ ],
+ "busquedas": 9,
+ "modelo": "gpt-6.1-sol",
+ "fecha": "2026-11-21T13:39-04:00",
+ "_nota": "Estudio elegido por GPT (búsqueda web) para este guion y revisado por una persona antes de locutar. El hallazgo con principal=true es el protagonista: sus cifras y su `corta` (la fuente) son las que salen en pantalla, tal cual."
+}
