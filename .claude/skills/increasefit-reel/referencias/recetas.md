@@ -11,7 +11,7 @@ La cuenta habla de **salud, beneficios del entrenamiento de fuerza y motivación
 | Dos grupos comparados ("los que entrenaban vs los que no") | `barras` con los valores reales | La barra del resultado bueno en `exito` o en el foco; la otra en gris (por defecto) |
 | Un porcentaje solo ("veintisiete por ciento más visitas") | `anillo` | O `dato` (cuenta hasta la cifra) si quieres algo más seco |
 | Duración o evolución ("en cuatro semanas", "a los seis meses") | `linea_tiempo` con 2-4 hitos anclados a sus palabras | Vertical junto a la mascota; horizontal y grande sin ella |
-| Un órgano, un hueso, el cerebro, un diagrama | `imagen` (ilustración con licencia, en duotono) o `prop` (`prop_corazon`, `prop_cerebro`, `prop_fibra_muscular`) | El prop va en el estilo de la mascota: prefiérelo si existe. La imagen, cuando hace falta detalle real (un diagrama del corazón, una vértebra) |
+| Un órgano, un hueso, el cerebro, un diagrama | `prop` (`prop_corazon`, `prop_cerebro`, `prop_fibra_muscular`) o `musculos` | Si no hay prop, una escena a medida que lo dibuje en SVG en el estilo de la marca y lo anime (se construye por partes y se enciende la zona que nombra la voz) |
 | Estudio observacional ("se asoció con…") | Piezas en tono `foco`, nunca `exito` | No celebres una asociación como si fuera causa; la mascota con `gesto_pensar` o `cara_pensativo` en el matiz |
 
 ## La vida del espectador
@@ -35,7 +35,7 @@ La cuenta habla de **salud, beneficios del entrenamiento de fuerza y motivación
   - `flash` → el golpe (la cifra que sorprende).
   - `fundido` → la pausa tranquila, el matiz.
   - `pincel` → la cortinilla de la marca (como siempre).
-- **Cámara** (`camara`): `quieta` en escenas con fichas, barras o imágenes que se tienen que leer; `alejar` en escenas largas y calmadas (el matiz); `sacudida` con `en` en la palabra que golpea; `viva` en el resto.
+- **Cámara** (`camara`): `quieta` en escenas con fichas o barras que se tienen que leer; `alejar` en escenas largas y calmadas (el matiz); `sacudida` con `en` en la palabra que golpea; `viva` en el resto.
 - **Mascota**: `saltar` (ganas, energía), `celebrar` (el logro, el resultado bueno), `asentir` (dar la razón, "así es"), además de las de siempre.
 - **Partículas** (`particulas`) en 1-3 escenas, nunca en todas: `polvo` (ambiente del gimnasio), `chispas` (energía), `burbujas` (calma, mente), `confeti_suave` (cierre feliz).
 - **Cortes a ritmo**: `"opciones": {"cortes_a_ritmo": true}` mueve cada corte ≤4 frames al golpe de música más cercano (sin tocar la voz).
@@ -43,5 +43,5 @@ La cuenta habla de **salud, beneficios del entrenamiento de fuerza y motivación
 ## Lo que no hacer
 - Dos piezas de columna en la misma escena (se pisan: el validador avisa).
 - Texto de más: las etiquetas de barras, hitos, muestra y duración cuentan para las 20 palabras del video.
-- Imágenes con personas o marcas, o sin revisar (`revisada: true` tras mirarla).
+- Imágenes o fotos descargadas: todo es animación (mascota, props, iconos, lottie o SVG en una escena a medida).
 - Transiciones vistosas en cada corte: cansan y le roban protagonismo a la idea.

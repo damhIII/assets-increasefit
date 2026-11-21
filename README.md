@@ -3,7 +3,7 @@
 Contenido editorial, mascota, kit gráfico, sonido y plantilla Remotion de los Reels de IncreaseFit, una cuenta de salud y entrenamiento para personas normales con trabajos normales (el público está definido una sola vez, en `editorial/marca.md`). Instrucciones para Claude: `CLAUDE.md`. Cambios de cada versión: `CHANGELOG.md`.
 
 ## El flujo
-1. **Notebook de Colab** (`Crear_video_IncreaseFit_v9.ipynb`): sortea un eje de `editorial/ejes.json`; GPT, con búsqueda web, elige un estudio y escribe el guion y la tarjeta final en una sola llamada (`editorial/prompt_reel.md`); se revisa el guion; Gemini lo locuta y Whisper saca el tiempo de cada palabra. Sube todo a `briefs/<BASE>/` (ver `briefs/LEEME.md`).
+1. **Notebook de Colab** (`Crear_video_IncreaseFit_v10.ipynb`): sortea un eje de `editorial/ejes.json`; GPT, con búsqueda web, elige un estudio y escribe el guion y la tarjeta final en una sola llamada (`editorial/prompt_reel.md`); se revisa el guion; Gemini lo locuta y Whisper saca el tiempo de cada palabra. Sube todo a `briefs/<BASE>/` (ver `briefs/LEEME.md`).
 2. **Revisión humana** del guion en el notebook (celda 2, si hay que retocarlo: la tarjeta se rehace con `editorial/prompt_tarjeta.md`).
 3. **Claude** (skill `.claude/skills/increasefit-reel/`): diseña la escaleta y renderiza con Remotion. Usa las cifras y la fuente del hallazgo de `investigacion.json` tal cual, no sube nada al repo y entrega el MP4 y la escaleta en el chat.
 
@@ -37,7 +37,7 @@ Sin descarga de Chrome Headless Shell: `export REMOTION_BROWSER=/usr/bin/google-
 - **props/**: objetos (pesas, banco, comida, cama, libreta, cerebro…) en el estilo de la mascota (`manifest.json`, `contactos.jpg`).
 - **kit/**: anotaciones dibujadas a mano y cortinilla de pincel (`manifest.json`, `contactos.png`).
 - **sonido/**: efectos y música en bucle (`manifest.json`, licencias).
-- **plantilla/**: proyecto Remotion (piezas de datos: pictograma, barras, anillo, línea de tiempo, ficha del estudio; imágenes en marco; transiciones, cámara, partículas; modo revisión) · **scripts/**: alinear, sincronizar, validar, preparar, revisar el video, imágenes con licencia, golpes de música y regenerar recursos.
+- **plantilla/**: proyecto Remotion (piezas de datos: pictograma, barras, anillo, línea de tiempo, ficha del estudio; transiciones, cámara, partículas; modo revisión) · **scripts/**: alinear, sincronizar, validar, preparar, revisar el video, golpes de música y regenerar recursos.
 - **icons/**: Lucide, Tabler (`tb-`) y Healthicons (`hi-`): colorear con máscara CSS (`mask-image`), no con `<Img>`. `scripts/iconos.py` añade más.
 - **anatomia/**: mapa muscular (react-native-body-highlighter, MIT) · **lottie/**: animaciones Lottie recoloreadas a la marca (LottieFiles, Lottie Simple License; useAnimations, MIT) · **fondos/**: patrones de fondo por escena en blanco (se tiñen con el clima).
 - **ui/**: sellos MITO/REALIDAD, VS, anillo de descanso, tarjeta de serie (teñir con `scripts/tenir_svg.py` en otros climas).

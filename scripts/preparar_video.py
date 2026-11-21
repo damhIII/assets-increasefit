@@ -10,7 +10,7 @@ Uso:
 4. Copia plantilla/ a videos/<BASE>/ (conserva node_modules y out/) y deja dentro:
    src/video.json, src/paletas.json, src/mascota.json, src/sonido.json, src/musculos.json, src/lottie.json, src/props.json,
    src/escenas/custom/ (los .tsx de briefs/<BASE>/custom/ + su índice),
-   public/locucion.wav, sprites, kit, sonido, fuentes, iconos, ui, texturas, fondos, lottie, props, logos e imagenes/ del brief.
+   public/locucion.wav, sprites, kit, sonido, fuentes, iconos, ui, texturas, fondos, lottie, props y logos.
 Se puede repetir tantas veces como haga falta: lo que escribe Claude vive en briefs/<BASE>/ (escaleta.json y custom/).
 Salida silenciosa: solo avisos, errores y una línea final.
 Luego, en videos/<BASE>: npm run instalar (la primera vez) → npm run tipos → npm run revisar → npm run stills → npm run render.
@@ -78,10 +78,6 @@ def main():
         shutil.copy2(audio, pub / "locucion.wav")
     else:
         print(f"  aviso: no encuentro el audio {audio}; búscalo entre los adjuntos y pásalo con --audio")
-    # v9: imágenes con licencia de este brief (scripts/imagenes.py) → public/imagenes/
-    shutil.rmtree(pub / "imagenes", ignore_errors=True)
-    if (d / "imagenes").is_dir():
-        shutil.copytree(d / "imagenes", pub / "imagenes", ignore=shutil.ignore_patterns("*.json", "contactos.jpg", "_*"))
     copias = {"mascota/sprites": "mascota/sprites", "kit": "kit", "sonido/sfx": "sonido/sfx", "sonido/musica": "sonido/musica",
               "icons": "icons", "ui": "ui", "textures": "textures", "fondos": "fondos", "lottie": "lottie", "props/sprites": "props/sprites"}
     for origen, destino in copias.items():

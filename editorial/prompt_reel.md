@@ -101,7 +101,6 @@ Devuelve ÚNICAMENTE un objeto JSON válido, sin markdown ni texto alrededor, co
   "correcciones_al_seed": ["solo si hubo TEMA PEDIDO: lo que pedía y la evidencia no respalda (lista vacía si nada)"],
   "consejo_practico": "la recomendación aplicable hoy, dicha como acción",
   "trampas_comunes": ["mitos alrededor del tema, sin marcas (lista vacía si no vienen al caso)"],
-  "ideas_visuales": ["de 2 a 4 búsquedas cortas EN INGLÉS de ilustraciones, diagramas u objetos SIN personas que ayudarían a explicar el guion en pantalla (p. ej. \"human heart anatomy illustration\", \"spine diagram\", \"alarm clock\")"],
   "guion": "el texto a locutar, sin título, sin comillas alrededor, sin etiquetas, sin acotaciones, sin emojis, sin markdown, sin enlaces",
   "tarjeta": { "tema": "...", "pregunta": "¿...?", "veredicto": "...", "tono": "si | no | matiz", "pasos": ["...", "..."], "fuente": "Autor et al. año" }
 }

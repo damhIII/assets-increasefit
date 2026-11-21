@@ -9,14 +9,13 @@ import { ancla, colocar, fasesDe, Mascota } from "../personaje/Sprite";
 import { BurbujaDialogo, BurbujaPensamiento, CajaTachada, Capitulo, Circulo, Dato, Efecto, Etiqueta, FichaEstudio, Grafica, IconoPop, Inserto, Libreta, Lista, Marca } from "../componentes/kit";
 import { LottieAnim, MapaMuscular, PropObjeto } from "../componentes/extra";
 import { Anillo, Barras, LineaTiempo, Pictograma, TarjetaEstudio } from "../componentes/datos_viz";
-import { ImagenMarco } from "../componentes/imagen";
 import { Particulas } from "../marco/Particulas";
 import { MODO_MARGENES } from "../marco/revision";
 import { CUSTOM } from "./custom";
 
 /** Cámara de la escena. tipo (escena.camara):
  *  · viva (por defecto): flota y hace punch-in en la primera palabra de énfasis.
- *  · quieta: sin flotar (para fichas, barras o imágenes que se tienen que leer); conserva el punch-in.
+ *  · quieta: sin flotar (para fichas o barras que se tienen que leer); conserva el punch-in.
  *  · alejar: se aleja despacio (escala 1 → 0,955) durante la escena: nunca acerca, así nada se empuja hacia los márgenes.
  *  · sacudida: como viva + un temblor corto en la palabra `en` (golpe, sorpresa). Movimiento casi todo vertical y de 12 frames.
  *  En el modo revisión de márgenes no se mueve nada: se comprueba la posición en reposo. */
@@ -41,7 +40,7 @@ export const Camara: React.FC<{ children: React.ReactNode; punch: number | null;
   );
 };
 
-const COLUMNA = new Set(["dato", "lista", "libreta", "grafica", "ficha", "musculos", "pictograma", "barras", "anillo", "linea_tiempo", "estudio", "imagen"]);
+const COLUMNA = new Set(["dato", "lista", "libreta", "grafica", "ficha", "musculos", "pictograma", "barras", "anillo", "linea_tiempo", "estudio"]);
 const fuenteDe = (o: Anotacion) => o.fuente ?? (o.ilustrativo ? "EJEMPLO ILUSTRATIVO" : undefined);
 
 const Custom: React.FC<{ e: Escena; c: C }> = ({ e, c }) => {
@@ -167,7 +166,7 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
           ? <PropObjeto key={i} id={p.id} x={px} y={1340} lado={lado} desde={t} suelo />
           : <PropObjeto key={i} id={p.id} x={px} y={v ? 840 : 930} lado={lado} desde={t} />;
       }
-      // ── v9: piezas de datos e imagen. Con mascota van en la columna izquierda (x 120–620, la mascota pasa a la derecha);
+      // ── v9: piezas de datos. Con mascota van en la columna izquierda (x 120–620, la mascota pasa a la derecha);
       //    sin mascota, centradas y más grandes. Siempre dentro de ZONA.
       case "pictograma": return <Pictograma key={i} total={o.total ?? 100} cantidad={o.cantidad ?? 0} texto={o.texto} detalle={o.detalle} fuente={fuenteDe(o)}
         tono={o.tono} icono={o.icono} desde={t} c={c} {...caja(640)} />;
@@ -180,13 +179,6 @@ export const EscenaVideo: React.FC<{ e: Escena; anterior?: Escena }> = ({ e, ant
       }
       case "estudio": return <TarjetaEstudio key={i} tipo={o.estudio?.tipo ?? "Estudio"} anio={o.estudio?.anio} muestra={o.estudio?.muestra} duracion={o.estudio?.duracion}
         revista={o.estudio?.revista} fuente={o.fuente} desde={t} c={c} {...caja(640)} />;
-      case "imagen": {
-        if (!o.archivo) return null;
-        const k = Math.min(1, Math.max(0.6, o.escala ?? 1));
-        const b = v ? { x: ZONA.izq, y: 590, ancho: Math.round(500 * k), altoMax: 720 } : { x: ZONA.cx - Math.round(340 * k), y: 570, ancho: Math.round(680 * k), altoMax: 760 };
-        return <ImagenMarco key={i} archivo={o.archivo} credito={o.credito} marco={o.marco} duotono={o.duotono !== false} proporcion={(o.alto ?? 3) / (o.ancho ?? 4)}
-          desde={t} c={c} {...b} />;
-      }
       default: return null;
     }
   });

@@ -21,24 +21,6 @@ TONOS = ("alerta", "exito")
 COLA_S = 4.0                       # segundos tras la última palabra: la tarjeta final se queda para leerla y guardarla
 TONOS_TARJETA = ("si", "no", "matiz")
 RITMO_MAX_F = 4                    # cortes_a_ritmo: un corte se mueve como mucho 4 frames (0,13 s) para caer en un golpe
-LICENCIAS_OK = ("cc0", "pdm", "by", "by-sa")   # imágenes: las únicas licencias que se pueden usar (comercial + modificación)
-
-
-def imagenes_de(dir_base):
-    """briefs/<BASE>/imagenes/manifest.json → {id: info}. Vacío si no hay imágenes."""
-    f = Path(dir_base) / "imagenes" / "manifest.json"
-    if not f.exists():
-        return {}
-    return {x["id"]: x for x in json.loads(f.read_text(encoding="utf-8")).get("imagenes") or [] if x.get("id")}
-
-
-def credito(info):
-    """'Autor · CC BY 4.0' (lo que exige la licencia; CC0 y dominio público no lo exigen, pero se agradece)."""
-    lic = str(info.get("licencia") or "").lower()
-    ver = str(info.get("licencia_version") or "").strip()
-    nombre = {"cc0": "CC0", "pdm": "Dominio público"}.get(lic, f"CC {lic.upper()} {ver}".strip())
-    autor = str(info.get("autor") or "").strip()
-    return f"{autor} · {nombre}" if autor else nombre
 
 
 def rejilla_ritmo(esc, cat):
@@ -123,7 +105,6 @@ def sincronizar(dir_base):
     enfasis = set()
     escenas, sfx, cortinillas, transiciones = [], [], [], []
     ritmo = rejilla_ritmo(esc, cat)
-    imgs = imagenes_de(dir_base)
     for k, e in enumerate(esc["escenas"]):
         ini = 0 if k == 0 else frame(e["desde"], e.get("desfase_f", 0))
         if ritmo and k > 0 and "desfase_f" not in e:            # corte al golpe de música más cercano (si está a ≤ 4 frames)
@@ -144,9 +125,6 @@ def sincronizar(dir_base):
             if o.get("hitos"):                                  # linea_tiempo: cada hito en su palabra
                 o["hitos"] = [{"texto": str(h.get("texto", "")), "icono": h.get("icono") or None,
                                "en_f": frame(h["en"]) if h.get("en") is not None else None} for h in o["hitos"]]
-            if o.get("tipo") == "imagen" and o.get("imagen") in imgs:   # imagen: ruta pública, crédito y tamaño
-                info = imgs[o["imagen"]]
-                o.update({"archivo": f"imagenes/{info['archivo']}", "credito": credito(info), "ancho": info.get("ancho"), "alto": info.get("alto")})
             if o.get("filas"):                                  # ficha: cada fila con su propio momento
                 o["filas"] = [{"icono": r.get("icono", ""), "texto": str(r.get("texto", "")),
                                "en_f": frame(r["en"]) if r.get("en") is not None else None} for r in o["filas"]]

@@ -12,7 +12,7 @@ El notebook te da **el guion** (texto plano, sin ninguna indicación), **la locu
 **Salidas cortas.** Los comandos largos (instalar, render, stills) se ejecutan con su salida a `out/logs/<paso>.log` y muestras solo `tail -5`; abre el log entero solo si el comando falla. Por ejemplo: `npm run render > out/logs/render.log 2>&1; tail -5 out/logs/render.log`.
 
 ## 1. Localiza el material
-- `briefs/<BASE>/` con `guion.txt`, `locucion.wav`, `palabras.json`, `tarjeta.json` (la tarjeta final que propuso el guionista a partir del guion), `investigacion.json` (opcional: los hallazgos de la búsqueda web del guionista; el estudio protagonista lleva `principal: true`) e `imagenes/` (opcional: ilustraciones con licencia libre que bajó el notebook, con `manifest.json` y `contactos.jpg`). "El último" = la carpeta `AAAAMMDD-HHMM` más reciente.
+- `briefs/<BASE>/` con `guion.txt`, `locucion.wav`, `palabras.json`, `tarjeta.json` (la tarjeta final que propuso el guionista a partir del guion), `investigacion.json` (opcional: los hallazgos de la búsqueda web del guionista; el estudio protagonista lleva `principal: true`). "El último" = la carpeta `AAAAMMDD-HHMM` más reciente.
 - Si te adjuntan los archivos en el chat, crea `briefs/<BASE>/` con ellos (BASE = la que diga el prompt).
 
 ## 2. Lee la locución
@@ -21,7 +21,6 @@ El notebook te da **el guion** (texto plano, sin ninguna indicación), **la locu
 ## 3. Lee la marca visual y mira el material
 - Siempre, en `referencias/`: `marca.md`, `mascota.md`, `layout.md`, `escaleta.md` y **`recetas.md`** (qué pieza usar para cada momento de un guion de salud: estudio, riesgo, comparación, tiempo, vida diaria).
 - **Abre las imágenes** `mascota/contactos.jpg` (todas las poses), `props/contactos.jpg` (objetos en el estilo de la mascota), `kit/contactos.png` (anotaciones), `icons/contactos.png` (iconos) y `fondos/contactos.png` (patrones de fondo), y lee `lottie/manifest.json` (animaciones): diseña con lo que existe.
-- Si hay `imagenes/`: **abre `imagenes/contactos.jpg`** y sigue `referencias/imagenes.md` (nunca personas; marca `revisada` las que uses).
 - Cuando toque: `climas.md`, `sonido.md`, `tecnico.md`.
 
 ## 4. Cifras y fuentes
@@ -41,7 +40,7 @@ Usa las del hallazgo con `principal: true` de `investigacion.json` (dato, muestr
   - el método de un estudio (muestra, duración, dosis) → `ficha` (icono + cifra corta por fila, cada fila en su palabra);
   - el resultado → `dato` (la cifra grande con su fuente), `pictograma` (una proporción o un riesgo: "uno de cada cuatro"), `barras` (dos grupos comparados con sus valores reales) o `anillo` (un porcentaje);
   - el tiempo ("en cuatro semanas", "a los sesenta") → `linea_tiempo` (2-4 hitos, cada uno en su palabra);
-  - un órgano, un hueso, un diagrama que los props no tienen → `imagen` (ilustración con licencia, en duotono y dentro de un marco; ver `referencias/imagenes.md`);
+  - un órgano, un hueso, un diagrama → `prop` (`prop_corazon`, `prop_cerebro`, `prop_fibra_muscular`) o `musculos`; si no existe, una escena a medida (paso 6) que lo dibuje en SVG y lo anime por partes;
   - qué músculo trabaja o duele → `musculos` (mapa muscular con ese músculo encendido);
   - un logro, una explosión de energía, el paso del tiempo → `lottie` (confeti, fuego, destellos, reloj de arena) como remate puntual;
   - comparaciones y grupos → `dividida`, dos sprites o check/cruz;
@@ -78,14 +77,14 @@ Usa las del hallazgo con `principal: true` de `investigacion.json` (dato, muestr
 ## 8. Render y entrega
 - `npm run render > out/logs/render.log 2>&1; tail -5 out/logs/render.log` → `out/video.mp4`.
 - Entrega en el chat el MP4 y `briefs/<BASE>/escaleta.json` como archivo adjunto (para que la persona lo archive si quiere), con 3–5 líneas sobre las decisiones clave y la lista de iconos que añadió `scripts/iconos.py` (son locales y se pierden con la sesión).
-- Si el Reel lleva imágenes CC BY / BY-SA, da en la entrega el crédito para la descripción del post (`imagenes/manifest.json`).
 - No subas nada al repositorio (ni cambios de git ni archivos) y no pidas credenciales: esta etapa es de solo lectura. Lo que generas (`subtitulos.json`, `escaleta.json`, `custom/`, `videos/`, iconos nuevos) vive solo en tu sesión.
 
 ## Reglas fijas
 Son las únicas reglas de la etapa de video; `CLAUDE.md` y las referencias no añaden otras.
 - El marco IncreaseFit es fijo: subtítulos arriba (Y≈300, bajo la interfaz de Instagram, sin logo encima), texto en pantalla abajo y tarjeta final con el logo. Dentro de las escenas, libertad, pero nada fijo durante todo el video: ni logo, ni isotipo, ni títulos o rótulos persistentes (tampoco en escenas a medida).
 - Zona segura: nada importante a menos de 120 px de los lados (x 120–960; x ≤ 900 bajo Y≈1100). Explicada completa en `referencias/layout.md`; la comprueba `npm run revisar`.
-- La mascota es la única figura humana: nunca personas reales, fotos de personas ni personajes de otras cuentas o marcas. Las imágenes con licencia son ilustraciones, diagramas u objetos, revisadas a ojo.
+- La mascota es la única figura humana: nunca personas reales, fotos de personas ni personajes de otras cuentas o marcas.
+- Solo animación: nada de imágenes ni fotos descargadas. Todo lo que se ve sale del repo (mascota, props, iconos, kit, lottie, fondos) o se dibuja en SVG en una escena a medida.
 - Sin CTA en la voz ni en las escenas: el video no pide comentarios, likes, follows ni compartir. La única invitación es el GUÁRDALO de la tarjeta final.
 - Cifras de estudios en pantalla solo con su fuente (la `corta` de un hallazgo de `investigacion.json`, tal cual); las de ejemplo, rotuladas como ilustrativas.
 - La voz no se toca: ni recortes ni cambios de velocidad (el ritmo se ajusta en el notebook, antes de sacar los tiempos).

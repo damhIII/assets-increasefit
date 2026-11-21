@@ -24,11 +24,10 @@ POSICIONES = {"centro", "izq", "der"}
 APUNTA = {"cabeza", "manos", "pies", "centro"}
 ANOTACIONES = {"etiqueta", "tachado", "circulo", "check", "cruz", "burbuja_pensamiento", "burbuja_dialogo", "dato", "lista",
                "rec", "lineas_velocidad", "impacto", "sudor", "destello", "enfoque", "libreta", "grafica", "icono", "ficha",
-               "musculos", "lottie", "prop", "pictograma", "barras", "anillo", "linea_tiempo", "estudio", "imagen"}
-COLUMNA = {"dato", "lista", "libreta", "grafica", "ficha", "musculos", "pictograma", "barras", "anillo", "linea_tiempo", "estudio", "imagen"}
+               "musculos", "lottie", "prop", "pictograma", "barras", "anillo", "linea_tiempo", "estudio"}
+COLUMNA = {"dato", "lista", "libreta", "grafica", "ficha", "musculos", "pictograma", "barras", "anillo", "linea_tiempo", "estudio"}
 CAMARAS = {"viva", "quieta", "alejar", "sacudida"}
 PARTICULAS = {"polvo", "chispas", "burbujas", "confeti_suave"}
-MARCOS = {"polaroid", "celular", "circulo", "tarjeta"}
 VISTAS = {"frente", "espalda"}
 TRANSICIONES = {"corte", "pincel", "zoom", "deslizar", "barrido", "iris", "flash", "fundido"}
 TONOS = {"foco", "alerta", "exito"}
@@ -191,7 +190,6 @@ def validar(dir_base):
     lotties = {l["id"] for l in cat["lottie"].get("animaciones") or []}
     fondos = {x["id"] for x in cat["fondos"].get("fondos") or []}
     props = {x["id"] for x in cat["props"].get("props") or []}
-    imgs = S.imagenes_de(d)
     texto_total = []                          # (dónde, palabras) del texto en pantalla, para el presupuesto
 
     def palabras(t):
@@ -312,7 +310,8 @@ def validar(dir_base):
             t = o.get("tipo")
             donde = f"{eid}.anotaciones[{j}]"
             if t not in ANOTACIONES:
-                err.append(f"{donde}: tipo {t} desconocido")
+                err.append(f"{donde}: tipo {t} desconocido"
+                           + (" (ya no hay imágenes descargadas: usa un prop, musculos, lottie o una escena a medida en SVG)" if t == "imagen" else ""))
                 continue
             if o.get("en") is not None:
                 idx_ok(o["en"], f"{donde}.en")
@@ -390,7 +389,7 @@ def validar(dir_base):
                 if not o.get("texto"):
                     err.append(f"{donde}: dato necesita la cifra en 'texto'")
                 fuente_o_ilustrativo()
-            # ── v9: piezas de datos e imagen ──
+            # ── v9: piezas de datos ──
             if t in ("pictograma", "barras", "anillo", "linea_tiempo", "estudio"):
                 piezas_texto += 1
             if t == "pictograma":
@@ -455,25 +454,6 @@ def validar(dir_base):
                 if es.get("revista") and len(palabras(es["revista"])) > 4:
                     err.append(f"{donde}: estudio.revista abreviada (≤4 palabras)")
                 fuente_o_ilustrativo(obligatoria=True)
-            if t == "imagen":
-                info = imgs.get(o.get("imagen"))
-                if not info:
-                    err.append(f"{donde}: imagen «{o.get('imagen')}» no está en imagenes/manifest.json de este brief "
-                               f"(descárgala con: python3 scripts/imagenes.py descargar briefs/<BASE> \"consulta\")"
-                               + (f"; hay: {', '.join(sorted(imgs))}" if imgs else ""))
-                else:
-                    if str(info.get("licencia", "")).lower() not in S.LICENCIAS_OK:
-                        err.append(f"{donde}: licencia «{info.get('licencia')}» no permitida (solo {', '.join(S.LICENCIAS_OK)}: uso comercial y modificación)")
-                    if info.get("personas") is True:
-                        err.append(f"{donde}: la imagen «{o['imagen']}» está marcada con personas: la mascota es la única figura humana")
-                    if not (d / "imagenes" / str(info.get("archivo", ""))).is_file():
-                        err.append(f"{donde}: falta el archivo imagenes/{info.get('archivo')}")
-                    if info.get("revisada") is not True:
-                        avisos.append(f"{donde}: imagen «{o['imagen']}» sin revisar: ábrela, comprueba que NO salen personas ni marcas y pon \"revisada\": true en imagenes/manifest.json")
-                if o.get("marco", "polaroid") not in MARCOS:
-                    err.append(f"{donde}: marco {o.get('marco')} ({' | '.join(sorted(MARCOS))})")
-                if o.get("escala") is not None and not (isinstance(o["escala"], (int, float)) and 0.6 <= o["escala"] <= 1):
-                    err.append(f"{donde}: escala de la imagen entre 0.6 y 1")
             if t in ("libreta", "grafica") and len(esc.get("progresion") or []) < 2:
                 err.append(f"{donde}: {t} necesita 'progresion' en la escaleta (2-6 semanas con kg y reps)")
             for campo in ("texto", "detalle"):

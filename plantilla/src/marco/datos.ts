@@ -12,7 +12,7 @@ export type Anotacion = {
   tipo: "etiqueta" | "tachado" | "circulo" | "check" | "cruz" | "burbuja_pensamiento" | "burbuja_dialogo" | "dato" | "lista"
       | "rec" | "lineas_velocidad" | "impacto" | "sudor" | "destello" | "enfoque" | "libreta" | "grafica" | "icono" | "ficha"
       | "musculos" | "lottie" | "prop"
-      | "pictograma" | "barras" | "anillo" | "linea_tiempo" | "estudio" | "imagen";
+      | "pictograma" | "barras" | "anillo" | "linea_tiempo" | "estudio";
   texto?: string;            // etiqueta, tachado, burbuja_dialogo, dato (la cifra grande), libreta (título)
   detalle?: string;          // dato: texto bajo la cifra
   fuente?: string;           // dato: fuente corta (la `corta` del hallazgo de investigacion.json)
@@ -37,13 +37,6 @@ export type Anotacion = {
   valor?: number;            // anillo: 0-100
   hitos?: { texto: string; icono?: string; en_f: number }[];     // linea_tiempo: 2-4 momentos, cada uno en su palabra
   estudio?: { tipo: string; anio?: number | string; muestra?: string; duracion?: string; revista?: string };   // estudio: la ficha del paper
-  // ── imagen con licencia (v9) ──
-  imagen?: string;           // id de briefs/<BASE>/imagenes/manifest.json
-  archivo?: string;          // lo rellena sincronizar.py: ruta en public/
-  credito?: string;          // lo rellena sincronizar.py: "Autor · CC BY 4.0"
-  ancho?: number; alto?: number;   // px originales (los rellena sincronizar.py)
-  marco?: "polaroid" | "celular" | "circulo" | "tarjeta";
-  duotono?: boolean;         // por defecto true: la imagen se tiñe a la paleta del clima
   en_f: number;              // frame GLOBAL en que aparece
 };
 export type Tono = "foco" | "alerta" | "exito";

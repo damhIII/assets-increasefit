@@ -31,7 +31,6 @@ export default FlechaSube;
 ## Assets
 - `kit/*.svg` blancos (`tintable` en `kit/manifest.json`) y `icons/*.svg`: con máscara CSS (`<Tinta>`, `<Icono>`), nunca con `<Img>`. El resto, con `<Img src={staticFile(...)} />`.
 - Sprites: `staticFile("mascota/sprites/<id>.png")`.
-- Imágenes con licencia del brief: `public/imagenes/<archivo>` (las copia `preparar_video.py` desde `briefs/<BASE>/imagenes/`); dibújalas con `<ImagenMarco>` para conservar el crédito y la zona segura.
 - Modo revisión: `MODO_MARGENES` de `marco/revision.ts` es `true` en los fotogramas de revisión de `npm run revisar` (fondo liso, sin subtítulos ni texto en pantalla). En una escena a medida, si dibujas algo DECORATIVO que llega al borde (partículas, rayos, fondos), no lo pintes en ese modo: `if (MODO_MARGENES) return null;`.
 
 ## Reglas de código
